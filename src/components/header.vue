@@ -1,6 +1,6 @@
 <template>
   <div class="flex header-wrap">
-    <div class="logo align-self-middle">管理系统模板</div>
+    <div class="logo align-self-middle">动态表单设计系统</div>
     <div class="flex flex-auto justify-end">
       <el-dropdown trigger="click" class="flex dropdown align-middle" placement="bottom">
         <span class="el-dropdown-link">

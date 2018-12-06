@@ -19,18 +19,8 @@ const router = new Router({
 		},
 		{
 			path: "/home",
-			component: () => import("@/components/layout"),
-			children: [{
-					path: '/',
-					name: 'home',
-					component: () => import('@/views/home.vue')
-				},
-				{
-					path: '/ad',
-					name: 'ad',
-					component: () => import('@/views/ad.vue')
-				}
-			]
+			name: 'home',
+			component: () => import('@/views/home.vue')
 		},
 		{
 			path: '*',
