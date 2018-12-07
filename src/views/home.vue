@@ -1,51 +1,42 @@
 <template>
   <div class="wrapper">
     <header class="header">
-      <v-header></v-header>
+      <v-header/>
     </header>
-    <div class="sidebar">
-      <v-sidebar></v-sidebar>
+    <div class="widget-form">
+      <widgetForm/>
     </div>
-    <div id="container">
-      <div
-        class="handle-sidebar"
-        :class="showSidebar?'el-icon-caret-left':'el-icon-caret-right'"
-        @click="toggleSidebar()"
-      ></div>
-      <div style="min-width: 1100px;">
-        <transition name="move" mode="out-in">
-          <router-view></router-view>
-        </transition>
-      </div>
+    <div class="design-form">
+      <designForm/>
+    </div>
+    <div class="widget-config">
+      <widgetConfig/>
     </div>
   </div>
 </template>
 
 <script>
 import vHeader from "@/components/header.vue";
-import vSidebar from "@/components/sidebar.vue";
+import widgetForm from "@/components/widget-form.vue";
+import designForm from "@/components/design-form.vue";
+import widgetConfig from "@/components/widget-config.vue";
 export default {
   components: {
     vHeader,
-    vSidebar
+    widgetForm,
+    designForm,
+    widgetConfig
   },
   data() {
     return {
-      showSidebar: true,
-      dom_container: ""
     };
   },
   methods: {
-    toggleSidebar() {
-      this.showSidebar
-        ? (document.getElementById("container").style.left = 0)
-        : (document.getElementById("container").style.left = "200px");
-      this.showSidebar = !this.showSidebar;
-    }
+
   },
   mounted() {
-    this.$nextTick(function() {
-      window.dom_container = document.getElementById("container");
+    this.$nextTick(function () {
+
     });
   }
 };
@@ -59,9 +50,9 @@ export default {
   color: #fff;
   background: #242f42;
 }
-.sidebar {
+.widget-form {
   position: absolute;
-  width: 200px;
+  width: 300px;
   left: 0;
   top: 70px;
   bottom: 0;
@@ -73,39 +64,25 @@ export default {
   display: none;
 }
 
-#container {
+.design-form {
   background: none repeat scroll 0 0 #fff;
   position: absolute;
-  left: 200px;
-  right: 0;
+  left: 300px;
+  right: 300px;
   top: 70px;
   bottom: 0;
   padding: 40px;
   box-sizing: border-box;
   overflow: auto;
-  transition: 0.3s;
 }
-.handle-sidebar {
+.widget-config {
   position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 30px;
-}
-@media screen and (min-width: 720px) {
-  .handle-sidebar {
-    display: none;
-  }
-  .user-info {
-    padding-right: 50px;
-  }
-}
-.move-enter-active,
-.move-leave-active {
-  transition: opacity 0.5s;
-}
-.move-enter,
-.move-leave {
-  opacity: 0;
+  width: 300px;
+  right: 0;
+  top: 70px;
+  bottom: 0;
+  background: #324157;
+  -ms-overflow-style: none;
 }
 </style>
 

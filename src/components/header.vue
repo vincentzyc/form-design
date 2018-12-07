@@ -50,7 +50,9 @@ export default {
 .dropdown {
   height: 100%;
   padding: 0 30px;
-  background: #eee;
+  color: #eee;
+  user-select: none;
+  /* background: #eee; */
 }
 .el-dropdown-link {
   cursor: pointer;
