@@ -1,109 +1,121 @@
 <template>
-  <div class="wrapper">
-    <header class="header">
-      <v-header/>
-    </header>
-    <div class="container">
-      <div class="builder-form">
-        <div class="widget-form">
-          <widgetForm/>
-        </div>
-        <div class="design-form">
-          <designForm/>
-        </div>
-        <div class="widget-config">
-          <widgetConfig/>
-        </div>
+  <div class="home">
+    <Header/>
+    <el-container>
+      <div class="form-edit-wrapper flex flex-auto">
+        <el-aside style="wdith: 300px;">
+          <div class="components-list">
+            <div class="widget-cate">基础字段</div>
+            <draggable
+              element="ul"
+              :list="basicComponents"
+              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+              @end="handleMoveEnd"
+              @start="handleMoveStart"
+            >
+              <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
+                <a>
+                  <span>{{item.name}}</span>
+                </a>
+              </li>
+            </draggable>
+
+            <div class="widget-cate">布局字段</div>
+            <draggable
+              element="ul"
+              :list="layoutComponents"
+              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+              @end="handleMoveEnd"
+              @start="handleMoveStart"
+            >
+              <li class="form-edit-widget-label data-grid" v-for="(item, index) in layoutComponents" :key="index">
+                <a>
+                  <span>{{item.name}}</span>
+                </a>
+              </li>
+            </draggable>
+          </div>
+        </el-aside>
+        <el-container class="center-container" direction="vertical">
+          <el-header class="btn-bar" style="height: 45px;">
+            <el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview()">预览</el-button>
+          </el-header>
+          <el-main>
+            <widget-form ref="widgetForm" :data="widgetForm" :select.sync="widgetFormSelect"></widget-form>
+          </el-main>
+        </el-container>
+
+        <el-aside class="widget-config-container">
+          <el-container>
+            <el-header height="45px">
+              <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">字段属性</div>
+              <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">表单属性</div>
+            </el-header>
+            <el-main class="config-content">
+              <widget-config v-show="configTab=='widget'" :data="widgetFormSelect"></widget-config>
+              <form-config v-show="configTab=='form'" :data="widgetForm.config"></form-config>
+            </el-main>
+          </el-container>
+        </el-aside>
       </div>
-    </div>
+    </el-container>
   </div>
 </template>
 
 <script>
-import vHeader from "@/components/header.vue";
-import widgetForm from "@/components/widget-form.vue";
-import designForm from "@/components/design-form.vue";
-import widgetConfig from "@/components/widget-config.vue";
+import Draggable from 'vuedraggable'
+import Header from '@/components/header'
+import WidgetConfig from '@/components/WidgetConfig'
+import FormConfig from '@/components/FormConfig'
+import WidgetForm from '@/components/WidgetForm'
+import allWidget from '@/assets/json/all-widget.json'
+
 export default {
+  name: 'fm-making-form',
   components: {
-    vHeader,
-    widgetForm,
-    designForm,
-    widgetConfig
+    Draggable,
+    Header,
+    WidgetConfig,
+    FormConfig,
+    WidgetForm
   },
   data() {
     return {
-    };
+      basicComponents: allWidget.basicComponents,
+      layoutComponents: allWidget.layoutComponents,
+      widgetForm: {
+        list: [],
+        config: {
+          labelWidth: 100,
+          labelPosition: 'top'
+        },
+      },
+      configTab: 'widget',
+      widgetFormSelect: null
+    }
   },
   methods: {
-
-  },
-  mounted() {
-    this.$nextTick(function () {
-
-    });
+    handleConfigSelect(value) {
+      this.configTab = value
+    },
+    handleMoveEnd(evt) {
+      console.log('home-end', evt)
+    },
+    handleMoveStart({ oldIndex }) {
+      console.log('home-start', oldIndex, this.basicComponents)
+    },
+    handlePreview() {
+      console.log("预览");
+    }
   }
-};
+}
 </script>
-<style scoped>
-.wrapper {
-  height: 100%;
-  background: #324157;
-}
-.header {
-  position: relative;
-  width: 100%;
-  height: 70px;
-  font-size: 22px;
-  color: #fff;
-  background: #242f42;
-}
-.container {
-  width: 100%;
-  height: calc(100% - 70px);
-  overflow: auto;
-}
-.builder-form {
-  position: relative;
-  display: flex;
-  width: 1360px;
-  height: 100%;
-  margin: 0 auto;
-}
-.widget-form {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-  background: #fff;
-  margin-right: 20px;
-  -ms-overflow-style: none;
-}
 
-.design-form {
-  position: absolute;
-  top: 0;
-  left: 320px;
-  bottom: 0;
-  background: #fff;
-  width: 720px;
-  padding: 40px;
-  box-sizing: border-box;
-  overflow: auto;
-}
-.widget-config {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 300px;
-  background: #fff;
-  margin-left: 20px;
-  -ms-overflow-style: none;
-}
-:not(.container)::-webkit-scrollbar {
-  display: none;
+<style lang="scss">
+@import "@/assets/css/cover.scss";
+@import "@/assets/css/index.scss";
+.widget-empty {
+  background: url("../assets/img/form_empty.png") no-repeat;
+  background-position: 50%;
 }
 </style>
-

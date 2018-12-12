@@ -30,7 +30,7 @@ export default {
     }
   },
   methods: {
-    changePass() {},
+    changePass() { },
     loginout() {
       window.localStorage.removeItem("loanuser");
       this.$router.replace("/login");
@@ -41,7 +41,14 @@ export default {
 
 <style scoped>
 .header-wrap {
-  height: 100%;
+  /* height: 100%; */
+  position: relative;
+  width: 100%;
+  height: 70px;
+  font-size: 22px;
+  color: #fff;
+  box-sizing: border-box;
+  background-color: #242f42;
 }
 .logo {
   padding: 0 30px;
