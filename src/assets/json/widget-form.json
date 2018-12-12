@@ -15,10 +15,13 @@
 			"required": false,
 			"placeholder": "",
 			"options": [{
+				"text": "选项1",
 				"value": "选项1"
 			}, {
+        "text": "选项2",
 				"value": "选项2"
 			}, {
+        "text": "选项3",
 				"value": "选项3"
 			}]
 		}

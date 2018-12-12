@@ -2,9 +2,17 @@
   <draggable class="page-container" v-model="pageItems" :options="{group:'people', ghostClass: 'ghost'}" @end="handleMoveEnd" @add="handleWidgetAdd">
     <template v-for="(widget, index) in pageItems">
       <div class="design-form-label relative" :key="index">
-        <template v-if="widget.type === 'input'">
-          <input type="text" v-model="dataModel" :placeholder="widget.config.placeholder">
-        </template>
+        <div class="design-form-item" :class="{active: selectWidget === index}" @click="handleSelectWidget(index)">
+          <template v-if="widget.type === 'input'">
+            <input type="text" class="input-text" :placeholder="widget.config.placeholder">
+          </template>
+          <template v-if="widget.type === 'select'">
+            <select class="input-select" placeholder="widget.config.placeholder">
+              <!-- <option value disabled selected hidden>孩子就读年级</option> -->
+              <option :value="item.value" v-for="item in widget.config.options" :key="item.value">{{item.text}}</option>
+            </select>
+          </template>
+        </div>
       </div>
     </template>
   </draggable>
@@ -21,7 +29,7 @@ export default {
   data() {
     return {
       pageItems: [],
-      selectWidget: this.select
+      selectWidget: ""
     }
   },
   methods: {
@@ -30,7 +38,7 @@ export default {
     },
     handleSelectWidget(index) {
       console.log(index, '#####')
-      this.selectWidget = this.data.list[index]
+      this.selectWidget = index
     },
     handleWidgetAdd(evt) {
       console.log('add', evt)

@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style scoped>
-.widget-form-container {
+.widget-form-container{
   padding: 10px;
   overflow: hidden;
 }

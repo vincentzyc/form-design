@@ -1,9 +1,9 @@
 .page-container {
 	height: 100%;
 	width: 100%;
-	.ghost {
+	.widget-form-label.ghost {
 		position: relative;
-		margin: 0;
+		margin: 10px 0;
 		width: 100%;
 		background: #fff;
 		border: 1px dashed #409eff;
@@ -18,12 +18,32 @@
 		right: 0;
 		bottom: 0;
 	}
+	.design-form-item {
+		padding: 15px 10px;
+		margin: 10px 0;
+		position: relative;
+		border-left: 5px solid transparent;
+		cursor: move;
+	}
+	.design-form-item.active {
+		border-left: 5px solid #409eff;
+		background: #b3d8ff;
+	}
+	.design-form-item::after {
+		content: "";
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		z-index: 1001;
+	}
 	.input-text, .input-select {
 		width: 100%;
-		padding: 15px 0;
+		padding: 10px 0;
 		color: #666;
 		font-size: 14px;
-		margin-bottom: 20px;
 		border-radius: 4px;
 		border: 1px solid #ddd;
 		text-indent: 10px;
