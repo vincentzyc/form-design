@@ -3,14 +3,18 @@
     <header class="header">
       <v-header/>
     </header>
-    <div class="widget-form">
-      <widgetForm/>
-    </div>
-    <div class="design-form">
-      <designForm/>
-    </div>
-    <div class="widget-config">
-      <widgetConfig/>
+    <div class="container">
+      <div class="builder-form">
+        <div class="widget-form">
+          <widgetForm/>
+        </div>
+        <div class="design-form">
+          <designForm/>
+        </div>
+        <div class="widget-config">
+          <widgetConfig/>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -42,6 +46,10 @@ export default {
 };
 </script>
 <style scoped>
+.wrapper {
+  height: 100%;
+  background: #324157;
+}
 .header {
   position: relative;
   width: 100%;
@@ -50,39 +58,52 @@ export default {
   color: #fff;
   background: #242f42;
 }
+.container {
+  width: 100%;
+  height: calc(100% - 70px);
+  overflow: auto;
+}
+.builder-form {
+  position: relative;
+  display: flex;
+  width: 1360px;
+  height: 100%;
+  margin: 0 auto;
+}
 .widget-form {
   position: absolute;
-  width: 300px;
+  top: 0;
   left: 0;
-  top: 70px;
   bottom: 0;
-  background: #324157;
+  width: 300px;
+  background: #fff;
+  margin-right: 20px;
   -ms-overflow-style: none;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 .design-form {
-  background: none repeat scroll 0 0 #fff;
   position: absolute;
-  left: 300px;
-  right: 300px;
-  top: 70px;
+  top: 0;
+  left: 320px;
   bottom: 0;
+  background: #fff;
+  width: 720px;
   padding: 40px;
   box-sizing: border-box;
   overflow: auto;
 }
 .widget-config {
   position: absolute;
-  width: 300px;
+  top: 0;
   right: 0;
-  top: 70px;
   bottom: 0;
-  background: #324157;
+  width: 300px;
+  background: #fff;
+  margin-left: 20px;
   -ms-overflow-style: none;
+}
+:not(.container)::-webkit-scrollbar {
+  display: none;
 }
 </style>
 

@@ -1,0 +1,32 @@
+.page-container {
+	height: 100%;
+	width: 100%;
+	.ghost {
+		position: relative;
+		margin: 0;
+		width: 100%;
+		background: #fff;
+		border: 1px dashed #409eff;
+	}
+	.ghost::after {
+		content: "";
+		display: block;
+		background: #fff;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	.input-text, .input-select {
+		width: 100%;
+		padding: 15px 0;
+		color: #666;
+		font-size: 14px;
+		margin-bottom: 20px;
+		border-radius: 4px;
+		border: 1px solid #ddd;
+		text-indent: 10px;
+		background: #fff;
+	}
+}

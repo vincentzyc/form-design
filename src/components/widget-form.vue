@@ -1,57 +1,70 @@
 <template>
-  <el-menu
-    :default-active="onRoutes"
-    class="sidebar-menu"
-    unique-opened
-    router
-    background-color="#324157"
-    text-color="#bbc9da"
-    active-text-color="#20a0ff"
-  >
-    <template v-for="item in items">
-      <template v-if="item.subs">
-        <el-submenu :index="item.index" :key="item.index">
-          <template slot="title">
-            <i :class="item.icon"></i>
-            {{ item.title }}
-          </template>
-          <el-menu-item
-            v-for="(subItem,i) in item.subs"
-            :key="i"
-            :index="subItem.index"
-          >{{ subItem.title }}</el-menu-item>
-        </el-submenu>
-      </template>
-      <template v-else>
-        <el-menu-item :index="item.index" :key="item.index">
-          <i :class="item.icon"></i>
-          {{ item.title }}
-        </el-menu-item>
-      </template>
-    </template>
-  </el-menu>
+  <div class="widget-form-container">
+    <draggable
+      element="ul"
+      :list="basicComponents"
+      :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+      @end="handleMoveEnd"
+      @start="handleMoveStart"
+      :move="handleMove"
+    >
+      <li class="widget-form-label" v-for="(item, index) in basicComponents" :key="index">
+        <span>{{item.name}}</span>
+      </li>
+    </draggable>
+  </div>
 </template>
 
 <script>
-import crmMenus from "@/assets/json/sidebar.json";
+import widgetForm from "@/assets/json/widget-form.json";
+import Draggable from 'vuedraggable'
 export default {
+  components: {
+    Draggable
+  },
   data() {
     return {
-      items: crmMenus
+      basicComponents: widgetForm
     };
   },
-  computed: {
-    onRoutes() {
-      return "/" + this.$route.path.split("/")[1];
+  methods: {
+    handleMoveEnd(evt) {
+      console.log('end', evt)
+    },
+    handleMoveStart({ oldIndex }) {
+      console.log('start', oldIndex, this.basicComponents)
+    },
+    handleMove() {
+      return true
     }
   }
 };
 </script>
 
 <style scoped>
-.sidebar-menu {
-  height: 100%;
-  overflow-y: auto;
+.widget-form-container {
+  padding: 10px;
+  overflow: hidden;
+}
+.widget-form-label {
+  position: relative;
+  display: block;
+  float: left;
+  width: 46%;
+  margin: 2%;
+  line-height: 36px;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #333;
+  cursor: move;
+  background: #f4f6fc;
+  border: 1px solid #f4f6fc;
+}
+.widget-form-label:hover {
+  color: #409eff;
+  border: 1px dashed #409eff;
 }
 </style>
 

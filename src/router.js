@@ -21,12 +21,17 @@ const router = new Router({
 			path: "/home",
 			name: 'home',
 			component: () => import('@/views/home.vue')
-		},
+    },
+    {
+			path: '/preview',
+			name: 'preview',
+			component: () => import("@/views/preview.vue")
+    },
 		{
 			path: '*',
 			name: '404',
 			component: () => import("@/views/404.vue")
-		}
+    }
 	]
 })
 

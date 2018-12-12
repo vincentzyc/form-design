@@ -1,0 +1,26 @@
+[{
+		"type": "input",
+		"name": "输入框",
+		"config": {
+			"defaultValue": "",
+			"required": false,
+			"placeholder": ""
+		}
+	},
+	{
+		"type": "select",
+		"name": "下拉选择框",
+		"config": {
+			"defaultValue": "",
+			"required": false,
+			"placeholder": "",
+			"options": [{
+				"value": "选项1"
+			}, {
+				"value": "选项2"
+			}, {
+				"value": "选项3"
+			}]
+		}
+	}
+]
