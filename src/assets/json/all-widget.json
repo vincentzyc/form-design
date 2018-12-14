@@ -2,7 +2,7 @@
 	"basicComponents": [{
 			"type": "input",
 			"name": "单行文本",
-			"options": {
+			"config": {
 				"width": "100%",
 				"defaultValue": "",
 				"required": false,
@@ -12,34 +12,9 @@
 			}
 		},
 		{
-			"type": "textarea",
-			"name": "多行文本",
-			"options": {
-				"width": "100%",
-				"defaultValue": "",
-				"required": false,
-				"pattern": "",
-				"placeholder": ""
-			}
-		},
-		{
-			"type": "number",
-			"name": "计数器",
-			"options": {
-				"width": "",
-				"required": false,
-				"defaultValue": 0,
-				"min": "",
-				"max": "",
-				"step": 1,
-				"disabled": false,
-				"controlsPosition": ""
-			}
-		},
-		{
 			"type": "radio",
 			"name": "单选框组",
-			"options": {
+			"config": {
 				"inline": false,
 				"defaultValue": "",
 				"showLabel": false,
@@ -70,7 +45,7 @@
 		{
 			"type": "checkbox",
 			"name": "多选框组",
-			"options": {
+			"config": {
 				"inline": false,
 				"defaultValue": [],
 				"showLabel": false,
@@ -96,34 +71,14 @@
 			}
 		},
 		{
-			"type": "time",
-			"name": "时间选择器",
-			"options": {
-				"defaultValue": "21:19:56",
-				"readonly": false,
-				"disabled": false,
-				"editable": true,
-				"clearable": true,
-				"placeholder": "",
-				"startPlaceholder": "",
-				"endPlaceholder": "",
-				"isRange": false,
-				"arrowControl": true,
-				"format": "HH:mm:ss",
-				"required": false,
-				"width": ""
-			}
-		},
-		{
 			"type": "date",
 			"name": "日期选择器",
-			"options": {
+			"config": {
 				"defaultValue": "",
 				"readonly": false,
 				"disabled": false,
 				"editable": true,
 				"clearable": true,
-				"placeholder": "",
 				"startPlaceholder": "",
 				"endPlaceholder": "",
 				"type": "date",
@@ -134,30 +89,9 @@
 			}
 		},
 		{
-			"type": "rate",
-			"name": "评分",
-			"options": {
-				"defaultValue": null,
-				"max": 5,
-				"disabled": false,
-				"allowHalf": false,
-				"required": false
-			}
-		},
-		{
-			"type": "color",
-			"name": "颜色选择器",
-			"options": {
-				"defaultValue": "",
-				"disabled": false,
-				"showAlpha": false,
-				"required": false
-			}
-		},
-		{
 			"type": "select",
 			"name": "下拉选择框",
-			"options": {
+			"config": {
 				"defaultValue": "",
 				"multiple": false,
 				"disabled": false,
@@ -188,44 +122,20 @@
 		{
 			"type": "switch",
 			"name": "开关",
-			"options": {
+			"config": {
 				"defaultValue": false,
 				"required": false,
 				"disabled": false
 			}
-		},
-		{
-			"type": "slider",
-			"name": "滑块",
-			"options": {
-				"defaultValue": 0,
-				"disabled": false,
+    },
+    {
+			"type": "imgshow",
+			"name": "图片展示",
+			"config": {
+				"defaultValue": "",
 				"required": false,
-				"min": 0,
-				"max": 100,
-				"step": 1,
-				"showInput": false,
-				"range": false,
-				"width": ""
+				"disabled": false
 			}
 		}
-	],
-	"layoutComponents": [{
-		"type": "grid",
-		"name": "栅格布局",
-		"columns": [{
-				"span": 12,
-				"list": []
-			},
-			{
-				"span": 12,
-				"list": []
-			}
-		],
-		"options": {
-			"gutter": 0,
-			"justify": "start",
-			"align": "top"
-		}
-	}]
+	]
 }

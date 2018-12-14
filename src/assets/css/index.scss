@@ -1,16 +1,12 @@
 $primary-color: #409EFF;
 $primary-background-color: #ecf5ff;
 
-*, :after, :before {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
 :not(.form-edit-wrapper)::-webkit-scrollbar {
 	display: none;
 }
 .home {
 	height: calc(100% - 70px);
+	user-select: none;
 
 	.form-edit-wrapper {
 		display: flex !important;
@@ -18,16 +14,6 @@ $primary-background-color: #ecf5ff;
 		overflow: auto;
 		flex: auto;
 	}
-}
-.fa-icon {
-	width: auto;
-	height: 1em;
-	/* 或任意其它字体大小相对值 */
-
-	/* 要在 Safari 中正常工作，需要再引入如下两行代码 */
-	max-width: 100%;
-	max-height: 100%;
-	vertical-align: middle;
 }
 
 .center-container {
@@ -67,11 +53,19 @@ $primary-background-color: #ecf5ff;
 		margin: 0;
 	}
 
+	.ghost {
+		background: #fff;
+		border: 1px dashed $primary-color;
+
+		&::after {
+			background: #fff;
+		}
+	}
 	.form-edit-widget-label {
 		font-size: 12px;
 		display: block;
 		width: 48%;
-		line-height: 26px;
+		line-height: 30px;
 		position: relative;
 		float: left;
 		left: 0;
@@ -80,8 +74,8 @@ $primary-background-color: #ecf5ff;
 		white-space: nowrap;
 		margin: 1%;
 		color: #333;
-    border: 1px solid #F4F6FC;
-    text-align: center;
+		border: 1px solid #F4F6FC;
+		text-align: center;
 
 		&:hover {
 			color: $primary-color;
@@ -92,133 +86,9 @@ $primary-background-color: #ecf5ff;
 			display: block;
 			cursor: move;
 			background: #F4F6FC;
-			border: 1px solid #F4F6FC;
-
-			.icon {
-				margin-right: 6px;
-				margin-left: 8px;
-				font-size: 14px;
-				display: inline-block;
-				vertical-align: middle;
-			}
-
-			span {
-				display: inline-block;
-				vertical-align: middle;
-			}
 		}
 	}
 }
-
-.widget-form-container {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-
-	.widget-form-list {
-		min-height: 100%;
-		box-shadow: 0 2px 5px 1px rgba(124, 124, 124, .2);
-		padding-bottom: 150px;
-		margin: 20px;
-
-		.widget-view {
-			padding: 5px 10px 18px;
-			margin: 0;
-			position: relative;
-			border-left: 5px solid transparent;
-
-			&.is_req {
-				.el-form-item__label::before {
-					content: '*';
-					color: #f56c6c;
-					margin-right: 4px;
-				}
-			}
-
-			&:after {
-				position: absolute;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				top: 0;
-				display: block;
-				z-index: 1001;
-			}
-
-			&:hover {
-				background: $primary-background-color;
-				border-left: 5px solid $primary-background-color;
-			}
-
-			&.active {
-				border-left: 5px solid $primary-color;
-				background: #b3d8ff;
-			}
-		}
-
-		.widget-action-delete {
-			position: absolute;
-			right: 10px;
-			bottom: -35px;
-			z-index: 1009;
-		}
-
-		.widget-action-clone {
-			position: absolute;
-			right: 70px;
-			bottom: -35px;
-			z-index: 1009;
-		}
-	}
-
-	.widget-grid {
-		background: #F4F6FC;
-		position: relative;
-		border-left: 5px solid transparent;
-		padding: 5px;
-		margin: 0 !important;
-
-		&.active {
-			border-left: 5px solid $primary-color;
-			background: #b3d8ff;
-		}
-	}
-
-	.widget-grid-container {
-		&.ghost {
-			&::after {
-				background: #fff;
-				position: absolute;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				top: 0;
-				display: block;
-				z-index: 10;
-				content: '';
-			}
-		}
-	}
-
-	.ghost {
-		background: #fff;
-		border: 1px dashed $primary-color;
-
-		&::after {
-			background: #fff;
-		}
-	}
-
-	li.ghost {
-		height: 30px;
-		list-style: none;
-		font-size: 0;
-	}
-}
-
-
 
 .widget-config-container {
 	position: relative;
@@ -274,15 +144,35 @@ $primary-background-color: #ecf5ff;
 		}
 	}
 
-	ul {
-		margin: 0;
-		padding: 0;
-	}
-
 	li.ghost {
 		list-style: none;
 		font-size: 0;
 		display: block;
 		position: relative;
 	}
+}
+
+.avatar-uploader .el-upload {
+	border: 1px dashed #d9d9d9;
+	border-radius: 6px;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+	border-color: $primary-color;
+}
+.avatar-uploader-icon {
+	font-size: 28px;
+	color: #8c939d;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	border: 1px dashed #d9d9d9;
+}
+.avatar {
+	width: 100px;
+	height: 100px;
+	display: block;
 }

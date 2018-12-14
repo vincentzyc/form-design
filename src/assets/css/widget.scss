@@ -1,0 +1,177 @@
+$primary-color: #409EFF;
+$primary-background-color: #ecf5ff;
+
+.widget-form-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	.widget-form-list {
+		min-height: 100%;
+		box-shadow: 0 2px 5px 1px rgba(124, 124, 124, .2);
+		padding-bottom: 150px;
+		margin: 20px;
+
+
+		.ghost {
+			background: #fff;
+			border: 1px dashed $primary-color;
+
+			&::after {
+				background: #fff;
+			}
+		}
+
+		li.ghost {
+			position: relative;
+			line-height: 30px;
+			list-style: none;
+			font-size: 0;
+
+			&::after {
+				content: '放到这里';
+				display: block;
+				background: #fff;
+				position: absolute;
+				left: 50%;
+				margin-left: -32px;
+				top: 0;
+				font-size: 16px;
+				color: #999;
+				z-index: 10;
+			}
+		}
+
+		.widget-view.widget-view-imgshow {
+			padding: 0;
+		}
+
+		.widget-view {
+			margin: 0;
+			padding: 10px;
+			position: relative;
+
+			&:after {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				display: block;
+				z-index: 1001;
+			}
+
+			&::-webkit-input-placeholder {
+				color: #999;
+				opacity: 1;
+			}
+
+
+			&:hover {
+				background: $primary-background-color;
+			}
+
+			&.active {
+				background: $primary-background-color;
+				box-shadow: 0px 1px 10px 1px #90c7ff;
+				z-index: 2001;
+			}
+
+			.widget-action-delete {
+				position: absolute;
+				right: 10px;
+				bottom: -20px;
+				z-index: 1009;
+			}
+
+			.widget-action-clone {
+				position: absolute;
+				right: 70px;
+				bottom: -20px;
+				z-index: 1009;
+			}
+
+			.wg-input, .wg-select {
+				width: 100%;
+				padding: 10px 0;
+				color: #666;
+				font-size: 14px;
+				border-radius: 4px;
+				border: 1px solid #ddd;
+				text-indent: 10px;
+				background: #fff;
+			}
+			.wg-radio, .wg-checkbox {
+				line-height: 40px;
+
+				.title {
+					font-size: 16px;
+				}
+				.label {
+					cursor: pointer;
+					position: relative;
+					margin-right: 10px;
+				}
+				.label span {
+					background: #fff;
+					padding: 10px;
+					border-radius: 10px;
+					border: 1px solid #ddd;
+				}
+				.wg-radio-input:checked + span, .wg-checkbox-input:checked + span {
+					background-color: #26a2ff;
+					border-color: #26a2ff;
+					color: #fff;
+				}
+			}
+
+			.wg-switch {
+				line-height: 40px;
+				display: flex;
+				align-items: center;
+
+				.label {
+					display: flex;
+					cursor: pointer;
+				}
+
+				.wg-switch-core {
+					display: inline-block;
+					position: relative;
+					margin: 0;
+					width: 40px;
+					height: 20px;
+					border: 1px solid #dcdfe6;
+					outline: 0;
+					border-radius: 10px;
+					box-sizing: border-box;
+					background: #dcdfe6;
+					transition: border-color .3s, background-color .3s;
+				}
+				.wg-switch-core:after {
+					content: "";
+					position: absolute;
+					top: 1px;
+					left: 1px;
+					border-radius: 100%;
+					transition: all .3s;
+					width: 16px;
+					height: 16px;
+					background-color: #fff;
+				}
+				.wg-switch-input:checked + span {
+					background-color: #26a2ff;
+					border-color: #26a2ff;
+					color: #fff;
+				}
+				.wg-switch-input:checked + span::after {
+					left: 100%;
+					margin-left: -17px;
+				}
+			}
+		}
+	}
+}

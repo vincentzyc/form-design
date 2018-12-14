@@ -14,24 +14,7 @@
               @start="handleMoveStart"
             >
               <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
-                <a>
-                  <span>{{item.name}}</span>
-                </a>
-              </li>
-            </draggable>
-
-            <div class="widget-cate">布局字段</div>
-            <draggable
-              element="ul"
-              :list="layoutComponents"
-              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-              @end="handleMoveEnd"
-              @start="handleMoveStart"
-            >
-              <li class="form-edit-widget-label data-grid" v-for="(item, index) in layoutComponents" :key="index">
-                <a>
-                  <span>{{item.name}}</span>
-                </a>
+                <a>{{item.name}}</a>
               </li>
             </draggable>
           </div>
@@ -82,7 +65,6 @@ export default {
   data() {
     return {
       basicComponents: allWidget.basicComponents,
-      layoutComponents: allWidget.layoutComponents,
       widgetForm: {
         list: [],
         config: {
@@ -114,6 +96,7 @@ export default {
 <style lang="scss">
 @import "@/assets/css/cover.scss";
 @import "@/assets/css/index.scss";
+@import "@/assets/css/widget.scss";
 .widget-empty {
   background: url("../assets/img/form_empty.png") no-repeat;
   background-position: 50%;

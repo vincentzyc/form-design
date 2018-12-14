@@ -1,131 +1,75 @@
 <template>
-  <el-form-item
+  <div
     class="widget-view"
     v-if="element && element.key"
-    :class="{active: selectWidget.key == element.key, 'is_req': element.options.required}"
-    :label="element.name"
-    @click.native="handleSelectWidget(index)"
+    :class="{active: selectWidget.key === element.key, 'is_req': element.config.required,'widget-view-imgshow':element.type === 'imgshow'}"
+    @click="handleSelectWidget(index)"
   >
-    <template v-if="element.type == 'input'">
-      <el-input v-model="element.options.defaultValue" :style="{width: element.options.width}" :placeholder="element.options.placeholder"></el-input>
+    <template v-if="element.type === 'input'">
+      <input v-model="element.config.defaultValue" :style="{width: element.config.width}" :placeholder="element.config.placeholder" class="wg-input">
     </template>
 
-    <template v-if="element.type == 'textarea'">
-      <el-input
-        type="textarea"
-        :rows="5"
-        v-model="element.options.defaultValue"
-        :style="{width: element.options.width}"
-        :placeholder="element.options.placeholder"
-      ></el-input>
+    <template v-if="element.type === 'radio'">
+      <div class="wg-radio">
+        <span class="title">{{element.name}}：</span>
+        <label class="label" v-for="(item, index) in element.config.options" :key="item.value + index">
+          <input class="wg-radio-input" type="radio" :value="item.value" v-model="element.config.defaultValue" style="display:none">
+          <span>{{element.config.showLabel ? item.label : item.value}}</span>
+        </label>
+      </div>
     </template>
 
-    <template v-if="element.type == 'number'">
-      <el-input-number
-        v-model="element.options.defaultValue"
-        :disabled="element.options.disabled"
-        :controls-position="element.options.controlsPosition"
-        :style="{width: element.options.width}"
-      ></el-input-number>
+    <template v-if="element.type==='switch'">
+      <div class="wg-switch">
+        <span class="title">{{element.name}}：</span>
+        <label class="label">
+          <input type="checkbox" class="wg-switch-input" v-model="element.config.defaultValue" style="display:none">
+          <span class="wg-switch-core"></span>
+        </label>
+      </div>
     </template>
 
-    <template v-if="element.type == 'radio'">
-      <el-radio-group v-model="element.options.defaultValue" :style="{width: element.options.width}">
-        <el-radio
-          :style="{display: element.options.inline ? 'inline-block' : 'block'}"
-          :label="item.value"
-          v-for="(item, index) in element.options.options"
-          :key="item.value + index"
-        >{{element.options.showLabel ? item.label : item.value}}</el-radio>
-      </el-radio-group>
+    <template v-if="element.type === 'checkbox'">
+      <div class="wg-checkbox">
+        <span class="title">{{element.name}}：</span>
+        <label class="label" v-for="(item, index) in element.config.options" :key="item.value + index">
+          <input class="wg-checkbox-input" type="checkbox" :value="item.value" v-model="element.config.defaultValue" style="display:none">
+          <span>{{element.config.showLabel ? item.label : item.value}}</span>
+        </label>
+      </div>
     </template>
 
-    <template v-if="element.type == 'checkbox'">
-      <el-checkbox-group v-model="element.options.defaultValue" :style="{width: element.options.width}">
-        <el-checkbox
-          :style="{display: element.options.inline ? 'inline-block' : 'block'}"
-          :label="item.value"
-          v-for="(item, index) in element.options.options"
-          :key="item.value + index"
-        >{{element.options.showLabel ? item.label : item.value}}</el-checkbox>
-      </el-checkbox-group>
-    </template>
-
-    <template v-if="element.type == 'time'">
-      <el-time-picker
-        v-model="element.options.defaultValue"
-        :is-range="element.options.isRange"
-        :placeholder="element.options.placeholder"
-        :start-placeholder="element.options.startPlaceholder"
-        :end-placeholder="element.options.endPlaceholder"
-        :readonly="element.options.readonly"
-        :disabled="element.options.disabled"
-        :editable="element.options.editable"
-        :clearable="element.options.clearable"
-        :arrowControl="element.options.arrowControl"
-        :style="{width: element.options.width}"
-      ></el-time-picker>
-    </template>
-
-    <template v-if="element.type == 'date'">
-      <el-date-picker
-        v-model="element.options.defaultValue"
-        :type="element.options.type"
-        :is-range="element.options.isRange"
-        :placeholder="element.options.placeholder"
-        :start-placeholder="element.options.startPlaceholder"
-        :end-placeholder="element.options.endPlaceholder"
-        :readonly="element.options.readonly"
-        :disabled="element.options.disabled"
-        :editable="element.options.editable"
-        :clearable="element.options.clearable"
-        :style="{width: element.options.width}"
-      ></el-date-picker>
-    </template>
-
-    <template v-if="element.type == 'rate'">
-      <el-rate v-model="element.options.defaultValue" :max="element.options.max" :disabled="element.options.disabled" :allow-half="element.options.allowHalf"></el-rate>
-    </template>
-
-    <template v-if="element.type == 'color'">
-      <el-color-picker v-model="element.options.defaultValue" :disabled="element.options.disabled" :show-alpha="element.options.showAlpha"></el-color-picker>
-    </template>
-
-    <template v-if="element.type == 'select'">
-      <el-select
-        v-model="element.options.defaultValue"
-        :disabled="element.options.disabled"
-        :multiple="element.options.multiple"
-        :clearable="element.options.clearable"
-        :placeholder="element.options.placeholder"
-        :style="{width: element.options.width}"
+    <template v-if="element.type === 'select'">
+      <select
+        v-model="element.config.defaultValue"
+        :disabled="element.config.disabled"
+        :multiple="element.config.multiple"
+        :clearable="element.config.clearable"
+        :style="{width: element.config.width}"
+        class="wg-select"
       >
-        <el-option v-for="item in element.options.options" :key="item.value" :value="item.value" :label="element.options.showLabel?item.label:item.value"></el-option>
-      </el-select>
+        <option value disabled selected hidden>{{element.config.placeholder}}</option>
+        <option v-for="item in element.config.options" :key="item.value" :value="item.value" :label="element.config.showLabel?item.label:item.value"></option>
+      </select>
     </template>
 
-    <template v-if="element.type=='switch'">
-      <el-switch v-model="element.options.defaultValue" :disabled="element.options.disabled"></el-switch>
+    <template v-if="element.type === 'date'">
+      <span class="title">{{element.name}}：</span>
+      <input type="date" v-model="element.config.defaultValue">
     </template>
 
-    <template v-if="element.type=='slider'">
-      <el-slider
-        v-model="element.options.defaultValue"
-        :min="element.options.min"
-        :max="element.options.max"
-        :disabled="element.options.disabled"
-        :step="element.options.step"
-        :show-input="element.options.showInput"
-        :range="element.options.range"
-        :style="{width: element.options.width}"
-      ></el-slider>
+    <template v-if="element.type === 'imgshow'">
+      <div class="text-center" style="background:#f1f1f1">
+        <img v-if="element.config.defaultValue" :src="element.config.defaultValue" alt="图片展示" width="100%">
+        <img v-else src="@/assets/img/img-placeholder.png" alt="图片展示">
+      </div>
     </template>
 
     <el-button
       title="删除"
       @click.stop="handleWidgetDelete(index)"
       class="widget-action-delete"
-      v-if="selectWidget.key == element.key"
+      v-if="selectWidget.key === element.key"
       circle
       plain
       type="danger"
@@ -134,12 +78,12 @@
       title="复制"
       @click.stop="handleWidgetClone(index)"
       class="widget-action-clone"
-      v-if="selectWidget.key == element.key"
+      v-if="selectWidget.key === element.key"
       circle
       plain
       type="primary"
     >复制</el-button>
-  </el-form-item>
+  </div>
 </template>
 
 <script>
@@ -172,7 +116,7 @@ export default {
     handleWidgetClone(index) {
       let cloneData = {
         ...this.data.list[index],
-        options: { ...this.data.list[index].options },
+        config: { ...this.data.list[index].config },
         key: Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999)
       }
 
@@ -180,9 +124,9 @@ export default {
 
         cloneData = {
           ...cloneData,
-          options: {
-            ...cloneData.options,
-            options: cloneData.options.options.map(item => ({ ...item }))
+          config: {
+            ...cloneData.config,
+            config: cloneData.config.options.map(item => ({ ...item }))
           }
         }
       }
