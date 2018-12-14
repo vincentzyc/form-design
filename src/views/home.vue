@@ -97,6 +97,7 @@ export default {
 @import "@/assets/css/cover.scss";
 @import "@/assets/css/index.scss";
 @import "@/assets/css/widget.scss";
+@import "@/assets/css/config.scss";
 .widget-empty {
   background: url("../assets/img/form_empty.png") no-repeat;
   background-position: 50%;

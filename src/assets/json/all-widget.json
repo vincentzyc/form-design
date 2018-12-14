@@ -1,14 +1,29 @@
 {
 	"basicComponents": [{
 			"type": "input",
-			"name": "单行文本",
+			"name": "输入框",
 			"config": {
-				"width": "100%",
-				"defaultValue": "",
+        "selectType":"name",
+        "inputTypes":[{
+          "value": "name",
+          "label": "姓名"
+        },{
+          "value": "mail",
+          "label": "邮箱"
+        },{
+          "value": "age",
+          "label": "年龄（岁）"
+        },{
+          "value": "idCard",
+          "label": "身份证"
+        },{
+          "value": "phone",
+          "label": "手机号"
+        }],
+        "defaultValue": "",
+        "apiKey":"name",
 				"required": false,
-				"dataType": "string",
-				"pattern": "",
-				"placeholder": ""
+				"placeholder": "请输入内容"
 			}
 		},
 		{
@@ -96,7 +111,7 @@
 				"multiple": false,
 				"disabled": false,
 				"clearable": false,
-				"placeholder": "",
+				"placeholder": "请选择",
 				"required": false,
 				"showLabel": false,
 				"width": "",

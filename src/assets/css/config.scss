@@ -1,0 +1,98 @@
+.widget-config-container {
+	position: relative;
+
+	.ghost {
+    position: relative;
+		&::after {
+			display: block;
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+      bottom: 0;
+			background: #fff;
+		}
+	}
+
+	.el-header {
+		border-bottom: solid 2px #e4e7ed;
+		padding: 0 5px;
+	}
+
+	.move-icon {
+		font-size: 20px;
+		color: #999;
+		margin: 0 10px;
+		cursor: move;
+
+		&:hover {
+			color: #409EFF;
+		}
+	}
+	.delect-icon {
+		font-size: 20px;
+		color: #999;
+		margin-left: 5px;
+		cursor: pointer;
+
+		&:hover {
+			color: #f56c6c;
+		}
+	}
+
+	.avatar-uploader .el-upload {
+		border: 1px dashed #d9d9d9;
+		border-radius: 6px;
+		cursor: pointer;
+		position: relative;
+		overflow: hidden;
+	}
+	.avatar-uploader .el-upload:hover {
+		border-color: $primary-color;
+	}
+	.avatar-uploader-icon {
+		font-size: 28px;
+		color: #8c939d;
+		width: 100px;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		border: 1px dashed #d9d9d9;
+	}
+	.avatar {
+		width: 100px;
+		height: 100px;
+		display: block;
+	}
+
+	.config-tab {
+		height: 45px;
+		line-height: 45px;
+		display: inline-block;
+		width: 145px;
+		text-align: center;
+		font-size: 14px;
+		font-weight: 500;
+		position: relative;
+		cursor: pointer;
+
+		&.active {
+			border-bottom: solid 2px $primary-color;
+		}
+	}
+
+	.config-content {
+		padding: 10px;
+
+		.el-form-item__label {
+			padding: 0;
+			font-weight: 500;
+		}
+
+		.el-form-item {
+			border-bottom: solid 1px #e1e1e1;
+			padding-bottom: 10px;
+		}
+	}
+}
