@@ -1,16 +1,22 @@
 <template>
   <div class="widget-form-container">
-    <el-form :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'" style="height:100%">
+    <el-form :label-position="pageData.config.labelPosition" :label-width="pageData.config.labelWidth + 'px'" style="height:100%">
       <draggable
         class="widget-form-list"
-        :class="{'widget-empty': data.list.length == 0}"
-        v-model="data.list"
-        :options="{group:'people', ghostClass: 'ghost'}"
-        @end="handleMoveEnd"
+        :class="{'widget-empty': pageData.list.length == 0}"
+        v-model="pageData.list"
+        :options="{group:'widget', ghostClass: 'ghost'}"
         @add="handleWidgetAdd"
       >
-        <template v-for="(element, index) in data.list">
-          <widget-form-item v-if="element && element.key" :key="element.key" :element="element" :select.sync="selectWidget" :index="index" :data="data"></widget-form-item>
+        <template v-for="(element, index) in pageData.list">
+          <widget-form-item
+            v-if="element && element.key"
+            :key="element.key"
+            :element="element"
+            :selectWg.sync="selectWidget"
+            :index="index"
+            :pageData="pageData"
+          ></widget-form-item>
         </template>
       </draggable>
     </el-form>
@@ -18,6 +24,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Draggable from 'vuedraggable'
 import WidgetFormItem from './WidgetFormItem'
 
@@ -26,17 +33,21 @@ export default {
     Draggable,
     WidgetFormItem
   },
-  props: ['data', 'select'],
   data() {
     return {
       selectWidget: this.select
     }
   },
+  computed: {
+    ...mapState({
+      pageData: state => state.common.pageData,
+      selectWg: state => state.common.selectWg
+    })
+  },
+
   methods: {
-    handleMoveEnd({ newIndex, oldIndex }) {
-      console.log('index', newIndex, oldIndex)
-    },
     handleWidgetAdd(evt) {
+      // this.$store.commit("GET_SOUND_ROW", row);
       console.log('add', evt)
       console.log('end', evt)
       const newIndex = evt.newIndex

@@ -1,4 +1,3 @@
-import Vue from "vue";
 import Crypto from "./crypto";
 
 export default {
@@ -7,7 +6,6 @@ export default {
       Vue.prototype.$api = this;
     }
   },
-  vue: new Vue(),
   env() {
     if (process.env.NODE_ENV === "development") return "development";
     if (window.location.href.includes("192.168")) return "test";

@@ -88,39 +88,42 @@
 
 <script>
 export default {
-  props: ['element', 'select', 'index', 'data'],
+  props: ['element', 'selectWg', 'index', 'pageData'],
+  // props:{
+      // index:Number
+  // },
   data() {
     return {
-      selectWidget: this.select
+      selectWidget: this.selectWg
     }
   },
   methods: {
     handleSelectWidget(index) {
-      this.selectWidget = this.data.list[index]
+      this.selectWidget = this.pageData.list[index]
     },
     handleWidgetDelete(index) {
-      if (this.data.list.length - 1 === index) {
+      if (this.pageData.list.length - 1 === index) {
         if (index === 0) {
           this.selectWidget = {}
         } else {
-          this.selectWidget = this.data.list[index - 1]
+          this.selectWidget = this.pageData.list[index - 1]
         }
       } else {
-        this.selectWidget = this.data.list[index + 1]
+        this.selectWidget = this.pageData.list[index + 1]
       }
 
       this.$nextTick(() => {
-        this.data.list.splice(index, 1)
+        this.pageData.list.splice(index, 1)
       })
     },
     handleWidgetClone(index) {
       let cloneData = {
-        ...this.data.list[index],
-        config: { ...this.data.list[index].config },
+        ...this.pageData.list[index],
+        config: { ...this.pageData.list[index].config },
         key: Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999)
       }
 
-      if (this.data.list[index].type === 'radio' || this.data.list[index].type === 'checkbox') {
+      if (this.pageData.list[index].type === 'radio' || this.pageData.list[index].type === 'checkbox') {
 
         cloneData = {
           ...cloneData,
@@ -131,20 +134,20 @@ export default {
         }
       }
 
-      this.data.list.splice(index, 0, cloneData)
+      this.pageData.list.splice(index, 0, cloneData)
 
       this.$nextTick(() => {
-        this.selectWidget = this.data.list[index + 1]
+        this.selectWidget = this.pageData.list[index + 1]
       })
     },
   },
   watch: {
-    select(val) {
+    selectWg(val) {
       this.selectWidget = val
     },
     selectWidget: {
       handler(val) {
-        this.$emit('update:select', val)
+        this.$emit('update:selectWg', val)
       },
       deep: true
     }

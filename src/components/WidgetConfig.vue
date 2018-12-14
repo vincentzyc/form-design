@@ -1,20 +1,20 @@
 <template>
-  <div v-if="this.selectItem && Object.keys(this.selectItem).length > 0">
+  <div v-if="this.selectWg && Object.keys(this.selectWg).length > 0">
     <el-form label-position="top">
-      <el-form-item label="提示内容" v-if="Object.keys(selectItem.config).indexOf('placeholder')>=0">
-        <el-input v-model="selectItem.config.placeholder"></el-input>
+      <el-form-item label="提示内容" v-if="Object.keys(selectWg.config).indexOf('placeholder')>=0">
+        <el-input v-model="selectWg.config.placeholder"></el-input>
       </el-form-item>
-      <el-form-item label="选择控件" v-if="selectItem.type=='input'">
-        <el-select v-model="selectItem.config.apiKey" filterable placeholder="请选择" @change="selectInput">
-          <el-option v-for="item in selectItem.config.inputTypes" :key="item.value" :label="item.label" :value="item.value"></el-option>
+      <el-form-item label="选择控件" v-if="selectWg.type=='input'">
+        <el-select v-model="selectWg.config.apiKey" filterable placeholder="请选择" @change="selectInput">
+          <el-option v-for="item in selectWg.config.inputTypes" :key="item.value" :label="item.label" :value="item.value"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="选项" v-if="Object.keys(selectItem.config).indexOf('options')>=0">
-        <template v-if="selectItem.type=='radio' || (selectItem.type=='select'&&!selectItem.config.multiple)">
-          <draggable element="ul" :list="selectItem.config.options" :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.move-icon'}">
-            <li v-for="(item, index) in selectItem.config.options" :key="index">
+      <el-form-item label="选项" v-if="Object.keys(selectWg.config).indexOf('options')>=0">
+        <template v-if="selectWg.type=='radio' || (selectWg.type=='select'&&!selectWg.config.multiple)">
+          <draggable element="ul" :list="selectWg.config.options" :options="{group:'options', ghostClass: 'ghost',handle: '.move-icon'}">
+            <li v-for="(item, index) in selectWg.config.options" :key="index">
               <div class="flex align-middle">
-                <el-input :style="{'width': selectItem.config.showLabel? '90px': '190px' }" size="mini" v-model="item.value"></el-input>
+                <el-input :style="{'width': selectWg.config.showLabel? '90px': '190px' }" size="mini" v-model="item.value"></el-input>
                 <i class="el-icon-menu move-icon"></i>
                 <i class="el-icon-delete delect-icon" @click="handleOptionsRemove(index)"></i>
               </div>
@@ -22,11 +22,11 @@
           </draggable>
         </template>
 
-        <template v-if="selectItem.type=='checkbox' || (selectItem.type=='select' && selectItem.config.multiple)">
-          <draggable element="ul" :list="selectItem.config.options" :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.move-icon'}">
-            <li v-for="(item, index) in selectItem.config.options" :key="index">
+        <template v-if="selectWg.type=='checkbox' || (selectWg.type=='select' && selectWg.config.multiple)">
+          <draggable element="ul" :list="selectWg.config.options" :options="{group:'options', ghostClass: 'ghost',handle: '.move-icon'}">
+            <li v-for="(item, index) in selectWg.config.options" :key="index">
               <div class="flex align-middle">
-                <el-input :style="{'width': selectItem.config.showLabel? '90px': '190px' }" size="mini" v-model="item.value"></el-input>
+                <el-input :style="{'width': selectWg.config.showLabel? '90px': '190px' }" size="mini" v-model="item.value"></el-input>
                 <i class="el-icon-menu move-icon"></i>
                 <i class="el-icon-delete delect-icon" @click="handleOptionsRemove(index)"></i>
               </div>
@@ -38,8 +38,8 @@
         </div>
       </el-form-item>
 
-      <template v-if="selectItem.type === 'imgshow'">
-        <el-form-item label="图片上传">
+      <el-form-item label="图片上传">
+        <template v-if="selectWg.type === 'imgshow'">
           <el-upload
             class="avatar-uploader"
             action="https://jsonplaceholder.typicode.com/posts/"
@@ -47,11 +47,11 @@
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
           >
-            <img v-if="selectItem.config.defaultValue" :src="selectItem.config.defaultValue" class="avatar">
+            <img v-if="selectWg.config.defaultValue" :src="selectWg.config.defaultValue" class="avatar">
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
-        </el-form-item>
-      </template>
+        </template>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -63,17 +63,19 @@ export default {
   components: {
     Draggable
   },
-  props: ['selectItem'],
+  props: {
+    selectWg: Object
+  },
   data() {
     return {}
   },
   methods: {
     selectInput(val) {
-      let selectItem = this.selectItem.config.inputTypes.find(item => val === item.value);
-      this.selectItem.config.placeholder = `请输入${selectItem.label}`
+      let selectWg = this.selectWg.config.inputTypes.find(item => val === item.value);
+      this.selectWg.config.placeholder = `请输入${selectWg.label}`
     },
     handleAvatarSuccess(res, file) {
-      this.selectItem.config.defaultValue = URL.createObjectURL(file.raw);
+      this.selectWg.config.defaultValue = URL.createObjectURL(file.raw);
     },
     beforeAvatarUpload(file) {
       const isLt2M = file.size / 1024 / 1024 < 2;
@@ -83,21 +85,21 @@ export default {
       return isLt2M;
     },
     handleOptionsRemove(index) {
-      if (this.selectItem.type === 'grid') {
-        this.selectItem.columns.splice(index, 1)
+      if (this.selectWg.type === 'grid') {
+        this.selectWg.columns.splice(index, 1)
       } else {
-        this.selectItem.config.options.splice(index, 1)
+        this.selectWg.config.options.splice(index, 1)
       }
 
     },
     handleAddOption() {
-      if (this.selectItem.config.showLabel) {
-        this.selectItem.config.options.push({
+      if (this.selectWg.config.showLabel) {
+        this.selectWg.config.options.push({
           value: '新选项',
           label: '新选项'
         })
       } else {
-        this.selectItem.config.options.push({
+        this.selectWg.config.options.push({
           value: '新选项'
         })
       }

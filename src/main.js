@@ -5,6 +5,7 @@ import '@/assets/css/base.css'
 import Api from './assets/js/api';
 import BaseComponents from "./components/base";
 import router from './router'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -13,5 +14,6 @@ Vue.use(Api)
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
