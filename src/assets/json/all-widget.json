@@ -2,155 +2,98 @@
 	"basicComponents": [{
 			"type": "input",
 			"name": "输入框",
-			"config": {
-        "selectType":"name",
-        "inputTypes":[{
-          "value": "name",
-          "label": "姓名"
-        },{
-          "value": "mail",
-          "label": "邮箱"
-        },{
-          "value": "age",
-          "label": "年龄（岁）"
-        },{
-          "value": "idCard",
-          "label": "身份证"
-        },{
-          "value": "phone",
-          "label": "手机号"
-        }],
-        "defaultValue": "",
-        "apiKey":"name",
-				"required": false,
-				"placeholder": "请输入内容"
-			}
+			"placeholder": "请输入内容",
+			"showLabel": false,
+			"defaultValue": "",
+			"apiKey": "name",
+			"inputTypes": [{
+				"value": "name",
+				"label": "姓名"
+			}, {
+				"value": "mail",
+				"label": "邮箱"
+			}, {
+				"value": "age",
+				"label": "年龄（岁）"
+			}, {
+				"value": "idCard",
+				"label": "身份证"
+			}, {
+				"value": "phone",
+				"label": "手机号"
+			}]
 		},
 		{
 			"type": "radio",
 			"name": "单选框组",
-			"config": {
-				"inline": false,
-				"defaultValue": "",
-				"showLabel": false,
-				"options": [{
-						"value": "选项1",
-						"label": "选项1"
-					},
-					{
-						"value": "选项2",
-						"label": "选项2"
-					},
-					{
-						"value": "选项3",
-						"label": "选项3"
-					}
-				],
-				"required": false,
-				"width": "",
-				"remote": false,
-				"remoteOptions": [],
-				"props": {
-					"value": "value",
-					"label": "label"
+			"defaultValue": "",
+			"apiKey": "",
+			"options": [{
+					"value": "选项1",
+					"label": "选项1"
 				},
-				"remoteFunc": ""
-			}
+				{
+					"value": "选项2",
+					"label": "选项2"
+				},
+				{
+					"value": "选项3",
+					"label": "选项3"
+				}
+			]
 		},
 		{
 			"type": "checkbox",
 			"name": "多选框组",
-			"config": {
-				"inline": false,
-				"defaultValue": [],
-				"showLabel": false,
-				"options": [{
-						"value": "选项1"
-					},
-					{
-						"value": "选项2"
-					},
-					{
-						"value": "选项3"
-					}
-				],
-				"required": false,
-				"width": "",
-				"remote": false,
-				"remoteOptions": [],
-				"props": {
-					"value": "value",
-					"label": "label"
+			"defaultValue": [],
+			"apiKey": "",
+			"options": [{
+					"value": "选项1"
 				},
-				"remoteFunc": ""
-			}
+				{
+					"value": "选项2"
+				},
+				{
+					"value": "选项3"
+				}
+			]
 		},
 		{
 			"type": "date",
 			"name": "日期选择器",
-			"config": {
-				"defaultValue": "",
-				"readonly": false,
-				"disabled": false,
-				"editable": true,
-				"clearable": true,
-				"startPlaceholder": "",
-				"endPlaceholder": "",
-				"type": "date",
-				"format": "yyyy-MM-dd",
-				"timestamp": false,
-				"required": false,
-				"width": ""
-			}
+			"defaultValue": ""
 		},
 		{
 			"type": "select",
 			"name": "下拉选择框",
-			"config": {
-				"defaultValue": "",
-				"multiple": false,
-				"disabled": false,
-				"clearable": false,
-				"placeholder": "请选择",
-				"required": false,
-				"showLabel": false,
-				"width": "",
-				"options": [{
-						"value": "下拉框1"
-					},
-					{
-						"value": "下拉框2"
-					},
-					{
-						"value": "下拉框3"
-					}
-				],
-				"remote": false,
-				"remoteOptions": [],
-				"props": {
-					"value": "value",
-					"label": "label"
+			"defaultValue": "",
+			"apiKey": "",
+			"placeholder": "请选择",
+			"showLabel": false,
+			"options": [{
+					"value": "下拉框1"
 				},
-				"remoteFunc": ""
-			}
+				{
+					"value": "下拉框2"
+				},
+				{
+					"value": "下拉框3"
+				}
+			]
 		},
 		{
 			"type": "switch",
 			"name": "开关",
-			"config": {
-				"defaultValue": false,
-				"required": false,
-				"disabled": false
-			}
-    },
-    {
+			"defaultValue": false,
+			"apiKey": "",
+			"disabled": false
+		},
+		{
 			"type": "imgshow",
 			"name": "图片展示",
-			"config": {
-				"defaultValue": "",
-				"required": false,
-				"disabled": false
-			}
+			"defaultValue": "",
+			"apiKey": "",
+			"disabled": false
 		}
 	]
 }

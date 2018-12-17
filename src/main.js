@@ -4,8 +4,8 @@ import './plugins/element.js'
 import '@/assets/css/base.css'
 import Api from './assets/js/api';
 import BaseComponents from "./components/base";
+import store from "./store";
 import router from './router'
-import store from './store'
 
 Vue.config.productionTip = false
 

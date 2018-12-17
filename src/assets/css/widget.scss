@@ -46,11 +46,13 @@ $primary-background-color: #ecf5ff;
 
 		.widget-view.widget-view-imgshow {
 			padding: 0;
+			background: #f1f1f1;
 		}
 
 		.widget-view {
 			margin: 0;
 			padding: 10px;
+			background: #fff;
 			position: relative;
 
 			&:after {
@@ -75,8 +77,8 @@ $primary-background-color: #ecf5ff;
 			}
 
 			&.active {
-				background: $primary-background-color;
-				box-shadow: 0px 1px 10px 1px #90c7ff;
+        background: $primary-background-color;
+        // box-shadow: 0px 1px 10px 1px #90c7ff;
 				z-index: 2001;
 			}
 
@@ -95,7 +97,6 @@ $primary-background-color: #ecf5ff;
 			}
 
 			.wg-input, .wg-select {
-				width: 100%;
 				padding: 10px 0;
 				color: #666;
 				font-size: 14px;
@@ -103,13 +104,16 @@ $primary-background-color: #ecf5ff;
 				border: 1px solid #ddd;
 				text-indent: 10px;
 				background: #fff;
+				transition: .3s;
+			}
+			.wg-title {
+				font-size: 14px;
+				margin-right: 10px;
+				color: #333;
 			}
 			.wg-radio, .wg-checkbox {
 				line-height: 40px;
 
-				.title {
-					font-size: 16px;
-				}
 				.label {
 					cursor: pointer;
 					position: relative;

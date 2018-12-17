@@ -1,17 +1,13 @@
-// import api from "@/assets/js/api.js"
-import allWidget from '@/assets/json/all-widget.json'
-import * as types from '../types'
+// import api from "../../assets/js/api.js"
 
 const state = {
-	basicComponents: allWidget.basicComponents,
 	pageData: {
 		list: [],
 		config: {
-			labelWidth: 100,
-			labelPosition: 'top'
+			title: '骏伯网络'
 		},
 	},
-	selectWg: {}
+	selectWg: []
 }
 
 const actions = {
@@ -22,11 +18,12 @@ const actions = {
 	// }
 }
 
+// const getters = {
+//   businessTypeList: state => state.businessTypeList
+// }
+
 const mutations = {
-	[types.PAGE_DATA](state, payload) {
-		state.pageData = payload;
-	},
-	[types.SELECT_WG](state, payload) {
+	setSelectWg(state, payload) {
 		state.selectWg = payload;
 	}
 }
