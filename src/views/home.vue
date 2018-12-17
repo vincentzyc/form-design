@@ -48,9 +48,9 @@
 <script>
 import Draggable from 'vuedraggable'
 import Header from '@/components/header'
-import WidgetConfig from '@/components/WidgetConfig'
-import PageConfig from '@/components/pageConfig'
-import WidgetForm from '@/components/WidgetForm'
+import WidgetConfig from '@/components/widget-config'
+import PageConfig from '@/components/page-config'
+import WidgetForm from '@/components/widget-form'
 import allWidget from '@/assets/json/all-widget.json'
 
 export default {
