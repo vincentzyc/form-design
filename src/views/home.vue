@@ -80,6 +80,15 @@ export default {
     },
     handlePreview() {
       console.log("预览");
+      let pageData = this.$store.state.common.pageData;
+      let newWin = window.open("http://localhost:3000");
+      let timer = setInterval(() => {
+        newWin.postMessage(pageData, 'http://localhost:3000');
+      }, 500);
+      window.addEventListener('message', function (event) {
+        if (event.origin !== 'http://localhost:3000') return;
+        if (event.data === 'Received') clearInterval(timer)
+      }, false);
     }
   }
 }

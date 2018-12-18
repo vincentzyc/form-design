@@ -79,7 +79,7 @@ $primary-background-color: #ecf5ff;
 			&.active {
         background: $primary-background-color;
         // box-shadow: 0px 1px 10px 1px #90c7ff;
-				z-index: 2001;
+				z-index: 1111;
 			}
 
 			.widget-action-delete {
@@ -111,7 +111,7 @@ $primary-background-color: #ecf5ff;
 				margin-right: 10px;
 				color: #333;
 			}
-			.wg-radio, .wg-checkbox {
+			.wg-checkbox {
 				line-height: 40px;
 
 				.label {
@@ -125,9 +125,9 @@ $primary-background-color: #ecf5ff;
 					border-radius: 10px;
 					border: 1px solid #ddd;
 				}
-				.wg-radio-input:checked + span, .wg-checkbox-input:checked + span {
-					background-color: #26a2ff;
-					border-color: #26a2ff;
+				.wg-checkbox-input:checked + span {
+					background-color: $primary-color;
+					border-color: $primary-color;
 					color: #fff;
 				}
 			}
@@ -167,15 +167,30 @@ $primary-background-color: #ecf5ff;
 					background-color: #fff;
 				}
 				.wg-switch-input:checked + span {
-					background-color: #26a2ff;
-					border-color: #26a2ff;
+					background-color: $primary-color;
+					border-color: $primary-color;
 					color: #fff;
 				}
 				.wg-switch-input:checked + span::after {
 					left: 100%;
 					margin-left: -17px;
 				}
-			}
+      }
+      .wg-button {
+        width: 90%;
+        margin: 15px 5%;
+        background: $primary-color;
+        color: #fff;
+        height: 46px;
+        line-height: 46px;
+        font-size: 18px;
+        outline: none;
+        border: none;
+        letter-spacing: 2px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 5px 10px 3px #90c7ff;
+    }
 		}
 	}
 }

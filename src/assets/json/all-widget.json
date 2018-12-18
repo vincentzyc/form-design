@@ -2,6 +2,7 @@
 	"basicComponents": [{
 			"type": "input",
 			"name": "输入框",
+			"title": "输入框",
 			"placeholder": "请输入内容",
 			"showLabel": false,
 			"defaultValue": "",
@@ -24,29 +25,12 @@
 			}]
 		},
 		{
-			"type": "radio",
-			"name": "单选框组",
-			"defaultValue": "",
-			"apiKey": "",
-			"options": [{
-					"value": "选项1",
-					"label": "选项1"
-				},
-				{
-					"value": "选项2",
-					"label": "选项2"
-				},
-				{
-					"value": "选项3",
-					"label": "选项3"
-				}
-			]
-		},
-		{
 			"type": "checkbox",
-			"name": "多选框组",
+			"name": "选择框",
+			"title": "选择框",
 			"defaultValue": [],
 			"apiKey": "",
+			"isRadio": false,
 			"options": [{
 					"value": "选项1"
 				},
@@ -61,11 +45,13 @@
 		{
 			"type": "date",
 			"name": "日期选择器",
+			"title": "日期选择器",
 			"defaultValue": ""
 		},
 		{
 			"type": "select",
 			"name": "下拉选择框",
+			"title": "下拉选择框",
 			"defaultValue": "",
 			"apiKey": "",
 			"placeholder": "请选择",
@@ -84,16 +70,26 @@
 		{
 			"type": "switch",
 			"name": "开关",
+			"title": "开关",
 			"defaultValue": false,
-			"apiKey": "",
-			"disabled": false
+			"apiKey": ""
 		},
 		{
 			"type": "imgshow",
 			"name": "图片展示",
 			"defaultValue": "",
+			"apiKey": ""
+		},
+		{
+			"type": "button",
+			"name": "按钮",
+			"btnText": "提交",
+			"btnType": "submit",
 			"apiKey": "",
-			"disabled": false
+			"btnTypes": [{
+				"value": "submit",
+				"label": "提交"
+			}]
 		}
 	]
 }
