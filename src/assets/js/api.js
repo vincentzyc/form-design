@@ -14,10 +14,10 @@ export default {
 		return "production";
   },
   apiUrl() {
-    // return "http://192.168.218.185:8022/";
-    if (this.env() === "development") return "http://192.168.218.185:8022/";
-    if (this.env() === 'test') return "http://test-api.junjue888.com/";
-    return "http://api.junjue888.com/";
+    return "http://test-api.junjue888.com/";
+    // if (this.env() === "development") return "http://192.168.218.185:8022/";
+    // if (this.env() === 'test') return "http://test-api.junjue888.com/";
+    // return "http://api.junjue888.com/";
   },
 	getUrlParam(name) {
 		var reg = new RegExp("(^|/?|&)" + name + "=([^&]*)(&|$)", "i");

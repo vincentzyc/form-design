@@ -11,69 +11,72 @@
       >
         <template v-for="(item, index) in pageData.list">
           <div
-            class="flex align-middle widget-view"
+            class="widget-view"
             v-if="item && item.key"
             :key="item.key"
-            :class="{active: selectWg.key === item.key,'widget-view-imgshow':item.type === 'imgshow'}"
+            :class="{active: selectWg.key === item.key,'widget-view-imgshow':item.type === 'imgshow','widget-view-button':item.type === 'button'}"
             @click="handleSelectWidget(index)"
           >
-            <template v-if="item.type === 'input'">
-              <span class="wg-title" v-show="item.showLabel">{{item.name}}</span>
-              <input v-model="item.defaultValue" :placeholder="item.placeholder" class="wg-input flex-auto">
-            </template>
+            <div v-if="item.type === 'input'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
+              <div class="wg-title" v-show="item.showLabel">{{item.title}}</div>
+              <div class="flex-auto">
+                <input v-model="item.value" :placeholder="item.placeholder" class="wg-input">
+              </div>
+            </div>
 
-            <template v-if="item.type === 'checkbox'">
-              <div class="wg-checkbox">
-                <span class="wg-title">{{item.name}}</span>
-                <label class="label" v-for="(item, index) in item.options" :key="item.value + index">
-                  <input class="wg-checkbox-input" :type="item.isRadio?'radio':'checkbox'" :value="item.value" v-model="item.defaultValue" style="display:none">
-                  <span>{{item.value}}</span>
+            <div v-if="item.type === 'checkbox'" class="wg-item flex-wrap wg-checkbox" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
+              <div class="wg-title">{{item.title}}</div>
+              <div class="flex-auto">
+                <label class="label" v-for="(optionsItem, key) in item.options" :key="optionsItem.value + key">
+                  <input
+                    class="wg-checkbox-input"
+                    :type="item.isRadio?'radio':'checkbox'"
+                    :value="optionsItem.value"
+                    v-model="item.value"
+                    style="display:none"
+                  >
+                  <span>{{optionsItem.value}}</span>
                 </label>
               </div>
-            </template>
+            </div>
 
-            <template v-if="item.type === 'select'">
-              <span class="wg-title" v-show="item.showLabel">{{item.name}}</span>
-              <select
-                v-model="item.defaultValue"
-                :disabled="item.disabled"
-                :multiple="item.multiple"
-                :clearable="item.clearable"
-                :style="{width: item.width}"
-                class="wg-select flex-auto"
-              >
-                <option value disabled selected hidden>{{item.placeholder}}</option>
-                <option v-for="item in item.options" :key="item.value" :value="item.value" :label="item.showLabel?item.label:item.value"></option>
-              </select>
-            </template>
-
-            <template v-if="item.type==='switch'">
-              <div class="wg-switch">
-                <span class="wg-title">{{item.title}}</span>
-                <label class="label">
-                  <input type="checkbox" class="wg-switch-input" v-model="item.defaultValue" style="display:none">
-                  <span class="wg-switch-core"></span>
-                </label>
+            <div v-if="item.type === 'select'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
+              <div class="wg-title" v-show="item.showLabel">{{item.title}}</div>
+              <div class="flex-auto">
+                <select v-model="item.value" class="wg-select flex-auto">
+                  <option value disabled selected hidden>{{item.placeholder}}</option>
+                  <option v-for="item in item.options" :key="item.value" :value="item.value" :label="item.showLabel?item.label:item.value"></option>
+                </select>
               </div>
-            </template>
+            </div>
 
-            <template v-if="item.type === 'date'">
-              <span class="wg-title">{{item.name}}</span>
-              <input type="date" v-model="item.defaultValue">
-            </template>
+            <div v-if="item.type==='switch'" class="wg-item wg-switch" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
+              <div class="wg-title">{{item.title}}</div>
+              <label class="label">
+                <input type="checkbox" class="wg-switch-input" v-model="item.value" style="display:none">
+                <span class="wg-switch-core"></span>
+              </label>
+            </div>
 
-            <template v-if="item.type === 'imgshow'">
-              <div class="flex flex-center" style="width: 100%;">
-                <img v-if="item.defaultValue" :src="item.defaultValue" alt="图片展示" width="100%">
+            <div v-if="item.type === 'date'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
+              <div class="wg-title">{{item.title}}</div>
+              <div class="flex-auto">
+                <input type="date" v-model="item.value" class="wg-input flex-auto">
+              </div>
+            </div>
+
+            <div v-if="item.type === 'imgshow'">
+              <div class="flex flex-center">
+                <img v-if="item.value" :src="item.value" alt="图片展示" width="100%">
                 <img v-else src="@/assets/img/img-placeholder.png" alt="图片展示">
               </div>
-            </template>
+            </div>
 
-            <template v-if="item.type === 'button'">
-              <div class="flex flex-center" style="width: 100%;">
+            <div v-if="item.type === 'button'">
+              <div class="flex flex-center">
                 <button class="wg-button">{{item.btnText}}</button>
               </div>
-            </template>
+            </div>
 
             <el-button
               title="删除"

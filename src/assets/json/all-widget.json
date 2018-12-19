@@ -4,8 +4,9 @@
 			"name": "输入框",
 			"title": "输入框",
 			"placeholder": "请输入内容",
-			"showLabel": false,
-			"defaultValue": "",
+      "showLabel": false,
+      "labelPosition":"left",
+			"value": "",
 			"apiKey": "name",
 			"inputTypes": [{
 				"value": "name",
@@ -28,9 +29,10 @@
 			"type": "checkbox",
 			"name": "选择框",
 			"title": "选择框",
-			"defaultValue": [],
+			"value": [],
 			"apiKey": "",
-			"isRadio": false,
+      "isRadio": false,
+      "labelPosition":"left",
 			"options": [{
 					"value": "选项1"
 				},
@@ -45,25 +47,27 @@
 		{
 			"type": "date",
 			"name": "日期选择器",
-			"title": "日期选择器",
-			"defaultValue": ""
+      "title": "日期选择器",
+      "labelPosition":"left",
+			"value": ""
 		},
 		{
 			"type": "select",
 			"name": "下拉选择框",
 			"title": "下拉选择框",
-			"defaultValue": "",
+			"value": "",
 			"apiKey": "",
 			"placeholder": "请选择",
-			"showLabel": false,
+      "showLabel": false,
+      "labelPosition":"left",
 			"options": [{
-					"value": "下拉框1"
+					"value": "下拉选项1"
 				},
 				{
-					"value": "下拉框2"
+					"value": "下拉选项2"
 				},
 				{
-					"value": "下拉框3"
+					"value": "下拉选项3"
 				}
 			]
 		},
@@ -71,13 +75,14 @@
 			"type": "switch",
 			"name": "开关",
 			"title": "开关",
-			"defaultValue": false,
+      "value": false,
+      "labelPosition":"left",
 			"apiKey": ""
 		},
 		{
 			"type": "imgshow",
 			"name": "图片展示",
-			"defaultValue": "",
+			"value": "",
 			"apiKey": ""
 		},
 		{

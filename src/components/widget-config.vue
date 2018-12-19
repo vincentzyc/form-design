@@ -7,6 +7,12 @@
       <el-form-item label="是否显示标题" v-if="Object.keys(selectWg).indexOf('showLabel')>=0">
         <el-switch v-model="selectWg.showLabel"></el-switch>
       </el-form-item>
+      <el-form-item label="标题对齐方式" v-if="Object.keys(selectWg).indexOf('labelPosition')>=0">
+        <el-radio-group v-model="selectWg.labelPosition" size="mini">
+          <el-radio-button label="left">左对齐</el-radio-button>
+          <el-radio-button label="top">顶部对齐</el-radio-button>
+        </el-radio-group>
+      </el-form-item>
       <el-form-item label="提示内容" v-if="Object.keys(selectWg).indexOf('placeholder')>=0">
         <el-input v-model="selectWg.placeholder"></el-input>
       </el-form-item>
@@ -19,7 +25,7 @@
         <el-switch v-model="selectWg.isRadio" @change="isRadio"></el-switch>
       </el-form-item>
       <el-form-item label="默认选中" v-if="selectWg.type==='switch'">
-        <el-switch v-model="selectWg.defaultValue"></el-switch>
+        <el-switch v-model="selectWg.value"></el-switch>
       </el-form-item>
       <el-form-item label="按钮文字" v-if="Object.keys(selectWg).indexOf('btnText')>=0">
         <el-input v-model="selectWg.btnText"></el-input>
@@ -56,7 +62,7 @@
             :before-upload="beforeAvatarUpload"
             :on-error="uploadError"
           >
-            <img v-if="selectWg.defaultValue" :src="selectWg.defaultValue" class="avatar">
+            <img v-if="selectWg.value" :src="selectWg.value" class="avatar">
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
@@ -83,14 +89,16 @@ export default {
   },
   methods: {
     isRadio(flag) {
-      this.selectWg.defaultValue = flag ? "" : []
+      this.selectWg.value = flag ? "" : []
     },
     selectInput(val) {
       let selectWg = this.selectWg.options.find(item => val === item.value);
       this.selectWg.placeholder = `请输入${selectWg.label}`
     },
     handleAvatarSuccess(res, file) {
-      this.selectWg.defaultValue = URL.createObjectURL(file.raw);
+      // console.log(res, file);
+      this.selectWg.value = res.data;
+      // this.selectWg.value = URL.createObjectURL(file.raw);
       this.fullLoading.close()
     },
     uploadError(err, file, fileList) {
