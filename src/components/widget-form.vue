@@ -17,6 +17,19 @@
             :class="{active: selectWg.key === item.key,'widget-view-imgshow':item.type === 'imgshow','widget-view-button':item.type === 'button'}"
             @click="handleSelectWidget(index)"
           >
+            <div v-if="item.type === 'phone'" class="wg-phone">
+              <div class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
+                <div class="wg-title" v-show="item.showLabel">{{item.title}}</div>
+                <div class="flex-auto">
+                  <input class="wg-input" v-model="item.value" :placeholder="item.placeholder">
+                </div>
+              </div>
+              <div class="flex" v-if="item.showCode">
+                <input placeholder="验证码" class="wg-input flex-auto">
+                <button class="getVerCode-btn">获取验证码</button>
+              </div>
+            </div>
+
             <div v-if="item.type === 'input'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
               <div class="wg-title" v-show="item.showLabel">{{item.title}}</div>
               <div class="flex-auto">
@@ -27,15 +40,9 @@
             <div v-if="item.type === 'checkbox'" class="wg-item flex-wrap wg-checkbox" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
               <div class="wg-title">{{item.title}}</div>
               <div class="flex-auto">
-                <label class="label" v-for="(optionsItem, key) in item.options" :key="optionsItem.value + key">
-                  <input
-                    class="wg-checkbox-input"
-                    :type="item.isRadio?'radio':'checkbox'"
-                    :value="optionsItem.value"
-                    v-model="item.value"
-                    style="display:none"
-                  >
-                  <span>{{optionsItem.value}}</span>
+                <label class="label" v-for="(optionsItem, key) in item.options" :key="optionsItem + key">
+                  <input class="wg-checkbox-input" :type="item.isRadio?'radio':'checkbox'" :value="optionsItem" v-model="item.value" style="display:none">
+                  <span>{{optionsItem}}</span>
                 </label>
               </div>
             </div>
@@ -45,7 +52,7 @@
               <div class="flex-auto">
                 <select v-model="item.value" class="wg-select flex-auto">
                   <option value disabled selected hidden>{{item.placeholder}}</option>
-                  <option v-for="item in item.options" :key="item.value" :value="item.value" :label="item.showLabel?item.label:item.value"></option>
+                  <option v-for="item in item.options" :key="item" :value="item" :label="item.showLabel?item.label:item"></option>
                 </select>
               </div>
             </div>
@@ -65,17 +72,17 @@
               </div>
             </div>
 
-            <div v-if="item.type === 'imgshow'">
-              <div class="flex flex-center">
-                <img v-if="item.value" :src="item.value" alt="图片展示" width="100%">
-                <img v-else src="@/assets/img/img-placeholder.png" alt="图片展示">
-              </div>
+            <div class="flex flex-center" v-if="item.type === 'imgshow'">
+              <img v-if="item.value" :src="item.value" alt="图片展示" width="100%">
+              <img v-else src="@/assets/img/img-placeholder.png" alt="图片展示">
             </div>
 
-            <div v-if="item.type === 'button'">
-              <div class="flex flex-center">
-                <button class="wg-button">{{item.btnText}}</button>
-              </div>
+            <div class="flex flex-center" v-if="item.type === 'button'">
+              <button class="wg-button">{{item.btnText}}</button>
+            </div>
+
+            <div v-if="item.type === 'staticText'" class="wg-staticText">
+              <p class="text" :style="{textAlign:item.textAlign}">{{item.value}}</p>
             </div>
 
             <el-button

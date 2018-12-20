@@ -1,0 +1,51 @@
+{
+	"inputTypes": [{
+		"value": "name",
+		"label": "姓名"
+	}, {
+		"value": "mail",
+		"label": "邮箱"
+	}, {
+		"value": "age",
+		"label": "年龄（岁）"
+	}, {
+		"value": "idCard",
+		"label": "身份证"
+	}],
+
+	"checkboxTypes": [{
+		"value": "shootPlace",
+		"label": "旅拍城市",
+		"options": ["北京", "三亚", "丽江", "巴厘岛", "马尔代夫", "威尼斯", "其他"]
+	}, {
+		"value": "sex",
+		"label": "性别",
+		"options": ["男", "女"]
+	}, {
+		"value": "loanTimeList",
+		"label": "贷款时间",
+		"options": ["12个月", "24个月", "36个月", "48个月"]
+	}],
+
+	"selectTypes": [{
+		"value": "educationLevel",
+		"label": "教育程度",
+		"options": ["硕士及以上", "本科", "大专", "中专/高中及以下"]
+	}, {
+		"value": "profession",
+		"label": "职业身份",
+		"options": ["上班族", "个体户", "电商主", "自由职业者", "企业主"]
+	}, {
+		"value": "AutomobileAssets",
+		"label": "名下是否有车",
+		"options": ["无车", "无车，准备购买", "本人名下有车，无贷款", "本人名下有车，有按揭贷款", "本人名下有车，但已被抵押"]
+	}],
+
+	"switchTypes": [{
+		"value": "creditCard",
+		"label": "是否有信用卡"
+	}, {
+		"value": "accFund",
+		"label": "是否有本地公积金"
+	}]
+}

@@ -1,0 +1,87 @@
+{
+	"basicComponents": [{
+			"type": "phone",
+			"name": "手机号",
+			"title": "手机号",
+			"placeholder": "请输入手机号",
+			"showLabel": false,
+			"labelPosition": "left",
+			"value": "",
+			"apiKey": "phone",
+			"codeValue": "",
+			"codeKey": "verifyCode",
+			"showCode": true
+		}, {
+			"type": "input",
+			"name": "输入框",
+			"title": "姓名",
+			"placeholder": "请输入姓名",
+			"showLabel": false,
+			"labelPosition": "left",
+			"value": "",
+			"apiKey": "name",
+			"fieldTypes": "inputTypes"
+		},
+		{
+			"type": "checkbox",
+			"name": "选择框",
+			"title": "旅拍城市",
+			"value": [],
+			"apiKey": "shootPlace",
+			"isRadio": false,
+			"labelPosition": "left",
+			"fieldTypes": "checkboxTypes",
+			"options": ["北京", "三亚", "丽江", "巴厘岛", "马尔代夫", "威尼斯", "其他"]
+		},
+		{
+			"type": "date",
+			"name": "日期选择器",
+			"title": "日期选择器",
+			"labelPosition": "left",
+			"value": ""
+		},
+		{
+			"type": "select",
+			"name": "下拉选择框",
+			"title": "教育程度",
+			"value": "",
+			"apiKey": "educationLevel",
+			"placeholder": "请选择教育程度",
+			"showLabel": false,
+			"labelPosition": "left",
+			"fieldTypes": "selectTypes",
+			"options": ["硕士及以上", "本科", "大专", "中专/高中及以下"]
+		},
+		{
+			"type": "switch",
+			"name": "开关",
+			"title": "是否有信用卡",
+			"value": false,
+			"labelPosition": "left",
+			"fieldTypes": "switchTypes",
+			"apiKey": "creditCard"
+		},
+		{
+			"type": "button",
+			"name": "按钮",
+			"btnText": "提交",
+			"btnType": "submit",
+			"apiKey": "",
+			"btnTypes": [{
+				"value": "submit",
+				"label": "提交"
+			}]
+		}
+	],
+	"imgComponents": [{
+		"type": "imgshow",
+		"name": "图片展示",
+		"value": ""
+	}],
+	"assistComponents": [{
+		"type": "staticText",
+		"name": "文本描述",
+		"value": "文本描述",
+		"textAlign": "left"
+	}]
+}

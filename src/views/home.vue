@@ -5,15 +5,21 @@
       <div class="form-edit-wrapper flex flex-auto">
         <el-aside style="wdith: 300px;">
           <div class="components-list">
-            <div class="widget-cate">基础字段</div>
-            <draggable
-              element="ul"
-              :list="basicComponents"
-              :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-              @end="handleMoveEnd"
-              @start="handleMoveStart"
-            >
+            <div class="widget-cate">基础类组件</div>
+            <draggable element="ul" :list="basicComponents" :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}">
               <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
+                <a>{{item.name}}</a>
+              </li>
+            </draggable>
+            <div class="widget-cate">图片类组件</div>
+            <draggable element="ul" :list="imgComponents" :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}">
+              <li class="form-edit-widget-label" v-for="(item, index) in imgComponents" :key="index">
+                <a>{{item.name}}</a>
+              </li>
+            </draggable>
+            <div class="widget-cate">辅助类组件</div>
+            <draggable element="ul" :list="assistComponents" :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}">
+              <li class="form-edit-widget-label" v-for="(item, index) in assistComponents" :key="index">
                 <a>{{item.name}}</a>
               </li>
             </draggable>
@@ -51,7 +57,7 @@ import Header from '@/components/header'
 import WidgetConfig from '@/components/widget-config'
 import PageConfig from '@/components/page-config'
 import WidgetForm from '@/components/widget-form'
-import allWidget from '@/assets/json/all-widget.json'
+import allWidget from '@/assets/json/widget.json'
 
 export default {
   name: 'fm-making-form',
@@ -65,6 +71,8 @@ export default {
   data() {
     return {
       basicComponents: allWidget.basicComponents,
+      imgComponents: allWidget.imgComponents,
+      assistComponents: allWidget.assistComponents,
       configTab: 'widget',
     }
   },
@@ -72,14 +80,7 @@ export default {
     handleConfigSelect(value) {
       this.configTab = value
     },
-    handleMoveEnd(evt) {
-      console.log('home-end', evt)
-    },
-    handleMoveStart({ oldIndex }) {
-      console.log('home-start', oldIndex, this.basicComponents)
-    },
     handlePreview() {
-      console.log("预览");
       let pageData = this.$store.state.common.pageData;
       let newWin = window.open("http://192.168.218.113:3000");
       let timer = setInterval(() => {
