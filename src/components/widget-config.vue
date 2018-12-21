@@ -24,15 +24,21 @@
       <el-form-item label="提示内容" v-if="Object.keys(selectWg).indexOf('placeholder')>=0">
         <el-input v-model="selectWg.placeholder"></el-input>
       </el-form-item>
-      <el-form-item label="文字内容" v-if="selectWg.type==='staticText'">
+      <el-form-item label="文本内容" v-if="selectWg.type==='staticText'">
         <el-input type="textarea" v-model="selectWg.value"></el-input>
       </el-form-item>
-      <el-form-item label="文字对齐方式" v-if="Object.keys(selectWg).indexOf('textAlign')>=0">
+      <el-form-item label="文本对齐方式" v-if="Object.keys(selectWg).indexOf('textAlign')>=0">
         <el-radio-group v-model="selectWg.textAlign" size="mini">
           <el-radio-button label="left">左对齐</el-radio-button>
           <el-radio-button label="center">居中对齐</el-radio-button>
           <el-radio-button label="right">右对齐</el-radio-button>
         </el-radio-group>
+      </el-form-item>
+      <el-form-item label="文字大小（px）" v-if="Object.keys(selectWg).indexOf('fontSize')>=0">
+        <el-input-number v-model="selectWg.fontSize" :min="10" :max="30" size="small"></el-input-number>
+      </el-form-item>
+      <el-form-item label="文字颜色" v-if="Object.keys(selectWg).indexOf('color')>=0">
+        <el-color-picker v-model="selectWg.color"></el-color-picker>
       </el-form-item>
       <el-form-item label="是否单选" v-if="Object.keys(selectWg).indexOf('isRadio')>=0">
         <el-switch v-model="selectWg.isRadio" @change="isRadio"></el-switch>

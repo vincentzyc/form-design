@@ -3,9 +3,7 @@
 const state = {
 	pageData: {
 		list: [],
-		config: {
-			title: '骏伯网络'
-		},
+		config: {}
 	},
 	selectWg: []
 }
@@ -23,9 +21,12 @@ const actions = {
 // }
 
 const mutations = {
-	setSelectWg(state, payload) {
+  setPageData(state, payload) {
+		state.pageData = payload;
+  },
+  setSelectWg(state, payload) {
 		state.selectWg = payload;
-	}
+  }
 }
 
 export default {

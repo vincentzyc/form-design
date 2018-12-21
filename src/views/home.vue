@@ -27,7 +27,9 @@
         </el-aside>
         <el-container class="center-container" direction="vertical">
           <el-header class="btn-bar" style="height: 45px;">
-            <el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview()">预览</el-button>
+            <el-button type="text" size="medium" icon="el-icon-refresh" @click="handleReset()" class="mg-r15">重置</el-button>
+            <el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview()" class="mg-r15">预览</el-button>
+            <el-button type="text" size="medium" icon="el-icon-document" @click="handleSave()" class="mg-r15">保存</el-button>
           </el-header>
           <el-main>
             <widget-form></widget-form>
@@ -52,12 +54,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Draggable from 'vuedraggable'
 import Header from '@/components/header'
 import WidgetConfig from '@/components/widget-config'
 import PageConfig from '@/components/page-config'
 import WidgetForm from '@/components/widget-form'
+
 import allWidget from '@/assets/json/widget.json'
+import pageConfigData from '@/assets/json/page-config.json'
 
 export default {
   name: 'fm-making-form',
@@ -73,23 +78,47 @@ export default {
       basicComponents: allWidget.basicComponents,
       imgComponents: allWidget.imgComponents,
       assistComponents: allWidget.assistComponents,
-      configTab: 'widget',
+      configTab: 'widget'
     }
+  },
+  computed: {
+    ...mapState({
+      pageData: state => state.common.pageData
+    })
   },
   methods: {
     handleConfigSelect(value) {
       this.configTab = value
     },
     handlePreview() {
-      let pageData = this.$store.state.common.pageData;
       let newWin = window.open("http://192.168.218.113:3000");
       let timer = setInterval(() => {
-        newWin.postMessage(pageData, 'http://192.168.218.113:3000');
+        newWin.postMessage(this.pageData, 'http://192.168.218.113:3000');
       }, 200);
       window.addEventListener('message', function (event) {
         if (event.origin !== 'http://192.168.218.113:3000') return;
         if (event.data === 'Received') clearInterval(timer)
       }, false);
+    },
+    handleReset() {
+      let initialPageData = {
+        list: [],
+        config: pageConfigData
+      };
+      this.$store.commit('setPageData', initialPageData);
+      this.$store.commit('setSelectWg', [])
+    },
+    handleSave() {
+      this.$api.setLStorage('pageData', this.pageData);
+      this.$alert('保存成功');
+    }
+  },
+  created() {
+    let pageData = this.$api.getLStorage('pageData');
+    if (pageData) {
+      this.$store.commit('setPageData', pageData);
+    } else {
+      this.pageData.config = { ...pageConfigData };
     }
   }
 }

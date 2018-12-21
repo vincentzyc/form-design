@@ -82,6 +82,8 @@
 		"type": "staticText",
 		"name": "文本描述",
 		"value": "文本描述",
-		"textAlign": "left"
+    "textAlign": "left",
+    "fontSize":"14",
+    "color":"#333333"
 	}]
 }

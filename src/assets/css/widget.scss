@@ -11,7 +11,7 @@ $primary-background-color: #ecf5ff;
 	.widget-form-list {
 		min-height: 100%;
 		box-shadow: 0 2px 5px 1px rgba(124, 124, 124, .2);
-		padding-bottom: 150px;
+		padding-bottom: 200px;
 		margin: 20px;
 
 		.ghost {
@@ -61,11 +61,6 @@ $primary-background-color: #ecf5ff;
 	.widget-view.widget-view-imgshow {
 		padding: 0;
 		background: #f1f1f1;
-		border-bottom: none;
-	}
-
-	.widget-view.widget-view-button {
-		border-bottom: none;
 	}
 
 	.widget-view {
@@ -73,7 +68,6 @@ $primary-background-color: #ecf5ff;
 		padding: 10px;
 		background: #fff;
 		position: relative;
-		border-bottom: 1px solid #eee;
 
 		&:after {
 			content: "";
@@ -86,7 +80,7 @@ $primary-background-color: #ecf5ff;
 			z-index: 1001;
 		}
 
-		&::-webkit-input-placeholder {
+		input::-webkit-input-placeholder {
 			color: #999;
 			opacity: 1;
 		}
@@ -123,11 +117,7 @@ $primary-background-color: #ecf5ff;
 			}
 		}
 		.wg-staticText {
-			.text {
-				font-size: 14px;
-				color: #333;
-				line-height: 24px;
-			}
+      line-height: 1.6;
 		}
 
 		.wg-input, .wg-select {
