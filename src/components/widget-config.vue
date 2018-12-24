@@ -54,6 +54,9 @@
           <el-option v-for="item in selectWg.btnTypes" :key="item.value" :label="item.label" :value="item.value"></el-option>
         </el-select>
       </el-form-item>
+      <el-form-item label="边距（上 右 下 左）" v-if="typeof(selectWg.margin)!=='undefined'">
+        <el-input v-model="selectWg.margin"></el-input>
+      </el-form-item>
       <el-form-item label="选项" v-if="Object.keys(selectWg).indexOf('options')>=0">
         <template v-if="selectWg.type=='checkbox' || selectWg.type=='select'">
           <draggable element="ul" :list="selectWg.options" :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.move-icon'}">

@@ -1,6 +1,6 @@
 <template>
   <div class="widget-view" :class="{active: selectWg.key === item.key,'widget-view-imgshow':item.type === 'imgshow'}" @click="handleSelectWidget(index)">
-    <div v-if="item.type === 'phone'" class="wg-phone">
+    <div v-if="item.type === 'phone'" class="wg-phone" :style="{margin:item.margin}">
       <div class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
         <div class="wg-title" v-show="item.showLabel">{{item.title}}</div>
         <div class="flex-auto">
@@ -13,14 +13,19 @@
       </div>
     </div>
 
-    <div v-if="item.type === 'input'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
+    <div v-if="item.type === 'input'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="{margin:item.margin}">
       <div class="wg-title" v-show="item.showLabel">{{item.title}}</div>
       <div class="flex-auto">
         <input v-model="item.value" :placeholder="item.placeholder" class="wg-input">
       </div>
     </div>
 
-    <div v-if="item.type === 'checkbox'" class="wg-item flex-wrap wg-checkbox" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
+    <div
+      v-if="item.type === 'checkbox'"
+      class="wg-item flex-wrap wg-checkbox"
+      :class="[item.labelPosition==='top'?'flex-column':'align-middle']"
+      :style="{margin:item.margin}"
+    >
       <div class="wg-title">{{item.title}}</div>
       <div class="flex-auto">
         <label class="label" v-for="(optionsItem, key) in item.options" :key="optionsItem + key">
@@ -30,7 +35,7 @@
       </div>
     </div>
 
-    <div v-if="item.type === 'select'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
+    <div v-if="item.type === 'select'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="{margin:item.margin}">
       <div class="wg-title" v-show="item.showLabel">{{item.title}}</div>
       <div class="flex-auto">
         <select v-model="item.value" class="wg-select flex-auto">
@@ -40,7 +45,7 @@
       </div>
     </div>
 
-    <div v-if="item.type==='switch'" class="wg-item wg-switch" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
+    <div v-if="item.type==='switch'" class="wg-item wg-switch" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="{margin:item.margin}">
       <div class="wg-title">{{item.title}}</div>
       <label class="label">
         <input type="checkbox" class="wg-switch-input" v-model="item.value" style="display:none">
@@ -48,23 +53,23 @@
       </label>
     </div>
 
-    <div v-if="item.type === 'date'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
+    <div v-if="item.type === 'date'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="{margin:item.margin}">
       <div class="wg-title">{{item.title}}</div>
       <div class="flex-auto">
         <input type="date" v-model="item.value" class="wg-input flex-auto">
       </div>
     </div>
 
-    <div class="flex flex-center" v-if="item.type === 'imgshow'">
+    <div class="flex flex-center" v-if="item.type === 'imgshow'" :style="{margin:item.margin}">
       <img v-if="item.value" :src="item.value" alt="图片展示" width="100%">
       <img v-else src="@/assets/img/img-placeholder.png" alt="图片展示">
     </div>
 
-    <div class="flex flex-center" v-if="item.type === 'button'">
+    <div class="flex flex-center" v-if="item.type === 'button'" :style="{margin:item.margin}">
       <button class="wg-button">{{item.btnText}}</button>
     </div>
 
-    <div v-if="item.type === 'staticText'" class="wg-staticText">
+    <div v-if="item.type === 'staticText'" class="wg-staticText" :style="{margin:item.margin}">
       <p :style="{textAlign:item.textAlign,fontSize:item.fontSize+'px',color:item.color}">{{item.value}}</p>
     </div>
 

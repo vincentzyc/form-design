@@ -10,7 +10,8 @@
 			"apiKey": "phone",
 			"codeValue": "",
 			"codeKey": "verifyCode",
-			"showCode": true
+			"showCode": true,
+			"margin": "0px 0px 0px 0px"
 		}, {
 			"type": "input",
 			"name": "输入框",
@@ -20,7 +21,8 @@
 			"labelPosition": "left",
 			"value": "",
 			"apiKey": "name",
-			"fieldTypes": "inputTypes"
+			"fieldTypes": "inputTypes",
+			"margin": "0px 0px 0px 0px"
 		},
 		{
 			"type": "checkbox",
@@ -31,14 +33,16 @@
 			"isRadio": false,
 			"labelPosition": "left",
 			"fieldTypes": "checkboxTypes",
-			"options": ["北京", "三亚", "丽江", "巴厘岛", "马尔代夫", "威尼斯", "其他"]
+			"options": ["北京", "三亚", "丽江", "巴厘岛", "马尔代夫", "威尼斯", "其他"],
+			"margin": "0px 0px 0px 0px"
 		},
 		{
 			"type": "date",
 			"name": "日期选择器",
 			"title": "日期选择器",
 			"labelPosition": "left",
-			"value": ""
+			"value": "",
+			"margin": "0px 0px 0px 0px"
 		},
 		{
 			"type": "select",
@@ -50,7 +54,8 @@
 			"showLabel": false,
 			"labelPosition": "left",
 			"fieldTypes": "selectTypes",
-			"options": ["硕士及以上", "本科", "大专", "中专/高中及以下"]
+			"options": ["硕士及以上", "本科", "大专", "中专/高中及以下"],
+			"margin": "0px 0px 0px 0px"
 		},
 		{
 			"type": "switch",
@@ -59,7 +64,8 @@
 			"value": false,
 			"labelPosition": "left",
 			"fieldTypes": "switchTypes",
-			"apiKey": "creditCard"
+			"apiKey": "creditCard",
+			"margin": "0px 0px 0px 0px"
 		},
 		{
 			"type": "button",
@@ -70,20 +76,23 @@
 			"btnTypes": [{
 				"value": "submit",
 				"label": "提交"
-			}]
+			}],
+			"margin": "0px 0px 0px 0px"
 		}
 	],
 	"imgComponents": [{
 		"type": "imgshow",
 		"name": "图片展示",
-		"value": ""
+		"value": "",
+		"margin": "0px 0px 0px 0px"
 	}],
 	"assistComponents": [{
 		"type": "staticText",
 		"name": "文本描述",
 		"value": "文本描述",
-    "textAlign": "left",
-    "fontSize":"14",
-    "color":"#333333"
+		"textAlign": "left",
+		"fontSize": "14",
+		"color": "#333333",
+		"margin": "0px 0px 0px 0px"
 	}]
 }
