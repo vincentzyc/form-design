@@ -47,5 +47,10 @@
 	}, {
 		"value": "accFund",
 		"label": "是否有本地公积金"
+  }],
+
+  "dateTypes": [{
+		"value": "birthday",
+		"label": "生日"
 	}]
 }

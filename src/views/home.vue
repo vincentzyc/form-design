@@ -125,7 +125,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/css/cover.scss";
 @import "@/assets/css/index.scss";
 @import "@/assets/css/widget.scss";
 @import "@/assets/css/config.scss";

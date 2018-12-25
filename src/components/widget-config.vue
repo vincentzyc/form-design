@@ -1,63 +1,71 @@
 <template>
   <div v-if="this.selectWg && Object.keys(this.selectWg).length > 0">
     <el-form label-position="top">
-      <el-form-item label="选择控件" v-if="typeof(selectWg.fieldTypes)!=='undefined'">
+      <el-form-item label="选择控件" v-if="selectWg.hasOwnProperty('fieldTypes')">
         <el-select v-model="selectWg.apiKey" filterable placeholder="请选择" @change="selectfield(selectWg.apiKey,fieldTypes[selectWg.fieldTypes])">
           <el-option v-for="item in fieldTypes[selectWg.fieldTypes]" :key="item.value" :label="item.label" :value="item.value"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="标题" v-if="Object.keys(selectWg).indexOf('title')>=0">
+      <el-form-item label="标题" v-if="selectWg.hasOwnProperty('title')">
         <el-input v-model="selectWg.title"></el-input>
       </el-form-item>
-      <el-form-item label="是否显示标题" v-if="Object.keys(selectWg).indexOf('showLabel')>=0">
+      <el-form-item label="是否显示标题" v-if="selectWg.hasOwnProperty('showLabel')">
         <el-switch v-model="selectWg.showLabel"></el-switch>
       </el-form-item>
-      <el-form-item label="标题对齐方式" v-if="Object.keys(selectWg).indexOf('labelPosition')>=0">
+      <el-form-item label="标题对齐方式" v-if="selectWg.hasOwnProperty('labelPosition')">
         <el-radio-group v-model="selectWg.labelPosition" size="mini">
           <el-radio-button label="left">左对齐</el-radio-button>
           <el-radio-button label="top">顶部对齐</el-radio-button>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="是否发送验证码" v-if="Object.keys(selectWg).indexOf('showCode')>=0">
+      <el-form-item label="是否发送验证码" v-if="selectWg.hasOwnProperty('showCode')">
         <el-switch v-model="selectWg.showCode"></el-switch>
       </el-form-item>
-      <el-form-item label="提示内容" v-if="Object.keys(selectWg).indexOf('placeholder')>=0">
+      <el-form-item label="提示内容" v-if="selectWg.hasOwnProperty('placeholder')">
         <el-input v-model="selectWg.placeholder"></el-input>
       </el-form-item>
       <el-form-item label="文本内容" v-if="selectWg.type==='staticText'">
         <el-input type="textarea" v-model="selectWg.value"></el-input>
       </el-form-item>
-      <el-form-item label="文本对齐方式" v-if="Object.keys(selectWg).indexOf('textAlign')>=0">
-        <el-radio-group v-model="selectWg.textAlign" size="mini">
-          <el-radio-button label="left">左对齐</el-radio-button>
-          <el-radio-button label="center">居中对齐</el-radio-button>
-          <el-radio-button label="right">右对齐</el-radio-button>
-        </el-radio-group>
+
+      <el-form-item label="外观样式" v-if="selectWg.hasOwnProperty('style')">
+        <div v-if="selectWg.style.hasOwnProperty('textAlign')">
+          <p class="c999">文本对齐方式</p>
+          <el-radio-group v-model="selectWg.style.textAlign" size="mini">
+            <el-radio-button label="left">左对齐</el-radio-button>
+            <el-radio-button label="center">居中对齐</el-radio-button>
+            <el-radio-button label="right">右对齐</el-radio-button>
+          </el-radio-group>
+        </div>
+        <div v-if="selectWg.style.hasOwnProperty('fontSize')">
+          <p class="c999">文字大小(px)</p>
+          <el-input-number v-model="selectWg.style.fontsize" :min="10" :max="30" size="small" @change="val=>selectWg.style.fontSize = `${val}px`"/>
+        </div>
+        <div v-if="selectWg.style.hasOwnProperty('color')">
+          <p class="c999">文字颜色</p>
+          <el-color-picker v-model="selectWg.style.color"/>
+        </div>
+        <div v-if="selectWg.style.hasOwnProperty('margin')">
+          <p class="c999">边距（上 右 下 左 、空格隔开）</p>
+          <el-input v-model="selectWg.style.margin"></el-input>
+        </div>
       </el-form-item>
-      <el-form-item label="文字大小（px）" v-if="Object.keys(selectWg).indexOf('fontSize')>=0">
-        <el-input-number v-model="selectWg.fontSize" :min="10" :max="30" size="small"></el-input-number>
-      </el-form-item>
-      <el-form-item label="文字颜色" v-if="Object.keys(selectWg).indexOf('color')>=0">
-        <el-color-picker v-model="selectWg.color"></el-color-picker>
-      </el-form-item>
-      <el-form-item label="是否单选" v-if="Object.keys(selectWg).indexOf('isRadio')>=0">
+
+      <el-form-item label="是否单选" v-if="selectWg.hasOwnProperty('isRadio')">
         <el-switch v-model="selectWg.isRadio" @change="isRadio"></el-switch>
       </el-form-item>
       <el-form-item label="默认选中" v-if="selectWg.type==='switch'">
         <el-switch v-model="selectWg.value"></el-switch>
       </el-form-item>
-      <el-form-item label="按钮文字" v-if="Object.keys(selectWg).indexOf('btnText')>=0">
+      <el-form-item label="按钮文字" v-if="selectWg.hasOwnProperty('btnText')">
         <el-input v-model="selectWg.btnText"></el-input>
       </el-form-item>
-      <el-form-item label="按钮类型" v-if="Object.keys(selectWg).indexOf('btnType')>=0">
+      <el-form-item label="按钮类型" v-if="selectWg.hasOwnProperty('btnType')">
         <el-select v-model="selectWg.btnType" filterable placeholder="请选择">
           <el-option v-for="item in selectWg.btnTypes" :key="item.value" :label="item.label" :value="item.value"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="边距（上 右 下 左）" v-if="typeof(selectWg.margin)!=='undefined'">
-        <el-input v-model="selectWg.margin"></el-input>
-      </el-form-item>
-      <el-form-item label="选项" v-if="Object.keys(selectWg).indexOf('options')>=0">
+      <el-form-item label="选项" v-if="selectWg.hasOwnProperty('options')">
         <template v-if="selectWg.type=='checkbox' || selectWg.type=='select'">
           <draggable element="ul" :list="selectWg.options" :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.move-icon'}">
             <li v-for="(item, index) in selectWg.options" :key="index">

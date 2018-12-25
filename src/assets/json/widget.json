@@ -11,7 +11,9 @@
 			"codeValue": "",
 			"codeKey": "verifyCode",
 			"showCode": true,
-			"margin": "0px 0px 0px 0px"
+			"style": {
+				"margin": "0px 0px 0px 0px"
+			}
 		}, {
 			"type": "input",
 			"name": "输入框",
@@ -22,7 +24,9 @@
 			"value": "",
 			"apiKey": "name",
 			"fieldTypes": "inputTypes",
-			"margin": "0px 0px 0px 0px"
+			"style": {
+				"margin": "0px 0px 0px 0px"
+			}
 		},
 		{
 			"type": "checkbox",
@@ -34,15 +38,21 @@
 			"labelPosition": "left",
 			"fieldTypes": "checkboxTypes",
 			"options": ["北京", "三亚", "丽江", "巴厘岛", "马尔代夫", "威尼斯", "其他"],
-			"margin": "0px 0px 0px 0px"
+			"style": {
+				"margin": "0px 0px 0px 0px"
+			}
 		},
 		{
 			"type": "date",
 			"name": "日期选择器",
-			"title": "日期选择器",
+			"title": "生日",
 			"labelPosition": "left",
+			"apiKey": "birthday",
 			"value": "",
-			"margin": "0px 0px 0px 0px"
+			"fieldTypes": "dateTypes",
+			"style": {
+				"margin": "0px 0px 0px 0px"
+			}
 		},
 		{
 			"type": "select",
@@ -55,7 +65,9 @@
 			"labelPosition": "left",
 			"fieldTypes": "selectTypes",
 			"options": ["硕士及以上", "本科", "大专", "中专/高中及以下"],
-			"margin": "0px 0px 0px 0px"
+			"style": {
+				"margin": "0px 0px 0px 0px"
+			}
 		},
 		{
 			"type": "switch",
@@ -65,7 +77,9 @@
 			"labelPosition": "left",
 			"fieldTypes": "switchTypes",
 			"apiKey": "creditCard",
-			"margin": "0px 0px 0px 0px"
+			"style": {
+				"margin": "0px 0px 0px 0px"
+			}
 		},
 		{
 			"type": "button",
@@ -77,7 +91,9 @@
 				"value": "submit",
 				"label": "提交"
 			}],
-			"margin": "0px 0px 0px 0px"
+			"style": {
+				"margin": "0px 0px 0px 0px"
+			}
 		}
 	],
 	"imgComponents": [{
@@ -90,9 +106,12 @@
 		"type": "staticText",
 		"name": "文本描述",
 		"value": "文本描述",
-		"textAlign": "left",
-		"fontSize": "14",
-		"color": "#333333",
-		"margin": "0px 0px 0px 0px"
+		"style": {
+			"textAlign": "left",
+      "fontsize": "14",
+      "fontSize": "14px",
+			"color": "#333333",
+			"margin": "0px 0px 0px 0px"
+		}
 	}]
 }

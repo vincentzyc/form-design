@@ -12,13 +12,13 @@ export default {
 		if (process.env.NODE_ENV === "development") return "development";
 		if (window.location.href.includes("192.168")) return "test";
 		return "production";
-  },
-  apiUrl() {
-    return "http://test-api.junjue888.com/";
-    // if (this.env() === "development") return "http://192.168.218.185:8022/";
-    // if (this.env() === 'test') return "http://test-api.junjue888.com/";
-    // return "http://api.junjue888.com/";
-  },
+	},
+	apiUrl() {
+		return "http://test-api.junjue888.com/";
+		// if (this.env() === "development") return "http://192.168.218.185:8022/";
+		// if (this.env() === 'test') return "http://test-api.junjue888.com/";
+		// return "http://api.junjue888.com/";
+	},
 	getUrlParam(name) {
 		var reg = new RegExp("(^|/?|&)" + name + "=([^&]*)(&|$)", "i");
 		var l = window.location.href;
@@ -238,17 +238,17 @@ export default {
 	 * @param {Object} obj 初始对象
 	 * @return {Object} result 拷贝后对象
 	 */
-  deepClone(obj) {
-    var result = Array.isArray(obj) ? [] : {};
-    for (var key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        if (typeof obj[key] === 'object') {
-          result[key] = this.deepClone(obj[key]);   //递归复制
-        } else {
-          result[key] = obj[key];
-        }
-      }
-    }
-    return result;
+	deepClone(obj) {
+		let result = Array.isArray(obj) ? [] : {};
+		for (let key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				if (typeof obj[key] === 'object') {
+					result[key] = this.deepClone(obj[key]); //递归复制
+				} else {
+					result[key] = obj[key];
+				}
+			}
+		}
+		return result;
   }
 };

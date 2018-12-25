@@ -1,6 +1,13 @@
 $primary-color: #409EFF;
 $primary-background-color: #ecf5ff;
 
+// 覆盖element-ui样式
+.el-container {
+	height: 100% !important;
+	justify-content: center;
+}
+// 覆盖element-ui样式 end
+
 :not(.form-edit-wrapper)::-webkit-scrollbar {
 	display: none;
 }
