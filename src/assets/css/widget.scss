@@ -1,18 +1,22 @@
 $primary-color: #409EFF;
 $primary-background-color: #ecf5ff;
 
-.widget-form-container {
+.widget-form-wrapper {
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 
-	.widget-form-list {
-		min-height: 100%;
+	.widget-form-container {
+		min-height: calc(100% - 40px);
 		box-shadow: 0 2px 5px 1px rgba(124, 124, 124, .2);
+    margin: 20px;
+	}
+
+	.widget-form-list {
+    min-height: 360px;
 		padding-bottom: 200px;
-		margin: 20px;
 
 		.ghost {
 			background: #fff;
@@ -66,8 +70,9 @@ $primary-background-color: #ecf5ff;
 	.widget-view {
 		margin: 0;
 		padding: 10px;
-		background: #fff;
-		position: relative;
+		// background: #fff;
+    position: relative;
+    border: 1px solid transparent;
 
 		&:after {
 			content: "";
@@ -87,11 +92,12 @@ $primary-background-color: #ecf5ff;
 
 
 		&:hover {
-			background: $primary-background-color;
+      border: 1px dashed #8cb8e4;
 		}
 
 		&.active {
-			background: $primary-background-color;
+      background: $primary-background-color;
+      border: 1px dashed #8cb8e4;
 			// box-shadow: 0px 1px 10px 1px #90c7ff;
 			z-index: 1111;
 		}
@@ -117,7 +123,7 @@ $primary-background-color: #ecf5ff;
 			}
 		}
 		.wg-staticText {
-      line-height: 1.6;
+			line-height: 1.6;
 		}
 
 		.wg-input, .wg-select {
@@ -130,7 +136,7 @@ $primary-background-color: #ecf5ff;
 			border: 1px solid #ddd;
 			outline: none;
 			text-indent: 10px;
-			background: #fff;
+			// background: #fff;
 			transition: .3s;
 		}
 		.wg-title {
@@ -146,7 +152,7 @@ $primary-background-color: #ecf5ff;
 				position: relative;
 				margin-right: 10px;
 			}
-			.label>span {
+			.label > span {
 				background: #fff;
 				padding: 8px 15px;
 				border-radius: 10px;
@@ -201,7 +207,7 @@ $primary-background-color: #ecf5ff;
 		.wg-button {
 			width: 90%;
 			margin: 15px 5%;
-			background: $primary-color;
+			// background: $primary-color;
 			color: #fff;
 			height: 46px;
 			line-height: 46px;
@@ -211,7 +217,7 @@ $primary-background-color: #ecf5ff;
 			letter-spacing: 2px;
 			border-radius: 20px;
 			text-align: center;
-			box-shadow: 0 3px 10px 1px #90c7ff;
+			// box-shadow: 0 3px 10px 1px #90c7ff;
 		}
 	}
 }

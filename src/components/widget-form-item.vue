@@ -66,7 +66,7 @@
     </div>
 
     <div class="flex flex-center" v-if="item.type === 'button'" :style="item.style">
-      <button class="wg-button">{{item.btnText}}</button>
+      <button class="wg-button" :style="item.style.btnStyle">{{item.btnText}}</button>
     </div>
 
     <div v-if="item.type === 'staticText'" class="wg-staticText" :style="item.style">

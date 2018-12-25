@@ -92,7 +92,10 @@
 				"label": "提交"
 			}],
 			"style": {
-				"margin": "0px 0px 0px 0px"
+				"margin": "0px 0px 0px 0px",
+				"btnStyle": {
+					"background": "#409EFF"
+				}
 			}
 		}
 	],
@@ -108,8 +111,8 @@
 		"value": "文本描述",
 		"style": {
 			"textAlign": "left",
-      "fontsize": "14",
-      "fontSize": "14px",
+			"fontsize": "14",
+			"fontSize": "14px",
 			"color": "#333333",
 			"margin": "0px 0px 0px 0px"
 		}

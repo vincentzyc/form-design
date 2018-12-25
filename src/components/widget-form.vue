@@ -1,19 +1,20 @@
 <template>
-  <div class="widget-form-container">
-    <el-form style="height:100%">
+  <div class="widget-form-wrapper">
+    <div class="widget-form-container" :style="{background:pageData.config.background}">
+      <!-- <img src="@/assets/img/404.jpg" alt width="100%"> -->
       <draggable
-        class="widget-form-list"
-        :class="{'widget-empty': pageData.list.length == 0}"
         v-model="pageData.list"
         :options="{group:'widget', ghostClass: 'ghost'}"
         @end="handleMoveEnd"
         @add="handleWidgetAdd"
+        class="widget-form-list"
+        :class="{'widget-empty': pageData.list.length === 0}"
       >
         <template v-for="(item, index) in pageData.list">
           <widget-form-item v-if="item && item.key" :key="item.key" :item="item" :index="index"/>
         </template>
       </draggable>
-    </el-form>
+    </div>
   </div>
 </template>
 
