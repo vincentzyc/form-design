@@ -1,33 +1,37 @@
 $t1-base-color: #409EFF;
+$t1-boxShadow-color: #2d77c0;
 $t2-base-color: #fe7c01;
+$t2-boxShadow-color: #a94f00;
 $t3-base-color: #6e7786;
+$t3-boxShadow-color: #3f444d;
+
 
 .theme1 {
-	box-shadow: 0px 1px 10px 1px $t1-base-color;
+	box-shadow: 0px 1px 10px 1px $t1-boxShadow-color;
 	width: 94%;
 	background: #fff;
 	border-radius: 8px;
-	margin: 0 20px 3% 20px;
+	margin: 0 3% 20px 3%;
 	padding-bottom: 20px;
 	overflow: hidden;
 }
 
 .theme2 {
-	box-shadow: 0px 1px 10px 1px $t2-base-color;
+	box-shadow: 0px 1px 10px 1px $t2-boxShadow-color;
 	width: 94%;
 	background: #fff;
 	border-radius: 8px;
-	margin: 0 20px 3% 20px;
+	margin: 0 3% 20px 3%;
 	padding-bottom: 20px;
 	overflow: hidden;
 }
 
 .theme3 {
-	box-shadow: 0px 1px 10px 1px #6e7786;
+	box-shadow: 0px 1px 10px 1px $t3-boxShadow-color;
 	width: 94%;
 	background: #fff;
 	border-radius: 8px;
-	margin: 0 20px 3% 20px;
+	margin: 0 3% 20px 3%;
 	padding-bottom: 20px;
 	overflow: hidden;
 }

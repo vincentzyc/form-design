@@ -95,7 +95,7 @@ export default {
       let timer = setInterval(() => {
         newWin.postMessage(this.pageData, this.$api.previewUrl);
       }, 200);
-      window.addEventListener('message', function (event) {
+      window.addEventListener('message', event => {
         if (event.origin !== this.$api.previewUrl) return;
         if (event.data === 'Received') clearInterval(timer)
       }, false);
