@@ -7,9 +7,9 @@
           <input class="wg-input" v-model="item.value" :placeholder="item.placeholder">
         </div>
       </div>
-      <div class="flex" v-if="item.showCode">
+      <div class="flex relative" v-if="item.showCode">
         <input placeholder="验证码" class="wg-input flex-auto">
-        <button class="getVerCode-btn">获取验证码</button>
+        <button class="getVerCode-btn" :style="item.style.btnStyle">获取验证码</button>
       </div>
     </div>
 

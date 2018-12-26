@@ -50,8 +50,10 @@
           <el-input v-model="selectWg.style.margin"></el-input>
         </div>
         <div v-if="selectWg.style.hasOwnProperty('btnStyle')">
-          <p class="c999">按钮背景色</p>
-          <el-color-picker v-model="selectWg.style.btnStyle.background"/>
+          <div v-if="selectWg.style.btnStyle.hasOwnProperty('background')">
+            <p class="c999">按钮背景色</p>
+            <el-color-picker v-model="selectWg.style.btnStyle.background"/>
+          </div>
         </div>
       </el-form-item>
 

@@ -12,6 +12,7 @@ $primary-background-color: #ecf5ff;
 		min-height: calc(100% - 40px);
 		box-shadow: 0 2px 5px 1px rgba(124, 124, 124, .2);
     margin: 20px;
+    background: #fff;
 	}
 
 	.widget-form-list {
@@ -111,7 +112,6 @@ $primary-background-color: #ecf5ff;
 			.getVerCode-btn {
 				border: 0;
 				outline: 0;
-				background: $primary-color;
 				font-size: 14px;
 				color: #fff;
 				border-radius: 5px;

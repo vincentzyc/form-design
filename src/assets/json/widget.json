@@ -12,7 +12,10 @@
 			"codeKey": "verifyCode",
 			"showCode": true,
 			"style": {
-				"margin": "0px 0px 0px 0px"
+        "margin": "0px 0px 0px 0px",
+        "btnStyle": {
+					"background": "#409EFF"
+				}
 			}
 		}, {
 			"type": "input",
