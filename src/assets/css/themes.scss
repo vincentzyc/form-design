@@ -1,0 +1,33 @@
+$t1-base-color: #409EFF;
+$t2-base-color: #fe7c01;
+$t3-base-color: #6e7786;
+
+.theme1 {
+	box-shadow: 0px 1px 10px 1px $t1-base-color;
+	width: 94%;
+	background: #fff;
+	border-radius: 8px;
+	margin: 0 20px 3% 20px;
+	padding-bottom: 20px;
+	overflow: hidden;
+}
+
+.theme2 {
+	box-shadow: 0px 1px 10px 1px $t2-base-color;
+	width: 94%;
+	background: #fff;
+	border-radius: 8px;
+	margin: 0 20px 3% 20px;
+	padding-bottom: 20px;
+	overflow: hidden;
+}
+
+.theme3 {
+	box-shadow: 0px 1px 10px 1px #6e7786;
+	width: 94%;
+	background: #fff;
+	border-radius: 8px;
+	margin: 0 20px 3% 20px;
+	padding-bottom: 20px;
+	overflow: hidden;
+}

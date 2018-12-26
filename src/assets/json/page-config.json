@@ -1,8 +1,5 @@
 {
-  "title": "骏伯网络",
-  "themes":[{
-    "type": "theme1",
-    "name": "主题1",
-    "list":[]
-  }]
+	"title": "骏伯网络",
+	"background": "#fff",
+	"theme": null
 }

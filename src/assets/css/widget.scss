@@ -1,5 +1,5 @@
 $primary-color: #409EFF;
-$primary-background-color: #ecf5ff;
+$primary-background-color: #d8e8fa;
 
 .widget-form-wrapper {
 	position: absolute;
@@ -11,13 +11,17 @@ $primary-background-color: #ecf5ff;
 	.widget-form-container {
 		min-height: calc(100% - 40px);
 		box-shadow: 0 2px 5px 1px rgba(124, 124, 124, .2);
-    margin: 20px;
-    background: #fff;
+		margin: 20px;
+		background: #fff;
+
+		img {
+			vertical-align: top
+		}
 	}
 
 	.widget-form-list {
-    min-height: 360px;
-		padding-bottom: 200px;
+		min-height: 360px;
+		padding-bottom: 25px;
 
 		.ghost {
 			background: #fff;
@@ -65,15 +69,16 @@ $primary-background-color: #ecf5ff;
 
 	.widget-view.widget-view-imgshow {
 		padding: 0;
-		background: #f1f1f1;
+		.img-placeholder {
+			background: #f1f1f1;
+		}
 	}
 
 	.widget-view {
 		margin: 0;
 		padding: 10px;
 		// background: #fff;
-    position: relative;
-    border: 1px solid transparent;
+		position: relative;
 
 		&:after {
 			content: "";
@@ -93,12 +98,11 @@ $primary-background-color: #ecf5ff;
 
 
 		&:hover {
-      border: 1px dashed #8cb8e4;
+			background: #ecf5ff;
 		}
 
 		&.active {
-      background: $primary-background-color;
-      border: 1px dashed #8cb8e4;
+			background: $primary-background-color;
 			// box-shadow: 0px 1px 10px 1px #90c7ff;
 			z-index: 1111;
 		}

@@ -78,40 +78,51 @@ export default {
       basicComponents: allWidget.basicComponents,
       imgComponents: allWidget.imgComponents,
       assistComponents: allWidget.assistComponents,
-      configTab: 'widget'
     }
   },
   computed: {
     ...mapState({
-      pageData: state => state.common.pageData
+      pageData: state => state.common.pageData,
+      configTab: state => state.common.configTab,
     })
   },
   methods: {
     handleConfigSelect(value) {
-      this.configTab = value
+      this.$store.commit('setConfigTab', value)
     },
     handlePreview() {
-      let newWin = window.open("http://192.168.218.113:3000");
+      let newWin = window.open(this.$api.previewUrl);
       let timer = setInterval(() => {
-        newWin.postMessage(this.pageData, 'http://192.168.218.113:3000');
+        newWin.postMessage(this.pageData, this.$api.previewUrl);
       }, 200);
       window.addEventListener('message', function (event) {
-        if (event.origin !== 'http://192.168.218.113:3000') return;
+        if (event.origin !== this.$api.previewUrl) return;
         if (event.data === 'Received') clearInterval(timer)
       }, false);
     },
     handleReset() {
       let initialPageData = {
+        formList: [],
         list: [],
-        config: pageConfigData
+        config: { ...pageConfigData }
       };
+      this.$store.commit('setSelectWg', []);
+      this.$store.commit('setSelectTheme', "");
       this.$store.commit('setPageData', initialPageData);
-      this.$store.commit('setSelectWg', [])
     },
     handleSave() {
       this.$api.setLStorage('pageData', this.pageData);
       this.$alert('保存成功');
     }
+  },
+  mounted() {
+    this.$nextTick(function () {
+      //为了防止火狐浏览器拖拽的时候以新标签打开，此代码真实有效
+      document.body.ondrop = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    })
   },
   created() {
     let pageData = this.$api.getLStorage('pageData');
@@ -128,8 +139,10 @@ export default {
 @import "@/assets/css/index.scss";
 @import "@/assets/css/widget.scss";
 @import "@/assets/css/config.scss";
+@import "@/assets/css/themes.scss";
 .widget-empty {
-  background: url("../assets/img/form_empty.png") no-repeat;
+  background-image: url("../assets/img/form_empty.png");
+  background-repeat: no-repeat;
   background-position: 50%;
 }
 </style>

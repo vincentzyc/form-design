@@ -133,12 +133,12 @@ export default {
     selectfield(key, types) {
       let selectItem = types.find(item => key === item.value);
       this.selectWg.title ? this.selectWg.title = selectItem.label : "";
-      this.selectWg.options ? this.selectWg.options = selectItem.options : ""
-      if (typeof (this.selectWg.placeholder) !== "undefined") {
+      this.selectWg.options ? this.selectWg.options = selectItem.options : "";
+      if (this.selectWg.hasOwnProperty(placeholder)) {
         this.selectWg.placeholder = this.selectWg.type === "input" ? `请输入${selectItem.label}` : `请选择${selectItem.label}`;
       }
     },
-    handleAvatarSuccess(res, file) {
+    handleAvatarSuccess(res, file, fileList) {
       this.selectWg.value = res.data;
       this.fullLoading.close()
     },

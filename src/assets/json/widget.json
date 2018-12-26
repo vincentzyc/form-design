@@ -10,7 +10,7 @@
 			"apiKey": "phone",
 			"codeValue": "",
 			"codeKey": "verifyCode",
-			"showCode": true,
+      "showCode": true,
 			"style": {
         "margin": "0px 0px 0px 0px",
         "btnStyle": {

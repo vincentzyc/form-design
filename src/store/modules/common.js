@@ -3,9 +3,12 @@
 const state = {
 	pageData: {
 		list: [],
+		formList: [],
 		config: {}
 	},
-	selectWg: []
+	selectWg: [],
+	configTab: 'widget',
+	selectTheme: ""
 }
 
 const actions = {
@@ -21,12 +24,18 @@ const actions = {
 // }
 
 const mutations = {
-  setPageData(state, payload) {
+	setPageData(state, payload) {
 		state.pageData = payload;
-  },
-  setSelectWg(state, payload) {
+	},
+	setSelectWg(state, payload) {
 		state.selectWg = payload;
-  }
+	},
+	setConfigTab(state, payload) {
+		state.configTab = payload;
+	},
+	setSelectTheme(state, payload) {
+		state.selectTheme = payload;
+	}
 }
 
 export default {

@@ -8,6 +8,7 @@ import store from "./store";
 import router from './router'
 
 Vue.config.productionTip = false
+Vue.prototype.BASE_URL = process.env.BASE_URL;
 
 Vue.use(BaseComponents)
 Vue.use(Api)

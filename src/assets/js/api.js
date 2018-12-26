@@ -8,6 +8,7 @@ export default {
 		}
 	},
 	vue: new Vue(),
+	previewUrl: "http://192.168.218.113:3000",
 	env() {
 		if (process.env.NODE_ENV === "development") return "development";
 		if (window.location.href.includes("192.168")) return "test";
@@ -250,5 +251,5 @@ export default {
 			}
 		}
 		return result;
-  }
+	}
 };
