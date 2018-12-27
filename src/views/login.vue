@@ -43,7 +43,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$api.setLStorage(
+          this.$util.setLStorage(
             "loanuser",
             { username: this.ruleForm.userName },
             "decode"
@@ -57,7 +57,7 @@ export default {
     }
   },
   created() {
-    let userInfo = this.$api.getLStorage("loanuser", "decode");
+    let userInfo = this.$util.getLStorage("loanuser", "decode");
     if (userInfo) {
       this.ruleForm.userName = userInfo.username;
     }

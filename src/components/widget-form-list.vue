@@ -132,7 +132,7 @@ export default {
 
       //为拖拽到容器的元素添加唯一 key
       const key = Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999)
-      let newObj = this.$api.deepClone(this.pageData[this.list][newIndex]);
+      let newObj = this.$util.deepClone(this.pageData[this.list][newIndex]);
       // 绑定键值
       newObj.key = this.pageData[this.list][newIndex].type + '_' + key;
       this.$set(this.pageData[this.list], newIndex, newObj)
@@ -158,7 +158,7 @@ export default {
       })
     },
     handleWidgetClone(index) {
-      let cloneData = this.$api.deepClone(this.pageData[this.list][index]);
+      let cloneData = this.$util.deepClone(this.pageData[this.list][index]);
       cloneData.key = this.pageData[this.list][index].type + '_' + Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999)
       this.pageData[this.list].splice(index, 0, cloneData)
       this.$nextTick(() => {

@@ -9,8 +9,19 @@
           <el-radio-button v-for="item in themes" :label="item.value" :key="item.value">{{item.name}}</el-radio-button>
         </el-radio-group>
       </el-form-item>
+      <el-form-item label="图片上传" v-if="pageData.config.theme">
+        <ImgUpload :value.sync="pageData.config.theme.banner"/>
+      </el-form-item>
       <el-form-item label="页面背景色" v-if="pageData.config.hasOwnProperty('background')">
         <el-color-picker v-model="pageData.config.background"/>
+      </el-form-item>
+      <el-form-item label="内容区域宽度" v-if="pageData.config.theme&&pageData.config.theme.hasOwnProperty('contentWidth')">
+        <el-radio-group v-model="pageData.config.theme.contentWidth" size="mini">
+          <el-radio-button label="90%"></el-radio-button>
+          <el-radio-button label="80%"></el-radio-button>
+          <el-radio-button label="70%"></el-radio-button>
+          <el-radio-button label="60%"></el-radio-button>
+        </el-radio-group>
       </el-form-item>
     </el-form>
   </div>

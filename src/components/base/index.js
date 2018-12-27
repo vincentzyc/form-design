@@ -1,29 +1,30 @@
-import BasePage from './base-page'; //页面组件
+import Vue from "vue"
 
-const version = '1.0';
-const install = function(Vue) {
+import ImgUpload from './img-upload'; //图片上传组件
 
-	if (install.installed) return;
+let MyPlugin = {};
 
-	Vue.component(BasePage.name, BasePage); //注册组件
+MyPlugin.install = function(Vue) {
+
+	if (this.installed) return;
+
+	Vue.component(ImgUpload.name, ImgUpload); //注册组件
 
 };
 
 // auto install
 if (typeof window !== 'undefined' && window.Vue) {
-	install(window.Vue);
+	MyPlugin.install(window.Vue);
 }
 
-export default {
-	install,
-	version
-};
+Vue.use(MyPlugin)
+
+export default MyPlugin
 
 /**
  * 使用方法：
- * 1：将modules文件夹复制到项目的src文件夹中
+ * 1：将此文件夹复制到项目中
  * 2：在mainjs里引入 
- *    import Components from "./modules";
- *    Vue.use(Components)
+ *    import "此文件夹路径";
  * 3：各组件使用方法请查看各组件的.vue文件的注释
  */

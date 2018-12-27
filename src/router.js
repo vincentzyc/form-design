@@ -44,7 +44,7 @@ router.beforeEach((to, from, next) => {
 })
 router.afterEach(() => {
 	if (window.dom_container) {
-		vue.$api.easeout(window.dom_container, 0, 5);
+		vue.$util.easeout(window.dom_container, 0, 5);
 	}
 })
 

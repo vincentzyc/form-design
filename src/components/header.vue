@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     username() {
-      let userInfo = this.$api.getLStorage("loanuser", "decode");
+      let userInfo = this.$util.getLStorage("loanuser", "decode");
       return userInfo ? userInfo.username : this.name;
     }
   },

@@ -3,7 +3,7 @@
     <Header/>
     <el-container>
       <div class="form-edit-wrapper flex flex-auto">
-        <el-aside style="wdith: 300px;">
+        <el-aside>
           <div class="components-list">
             <div class="widget-cate">基础类组件</div>
             <draggable element="ul" :list="basicComponents" :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}">
@@ -25,6 +25,7 @@
             </draggable>
           </div>
         </el-aside>
+
         <el-container class="center-container" direction="vertical">
           <el-header class="btn-bar" style="height: 45px;">
             <el-button type="text" size="medium" icon="el-icon-refresh" @click="handleReset()" class="mg-r15">重置</el-button>
@@ -111,7 +112,7 @@ export default {
       this.$store.commit('setPageData', initialPageData);
     },
     handleSave() {
-      this.$api.setLStorage('pageData', this.pageData);
+      this.$util.setLStorage('pageData', this.pageData);
       this.$alert('保存成功');
     }
   },
@@ -125,7 +126,7 @@ export default {
     })
   },
   created() {
-    let pageData = this.$api.getLStorage('pageData');
+    let pageData = this.$util.getLStorage('pageData');
     if (pageData) {
       this.$store.commit('setPageData', pageData);
     } else {
