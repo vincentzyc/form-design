@@ -1,8 +1,8 @@
 <template>
   <div class="widget-form-wrapper">
     <div class="widget-form-container" :style="{background:pageData.config.background}">
-      <img v-if="theme" :src="themeBanner" alt="banner" width="100%">
-      <widget-form-list list="formList" v-if="theme" :class="theme.value" :style="{width:theme.contentWidth}"/>
+      <img v-if="theme" :src="themeBanner" alt="banner" width="100%" @click="setConfigTab()">
+      <widget-form-list list="formList" v-if="theme" :class="theme.value" :style="{width:theme.contentWidth,borderRadius:theme.borderRadius?'10px':'0'}"/>
       <widget-form-list list="list"/>
     </div>
   </div>
@@ -34,6 +34,9 @@ export default {
     })
   },
   methods: {
+    setConfigTab() {
+      this.$store.commit("setConfigTab", "page");
+    },
     handleMoveEnd({ newIndex, oldIndex }) {
       console.log('index', newIndex, oldIndex)
     },

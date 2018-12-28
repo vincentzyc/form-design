@@ -16,19 +16,22 @@
       >
         <div v-if="item.type === 'phone'" class="wg-phone" :style="item.style">
           <div class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
-            <div class="wg-title" v-show="item.showLabel">{{item.title}}</div>
+            <div class="wg-title" :style="{width:item.labelWidth}" v-show="item.showLabel">{{item.labelTitle}}</div>
             <div class="flex-auto">
               <input class="wg-input" v-model="item.value" :placeholder="item.placeholder">
             </div>
           </div>
-          <div class="flex relative" v-if="item.showCode">
-            <input placeholder="验证码" class="wg-input flex-auto">
-            <button class="getVerCode-btn" :style="item.style.btnStyle">获取验证码</button>
+          <div class="wg-item" v-if="item.showCode">
+            <div class="wg-title flex-none" v-show="item.showLabel" :style="{width:item.labelWidth}">验证码</div>
+            <div class="flex flex-auto">
+              <input placeholder="验证码" class="wg-input">
+              <button class="getVerCode-btn" :style="item.style.btnStyle">获取验证码</button>
+            </div>
           </div>
         </div>
 
         <div v-if="item.type === 'input'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
-          <div class="wg-title" v-show="item.showLabel">{{item.title}}</div>
+          <div class="wg-title" :style="{width:item.labelWidth}" v-show="item.showLabel">{{item.labelTitle}}</div>
           <div class="flex-auto">
             <input v-model="item.value" :placeholder="item.placeholder" class="wg-input">
           </div>
@@ -40,7 +43,7 @@
           :class="[item.labelPosition==='top'?'flex-column':'align-middle']"
           :style="item.style"
         >
-          <div class="wg-title">{{item.title}}</div>
+          <div class="wg-title" :style="{width:item.labelWidth}">{{item.labelTitle}}</div>
           <div class="flex-auto">
             <label class="label" v-for="(optionsItem, key) in item.options" :key="optionsItem + key">
               <input class="wg-checkbox-input" :type="item.isRadio?'radio':'checkbox'" :value="optionsItem" v-model="item.value" style="display:none">
@@ -50,7 +53,7 @@
         </div>
 
         <div v-if="item.type === 'select'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
-          <div class="wg-title" v-show="item.showLabel">{{item.title}}</div>
+          <div class="wg-title" :style="{width:item.labelWidth}" v-show="item.showLabel">{{item.labelTitle}}</div>
           <div class="flex-auto">
             <select v-model="item.value" class="wg-select flex-auto">
               <option value disabled selected hidden>{{item.placeholder}}</option>
@@ -60,7 +63,7 @@
         </div>
 
         <div v-if="item.type==='switch'" class="wg-item wg-switch" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
-          <div class="wg-title">{{item.title}}</div>
+          <div class="wg-title" :style="{width:item.labelWidth}">{{item.labelTitle}}</div>
           <label class="label">
             <input type="checkbox" class="wg-switch-input" v-model="item.value" style="display:none">
             <span class="wg-switch-core"></span>
@@ -68,7 +71,7 @@
         </div>
 
         <div v-if="item.type === 'date'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
-          <div class="wg-title">{{item.title}}</div>
+          <div class="wg-title" :style="{width:item.labelWidth}">{{item.labelTitle}}</div>
           <div class="flex-auto">
             <input type="date" v-model="item.value" class="wg-input flex-auto">
           </div>

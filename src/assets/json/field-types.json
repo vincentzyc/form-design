@@ -52,25 +52,5 @@
 	"dateTypes": [{
 		"value": "birthday",
 		"label": "生日"
-	}],
-
-	"themes": [{
-		"value": "theme1",
-		"name": "主题1",
-		"banner": "static/img/theme1.jpg",
-    "background": "#4a9bed",
-    "contentWidth":"90%"
-	}, {
-		"value": "theme2",
-		"name": "主题2",
-		"banner": "static/img/theme2.jpg",
-    "background": "#fe7c01",
-    "contentWidth":"80%"
-	}, {
-		"value": "theme3",
-		"name": "主题3",
-		"banner": "static/img/theme3.jpg",
-    "background": "#707988",
-    "contentWidth":"70%"
 	}]
 }

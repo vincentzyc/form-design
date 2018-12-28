@@ -1,17 +1,15 @@
 <template>
-  <el-form-item label="图片上传">
-    <el-upload
-      class="avatar-uploader"
-      :action="$api.apiUrl()+'supermarketloan/mgr/eventmarket/uploadeventmarketimg'"
-      :show-file-list="false"
-      :on-success="handleAvatarSuccess"
-      :before-upload="beforeAvatarUpload"
-      :on-error="uploadError"
-    >
-      <img v-if="value" :src="value" class="avatar">
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-    </el-upload>
-  </el-form-item>
+  <el-upload
+    class="avatar-uploader"
+    :action="$api.apiUrl()+'supermarketloan/mgr/eventmarket/uploadeventmarketimg'"
+    :show-file-list="false"
+    :on-success="handleAvatarSuccess"
+    :before-upload="beforeAvatarUpload"
+    :on-error="uploadError"
+  >
+    <img v-if="value" :src="value" class="avatar">
+    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+  </el-upload>
 </template>
 <script>
 export default {

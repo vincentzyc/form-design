@@ -1,39 +1,52 @@
 <template>
   <div class="form-config-container">
     <el-form label-position="top">
-      <el-form-item label="页面标题" v-if="pageData.config.hasOwnProperty('title')">
-        <el-input v-model="pageData.config.title"></el-input>
-      </el-form-item>
-      <el-form-item label="主题" v-if="themes.length>0">
-        <el-radio-group v-model="selectTheme" @change="setTheme">
-          <el-radio-button v-for="item in themes" :label="item.value" :key="item.value">{{item.name}}</el-radio-button>
-        </el-radio-group>
-      </el-form-item>
-      <el-form-item label="图片上传" v-if="pageData.config.theme">
-        <ImgUpload :value.sync="pageData.config.theme.banner"/>
-      </el-form-item>
-      <el-form-item label="页面背景色" v-if="pageData.config.hasOwnProperty('background')">
-        <el-color-picker v-model="pageData.config.background"/>
-      </el-form-item>
-      <el-form-item label="内容区域宽度" v-if="pageData.config.theme&&pageData.config.theme.hasOwnProperty('contentWidth')">
-        <el-radio-group v-model="pageData.config.theme.contentWidth" size="mini">
-          <el-radio-button label="90%"></el-radio-button>
-          <el-radio-button label="80%"></el-radio-button>
-          <el-radio-button label="70%"></el-radio-button>
-          <el-radio-button label="60%"></el-radio-button>
-        </el-radio-group>
-      </el-form-item>
+      <el-collapse v-model="activeName" accordion>
+        <el-collapse-item title="基础设置" name="collapse1">
+          <el-form-item label="页面标题">
+            <el-input v-model="pageData.config.title"></el-input>
+          </el-form-item>
+          <el-form-item label="页面背景色">
+            <el-color-picker v-model="pageData.config.background"/>
+          </el-form-item>
+          <el-form-item label="Matomo统计ID">
+            <el-input type="number" v-model="pageData.config.matomoId"></el-input>
+          </el-form-item>
+          <el-form-item label="主题" v-if="themes.length>0">
+            <el-radio-group v-model="selectTheme" @change="setTheme">
+              <el-radio-button v-for="item in themes" :label="item.value" :key="item.value">{{item.name}}</el-radio-button>
+            </el-radio-group>
+          </el-form-item>
+        </el-collapse-item>
+        <el-collapse-item title="主题设置" name="collapse2" v-if="pageData.config.theme">
+          <el-form-item label="图片上传">
+            <ImgUpload :value.sync="pageData.config.theme.banner"/>
+          </el-form-item>
+          <el-form-item label="内容区域宽度" v-if="pageData.config.theme.hasOwnProperty('contentWidth')">
+            <el-radio-group v-model="pageData.config.theme.contentWidth" size="mini">
+              <el-radio-button label="100%"></el-radio-button>
+              <el-radio-button label="90%"></el-radio-button>
+              <el-radio-button label="80%"></el-radio-button>
+              <el-radio-button label="70%"></el-radio-button>
+            </el-radio-group>
+          </el-form-item>
+          <el-form-item label="内容区域圆角" v-if="pageData.config.theme.hasOwnProperty('borderRadius')">
+            <el-switch v-model="pageData.config.theme.borderRadius"></el-switch>
+          </el-form-item>
+        </el-collapse-item>
+      </el-collapse>
     </el-form>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import allFieldTypes from '@/assets/json/field-types.json'
+import pageConfigData from '@/assets/json/page-config.json'
 export default {
   data() {
     return {
-      themes: allFieldTypes.themes,
+      activeName: 'collapse1',
+      themes: pageConfigData.themes,
     }
   },
   computed: {

@@ -7,7 +7,7 @@ const state = {
 		config: {}
 	},
 	selectWg: [],
-	configTab: 'widget',
+	configTab: 'page',
 	selectTheme: ""
 }
 

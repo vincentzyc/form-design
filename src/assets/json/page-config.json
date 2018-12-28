@@ -1,5 +1,30 @@
 {
-	"title": "骏伯网络",
-	"background": "#fff",
-	"theme": null
+	"pageConfig": {
+		"title": "骏伯网络",
+		"background": "#fff",
+		"theme": null,
+		"matomoId": null
+	},
+	"themes": [{
+		"value": "theme1",
+		"name": "主题1",
+		"banner": "static/img/theme1.jpg",
+		"background": "#4a9bed",
+		"contentWidth": "100%",
+		"borderRadius": false
+	}, {
+		"value": "theme2",
+		"name": "主题2",
+		"banner": "static/img/theme2.jpg",
+		"background": "#fe7c01",
+		"contentWidth": "90%",
+		"borderRadius": true
+	}, {
+		"value": "theme3",
+		"name": "主题3",
+		"banner": "static/img/theme3.jpg",
+		"background": "#707988",
+		"contentWidth": "80%",
+		"borderRadius": true
+	}]
 }

@@ -105,7 +105,7 @@ export default {
       let initialPageData = {
         formList: [],
         list: [],
-        config: { ...pageConfigData }
+        config: { ...pageConfigData.pageConfig }
       };
       this.$store.commit('setSelectWg', []);
       this.$store.commit('setSelectTheme', "");
@@ -113,7 +113,7 @@ export default {
     },
     handleSave() {
       this.$util.setLStorage('pageData', this.pageData);
-      this.$alert('保存成功');
+      this.$alert('保存成功', { showClose: false });
     }
   },
   mounted() {
@@ -129,8 +129,9 @@ export default {
     let pageData = this.$util.getLStorage('pageData');
     if (pageData) {
       this.$store.commit('setPageData', pageData);
+      if (pageData.config.theme) this.$store.commit('setSelectTheme', pageData.config.theme.value)
     } else {
-      this.pageData.config = { ...pageConfigData };
+      this.pageData.config = { ...pageConfigData.pageConfig };
     }
   }
 }

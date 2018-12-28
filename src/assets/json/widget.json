@@ -2,28 +2,32 @@
 	"basicComponents": [{
 			"type": "phone",
 			"name": "手机号",
-			"title": "手机号",
 			"placeholder": "请输入手机号",
 			"showLabel": false,
+			"labelTitle": "手机号",
 			"labelPosition": "left",
+      "labelwidth": 50,
+      "labelWidth": "50px",
 			"value": "",
 			"apiKey": "phone",
 			"codeValue": "",
 			"codeKey": "verifyCode",
-      "showCode": true,
+			"showCode": true,
 			"style": {
-        "margin": "0px 0px 0px 0px",
-        "btnStyle": {
+				"margin": "0px 0px 0px 0px",
+				"btnStyle": {
 					"background": "#409EFF"
 				}
 			}
 		}, {
 			"type": "input",
 			"name": "输入框",
-			"title": "姓名",
 			"placeholder": "请输入姓名",
-			"showLabel": false,
+      "showLabel": false,
+			"labelTitle": "姓名",
 			"labelPosition": "left",
+      "labelwidth": 50,
+      "labelWidth": "50px",
 			"value": "",
 			"apiKey": "name",
 			"fieldTypes": "inputTypes",
@@ -34,7 +38,7 @@
 		{
 			"type": "checkbox",
 			"name": "选择框",
-			"title": "旅拍城市",
+			"labelTitle": "旅拍城市",
 			"value": [],
 			"apiKey": "shootPlace",
 			"isRadio": false,
@@ -48,7 +52,7 @@
 		{
 			"type": "date",
 			"name": "日期选择器",
-			"title": "生日",
+			"labelTitle": "生日",
 			"labelPosition": "left",
 			"apiKey": "birthday",
 			"value": "",
@@ -60,12 +64,14 @@
 		{
 			"type": "select",
 			"name": "下拉选择框",
-			"title": "教育程度",
 			"value": "",
 			"apiKey": "educationLevel",
 			"placeholder": "请选择教育程度",
 			"showLabel": false,
+			"labelTitle": "教育程度",
 			"labelPosition": "left",
+      "labelwidth": 50,
+      "labelWidth": "50px",
 			"fieldTypes": "selectTypes",
 			"options": ["硕士及以上", "本科", "大专", "中专/高中及以下"],
 			"style": {
@@ -75,7 +81,7 @@
 		{
 			"type": "switch",
 			"name": "开关",
-			"title": "是否有信用卡",
+			"labelTitle": "是否有信用卡",
 			"value": false,
 			"labelPosition": "left",
 			"fieldTypes": "switchTypes",
@@ -114,7 +120,7 @@
 		"value": "文本描述",
 		"style": {
 			"textAlign": "left",
-			"fontsize": "14",
+			"fontsize": 14,
 			"fontSize": "14px",
 			"color": "#333333",
 			"margin": "0px 0px 0px 0px"
