@@ -73,7 +73,7 @@
           </template>
         </el-collapse-item>
 
-        <el-collapse-item title="标签设置" name="collapse2">
+        <el-collapse-item title="标签设置" name="collapse2" v-if="selectWg.hasOwnProperty('showLabel')">
           <el-form-item label="标签宽度(px)" v-if="selectWg.hasOwnProperty('labelwidth')">
             <el-input-number v-model="selectWg.labelwidth" :min="30" :max="300" size="small" @change="val=>selectWg.labelWidth = `${val}px`"/>
           </el-form-item>
