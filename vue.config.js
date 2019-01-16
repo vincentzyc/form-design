@@ -1,5 +1,6 @@
 module.exports = {
-	baseUrl: "./",
+  baseUrl: "./",
+  outputDir: "docs",
 	productionSourceMap: false,
 	devServer: {
 		port: 5000

@@ -1,7 +1,7 @@
 <template>
   <el-upload
     class="avatar-uploader"
-    :action="$api.apiUrl()+'supermarketloan/mgr/eventmarket/uploadeventmarketimg'"
+    action="https://jsonplaceholder.typicode.com/posts/"
     :show-file-list="false"
     :on-success="handleAvatarSuccess"
     :before-upload="beforeAvatarUpload"

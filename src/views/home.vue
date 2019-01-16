@@ -92,12 +92,12 @@ export default {
       this.$store.commit('setConfigTab', value)
     },
     handlePreview() {
-      let newWin = window.open(this.$api.previewUrl);
+      let newWin = window.open(this.$api.previewUrl());
       let timer = setInterval(() => {
-        newWin.postMessage(this.pageData, this.$api.previewUrl);
+        newWin.postMessage(this.pageData, this.$api.previewUrl());
       }, 200);
       window.addEventListener('message', event => {
-        if (event.origin !== this.$api.previewUrl) return;
+        if (event.origin !== this.$api.previewUrl()) return;
         if (event.data === 'Received') clearInterval(timer)
       }, false);
     },
