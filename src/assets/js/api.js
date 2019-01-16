@@ -1,18 +1,11 @@
-// import Vue from "vue";
-
-// const vue = new Vue();
-
 export default {
-	previewUrl: "http://192.168.218.113:3000",
+	previewUrl: "http://" + window.location.hostname + ":3000", //根据实际情况修改为 form-design-h5 项目地址
 	env() {
 		if (process.env.NODE_ENV === "development") return "development";
 		if (window.location.href.includes("192.168")) return "test";
 		return "production";
 	},
 	apiUrl() {
-		return "http://test-api.junjue888.com/";
-		// if (this.env() === "development") return "http://192.168.218.185:8022/";
-		// if (this.env() === 'test') return "http://test-api.junjue888.com/";
-		// return "http://api.junjue888.com/";
+		return "http://xxx.com/";
 	}
 };
