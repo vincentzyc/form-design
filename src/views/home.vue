@@ -97,6 +97,8 @@ export default {
         newWin.postMessage(this.pageData, this.$api.previewUrl());
       }, 200);
       window.addEventListener('message', event => {
+        console.log("message",event.origin);
+        console.log("previewUrl",this.$api.previewUrl().replace('/form-design-h5', ''));
         if (event.origin !== this.$api.previewUrl().replace('/form-design-h5', '')) return;
         if (event.data === 'Received') clearInterval(timer)
       }, false);
