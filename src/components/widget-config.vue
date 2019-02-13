@@ -73,7 +73,7 @@
           </template>
         </el-collapse-item>
 
-        <el-collapse-item title="标签设置" name="collapse2" v-if="selectWg.hasOwnProperty('showLabel')">
+        <el-collapse-item title="标签设置" name="collapse2" v-if="selectWg.showLabel">
           <el-form-item label="标签宽度(px)" v-if="selectWg.hasOwnProperty('labelwidth')">
             <el-input-number v-model="selectWg.labelwidth" :min="30" :max="300" size="small" @change="val=>selectWg.labelWidth = `${val}px`"/>
           </el-form-item>
@@ -137,9 +137,9 @@ export default {
     },
     selectfield(key, types) {
       let selectItem = types.find(item => key === item.value);
-      this.selectWg.title ? this.selectWg.title = selectItem.label : "";
+      this.selectWg.labelTitle ? this.selectWg.labelTitle = selectItem.label : "";
       this.selectWg.options ? this.selectWg.options = selectItem.options : "";
-      if (this.selectWg.hasOwnProperty(placeholder)) {
+      if (this.selectWg.hasOwnProperty('placeholder')) {
         this.selectWg.placeholder = this.selectWg.type === "input" ? `请输入${selectItem.label}` : `请选择${selectItem.label}`;
       }
     },

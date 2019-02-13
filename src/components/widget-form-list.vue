@@ -21,7 +21,7 @@
               <input class="wg-input" v-model="item.value" :placeholder="item.placeholder">
             </div>
           </div>
-          <div class="wg-item" v-if="item.showCode">
+          <div class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" v-if="item.showCode">
             <div class="wg-title flex-none" v-show="item.showLabel" :style="{width:item.labelWidth}">验证码</div>
             <div class="flex flex-auto">
               <input placeholder="验证码" class="wg-input">
