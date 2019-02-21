@@ -1,5 +1,3 @@
-// import api from "../../assets/js/api.js"
-
 const state = {
 	pageData: {
 		list: [],
@@ -11,16 +9,12 @@ const state = {
 	selectTheme: ""
 }
 
-const actions = {
-	// getBusinessTypeList({commit}) {
-	//   api.vkcPost2("supermarketloan/crm/qualitycontrol/findAllBusinessTypes", "", res => {
-	//     commit(types.BUSINESS_TYPE_LIST, res);
-	//   });
-	// }
-}
+// const actions = {
+
+// }
 
 // const getters = {
-//   businessTypeList: state => state.businessTypeList
+//   selectTheme: state => state.selectTheme
 // }
 
 const mutations = {
@@ -40,6 +34,5 @@ const mutations = {
 
 export default {
 	state,
-	actions,
 	mutations
 }
