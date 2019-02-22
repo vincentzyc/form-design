@@ -3,6 +3,6 @@ module.exports = {
   outputDir: "docs",
 	productionSourceMap: false,
 	devServer: {
-		port: 5010
+		port: 5000
 	}
 };
