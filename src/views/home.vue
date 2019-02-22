@@ -137,14 +137,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import "@/assets/css/index.scss";
-@import "@/assets/css/widget.scss";
-@import "@/assets/css/config.scss";
-@import "@/assets/css/themes.scss";
-.widget-empty {
-  background-image: url("../assets/img/form_empty.png");
-  background-repeat: no-repeat;
-  background-position: 50%;
-}
+<style lang="stylus">
+@import '../assets/css/index.styl';
+@import '../assets/css/widget.styl';
+@import '../assets/css/config.styl';
+@import '../assets/css/themes.styl';
 </style>
