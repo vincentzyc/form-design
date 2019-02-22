@@ -7,13 +7,9 @@
           <el-input v-model="ruleForm.userName" placeholder="请输入用户名"></el-input>
         </el-form-item>
         <el-form-item prop="passWord">
-          <el-input
-            type="password"
-            placeholder="请输入密码"
-            v-model="ruleForm.passWord"
-            @keyup.enter.native="submitForm('ruleForm')"
-          ></el-input>
+          <el-input type="password" placeholder="请输入密码" v-model="ruleForm.passWord" @keyup.enter.native="submitForm('ruleForm')"></el-input>
         </el-form-item>
+        <p style="color:#999;font-size:12px;margin:-10px 0 10px 0">用户名密码随意输入即可</p>
         <div class="login-btn">
           <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
         </div>
@@ -24,7 +20,7 @@
 
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
       nextUrl: "",
       ruleForm: {
