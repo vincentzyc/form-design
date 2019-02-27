@@ -2,7 +2,6 @@
   <draggable
     v-model="pageData[list]"
     :options="{group:'widget', ghostClass: 'ghost',swapThreshold:0.5,animation: 100}"
-    @end="handleMoveEnd"
     @add="handleWidgetAdd"
     class="widget-form-list"
     :class="{'widget-empty': pageData[list].length === 0}"
@@ -127,9 +126,6 @@ export default {
     })
   },
   methods: {
-    handleMoveEnd({ newIndex, oldIndex }) {
-      console.log('index', newIndex, oldIndex)
-    },
     handleWidgetAdd(evt) {
       const newIndex = evt.newIndex;
 
