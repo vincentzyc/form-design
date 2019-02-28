@@ -9,8 +9,8 @@
           <el-form-item label="页面背景色">
             <el-color-picker v-model="pageData.config.background"/>
           </el-form-item>
-          <el-form-item label="Matomo统计ID">
-            <el-input type="number" v-model="pageData.config.matomoId"></el-input>
+          <el-form-item label="页面统计ID">
+            <el-input type="number" v-model="pageData.config.countId"></el-input>
           </el-form-item>
           <el-form-item label="主题" v-if="themes.length>0">
             <el-radio-group v-model="selectTheme" @change="setTheme">
