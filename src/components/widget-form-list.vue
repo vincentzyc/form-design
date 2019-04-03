@@ -13,6 +13,7 @@
         :class="{active: selectWg.key === item.key,'widget-view-imgshow':item.type === 'imgshow'}"
         @click="handleSelectWidget(index)"
       >
+        <!-- 手机 -->
         <div v-if="item.type === 'phone'" class="wg-phone" :style="item.style">
           <div class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
             <div class="wg-title" :style="{width:item.labelWidth}" v-show="item.showLabel">{{item.labelTitle}}</div>
@@ -29,6 +30,7 @@
           </div>
         </div>
 
+        <!-- 输入框 -->
         <div v-if="item.type === 'input'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
           <div class="wg-title" :style="{width:item.labelWidth}" v-show="item.showLabel">{{item.labelTitle}}</div>
           <div class="flex-auto">
@@ -36,6 +38,7 @@
           </div>
         </div>
 
+        <!-- 选择框 -->
         <div
           v-if="item.type === 'checkbox'"
           class="wg-item flex-wrap wg-checkbox"
@@ -51,17 +54,24 @@
           </div>
         </div>
 
+        <!-- 下拉选择 -->
         <div v-if="item.type === 'select'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
           <div class="wg-title" :style="{width:item.labelWidth}" v-show="item.showLabel">{{item.labelTitle}}</div>
           <div class="flex-auto">
             <select v-model="item.value" class="wg-select flex-auto">
               <option value disabled selected hidden>{{item.placeholder}}</option>
-              <option v-for="item in item.options" :key="item" :value="item" :label="item.showLabel?item.label:item"></option>
+              <option v-for="optionsItem in item.options" :key="optionsItem" :value="optionsItem" :label="item.showLabel?item.label:optionsItem"></option>
             </select>
           </div>
         </div>
 
-        <div v-if="item.type==='switch'" class="wg-item wg-switch" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
+        <!-- 开关 -->
+        <div
+          v-if="item.type==='switch'"
+          class="wg-item wg-switch"
+          :class="[item.labelPosition==='top'?'flex-column':'align-middle']"
+          :style="item.style"
+        >
           <div class="wg-title" :style="{width:item.labelWidth}">{{item.labelTitle}}</div>
           <label class="label">
             <input type="checkbox" class="wg-switch-input" v-model="item.value" style="display:none">
@@ -69,6 +79,7 @@
           </label>
         </div>
 
+        <!-- 日期选择 -->
         <div v-if="item.type === 'date'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
           <div class="wg-title" :style="{width:item.labelWidth}">{{item.labelTitle}}</div>
           <div class="flex-auto">
@@ -76,17 +87,32 @@
           </div>
         </div>
 
+        <!-- 图片展示 -->
         <div class="flex flex-center" v-if="item.type === 'imgshow'" :class="{'img-placeholder':!item.value}" :style="item.style">
           <img v-if="item.value" :src="item.value" alt="图片展示" width="100%">
           <img v-else src="@/assets/img/img-placeholder.png" alt="图片展示">
         </div>
 
+        <!-- 按钮 -->
         <div class="flex flex-center" v-if="item.type === 'button'" :style="item.style">
           <button class="wg-button" :style="item.style.btnStyle">{{item.btnText}}</button>
         </div>
 
+        <!-- 文本描述 -->
         <div v-if="item.type === 'staticText'" class="wg-staticText" :style="item.style">
           <p :style="item.style">{{item.value}}</p>
+        </div>
+
+        <!-- 横向滑动自动选择 -->
+        <div class="flex flex-center" v-if="item.type === 'h-picker'" :style="item.style">
+          <div class="wg-horizontal-picker">
+            <div
+              class="picker-item"
+              v-for="optionsItem in item.options"
+              :key="optionsItem"
+              :style="optionsItem===item.value?{ color: optionsItem.pickerColor }:{}"
+            >{{optionsItem}}</div>
+          </div>
         </div>
 
         <el-button
@@ -98,7 +124,15 @@
           plain
           type="danger"
         >删除</el-button>
-        <el-button title="复制" @click.stop="handleWidgetClone(index)" class="widget-action-clone" v-if="selectWg.key === item.key" circle plain type="primary">复制</el-button>
+        <el-button
+          title="复制"
+          @click.stop="handleWidgetClone(index)"
+          class="widget-action-clone"
+          v-if="selectWg.key === item.key"
+          circle
+          plain
+          type="primary"
+        >复制</el-button>
       </div>
     </template>
   </draggable>
