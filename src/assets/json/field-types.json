@@ -47,6 +47,14 @@
 	}, {
 		"value": "accFund",
 		"label": "是否有本地公积金"
+  }],
+  
+  "hPickerTypes": [{
+		"value": "age",
+		"label": "年龄"
+	}, {
+		"value": "amount",
+		"label": "金额"
 	}],
 
 	"dateTypes": [{

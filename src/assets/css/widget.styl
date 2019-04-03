@@ -237,5 +237,31 @@ $primary-background-color = #d8e8fa;
       text-align: center;
       // box-shadow: 0 3px 10px 1px #90c7ff;
     }
+
+    .wg-horizontal-picker {
+      white-space: nowrap;
+      height: 36px;
+      line-height: 36px;
+      margin: 0;
+      padding: 0;
+
+      .picker-item {
+        height: 100%;
+        text-align: center;
+        display: inline-block;
+        padding: 0;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #707274;
+        box-sizing: border-box;
+        backface-visibility: hidden;
+      }
+
+      .picker-selected {
+        color: rgb(214, 131, 23);
+      }
+    }
   }
 }
