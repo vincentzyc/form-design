@@ -40,7 +40,8 @@
             </el-select>
           </el-form-item>
           <el-form-item label="选项" v-if="selectWg.hasOwnProperty('options')">
-            <template v-if="selectWg.type=='checkbox' || selectWg.type=='select'">
+            <!-- <template v-if="selectWg.type=='checkbox' || selectWg.type=='select'"> -->
+            <template>
               <draggable element="ul" :list="selectWg.options" :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.move-icon'}">
                 <li v-for="(item, index) in selectWg.options" :key="index">
                   <div class="flex align-middle">
@@ -104,6 +105,9 @@
           </el-form-item>
           <el-form-item label="按钮背景色" v-if="selectWg.style.hasOwnProperty('btnStyle')">
             <el-color-picker v-model="selectWg.style.btnStyle.background"/>
+          </el-form-item>
+          <el-form-item label="选中后文字颜色" v-if="selectWg.hasOwnProperty('pickerColor')">
+            <el-color-picker v-model="selectWg.pickerColor"/>
           </el-form-item>
         </el-collapse-item>
       </el-collapse>
