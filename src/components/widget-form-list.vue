@@ -110,7 +110,7 @@
               class="picker-item"
               v-for="optionsItem in item.options"
               :key="optionsItem"
-              :style="optionsItem===item.value?{ color: optionsItem.pickerColor }:{}"
+              :style="optionsItem===item.value?{ color: item.pickerColor }:{}"
             >{{optionsItem}}</div>
           </div>
         </div>
