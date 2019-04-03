@@ -108,9 +108,9 @@
           <div class="wg-horizontal-picker">
             <div
               class="picker-item"
-              v-for="optionsItem in item.options"
+              v-for="(optionsItem,key) in item.options"
               :key="optionsItem"
-              :style="optionsItem===item.value?{ color: item.pickerColor }:{}"
+              :style="key===0?{ color: item.pickerColor }:{}"
             >{{optionsItem}}</div>
           </div>
         </div>
