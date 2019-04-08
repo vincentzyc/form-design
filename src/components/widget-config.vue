@@ -2,19 +2,15 @@
   <div v-if="this.selectWg && Object.keys(this.selectWg).length > 0">
     <el-form label-position="top">
       <el-collapse v-model="activeName" accordion>
-        <el-collapse-item title="基础设置" name="collapse1">
+        <el-collapse-item title="基础设置" name="base">
           <el-form-item label="选择控件" v-if="selectWg.hasOwnProperty('fieldTypes')">
             <el-select v-model="selectWg.apiKey" filterable placeholder="请选择" @change="selectfield(selectWg.apiKey,fieldTypes[selectWg.fieldTypes])">
               <el-option v-for="item in fieldTypes[selectWg.fieldTypes]" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="标签" v-if="selectWg.hasOwnProperty('labelTitle')">
-            <el-input v-model="selectWg.labelTitle"></el-input>
-          </el-form-item>
           <el-form-item label="是否显示标签" v-if="selectWg.hasOwnProperty('showLabel')">
-            <el-switch v-model="selectWg.showLabel" @change="selectWg.showLabel?activeName='collapse2':''"></el-switch>
+            <el-switch v-model="selectWg.showLabel" @change="selectWg.showLabel?activeName='tag':''"></el-switch>
           </el-form-item>
-
           <el-form-item label="是否发送验证码" v-if="selectWg.hasOwnProperty('showCode')">
             <el-switch v-model="selectWg.showCode"></el-switch>
           </el-form-item>
@@ -74,19 +70,28 @@
           </template>
         </el-collapse-item>
 
-        <el-collapse-item title="标签设置" name="collapse2" v-if="selectWg.showLabel">
-          <el-form-item label="标签宽度(px)" v-if="selectWg.hasOwnProperty('labelwidth')">
-            <el-input-number v-model="selectWg.labelwidth" :min="30" :max="300" size="small" @change="val=>selectWg.labelWidth = `${val}px`"/>
+        <el-collapse-item title="标签设置" name="tag" v-if="selectWg.label&&selectWg.showLabel!==false">
+          <el-form-item label="标签名称" v-if="selectWg.label.hasOwnProperty('labelTitle')">
+            <el-input v-model="selectWg.label.labelTitle"></el-input>
           </el-form-item>
-          <el-form-item label="标签对齐方式" v-if="selectWg.hasOwnProperty('labelPosition')">
-            <el-radio-group v-model="selectWg.labelPosition" size="mini">
+          <el-form-item label="标签宽度(px)" v-if="selectWg.label.hasOwnProperty('labelwidth')">
+            <el-input-number
+              v-model="selectWg.label.labelwidth"
+              :min="30"
+              :max="300"
+              size="small"
+              @change="val=>selectWg.label.labelWidth = `${val}px`"
+            />
+          </el-form-item>
+          <el-form-item label="标签对齐方式" v-if="selectWg.label.hasOwnProperty('labelPosition')">
+            <el-radio-group v-model="selectWg.label.labelPosition" size="mini">
               <el-radio-button label="left">左对齐</el-radio-button>
               <el-radio-button label="top">顶部对齐</el-radio-button>
             </el-radio-group>
           </el-form-item>
         </el-collapse-item>
 
-        <el-collapse-item title="外观样式" name="collapse3" v-if="selectWg.hasOwnProperty('style')">
+        <el-collapse-item title="外观样式" name="style" v-if="selectWg.hasOwnProperty('style')">
           <el-form-item label="文本对齐方式" v-if="selectWg.style.hasOwnProperty('textAlign')">
             <el-radio-group v-model="selectWg.style.textAlign" size="mini">
               <el-radio-button label="left">左对齐</el-radio-button>
@@ -126,7 +131,7 @@ export default {
   },
   data() {
     return {
-      activeName: 'collapse1',
+      activeName: 'base',
       fieldTypes: allFieldTypes
     }
   },

@@ -4,10 +4,12 @@
 			"name": "手机号",
 			"placeholder": "请输入手机号",
 			"showLabel": false,
-			"labelTitle": "手机号",
-			"labelPosition": "left",
-			"labelwidth": 50,
-			"labelWidth": "50px",
+			"label": {
+				"labelTitle": "手机号",
+				"labelPosition": "left",
+				"labelwidth": 50,
+				"labelWidth": "50px"
+			},
 			"value": "",
 			"apiKey": "phone",
 			"codeValue": "",
@@ -24,10 +26,12 @@
 			"name": "输入框",
 			"placeholder": "请输入姓名",
 			"showLabel": false,
-			"labelTitle": "姓名",
-			"labelPosition": "left",
-			"labelwidth": 50,
-			"labelWidth": "50px",
+			"label": {
+				"labelTitle": "姓名",
+				"labelPosition": "left",
+				"labelwidth": 50,
+				"labelWidth": "50px"
+			},
 			"value": "",
 			"apiKey": "name",
 			"fieldTypes": "inputTypes",
@@ -38,11 +42,15 @@
 		{
 			"type": "checkbox",
 			"name": "选择框",
-			"labelTitle": "旅拍城市",
 			"value": [],
 			"apiKey": "shootPlace",
 			"isRadio": false,
-			"labelPosition": "left",
+			"label": {
+				"labelTitle": "旅拍城市",
+				"labelwidth": 66,
+				"labelWidth": "66px",
+				"labelPosition": "left"
+			},
 			"fieldTypes": "checkboxTypes",
 			"options": ["北京", "三亚", "丽江", "巴厘岛", "马尔代夫", "威尼斯", "其他"],
 			"style": {
@@ -52,8 +60,12 @@
 		{
 			"type": "date",
 			"name": "日期选择器",
-			"labelTitle": "生日",
-			"labelPosition": "left",
+			"label": {
+				"labelTitle": "生日",
+				"labelwidth": 50,
+				"labelWidth": "50px",
+				"labelPosition": "left"
+			},
 			"apiKey": "birthday",
 			"value": "",
 			"fieldTypes": "dateTypes",
@@ -67,11 +79,13 @@
 			"value": "",
 			"apiKey": "educationLevel",
 			"placeholder": "请选择教育程度",
-			"showLabel": false,
-			"labelTitle": "教育程度",
-			"labelPosition": "left",
-			"labelwidth": 50,
-			"labelWidth": "50px",
+			"showLabel": true,
+			"label": {
+				"labelTitle": "教育程度",
+				"labelPosition": "left",
+				"labelwidth": 66,
+				"labelWidth": "66px"
+			},
 			"fieldTypes": "selectTypes",
 			"options": ["硕士及以上", "本科", "大专", "中专/高中及以下"],
 			"style": {
@@ -81,9 +95,13 @@
 		{
 			"type": "switch",
 			"name": "开关",
-			"labelTitle": "是否有信用卡",
 			"value": false,
-			"labelPosition": "left",
+			"label": {
+				"labelTitle": "是否有信用卡",
+				"labelPosition": "left",
+				"labelwidth": 100,
+				"labelWidth": "100px"
+			},
 			"fieldTypes": "switchTypes",
 			"apiKey": "creditCard",
 			"style": {
@@ -93,13 +111,17 @@
 		{
 			"type": "h-picker",
 			"name": "横向滑动单选",
-			"labelTitle": "年龄",
 			"value": "",
 			"options": ["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
-			"labelPosition": "left",
+			"label": {
+				"labelTitle": "年龄",
+				"labelPosition": "left",
+				"labelwidth": 50,
+				"labelWidth": "50px"
+			},
 			"fieldTypes": "hPickerTypes",
-      "apiKey": "age",
-      "pickerColor":"#409eff",
+			"apiKey": "age",
+			"pickerColor": "#409eff",
 			"style": {
 				"margin": "0px 0px 0px 0px"
 			}

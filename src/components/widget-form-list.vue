@@ -15,14 +15,14 @@
       >
         <!-- 手机 -->
         <div v-if="item.type === 'phone'" class="wg-phone" :style="item.style">
-          <div class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
-            <div class="wg-title" :style="{width:item.labelWidth}" v-show="item.showLabel">{{item.labelTitle}}</div>
+          <div class="wg-item" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']">
+            <div class="wg-title" :style="{width:item.label.labelWidth}" v-show="item.showLabel">{{item.label.labelTitle}}</div>
             <div class="flex-auto">
               <input class="wg-input" v-model="item.value" :placeholder="item.placeholder">
             </div>
           </div>
-          <div class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" v-if="item.showCode">
-            <div class="wg-title flex-none" v-show="item.showLabel" :style="{width:item.labelWidth}">验证码</div>
+          <div class="wg-item" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" v-if="item.showCode">
+            <div class="wg-title flex-none" v-show="item.showLabel" :style="{width:item.label.labelWidth}">验证码</div>
             <div class="flex flex-auto">
               <input placeholder="验证码" class="wg-input">
               <button class="getVerCode-btn" :style="item.style.btnStyle">获取验证码</button>
@@ -31,8 +31,8 @@
         </div>
 
         <!-- 输入框 -->
-        <div v-if="item.type === 'input'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
-          <div class="wg-title" :style="{width:item.labelWidth}" v-show="item.showLabel">{{item.labelTitle}}</div>
+        <div v-if="item.type === 'input'" class="wg-item" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
+          <div class="wg-title" :style="{width:item.label.labelWidth}" v-show="item.showLabel">{{item.label.labelTitle}}</div>
           <div class="flex-auto">
             <input v-model="item.value" :placeholder="item.placeholder" class="wg-input">
           </div>
@@ -42,10 +42,10 @@
         <div
           v-if="item.type === 'checkbox'"
           class="wg-item flex-wrap wg-checkbox"
-          :class="[item.labelPosition==='top'?'flex-column':'align-middle']"
+          :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']"
           :style="item.style"
         >
-          <div class="wg-title" :style="{width:item.labelWidth}">{{item.labelTitle}}</div>
+          <div class="wg-title" :style="{width:item.label.labelWidth}">{{item.label.labelTitle}}</div>
           <div class="flex-auto">
             <label class="label" v-for="(optionsItem, key) in item.options" :key="optionsItem + key">
               <input class="wg-checkbox-input" :type="item.isRadio?'radio':'checkbox'" :value="optionsItem" v-model="item.value" style="display:none">
@@ -55,12 +55,17 @@
         </div>
 
         <!-- 下拉选择 -->
-        <div v-if="item.type === 'select'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
-          <div class="wg-title" :style="{width:item.labelWidth}" v-show="item.showLabel">{{item.labelTitle}}</div>
+        <div v-if="item.type === 'select'" class="wg-item" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
+          <div class="wg-title" :style="{width:item.label.labelWidth}" v-show="item.showLabel">{{item.label.labelTitle}}</div>
           <div class="flex-auto">
             <select v-model="item.value" class="wg-select flex-auto">
               <option value disabled selected hidden>{{item.placeholder}}</option>
-              <option v-for="optionsItem in item.options" :key="optionsItem" :value="optionsItem" :label="item.showLabel?item.label:optionsItem"></option>
+              <option
+                v-for="(optionsItem,key) in item.options"
+                :key="optionsItem + key"
+                :value="optionsItem"
+                :label="item.showLabel?item.label:optionsItem"
+              ></option>
             </select>
           </div>
         </div>
@@ -69,10 +74,10 @@
         <div
           v-if="item.type==='switch'"
           class="wg-item wg-switch"
-          :class="[item.labelPosition==='top'?'flex-column':'align-middle']"
+          :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']"
           :style="item.style"
         >
-          <div class="wg-title" :style="{width:item.labelWidth}">{{item.labelTitle}}</div>
+          <div class="wg-title" :style="{width:item.label.labelWidth}">{{item.label.labelTitle}}</div>
           <label class="label">
             <input type="checkbox" class="wg-switch-input" v-model="item.value" style="display:none">
             <span class="wg-switch-core"></span>
@@ -80,8 +85,8 @@
         </div>
 
         <!-- 日期选择 -->
-        <div v-if="item.type === 'date'" class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
-          <div class="wg-title" :style="{width:item.labelWidth}">{{item.labelTitle}}</div>
+        <div v-if="item.type === 'date'" class="wg-item" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
+          <div class="wg-title" :style="{width:item.label.labelWidth}">{{item.label.labelTitle}}</div>
           <div class="flex-auto">
             <input type="date" v-model="item.value" class="wg-input flex-auto">
           </div>
@@ -104,12 +109,13 @@
         </div>
 
         <!-- 横向滑动自动选择 -->
-        <div class="flex flex-center" v-if="item.type === 'h-picker'" :style="item.style">
+        <div class="wg-item" v-if="item.type === 'h-picker'" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
+          <div class="wg-title" :style="{width:item.label.labelWidth}">{{item.label.labelTitle}}</div>
           <div class="wg-horizontal-picker">
             <div
               class="picker-item"
               v-for="(optionsItem,key) in item.options"
-              :key="optionsItem"
+              :key="optionsItem + key"
               :style="key===0?{ color: item.pickerColor }:{}"
             >{{optionsItem}}</div>
           </div>
