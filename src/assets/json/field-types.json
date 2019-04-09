@@ -62,5 +62,8 @@
 	"dateTypes": [{
 		"value": "birthday",
 		"label": "生日"
+	},{
+		"value": "idCardValidity",
+		"label": "身份证有效期"
 	}]
 }

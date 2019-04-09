@@ -20,7 +20,6 @@
           <el-form-item label="文本内容" v-if="selectWg.type==='staticText'">
             <el-input type="textarea" v-model="selectWg.value"></el-input>
           </el-form-item>
-
           <el-form-item label="是否单选" v-if="selectWg.hasOwnProperty('isRadio')">
             <el-switch v-model="selectWg.isRadio" @change="isRadio"></el-switch>
           </el-form-item>
@@ -36,7 +35,6 @@
             </el-select>
           </el-form-item>
           <el-form-item label="选项" v-if="selectWg.hasOwnProperty('options')">
-            <!-- <template v-if="selectWg.type=='checkbox' || selectWg.type=='select'"> -->
             <template>
               <draggable element="ul" :list="selectWg.options" :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.move-icon'}">
                 <li v-for="(item, index) in selectWg.options" :key="index">
@@ -52,7 +50,6 @@
               <el-button type="text" @click="handleAddOption()">添加选项</el-button>
             </div>
           </el-form-item>
-
           <template v-if="selectWg.type === 'imgshow'">
             <el-form-item label="图片上传">
               <el-upload
@@ -146,7 +143,7 @@ export default {
     },
     selectfield(key, types) {
       let selectItem = types.find(item => key === item.value);
-      this.selectWg.labelTitle ? this.selectWg.labelTitle = selectItem.label : "";
+      this.selectWg.label.labelTitle = selectItem.label;
       this.selectWg.options ? this.selectWg.options = selectItem.options : "";
       if (this.selectWg.hasOwnProperty('placeholder')) {
         this.selectWg.placeholder = this.selectWg.type === "input" ? `请输入${selectItem.label}` : `请选择${selectItem.label}`;
