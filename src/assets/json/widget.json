@@ -121,7 +121,11 @@
 			},
 			"fieldTypes": "hPickerTypes",
 			"apiKey": "age",
-			"pickerColor": "#409eff",
+			"pickerStyle": {
+				"color": "#409eff",
+				"fontsize": 18,
+				"fontSize": "18px"
+			},
 			"style": {
 				"margin": "0px 0px 0px 0px"
 			}

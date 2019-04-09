@@ -108,9 +108,20 @@
           <el-form-item label="按钮背景色" v-if="selectWg.style.hasOwnProperty('btnStyle')">
             <el-color-picker v-model="selectWg.style.btnStyle.background"/>
           </el-form-item>
-          <el-form-item label="选中后文字颜色" v-if="selectWg.hasOwnProperty('pickerColor')">
-            <el-color-picker v-model="selectWg.pickerColor"/>
-          </el-form-item>
+          <template v-if="selectWg.hasOwnProperty('pickerStyle')">
+            <el-form-item label="选中后文字颜色">
+              <el-color-picker v-model="selectWg.pickerStyle.color"/>
+            </el-form-item>
+            <el-form-item label="选中后文字大小(px)">
+              <el-input-number
+                v-model="selectWg.pickerStyle.fontsize"
+                :min="10"
+                :max="30"
+                size="small"
+                @change="val=>selectWg.pickerStyle.fontSize = `${val}px`"
+              />
+            </el-form-item>
+          </template>
         </el-collapse-item>
       </el-collapse>
     </el-form>
