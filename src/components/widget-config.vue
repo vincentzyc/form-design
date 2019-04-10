@@ -108,6 +108,12 @@
           <el-form-item label="按钮背景色" v-if="selectWg.style.hasOwnProperty('btnStyle')">
             <el-color-picker v-model="selectWg.style.btnStyle.background"/>
           </el-form-item>
+          <el-form-item label="每项宽度" v-if="selectWg.hasOwnProperty('itemWidth')">
+            <el-input-number v-model="selectWg.itemWidth" :min="10" size="small"/>
+          </el-form-item>
+          <el-form-item label="显示个数" v-if="selectWg.hasOwnProperty('showNumber')">
+            <el-input-number v-model="selectWg.showNumber" :min="1" size="small"/>
+          </el-form-item>
           <template v-if="selectWg.hasOwnProperty('pickerStyle')">
             <el-form-item label="选中后文字颜色">
               <el-color-picker v-model="selectWg.pickerStyle.color"/>
