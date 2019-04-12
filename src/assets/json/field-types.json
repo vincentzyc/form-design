@@ -45,6 +45,9 @@
 		"value": "creditCard",
 		"label": "是否有信用卡"
 	}, {
+		"value": "socialSecurity",
+		"label": "是否有社保"
+	}, {
 		"value": "accFund",
 		"label": "是否有本地公积金"
 	}],
@@ -62,7 +65,7 @@
 	"dateTypes": [{
 		"value": "birthday",
 		"label": "生日"
-	},{
+	}, {
 		"value": "idCardValidity",
 		"label": "身份证有效期"
 	}]
