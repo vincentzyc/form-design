@@ -52,17 +52,7 @@
           </el-form-item>
           <template v-if="selectWg.type === 'imgShow'">
             <el-form-item label="图片上传">
-              <el-upload
-                class="avatar-uploader"
-                :action="$api.apiUrl()+'supermarketloan/mgr/eventmarket/uploadeventmarketimg'"
-                :show-file-list="false"
-                :on-success="handleAvatarSuccess"
-                :before-upload="beforeAvatarUpload"
-                :on-error="uploadError"
-              >
-                <img v-if="selectWg.value" :src="selectWg.value" class="avatar">
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-              </el-upload>
+              <ImgUpload :value.sync="selectWg.value"/>
             </el-form-item>
           </template>
         </el-collapse-item>
