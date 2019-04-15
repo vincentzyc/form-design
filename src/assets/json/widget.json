@@ -156,7 +156,7 @@
 		"value": "",
 		"margin": "0px 0px 0px 0px"
 	}, {
-		"type": "imgshow",
+		"type": "imgShow",
 		"name": "图片展示",
 		"value": "",
 		"margin": "0px 0px 0px 0px"
