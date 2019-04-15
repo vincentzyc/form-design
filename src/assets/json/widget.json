@@ -120,9 +120,9 @@
 				"labelWidth": "50px"
 			},
 			"fieldTypes": "hPickerTypes",
-      "apiKey": "age",
-      "itemWidth":50,
-      "showNumber":5,
+			"apiKey": "age",
+			"itemWidth": 50,
+			"showNumber": 5,
 			"pickerStyle": {
 				"color": "#409eff",
 				"fontsize": 18,
@@ -151,6 +151,11 @@
 		}
 	],
 	"imgComponents": [{
+		"type": "imgSlide",
+		"name": "图片轮播",
+		"value": "",
+		"margin": "0px 0px 0px 0px"
+	}, {
 		"type": "imgshow",
 		"name": "图片展示",
 		"value": "",
