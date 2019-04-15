@@ -50,7 +50,7 @@
               <el-button type="text" @click="handleAddOption()">添加选项</el-button>
             </div>
           </el-form-item>
-          <template v-if="selectWg.type === 'imgshow'">
+          <template v-if="selectWg.type === 'imgShow'">
             <el-form-item label="图片上传">
               <el-upload
                 class="avatar-uploader"

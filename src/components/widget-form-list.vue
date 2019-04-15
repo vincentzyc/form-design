@@ -10,7 +10,7 @@
       <div
         class="widget-view"
         :key="item.key"
-        :class="{active: selectWg.key === item.key,'widget-view-imgshow':item.type === 'imgshow'}"
+        :class="{active: selectWg.key === item.key,'widget-view-imgshow':item.type === 'imgShow'}"
         @click="handleSelectWidget(index)"
       >
         <!-- 手机 -->
@@ -103,7 +103,7 @@
         </div>
 
         <!-- 图片展示 -->
-        <div class="flex flex-center" v-if="item.type === 'imgshow'" :class="{'img-placeholder':!item.value}" :style="item.style">
+        <div class="flex flex-center" v-if="item.type === 'imgShow'" :class="{'img-placeholder':!item.value}" :style="item.style">
           <img v-if="item.value" :src="item.value" alt="图片展示" width="100%">
           <img v-else src="@/assets/img/img-placeholder.png" alt="图片展示">
         </div>
