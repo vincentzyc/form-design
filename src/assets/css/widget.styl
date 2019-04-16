@@ -72,14 +72,6 @@ $primary-background-color = #d8e8fa;
     z-index: 1009;
   }
 
-  .widget-view.widget-view-imgshow {
-    padding: 0;
-
-    .img-placeholder {
-      background: #f1f1f1;
-    }
-  }
-
   .widget-view {
     margin: 0;
     padding: 5px 10px;
@@ -259,6 +251,43 @@ $primary-background-color = #d8e8fa;
         color: #707274;
         box-sizing: border-box;
         backface-visibility: hidden;
+      }
+    }
+
+    .wg-imgshow {
+      margin: -5px -10px;
+
+      .img-placeholder {
+        background: #f1f1f1;
+      }
+    }
+
+    .wg-imgslide {
+      margin: -5px -10px;
+      text-align: center;
+
+      .el-carousel__container {
+        height: 100%;
+      }
+
+      .el-carousel__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .el-carousel__item h3 {
+        color: #475669;
+        font-size: 18px;
+        opacity: 0.75;
+      }
+
+      .el-carousel__item:nth-child(2n) {
+        background-color: #99a9bf;
+      }
+
+      .el-carousel__item:nth-child(2n+1) {
+        background-color: #d3dce6;
       }
     }
   }

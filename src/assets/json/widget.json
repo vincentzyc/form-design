@@ -153,13 +153,18 @@
 	"imgComponents": [{
 		"type": "imgSlide",
 		"name": "图片轮播",
-		"value": "",
-		"margin": "0px 0px 0px 0px"
+		"value": [],
+		"style": {
+      "margin": "0px 0px 0px 0px",
+      "height": 250
+		}
 	}, {
 		"type": "imgShow",
 		"name": "图片展示",
 		"value": "",
-		"margin": "0px 0px 0px 0px"
+		"style": {
+			"margin": "0px 0px 0px 0px"
+		}
 	}],
 	"assistComponents": [{
 		"type": "staticText",
