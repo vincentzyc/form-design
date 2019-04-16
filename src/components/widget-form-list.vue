@@ -109,9 +109,9 @@
         <div class="wg-imgslide" v-if="item.type === 'imgSlide'">
           <div class="flex flex-center" :style="{margin:item.style.margin}">
             <el-carousel :interval="3000" arrow="never" :style="{width:'100%',height:item.style.height+'px'}">
-              <el-carousel-item v-for="url in item.value" :key="url">
-                <!-- <span>{{ url }}</span> -->
-                <img :src="url" alt="banner" style="width:100%;height:100%">
+              <el-carousel-item v-for="(list,key) in item.value" :key="key">
+                <img v-if="list.image" :src="list.image" alt="banner" style="width:100%;height:100%">
+                <span v-else>{{ '图片' + key+1 }}</span>
               </el-carousel-item>
             </el-carousel>
           </div>

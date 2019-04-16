@@ -153,10 +153,19 @@
 	"imgComponents": [{
 		"type": "imgSlide",
 		"name": "图片轮播",
-		"value": ["static/img/theme1.jpg","static/img/theme2.jpg","static/img/theme3.jpg"],
+		"value": [{
+			"url": "www.baidu.com",
+			"image": "static/img/theme1.jpg"
+		}, {
+			"url": "qq.com",
+			"image": "static/img/theme2.jpg"
+		}, {
+			"url": "jd.com",
+			"image": "static/img/theme3.jpg"
+		}],
 		"style": {
-      "margin": "0px 0px 0px 0px",
-      "height": 250
+			"margin": "0px 0px 0px 0px",
+			"height": 250
 		}
 	}, {
 		"type": "imgShow",

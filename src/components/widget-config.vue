@@ -35,24 +35,51 @@
             </el-select>
           </el-form-item>
           <el-form-item label="选项" v-if="selectWg.hasOwnProperty('options')">
-            <template>
-              <draggable element="ul" :list="selectWg.options" :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.move-icon'}">
-                <li v-for="(item, index) in selectWg.options" :key="index">
-                  <div class="flex align-middle">
-                    <el-input size="mini" v-model="selectWg.options[index]"></el-input>
-                    <i class="el-icon-menu move-icon"></i>
-                    <i class="el-icon-delete delect-icon" @click="handleOptionsRemove(index)"></i>
-                  </div>
-                </li>
-              </draggable>
-            </template>
+            <draggable element="ul" :list="selectWg.options" :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.move-icon'}">
+              <li v-for="(item, index) in selectWg.options" :key="index">
+                <div class="flex align-middle">
+                  <el-input size="mini" v-model="selectWg.options[index]"></el-input>
+                  <i class="el-icon-menu move-icon"></i>
+                  <i class="el-icon-delete delect-icon" @click="handleOptionsRemove(index)"></i>
+                </div>
+              </li>
+            </draggable>
             <div style="margin-left: 22px;">
               <el-button type="text" @click="handleAddOption()">添加选项</el-button>
             </div>
           </el-form-item>
-          <template v-if="selectWg.type === 'imgShow'">
-            <el-form-item label="图片上传">
-              <ImgUpload :value.sync="selectWg.value"/>
+          <el-form-item label="图片上传" v-if="selectWg.type === 'imgShow'">
+            <ImgUpload :value.sync="selectWg.value"/>
+          </el-form-item>
+          <template v-if="selectWg.type ==='imgSlide'">
+            <el-form-item label="轮播图片设置">
+              <draggable element="ul" :list="selectWg.value" :options="{group:{ name:'slideList'}, ghostClass: 'ghost',handle: '.move-icon'}">
+                <li v-for="(item, index) in selectWg.value" :key="index" style="border:1px dashed #999">
+                  <div class="pd10">
+                    <div class="relative flex flex-center">
+                      <ImgUpload :value.sync="item.image"/>
+                      <div class="absolute-top-right">
+                        <i class="el-icon-menu move-icon"></i>
+                        <i class="el-icon-delete delect-icon" @click="handleSlideRemove(index)"></i>
+                      </div>
+                    </div>
+                    <div class="flex">
+                      <span class="flex-none">图片地址：</span>
+                      <el-input size="mini" placeholder="请输入图片地址" v-model="item.image"></el-input>
+                    </div>
+                    <div class="flex">
+                      <span class="flex-none">跳转地址：</span>
+                      <el-input size="mini" placeholder="请输入跳转地址" v-model="item.url"></el-input>
+                    </div>
+                  </div>
+                </li>
+              </draggable>
+              <div class="text-center">
+                <el-button type="text" @click="handleAddSlide()">添加图片</el-button>
+              </div>
+            </el-form-item>
+            <el-form-item label="图片高度(px)">
+              <el-input-number v-model="selectWg.style.height" :min="100" :max="300" size="small"/>
             </el-form-item>
           </template>
         </el-collapse-item>
@@ -180,7 +207,16 @@ export default {
     },
     handleAddOption() {
       this.selectWg.options.push('新选项')
-    }
+    },
+    handleSlideRemove(index) {
+      this.selectWg.value.splice(index, 1)
+    },
+    handleAddSlide() {
+      this.selectWg.value.push({
+        url: "https://www.baidu.com/",
+        image: "https://www.baidu.com/img/bd_logo1.png"
+      })
+    },
   }
 }
 </script>

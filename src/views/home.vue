@@ -45,7 +45,7 @@
           </el-main>
         </el-container>
 
-        <el-aside class="widget-config-container" style="min-width:300px;width:25vw">
+        <el-aside class="widget-config-container" style="min-width:300px;width:20vw">
           <el-container>
             <el-header height="45px" class="flex">
               <div class="config-tab flex-auto" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">字段属性</div>
