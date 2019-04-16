@@ -108,9 +108,10 @@
         <!-- 图片轮播 -->
         <div class="wg-imgslide" v-if="item.type === 'imgSlide'">
           <div class="flex flex-center" :style="{margin:item.style.margin}">
-            <el-carousel :interval="5000" arrow="never" :style="{width:'100%',height:item.style.height+'px'}">
-              <el-carousel-item v-for="item in 4" :key="item">
-                <span>{{ item }}</span>
+            <el-carousel :interval="3000" arrow="never" :style="{width:'100%',height:item.style.height+'px'}">
+              <el-carousel-item v-for="url in item.value" :key="url">
+                <!-- <span>{{ url }}</span> -->
+                <img :src="url" alt="banner" style="width:100%;height:100%">
               </el-carousel-item>
             </el-carousel>
           </div>

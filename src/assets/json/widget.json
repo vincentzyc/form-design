@@ -153,7 +153,7 @@
 	"imgComponents": [{
 		"type": "imgSlide",
 		"name": "图片轮播",
-		"value": [],
+		"value": ["static/img/theme1.jpg","static/img/theme2.jpg","static/img/theme3.jpg"],
 		"style": {
       "margin": "0px 0px 0px 0px",
       "height": 250

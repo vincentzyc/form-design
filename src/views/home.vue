@@ -2,11 +2,15 @@
   <div class="home">
     <Header/>
     <el-container>
-      <div class="form-edit-wrapper flex flex-auto">
-        <el-aside>
+      <div class="form-edit-wrapper flex">
+        <el-aside style="min-width:300px;width:20vw">
           <div class="components-list">
             <div class="widget-cate">基础类组件</div>
-            <draggable element="ul" :list="basicComponents" :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}">
+            <draggable
+              element="ul"
+              :list="basicComponents"
+              :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+            >
               <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
                 <a>{{item.name}}</a>
               </li>
@@ -18,7 +22,11 @@
               </li>
             </draggable>
             <div class="widget-cate">辅助类组件</div>
-            <draggable element="ul" :list="assistComponents" :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}">
+            <draggable
+              element="ul"
+              :list="assistComponents"
+              :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+            >
               <li class="form-edit-widget-label" v-for="(item, index) in assistComponents" :key="index">
                 <a>{{item.name}}</a>
               </li>
@@ -37,11 +45,11 @@
           </el-main>
         </el-container>
 
-        <el-aside class="widget-config-container">
+        <el-aside class="widget-config-container" style="min-width:300px;width:25vw">
           <el-container>
-            <el-header height="45px">
-              <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">字段属性</div>
-              <div class="config-tab" :class="{active: configTab=='page'}" @click="handleConfigSelect('page')">页面属性</div>
+            <el-header height="45px" class="flex">
+              <div class="config-tab flex-auto" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">字段属性</div>
+              <div class="config-tab flex-auto" :class="{active: configTab=='page'}" @click="handleConfigSelect('page')">页面属性</div>
             </el-header>
             <el-main class="config-content">
               <widget-config v-show="configTab=='widget'"></widget-config>
