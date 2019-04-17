@@ -81,6 +81,15 @@
             <el-form-item label="图片高度(px)">
               <el-input-number v-model="selectWg.style.height" :min="100" :max="300" size="small"/>
             </el-form-item>
+            <el-form-item>
+              <span slot="label">
+                <span>播放间隔(ms)</span>
+                <el-tooltip effect="dark" content="本页面无法看到实时效果，请点击预览查看" placement="top">
+                  <i class="el-icon-info fs12 mg-l10"></i>
+                </el-tooltip>
+              </span>
+              <el-input-number v-model="selectWg.interval" :min="1000" :max="10000" size="small"/>
+            </el-form-item>
           </template>
         </el-collapse-item>
 

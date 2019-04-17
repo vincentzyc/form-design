@@ -154,15 +154,16 @@
 		"type": "imgSlide",
 		"name": "图片轮播",
 		"value": [{
-			"url": "www.baidu.com",
+			"url": "https://www.baidu.com",
 			"image": "static/img/theme1.jpg"
 		}, {
-			"url": "qq.com",
+			"url": "https://qq.com",
 			"image": "static/img/theme2.jpg"
 		}, {
-			"url": "jd.com",
+			"url": "https://jd.com",
 			"image": "static/img/theme3.jpg"
-		}],
+    }],
+    "interval":3000,
 		"style": {
 			"margin": "0px 0px 0px 0px",
 			"height": 250
