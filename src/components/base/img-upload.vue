@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     handleAvatarSuccess(res, file, fileList) {
-      this.$emit('update:value', res.data)
+      this.$emit('update:value', URL.createObjectURL(file.raw))
       this.fullLoading.close()
     },
     uploadError(err, file, fileList) {
@@ -28,13 +28,14 @@ export default {
       this.$alert('网络繁忙，请稍后重试')
     },
     beforeAvatarUpload(file) {
-      const isLt2M = file.size / 1024 / 1024 < 1;
+      const isLt2M = file.size / 1024 < 20;
       if (!isLt2M) {
-        this.$message.error('上传图片大小不能超过 1MB!');
+        this.$message.error('上传图片大小不能超过 20 KB!');
+      } else {
+        this.fullLoading = this.$loading({
+          text: '正在上传'
+        });
       }
-      this.fullLoading = this.$loading({
-        text: '正在上传'
-      });
       return isLt2M;
     },
   }

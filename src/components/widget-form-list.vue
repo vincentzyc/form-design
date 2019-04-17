@@ -7,12 +7,7 @@
     :class="{'widget-empty': pageData[list].length === 0}"
   >
     <template v-for="(item, index) in pageData[list]">
-      <div
-        class="widget-view"
-        :key="item.key"
-        :class="{active: selectWg.key === item.key,'widget-view-imgshow':item.type === 'imgShow'}"
-        @click="handleSelectWidget(index)"
-      >
+      <div class="widget-view" :key="item.key" :class="{active: selectWg.key === item.key}" @click="handleSelectWidget(index)">
         <!-- 手机 -->
         <div v-if="item.type === 'phone'" class="wg-phone" :style="item.style">
           <div class="wg-item" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']">
@@ -103,9 +98,23 @@
         </div>
 
         <!-- 图片展示 -->
-        <div class="flex flex-center" v-if="item.type === 'imgShow'" :class="{'img-placeholder':!item.value}" :style="item.style">
-          <img v-if="item.value" :src="item.value" alt="图片展示" width="100%">
-          <img v-else src="@/assets/img/img-placeholder.png" alt="图片展示">
+        <div class="wg-imgshow" v-if="item.type === 'imgShow'">
+          <div class="flex flex-center" :class="{'img-placeholder':!item.value}" :style="item.style">
+            <img v-if="item.value" :src="item.value" alt="图片展示" width="100%">
+            <img v-else src="@/assets/img/img-placeholder.png" alt="图片展示">
+          </div>
+        </div>
+
+        <!-- 图片轮播 -->
+        <div class="wg-imgslide" v-if="item.type === 'imgSlide'">
+          <div class="flex flex-center" :style="{margin:item.style.margin}">
+            <el-carousel :interval="3000" arrow="never" :style="{width:'100%',height:item.style.height+'px'}">
+              <el-carousel-item v-for="(list,key) in item.value" :key="key">
+                <img v-if="list.image" :src="list.image" alt="banner" style="width:100%;height:100%">
+                <span v-else>{{ '图片' + key+1 }}</span>
+              </el-carousel-item>
+            </el-carousel>
+          </div>
         </div>
 
         <!-- 按钮 -->
