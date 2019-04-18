@@ -18,11 +18,11 @@ export default {
     value: String
   },
   methods: {
-    handleAvatarSuccess(res, file, fileList) {
+    handleAvatarSuccess(res, file) {
       this.$emit('update:value', URL.createObjectURL(file.raw))
       this.fullLoading.close()
     },
-    uploadError(err, file, fileList) {
+    uploadError(err) {
       console.log(err);
       this.fullLoading.close();
       this.$alert('网络繁忙，请稍后重试')
