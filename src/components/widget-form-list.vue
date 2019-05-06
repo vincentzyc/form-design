@@ -123,8 +123,13 @@
         </div>
 
         <!-- 文本描述 -->
-        <div v-if="item.type === 'staticText'" class="wg-staticText" :style="item.style">
+        <div v-if="item.type === 'staticText'" class="wg-staticText">
           <p :style="item.style">{{item.value}}</p>
+        </div>
+
+        <!-- 分割线 -->
+        <div v-if="item.type === 'splitLine'" class="wg-splitLine">
+          <hr class="splitLine-hr" :style="item.style">
         </div>
 
         <!-- 横向滑动自动选择 -->

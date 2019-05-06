@@ -128,6 +128,17 @@
           <el-form-item label="文字颜色" v-if="selectWg.style.hasOwnProperty('color')">
             <el-color-picker v-model="selectWg.style.color"/>
           </el-form-item>
+          <el-form-item label="线条颜色" v-if="selectWg.style.hasOwnProperty('borderColor')">
+            <el-color-picker v-model="selectWg.style.borderColor"/>
+          </el-form-item>
+          <el-form-item label="线条类型" v-if="selectWg.style.hasOwnProperty('borderStyle')">
+            <el-radio-group v-model="selectWg.style.borderStyle" size="mini" @change="val=>selectWg.style.borderTopWidth=val==='double'?'3px':'1px'">
+              <el-radio-button label="dotted">点线</el-radio-button>
+              <el-radio-button label="dashed">虚线</el-radio-button>
+              <el-radio-button label="solid">实线</el-radio-button>
+              <el-radio-button label="double">双实线</el-radio-button>
+            </el-radio-group>
+          </el-form-item>
           <el-form-item label="边距（上 右 下 左 、空格隔开）" v-if="selectWg.style.hasOwnProperty('margin')">
             <el-input v-model="selectWg.style.margin"></el-input>
           </el-form-item>
