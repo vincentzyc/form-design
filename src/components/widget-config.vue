@@ -203,25 +203,6 @@ export default {
         this.selectWg.placeholder = this.selectWg.type === "input" ? `请输入${selectItem.label}` : `请选择${selectItem.label}`;
       }
     },
-    handleAvatarSuccess(res, file, fileList) {
-      this.selectWg.value = res.data;
-      this.fullLoading.close()
-    },
-    uploadError(err, file, fileList) {
-      console.log(err);
-      this.fullLoading.close();
-      this.$alert('网络繁忙，请稍后重试')
-    },
-    beforeAvatarUpload(file) {
-      const isLt2M = file.size / 1024 / 1024 < 1;
-      if (!isLt2M) {
-        this.$message.error('上传图片大小不能超过 1MB!');
-      }
-      this.fullLoading = this.$loading({
-        text: '正在上传'
-      });
-      return isLt2M;
-    },
     handleOptionsRemove(index) {
       this.selectWg.options.splice(index, 1)
     },

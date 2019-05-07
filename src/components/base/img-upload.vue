@@ -18,6 +18,7 @@ export default {
     value: String
   },
   methods: {
+    /* eslint-disable */
     handleAvatarSuccess(res, file) {
       this.$emit('update:value', URL.createObjectURL(file.raw))
       this.fullLoading.close()
