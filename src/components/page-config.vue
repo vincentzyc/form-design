@@ -18,6 +18,7 @@
             </el-radio-group>
           </el-form-item>
         </el-collapse-item>
+
         <el-collapse-item title="主题设置" name="theme" v-if="pageData.config.theme">
           <el-form-item label="图片上传">
             <ImgUpload :value.sync="pageData.config.theme.banner"/>
