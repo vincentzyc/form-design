@@ -1,7 +1,7 @@
 <template>
   <div v-if="selectWg && Object.keys(selectWg).length > 0">
     <el-form label-position="top">
-      <el-collapse v-model="activeCollapse" accordion>
+      <el-collapse v-model="wgCollapse" accordion>
         <el-collapse-item title="基础设置" name="base">
           <BaseConfig :selectWg="selectWg"/>
         </el-collapse-item>
@@ -31,12 +31,12 @@ export default {
     StyleConfig
   },
   computed: {
-    activeCollapse: {
+    wgCollapse: {
       get() {
-        return this.$store.state.common.activeCollapse
+        return this.$store.state.common.wgCollapse
       },
       set(val) {
-        this.$store.commit('setActiveCollapse', val)
+        this.$store.commit('setWgCollapse', val)
       }
     },
     ...mapState({

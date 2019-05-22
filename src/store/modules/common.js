@@ -6,7 +6,7 @@ const state = {
   },
   selectWg: [],
   configTab: 'page',
-  activeCollapse: "base",
+  wgCollapse: "base",
   selectTheme: ""
 }
 
@@ -28,8 +28,8 @@ const mutations = {
   setConfigTab(state, payload) {
     state.configTab = payload;
   },
-  setActiveCollapse(state, payload) {
-    state.activeCollapse = payload;
+  setWgCollapse(state, payload) {
+    state.wgCollapse = payload;
   },
   setSelectTheme(state, payload) {
     state.selectTheme = payload;

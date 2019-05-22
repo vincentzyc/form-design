@@ -6,7 +6,7 @@
       </el-select>
     </el-form-item>
     <el-form-item label="是否显示标签" v-if="selectWg.hasOwnProperty('showLabel')">
-      <el-switch v-model="selectWg.showLabel" @change="selectWg.showLabel?$store.commit('setActiveCollapse', 'tag'):''"></el-switch>
+      <el-switch v-model="selectWg.showLabel" @change="selectWg.showLabel?$store.commit('setWgCollapse', 'tag'):''"></el-switch>
     </el-form-item>
     <el-form-item label="是否发送验证码" v-if="selectWg.hasOwnProperty('showCode')">
       <el-switch v-model="selectWg.showCode"></el-switch>

@@ -2,7 +2,7 @@
   <div class="form-config-container">
     <el-form label-position="top">
       <el-collapse v-model="activeName" accordion>
-        <el-collapse-item title="基础设置" name="collapse1">
+        <el-collapse-item title="基础设置" name="base">
           <el-form-item label="页面标题">
             <el-input v-model="pageData.config.title"></el-input>
           </el-form-item>
@@ -18,7 +18,7 @@
             </el-radio-group>
           </el-form-item>
         </el-collapse-item>
-        <el-collapse-item title="主题设置" name="collapse2" v-if="pageData.config.theme">
+        <el-collapse-item title="主题设置" name="theme" v-if="pageData.config.theme">
           <el-form-item label="图片上传">
             <ImgUpload :value.sync="pageData.config.theme.banner"/>
           </el-form-item>
@@ -45,7 +45,7 @@ import pageConfigData from '@/assets/json/page-config.json'
 export default {
   data() {
     return {
-      activeName: 'collapse1',
+      activeName: 'base',
       themes: pageConfigData.themes,
     }
   },
