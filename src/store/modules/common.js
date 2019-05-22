@@ -1,12 +1,13 @@
 const state = {
-	pageData: {
-		list: [],
-		formList: [],
-		config: {}
-	},
-	selectWg: [],
-	configTab: 'page',
-	selectTheme: ""
+  pageData: {
+    list: [],
+    formList: [],
+    config: {}
+  },
+  selectWg: [],
+  configTab: 'page',
+  activeCollapse: "base",
+  selectTheme: ""
 }
 
 // const actions = {
@@ -18,21 +19,24 @@ const state = {
 // }
 
 const mutations = {
-	setPageData(state, payload) {
-		state.pageData = payload;
-	},
-	setSelectWg(state, payload) {
-		state.selectWg = payload;
-	},
-	setConfigTab(state, payload) {
-		state.configTab = payload;
-	},
-	setSelectTheme(state, payload) {
-		state.selectTheme = payload;
-	}
+  setPageData(state, payload) {
+    state.pageData = payload;
+  },
+  setSelectWg(state, payload) {
+    state.selectWg = payload;
+  },
+  setConfigTab(state, payload) {
+    state.configTab = payload;
+  },
+  setActiveCollapse(state, payload) {
+    state.activeCollapse = payload;
+  },
+  setSelectTheme(state, payload) {
+    state.selectTheme = payload;
+  }
 }
 
 export default {
-	state,
-	mutations
+  state,
+  mutations
 }
