@@ -9,6 +9,9 @@
           <el-form-item label="页面背景色">
             <el-color-picker v-model="pageData.config.backgroundColor" />
           </el-form-item>
+          <el-form-item label="页面背景图片">
+            <ImgUpload :value.sync="pageData.config.backgroundImage" />
+          </el-form-item>
           <el-form-item label="页面统计ID">
             <el-input type="number" v-model="pageData.config.countId"></el-input>
           </el-form-item>
