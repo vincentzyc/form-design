@@ -1,8 +1,8 @@
 <template>
   <div class="widget-form-wrapper">
-    <div class="widget-form-container" :style="{background:pageData.config.background}">
+    <div class="widget-form-container" :style="{backgroundColor:pageData.config.backgroundColor}">
       <img v-if="theme" :src="themeBanner" alt="banner" width="100%" @click="setConfigTab()">
-      <widget-form-list list="formList" v-if="theme" :class="theme.value" :style="{width:theme.contentWidth,borderRadius:theme.borderRadius?'10px':'0'}"/>
+      <widget-form-list list="formList" v-if="theme" :class="theme.value" :style="{width:theme.contentWidth,margin:theme.margin,borderRadius:theme.borderRadius?'10px':'0'}"/>
       <widget-form-list list="list"/>
     </div>
   </div>

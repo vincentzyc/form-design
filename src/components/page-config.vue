@@ -7,7 +7,7 @@
             <el-input v-model="pageData.config.title"></el-input>
           </el-form-item>
           <el-form-item label="页面背景色">
-            <el-color-picker v-model="pageData.config.background"/>
+            <el-color-picker v-model="pageData.config.backgroundColor" />
           </el-form-item>
           <el-form-item label="页面统计ID">
             <el-input type="number" v-model="pageData.config.countId"></el-input>
@@ -21,7 +21,7 @@
 
         <el-collapse-item title="主题设置" name="theme" v-if="pageData.config.theme">
           <el-form-item label="图片上传">
-            <ImgUpload :value.sync="pageData.config.theme.banner"/>
+            <ImgUpload :value.sync="pageData.config.theme.banner" />
           </el-form-item>
           <el-form-item label="内容区域宽度" v-if="pageData.config.theme.hasOwnProperty('contentWidth')">
             <el-radio-group v-model="pageData.config.theme.contentWidth" size="mini">
@@ -33,6 +33,9 @@
           </el-form-item>
           <el-form-item label="内容区域圆角" v-if="pageData.config.theme.hasOwnProperty('borderRadius')">
             <el-switch v-model="pageData.config.theme.borderRadius"></el-switch>
+          </el-form-item>
+          <el-form-item label="内容区域位置（上 右 下 左 、空格隔开）" v-if="pageData.config.theme.hasOwnProperty('margin')">
+            <el-input v-model="pageData.config.theme.margin"></el-input>
           </el-form-item>
         </el-collapse-item>
       </el-collapse>
@@ -66,7 +69,7 @@ export default {
   methods: {
     setTheme(val) {
       this.pageData.config.theme = this.themes.find(item => val === item.value);
-      this.pageData.config.background = this.pageData.config.theme.background;
+      this.pageData.config.backgroundColor = this.pageData.config.theme.backgroundColor;
     }
   }
 }
