@@ -30,4 +30,4 @@ npm run test
 npm run lint
 ```
 
-参考 [vue-form-making](https://github.com/GavinZhuLei/vue-form-making)
+参考项目 [vue-form-making](https://github.com/GavinZhuLei/vue-form-making)
