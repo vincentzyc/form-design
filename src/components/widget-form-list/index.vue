@@ -1,7 +1,10 @@
 <template>
   <draggable
     v-model="pageData[list]"
-    :options="{group:'widget', ghostClass: 'ghost',swapThreshold:0.5,animation: 100}"
+    :group="{name:'widget'}"
+    ghostClass="ghost"
+    :swapThreshold="0.5"
+    :animation="100"
     @add="handleWidgetAdd"
     class="widget-form-list"
     :class="{'widget-empty': pageData[list].length === 0}"
@@ -9,40 +12,40 @@
     <template v-for="(item, index) in pageData[list]">
       <div class="widget-view" :key="item.key" :class="{active: selectWg.key === item.key}" @click="handleSelectWidget(index)">
         <!-- 手机 -->
-        <WgPhone :item="item"/>
+        <WgPhone :item="item" />
 
         <!-- 输入框 -->
-        <WgInput :item="item"/>
+        <WgInput :item="item" />
 
         <!-- 选择框 -->
-        <WgCheckbox :item="item"/>
+        <WgCheckbox :item="item" />
 
         <!-- 下拉选择 -->
-        <WgSelect :item="item"/>
+        <WgSelect :item="item" />
 
         <!-- 开关 -->
-        <WgSwitch :item="item"/>
+        <WgSwitch :item="item" />
 
         <!-- 日期选择 -->
-        <WgDate :item="item"/>
+        <WgDate :item="item" />
 
         <!-- 图片展示 -->
-        <WgImgshow :item="item"/>
+        <WgImgshow :item="item" />
 
         <!-- 图片轮播 -->
-        <WgImgslide :item="item"/>
+        <WgImgslide :item="item" />
 
         <!-- 按钮 -->
-        <WgButton :item="item"/>
+        <WgButton :item="item" />
 
         <!-- 文本描述 -->
-        <WgStaticText :item="item"/>
+        <WgStaticText :item="item" />
 
         <!-- 分割线 -->
-        <WgSplitLine :item="item"/>
+        <WgSplitLine :item="item" />
 
         <!-- 横向滑动自动选择 -->
-        <WgHpicker :item="item"/>
+        <WgHpicker :item="item" />
 
         <el-button
           title="删除"

@@ -32,7 +32,7 @@
       </el-select>
     </el-form-item>
     <el-form-item label="选项" v-if="selectWg.hasOwnProperty('options')">
-      <draggable element="ul" :list="selectWg.options" :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.move-icon'}">
+      <draggable tag="ul" :list="selectWg.options" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">
         <li v-for="(item, index) in selectWg.options" :key="index">
           <div class="flex align-middle">
             <el-input size="mini" v-model="selectWg.options[index]"></el-input>
@@ -46,15 +46,15 @@
       </div>
     </el-form-item>
     <el-form-item label="图片上传" v-if="selectWg.type === 'imgShow'">
-      <ImgUpload :value.sync="selectWg.value"/>
+      <ImgUpload :value.sync="selectWg.value" />
     </el-form-item>
     <template v-if="selectWg.type ==='imgSlide'">
       <el-form-item label="轮播图片设置">
-        <draggable element="ul" :list="selectWg.value" :options="{group:{ name:'slideList'}, ghostClass: 'ghost',handle: '.move-icon'}">
+        <draggable tag="ul" :list="selectWg.value" :group="{ name:'slideList'}" ghostClass="ghost" handle=".move-icon">
           <li v-for="(item, index) in selectWg.value" :key="index" style="border:1px dashed #999">
             <div class="pd10">
               <div class="relative flex flex-center">
-                <ImgUpload :value.sync="item.image"/>
+                <ImgUpload :value.sync="item.image" />
                 <div class="absolute-top-right">
                   <i class="el-icon-menu move-icon"></i>
                   <i class="el-icon-delete delect-icon" @click="handleSlideRemove(index)"></i>
@@ -76,7 +76,7 @@
         </div>
       </el-form-item>
       <el-form-item label="图片高度(px)">
-        <el-input-number v-model="selectWg.style.height" :min="100" :max="300" size="small"/>
+        <el-input-number v-model="selectWg.style.height" :min="100" :max="300" size="small" />
       </el-form-item>
       <el-form-item>
         <span slot="label">
@@ -85,7 +85,7 @@
             <i class="el-icon-info fs12 mg-l10"></i>
           </el-tooltip>
         </span>
-        <el-input-number v-model="selectWg.interval" :min="1000" :max="10000" size="small"/>
+        <el-input-number v-model="selectWg.interval" :min="1000" :max="10000" size="small" />
       </el-form-item>
     </template>
   </section>

@@ -1,32 +1,24 @@
 <template>
   <div class="home">
-    <Header/>
+    <Header />
     <el-container>
       <div class="form-edit-wrapper flex">
         <el-aside style="min-width:300px;width:20vw">
           <div class="components-list">
             <div class="widget-cate">基础类组件</div>
-            <draggable
-              element="ul"
-              :list="basicComponents"
-              :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-            >
+            <draggable tag="ul" :list="basicComponents" :group="{ name:'widget', pull:'clone',put:false}" :sort="false" ghostClass="ghost">
               <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
                 <a>{{item.name}}</a>
               </li>
             </draggable>
             <div class="widget-cate">图片类组件</div>
-            <draggable element="ul" :list="imgComponents" :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}">
+            <draggable tag="ul" :list="imgComponents" :group="{ name:'widget', pull:'clone',put:false}" :sort="false" ghostClass="ghost">
               <li class="form-edit-widget-label" v-for="(item, index) in imgComponents" :key="index">
                 <a>{{item.name}}</a>
               </li>
             </draggable>
             <div class="widget-cate">辅助类组件</div>
-            <draggable
-              element="ul"
-              :list="assistComponents"
-              :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-            >
+            <draggable tag="ul" :list="assistComponents" :group="{ name:'widget', pull:'clone',put:false}" :sort="false" ghostClass="ghost">
               <li class="form-edit-widget-label" v-for="(item, index) in assistComponents" :key="index">
                 <a>{{item.name}}</a>
               </li>
