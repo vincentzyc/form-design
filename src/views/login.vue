@@ -39,11 +39,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$util.setLStorage(
-            "loanuser",
-            { username: this.ruleForm.userName },
-            "decode"
-          );
+          this.$util.setLStorage("loanuser", { username: this.ruleForm.userName }, true);
           this.$router.push("/home");
         } else {
           console.log("error submit!!");
@@ -53,7 +49,7 @@ export default {
     }
   },
   created() {
-    let userInfo = this.$util.getLStorage("loanuser", "decode");
+    let userInfo = this.$util.getLStorage("loanuser", true);
     if (userInfo) {
       this.ruleForm.userName = userInfo.username;
     }

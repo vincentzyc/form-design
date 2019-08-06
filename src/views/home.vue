@@ -112,7 +112,7 @@ export default {
       this.$store.commit('setPageData', initialPageData);
     },
     handleSave() {
-      this.$util.setLStorage('pageData', this.pageData);
+      this.$util.setLStorage('pageData', this.pageData,true);
       this.$alert('保存成功', { showClose: false });
     }
   },
@@ -126,7 +126,7 @@ export default {
     })
   },
   created() {
-    let pageData = this.$util.getLStorage('pageData');
+    let pageData = this.$util.getLStorage('pageData',true);
     if (pageData) {
       this.$store.commit('setPageData', pageData);
       if (pageData.config.theme) this.$store.commit('setSelectTheme', pageData.config.theme.value)
