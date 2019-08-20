@@ -66,7 +66,7 @@ import allWidget from '@/assets/json/widget.json'
 import pageConfigData from '@/assets/json/page-config.json'
 
 export default {
-  name: 'fm-making-form',
+  name: 'form-design',
   components: {
     Draggable,
     Header,
