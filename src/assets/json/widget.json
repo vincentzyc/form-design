@@ -217,6 +217,7 @@
       "type": "imgShow",
       "name": "图片展示",
       "value": "",
+      "link":"",
       "style": {
         "margin": "0px 0px 0px 0px"
       }
@@ -227,6 +228,7 @@
       "type": "staticText",
       "name": "文本描述",
       "value": "文本描述",
+      "link":"",
       "style": {
         "textAlign": "left",
         "fontsize": 14,

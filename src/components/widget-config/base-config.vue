@@ -1,8 +1,18 @@
 <template>
   <section>
     <el-form-item label="选择控件" v-if="selectWg.hasOwnProperty('fieldTypes')">
-      <el-select v-model="selectWg.apiKey" filterable placeholder="请选择" @change="selectfield(selectWg.apiKey,fieldTypes[selectWg.fieldTypes])">
-        <el-option v-for="item in fieldTypes[selectWg.fieldTypes]" :key="item.value" :label="item.label" :value="item.value"></el-option>
+      <el-select
+        v-model="selectWg.apiKey"
+        filterable
+        placeholder="请选择"
+        @change="selectfield(selectWg.apiKey,fieldTypes[selectWg.fieldTypes])"
+      >
+        <el-option
+          v-for="item in fieldTypes[selectWg.fieldTypes]"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        ></el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="是否显示标签" v-if="selectWg.hasOwnProperty('showLabel')">
@@ -16,6 +26,9 @@
     </el-form-item>
     <el-form-item label="文本内容" v-if="selectWg.type==='staticText'">
       <el-input type="textarea" v-model="selectWg.value"></el-input>
+    </el-form-item>
+    <el-form-item label="跳转地址(空或格式错误都不会跳转)" v-if="selectWg.hasOwnProperty('link')">
+      <el-input v-model="selectWg.link" @change="isLink"></el-input>
     </el-form-item>
     <el-form-item label="是否单选" v-if="selectWg.hasOwnProperty('isRadio')">
       <el-switch v-model="selectWg.isRadio" @change="isRadio"></el-switch>
@@ -110,6 +123,10 @@ export default {
     }
   },
   methods: {
+    isLink(val) {
+      let isLink = this.$util.isLink(val);
+      if (!isLink) this.$message.error('请输入正确的网址');
+    },
     isRadio(flag) {
       this.selectWg.value = flag ? "" : []
     },

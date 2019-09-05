@@ -108,6 +108,11 @@ export default {
     let isNumber = pattern.test(val);
     return isNumber;
   },
+  isLink(val){
+    let pattern = /^((https:|http:|:)?\/\/)(?:[\da-z.-]+)\.(?:[a-z.]{2,6})(?:\/\w\.-]*)*\/?/;
+		let isLink = pattern.test(val);
+		return isLink;
+  },
 	/**
 	 * 四舍五入强制保留n位小数
 	 * @param  x  操作数字
