@@ -1,5 +1,5 @@
 <template>
-  <div class="wg-imgslide" v-if="item.type === 'imgSlide'">
+  <div class="wg-imgslide">
     <div class="flex flex-center" :style="{margin:item.style.margin}">
       <el-carousel :interval="3000" arrow="never" :style="{width:'100%',height:item.style.height+'px'}">
         <el-carousel-item v-for="(list,key) in item.value" :key="key">

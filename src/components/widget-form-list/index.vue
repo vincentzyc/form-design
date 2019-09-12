@@ -10,42 +10,47 @@
     :class="{'widget-empty': pageData[list].length === 0}"
   >
     <template v-for="(item, index) in pageData[list]">
-      <div class="widget-view" :key="item.key" :class="{active: selectWg.key === item.key}" @click="handleSelectWidget(index)">
+      <div
+        class="widget-view"
+        :key="item.key"
+        :class="{active: selectWg.key === item.key}"
+        @click="handleSelectWidget(index)"
+      >
         <!-- 手机 -->
-        <WgPhone :item="item" />
+        <WgPhone v-if="item.type === 'phone'" :item="item" />
 
         <!-- 输入框 -->
-        <WgInput :item="item" />
+        <WgInput v-if="item.type === 'input'" :item="item" />
 
         <!-- 选择框 -->
-        <WgCheckbox :item="item" />
+        <WgCheckbox v-if="item.type === 'checkbox'" :item="item" />
 
         <!-- 下拉选择 -->
-        <WgSelect :item="item" />
+        <WgSelect v-if="item.type === 'select'" :item="item" />
 
         <!-- 开关 -->
-        <WgSwitch :item="item" />
+        <WgSwitch v-if="item.type==='switch'" :item="item" />
 
         <!-- 日期选择 -->
-        <WgDate :item="item" />
+        <WgDate v-if="item.type === 'date'" :item="item" />
 
         <!-- 图片展示 -->
-        <WgImgshow :item="item" />
+        <WgImgshow v-if="item.type === 'imgShow'" :item="item" />
 
         <!-- 图片轮播 -->
-        <WgImgslide :item="item" />
+        <WgImgslide v-if="item.type === 'imgSlide'" :item="item" />
 
         <!-- 按钮 -->
-        <WgButton :item="item" />
+        <WgButton v-if="item.type === 'button'" :item="item" />
 
         <!-- 文本描述 -->
-        <WgStaticText :item="item" />
+        <WgStaticText v-if="item.type === 'staticText'" :item="item" />
 
         <!-- 分割线 -->
-        <WgSplitLine :item="item" />
+        <WgSplitLine v-if="item.type === 'splitLine'" :item="item" />
 
         <!-- 横向滑动自动选择 -->
-        <WgHpicker :item="item" />
+        <WgHpicker v-if="item.type === 'h-picker'" :item="item" />
 
         <el-button
           title="删除"

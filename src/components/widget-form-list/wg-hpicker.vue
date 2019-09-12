@@ -1,5 +1,5 @@
 <template>
-  <div class="wg-item" v-if="item.type === 'h-picker'" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
+  <div class="wg-item" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
     <div class="wg-title" :style="{width:item.label.labelWidth}">{{item.label.labelTitle}}</div>
     <div class="wg-horizontal-picker" :style="{width:item.itemWidth*item.showNumber+'px'}">
       <div

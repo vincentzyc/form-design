@@ -1,5 +1,5 @@
 <template>
-  <div v-if="item.type === 'splitLine'" class="wg-splitLine">
+  <div class="wg-splitLine">
     <hr class="splitLine-hr" :style="item.style">
   </div>
 </template>

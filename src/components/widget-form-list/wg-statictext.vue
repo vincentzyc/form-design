@@ -1,5 +1,5 @@
 <template>
-  <div v-if="item.type === 'staticText'" class="wg-staticText">
+  <div class="wg-staticText clearfix" :style="{backgroundImage:`url(${item.backgroundImage||''})`}">
     <p :style="item.style">{{item.value}}</p>
   </div>
 </template>
