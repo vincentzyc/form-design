@@ -48,7 +48,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import pageConfigData from '@/assets/json/page-config.json'
+import pageConfigData from '@/assets/js/page-config.js'
 export default {
   data() {
     return {

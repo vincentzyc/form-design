@@ -1,4 +1,4 @@
-{
+export default {
 	"inputTypes": [{
 		"value": "name",
 		"label": "姓名"

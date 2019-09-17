@@ -1,4 +1,4 @@
-{
+export default {
   "pageConfig": {
     "title": "云忆网络",
     "backgroundColor": "#fff",

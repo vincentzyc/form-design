@@ -62,8 +62,8 @@ import WidgetConfig from '@/components/widget-config'
 import PageConfig from '@/components/page-config'
 import WidgetForm from '@/components/widget-form'
 
-import allWidget from '@/assets/json/widget.json'
-import pageConfigData from '@/assets/json/page-config.json'
+import allWidget from '@/assets/js/widget.js'
+import pageConfigData from '@/assets/js/page-config.js'
 
 export default {
   name: 'form-design',
