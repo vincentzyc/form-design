@@ -183,8 +183,13 @@ export default {
       ],
       "style": {
         "margin": "0px 0px 0px 0px",
-        "btnStyle": {
-          "background": "#409EFF"
+        isImgBtn: false,
+        value: "",
+        btnStyle: {
+          borderRadius: '20px',
+          borderradius: 20,
+          background: "#409EFF",
+          color: "#fff"
         }
       }
     }
@@ -247,6 +252,22 @@ export default {
         "borderStyle": "solid",
         "borderTopWidth": "1px",
         "margin": "20px 0px 20px 0px"
+      }
+    }
+  ],
+  "advancedComponents": [
+    {
+      "type": "formList",
+      "name": "表单内容区",
+      "list": [],
+      "style": {
+        margin: "10px 20px 0px 20px",
+        borderradius: 10,
+        borderRadius: '10px',
+        borderColor: "#fff",
+        borderwidth: 3,
+        borderWidth: '3px',
+        borderStyle:"solid"
       }
     }
   ]

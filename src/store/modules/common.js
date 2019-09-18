@@ -1,13 +1,17 @@
 const state = {
   pageData: {
     list: [],
-    formList: [],
-    config: {}
+    title: "云忆网络",
+    statsCode: "",
+    theme: "",
+    style: {
+      backgroundColor: "#fff",
+      backgroundImage: "",
+    }
   },
   selectWg: [],
   configTab: 'page',
-  wgCollapse: "base",
-  selectTheme: ""
+  wgCollapse: "base"
 }
 
 // const actions = {
@@ -30,9 +34,6 @@ const mutations = {
   },
   setWgCollapse(state, payload) {
     state.wgCollapse = payload;
-  },
-  setSelectTheme(state, payload) {
-    state.selectTheme = payload;
   }
 }
 

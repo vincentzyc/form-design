@@ -40,9 +40,63 @@
     <el-form-item label="边距（上 右 下 左 、空格隔开）" v-if="selectWg.style.hasOwnProperty('margin')">
       <el-input v-model="selectWg.style.margin"></el-input>
     </el-form-item>
-    <el-form-item label="按钮背景色" v-if="selectWg.style.hasOwnProperty('btnStyle')">
-      <el-color-picker v-model="selectWg.style.btnStyle.background" />
+
+    <el-form-item label="使用图片按钮" v-if="selectWg.style.hasOwnProperty('isImgBtn')">
+      <el-switch v-model="selectWg.style.isImgBtn"></el-switch>
     </el-form-item>
+    <el-form-item label="按钮样式：" v-if="selectWg.style.hasOwnProperty('btnStyle')">
+      <el-form-item label="上传按钮图片" v-if="selectWg.style.isImgBtn">
+        <ImgUpload :value.sync="selectWg.style.value" />
+      </el-form-item>
+      <div v-else>
+        <el-form-item label="按钮背景色" v-if="selectWg.style.btnStyle.hasOwnProperty('background')">
+          <el-color-picker v-model="selectWg.style.btnStyle.background" />
+        </el-form-item>
+        <el-form-item label="按钮文字色" v-if="selectWg.style.btnStyle.hasOwnProperty('color')">
+          <el-color-picker v-model="selectWg.style.btnStyle.color" />
+        </el-form-item>
+        <el-form-item label="按钮边框色" v-if="selectWg.style.btnStyle.hasOwnProperty('borderColor')">
+          <el-color-picker v-model="selectWg.style.btnStyle.borderColor" />
+        </el-form-item>
+        <el-form-item label="按钮圆角" v-if="selectWg.style.btnStyle.hasOwnProperty('borderradius')">
+          <el-input-number
+            v-model="selectWg.style.btnStyle.borderradius"
+            :min="0"
+            :max="30"
+            :step="1"
+            step-strictly
+            size="small"
+            @change="val=>selectWg.style.btnStyle.borderRadius = `${val}px`"
+          />
+        </el-form-item>
+      </div>
+    </el-form-item>
+    <el-form-item label="表单边框大小" v-if="selectWg.style.hasOwnProperty('borderwidth')">
+      <el-input-number
+        v-model="selectWg.style.borderwidth"
+        :min="0"
+        :max="15"
+        :step="1"
+        step-strictly
+        size="small"
+        @change="val=>selectWg.style.borderWidth = `${val}px`"
+      />
+    </el-form-item>
+    <el-form-item label="表单边框颜色" v-if="selectWg.style.hasOwnProperty('borderColor')&&selectWg.style.borderwidth>0">
+      <el-color-picker v-model="selectWg.style.borderColor" />
+    </el-form-item>
+    <el-form-item label="表单区域圆角" v-if="selectWg.style.hasOwnProperty('borderradius')">
+      <el-input-number
+        v-model="selectWg.style.borderradius"
+        :min="0"
+        :max="30"
+        :step="1"
+        step-strictly
+        size="small"
+        @change="val=>selectWg.style.borderRadius = `${val}px`"
+      />
+    </el-form-item>
+
     <el-form-item label="每项宽度" v-if="selectWg.hasOwnProperty('itemWidth')">
       <el-input-number v-model="selectWg.itemWidth" :min="10" size="small" />
     </el-form-item>
