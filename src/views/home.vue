@@ -174,9 +174,8 @@ export default {
   },
   created() {
     let pageData = this.$util.getLStorage('pageData');
-    if (pageData) {
-      this.$store.commit('setPageData', pageData);
-    }
+    if (pageData) return this.$store.commit('setPageData', pageData);
+    this.$store.commit('setPageData', this.$util.deepClone(pageConfigData.themes[0].pageData));
   }
 }
 </script>

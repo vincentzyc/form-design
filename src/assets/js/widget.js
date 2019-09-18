@@ -19,7 +19,11 @@ export default {
       "style": {
         "margin": "0px 0px 0px 0px",
         "btnStyle": {
-          "background": "#409EFF"
+          "background": "#409EFF",
+          color: "#fff",
+          borderColor: "#409EFF",
+          borderRadius: '5px',
+          borderradius: 5,
         }
       }
     },
@@ -264,7 +268,7 @@ export default {
         margin: "10px 20px 0px 20px",
         borderradius: 10,
         borderRadius: '10px',
-        borderColor: "#fff",
+        borderColor: "#409eff",
         borderwidth: 3,
         borderWidth: '3px',
         borderStyle:"solid"

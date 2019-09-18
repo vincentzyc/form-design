@@ -3,7 +3,7 @@ const state = {
     list: [],
     title: "云忆网络",
     statsCode: "",
-    theme: "",
+    theme: "theme1",
     style: {
       backgroundColor: "#fff",
       backgroundImage: "",
