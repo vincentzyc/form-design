@@ -130,7 +130,7 @@ export default {
     {
       "type": "h-picker",
       "name": "横向滑动单选",
-      "value": "",
+      "value": "20",
       "options": [
         "20",
         "21",
