@@ -6,21 +6,57 @@
         <el-aside style="min-width:300px;width:20vw">
           <div class="components-list">
             <div class="widget-cate">基础类组件</div>
-            <draggable tag="ul" :list="basicComponents" :group="{ name:'widget', pull:'clone',put:false}" :sort="false" ghostClass="ghost">
+            <draggable
+              tag="ul"
+              :list="basicComponents"
+              :group="{ name:'widget', pull:'clone',put:false}"
+              :sort="false"
+              ghostClass="ghost"
+            >
               <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
                 <a>{{item.name}}</a>
               </li>
             </draggable>
             <div class="widget-cate">图片类组件</div>
-            <draggable tag="ul" :list="imgComponents" :group="{ name:'widget', pull:'clone',put:false}" :sort="false" ghostClass="ghost">
+            <draggable
+              tag="ul"
+              :list="imgComponents"
+              :group="{ name:'widget', pull:'clone',put:false}"
+              :sort="false"
+              ghostClass="ghost"
+            >
               <li class="form-edit-widget-label" v-for="(item, index) in imgComponents" :key="index">
                 <a>{{item.name}}</a>
               </li>
             </draggable>
             <div class="widget-cate">辅助类组件</div>
-            <draggable tag="ul" :list="assistComponents" :group="{ name:'widget', pull:'clone',put:false}" :sort="false" ghostClass="ghost">
+            <draggable
+              tag="ul"
+              :list="assistComponents"
+              :group="{ name:'widget', pull:'clone',put:false}"
+              :sort="false"
+              ghostClass="ghost"
+            >
               <li class="form-edit-widget-label" v-for="(item, index) in assistComponents" :key="index">
                 <a>{{item.name}}</a>
+              </li>
+            </draggable>
+            <div class="widget-cate">高级组件</div>
+            <draggable
+              tag="ul"
+              :list="advancedComponents"
+              :group="{ name:'widget', pull:'clone',put:false}"
+              filter=".disdraggable"
+              :sort="false"
+              ghostClass="ghost"
+            >
+              <li
+                class="form-edit-widget-label"
+                :class="{disdraggable:disFormList}"
+                v-for="(item, index) in advancedComponents"
+                :key="index"
+              >
+                <a :style="{cursor:disFormList?'no-drop':'move'}">{{item.name}}</a>
               </li>
             </draggable>
           </div>
@@ -40,8 +76,16 @@
         <el-aside class="widget-config-container" style="min-width:300px;width:20vw">
           <el-container>
             <el-header height="45px" class="flex">
-              <div class="config-tab flex-auto" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">字段属性</div>
-              <div class="config-tab flex-auto" :class="{active: configTab=='page'}" @click="handleConfigSelect('page')">页面属性</div>
+              <div
+                class="config-tab flex-auto"
+                :class="{active: configTab=='widget'}"
+                @click="handleConfigSelect('widget')"
+              >字段属性</div>
+              <div
+                class="config-tab flex-auto"
+                :class="{active: configTab=='page'}"
+                @click="handleConfigSelect('page')"
+              >页面属性</div>
             </el-header>
             <el-main class="config-content">
               <widget-config v-show="configTab=='widget'"></widget-config>
@@ -62,8 +106,8 @@ import WidgetConfig from '@/components/widget-config'
 import PageConfig from '@/components/page-config'
 import WidgetForm from '@/components/widget-form'
 
-import allWidget from '@/assets/json/widget.json'
-import pageConfigData from '@/assets/json/page-config.json'
+import allWidget from '@/assets/js/widget.js'
+import pageConfigData from '@/assets/js/page-config.js'
 
 export default {
   name: 'form-design',
@@ -79,9 +123,18 @@ export default {
       basicComponents: allWidget.basicComponents,
       imgComponents: allWidget.imgComponents,
       assistComponents: allWidget.assistComponents,
+      advancedComponents: allWidget.advancedComponents
     }
   },
   computed: {
+    disFormList() {
+      if (this.pageData.list) {
+        return this.pageData.list.some(v => {
+          return v.type === 'formList';
+        });
+      }
+      return false
+    },
     ...mapState({
       pageData: state => state.common.pageData,
       configTab: state => state.common.configTab,
@@ -102,17 +155,11 @@ export default {
       }, false);
     },
     handleReset() {
-      let initialPageData = {
-        formList: [],
-        list: [],
-        config: { ...pageConfigData.pageConfig }
-      };
       this.$store.commit('setSelectWg', []);
-      this.$store.commit('setSelectTheme', "");
-      this.$store.commit('setPageData', initialPageData);
+      this.$store.commit('setPageData', this.$util.deepClone(pageConfigData.pageConfig));
     },
     handleSave() {
-      this.$util.setLStorage('pageData', this.pageData,true);
+      this.$util.setLStorage('pageData', this.pageData);
       this.$alert('保存成功', { showClose: false });
     }
   },
@@ -126,13 +173,9 @@ export default {
     })
   },
   created() {
-    let pageData = this.$util.getLStorage('pageData',true);
-    if (pageData) {
-      this.$store.commit('setPageData', pageData);
-      if (pageData.config.theme) this.$store.commit('setSelectTheme', pageData.config.theme.value)
-    } else {
-      this.pageData.config = { ...pageConfigData.pageConfig };
-    }
+    let pageData = this.$util.getLStorage('pageData');
+    if (pageData) return this.$store.commit('setPageData', pageData);
+    this.$store.commit('setPageData', this.$util.deepClone(pageConfigData.themes[0].pageData));
   }
 }
 </script>

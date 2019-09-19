@@ -106,7 +106,7 @@
 
 <script>
 import Draggable from 'vuedraggable'
-import allFieldTypes from '@/assets/json/field-types.json'
+import allFieldTypes from '@/assets/js/field-types.js'
 export default {
   components: {
     Draggable

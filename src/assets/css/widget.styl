@@ -30,6 +30,7 @@ $primary-background-color = #d8e8fa;
 
   .widget-form-list {
     min-height: 360px;
+    padding: 1px;
 
     .ghost {
       background: #fff;
@@ -75,6 +76,50 @@ $primary-background-color = #d8e8fa;
     z-index: 1009;
   }
 
+  .widget-view.no-padding {
+    padding: 0;
+
+    .img-placeholder {
+      background: #f1f1f1;
+    }
+  }
+
+  .widget-child-form-list {
+    position: relative;
+    transition: 0.2s;
+    padding: 10px;
+
+    .el-icon-rank {
+      display: none;
+      position: absolute;
+      left: -28px;
+      top: 15px;
+      font-size: 24px;
+      padding: 2px;
+      background-color: #409eff;
+      color: #fff;
+      z-index: 1001;
+      cursor: move;
+    }
+
+    &:hover {
+      box-shadow: 0px 1px 10px 1px #90c7ff inset;
+
+      .el-icon-rank {
+        display: block;
+      }
+    }
+
+    &.active {
+      box-shadow: 0px 1px 10px 1px #90c7ff;
+      z-index: 1111;
+
+      .el-icon-rank {
+        display: block;
+      }
+    }
+  }
+
   .widget-view {
     margin: 0;
     padding: 5px 10px;
@@ -114,16 +159,14 @@ $primary-background-color = #d8e8fa;
 
     .wg-phone {
       .getVerCode-btn {
-        border: 0;
         outline: 0;
-        font-size: 14px;
-        color: #fff;
-        border-radius: 5px;
-        height: 40px;
+        font-size: 12px;
+        height: 36px;
         min-width: 100px;
         margin-top: 5px;
         margin-left: 10px;
         cursor: pointer;
+        border: 1px solid transparent;
       }
     }
 

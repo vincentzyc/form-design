@@ -1,83 +1,64 @@
 <template>
-  <draggable
-    v-model="pageData[list]"
-    :group="{name:'widget'}"
-    ghostClass="ghost"
-    :swapThreshold="0.5"
-    :animation="100"
-    @add="handleWidgetAdd"
-    class="widget-form-list"
-    :class="{'widget-empty': pageData[list].length === 0}"
-  >
-    <template v-for="(item, index) in pageData[list]">
-      <div
-        class="widget-view"
-        :key="item.key"
-        :class="{active: selectWg.key === item.key}"
-        @click="handleSelectWidget(index)"
-      >
-        <!-- 手机 -->
-        <WgPhone v-if="item.type === 'phone'" :item="item" />
+  <div class="widget-view" :class="{active: selectWg.key === item.key,'no-padding':noPaddingType.includes(item.type)}">
+    <!-- 手机 -->
+    <WgPhone v-if="item.type === 'phone'" :item="item" />
 
-        <!-- 输入框 -->
-        <WgInput v-if="item.type === 'input'" :item="item" />
+    <!-- 输入框 -->
+    <WgInput v-if="item.type === 'input'" :item="item" />
 
-        <!-- 选择框 -->
-        <WgCheckbox v-if="item.type === 'checkbox'" :item="item" />
+    <!-- 选择框 -->
+    <WgCheckbox v-if="item.type === 'checkbox'" :item="item" />
 
-        <!-- 下拉选择 -->
-        <WgSelect v-if="item.type === 'select'" :item="item" />
+    <!-- 下拉选择 -->
+    <WgSelect v-if="item.type === 'select'" :item="item" />
 
-        <!-- 开关 -->
-        <WgSwitch v-if="item.type==='switch'" :item="item" />
+    <!-- 开关 -->
+    <WgSwitch v-if="item.type==='switch'" :item="item" />
 
-        <!-- 日期选择 -->
-        <WgDate v-if="item.type === 'date'" :item="item" />
+    <!-- 日期选择 -->
+    <WgDate v-if="item.type === 'date'" :item="item" />
 
-        <!-- 图片展示 -->
-        <WgImgshow v-if="item.type === 'imgShow'" :item="item" />
+    <!-- 图片展示 -->
+    <WgImgshow v-if="item.type === 'imgShow'" :item="item" />
 
-        <!-- 图片轮播 -->
-        <WgImgslide v-if="item.type === 'imgSlide'" :item="item" />
+    <!-- 图片轮播 -->
+    <WgImgslide v-if="item.type === 'imgSlide'" :item="item" />
 
-        <!-- 按钮 -->
-        <WgButton v-if="item.type === 'button'" :item="item" />
+    <!-- 按钮 -->
+    <WgButton v-if="item.type === 'button'" :item="item" />
 
-        <!-- 文本描述 -->
-        <WgStaticText v-if="item.type === 'staticText'" :item="item" />
+    <!-- 文本描述 -->
+    <WgStaticText v-if="item.type === 'staticText'" :item="item" />
 
-        <!-- 分割线 -->
-        <WgSplitLine v-if="item.type === 'splitLine'" :item="item" />
+    <!-- 分割线 -->
+    <WgSplitLine v-if="item.type === 'splitLine'" :item="item" />
 
-        <!-- 横向滑动自动选择 -->
-        <WgHpicker v-if="item.type === 'h-picker'" :item="item" />
+    <!-- 横向滑动自动选择 -->
+    <WgHpicker v-if="item.type === 'h-picker'" :item="item" />
 
-        <el-button
-          title="删除"
-          @click="handleWidgetDelete(index)"
-          class="widget-action-delete"
-          v-if="selectWg.key === item.key"
-          circle
-          plain
-          type="danger"
-        >删除</el-button>
-        <el-button
-          title="复制"
-          @click="handleWidgetClone(index)"
-          class="widget-action-clone"
-          v-if="selectWg.key === item.key"
-          circle
-          plain
-          type="primary"
-        >复制</el-button>
-      </div>
-    </template>
-  </draggable>
+    <el-button
+      title="删除"
+      @click.stop="handleWidgetDelete()"
+      class="widget-action-delete"
+      v-if="selectWg.key === item.key"
+      circle
+      plain
+      type="danger"
+    >删除</el-button>
+    <el-button
+      title="复制"
+      @click.stop="handleWidgetClone()"
+      class="widget-action-clone"
+      v-if="selectWg.key === item.key"
+      circle
+      plain
+      type="primary"
+    >复制</el-button>
+  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import Draggable from 'vuedraggable'
 import WgPhone from './wg-phone'
 import WgInput from './wg-input'
 import WgCheckbox from './wg-checkbox'
@@ -93,7 +74,6 @@ import WgHpicker from './wg-hpicker'
 
 export default {
   components: {
-    Draggable,
     WgPhone,
     WgInput,
     WgCheckbox,
@@ -108,54 +88,41 @@ export default {
     WgHpicker
   },
   props: {
-    list: String
+    item: Object,
+    index: Number,
+    data: Array
   },
   data() {
     return {
+      noPaddingType: ['imgshow', 'staticText']
     }
   },
   computed: {
     ...mapState({
-      selectWg: state => state.common.selectWg,
-      pageData: state => state.common.pageData
+      selectWg: state => state.common.selectWg
     })
   },
   methods: {
-    handleWidgetAdd(evt) {
-      const newIndex = evt.newIndex;
-
-      const elKey = Date.now() + '_' + Math.ceil(Math.random() * 1000000);
-      let newObj = this.$util.deepClone(this.pageData[this.list][newIndex]);
-
-      newObj.key = this.pageData[this.list][newIndex].type + '_' + elKey;
-      this.$set(this.pageData[this.list], newIndex, newObj);
-      this.$store.commit('setSelectWg', this.pageData[this.list][newIndex]);
-      this.$store.commit('setConfigTab', "widget");
-    },
-    handleSelectWidget(index) {
-      this.$store.commit('setSelectWg', this.pageData[this.list][index]);
-      this.$store.commit('setConfigTab', "widget");
-    },
-    handleWidgetDelete(index) {
-      if (this.pageData[this.list].length - 1 === index) {
-        if (index === 0) {
+    handleWidgetDelete() {
+      if (this.data.length - 1 === this.index) {
+        if (this.index === 0) {
           this.$store.commit('setSelectWg', {})
         } else {
-          this.$store.commit('setSelectWg', this.pageData[this.list][index - 1])
+          this.$store.commit('setSelectWg', this.data[this.index - 1])
         }
       } else {
-        this.$store.commit('setSelectWg', this.pageData[this.list][index + 1])
+        this.$store.commit('setSelectWg', this.data[this.index + 1])
       }
       this.$nextTick(() => {
-        this.pageData[this.list].splice(index, 1)
+        this.data.splice(this.index, 1)
       })
     },
-    handleWidgetClone(index) {
-      let cloneData = this.$util.deepClone(this.pageData[this.list][index]);
-      cloneData.key = this.pageData[this.list][index].type + '_' + Date.now() + '_' + Math.ceil(Math.random() * 1000000)
-      this.pageData[this.list].splice(index, 0, cloneData)
+    handleWidgetClone() {
+      let cloneData = this.$util.deepClone(this.data[this.index]);
+      cloneData.key = cloneData.type + '_' + Date.now() + '_' + Math.ceil(Math.random() * 1000000);
       this.$nextTick(() => {
-        this.$store.commit('setSelectWg', this.pageData[this.list][index + 1])
+        this.data.splice(this.index, 0, cloneData)
+        this.$store.commit('setSelectWg', this.data[this.index + 1])
       })
     },
   }

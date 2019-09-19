@@ -1,4 +1,4 @@
-{
+export default {
   "basicComponents": [
     {
       "type": "phone",
@@ -19,7 +19,11 @@
       "style": {
         "margin": "0px 0px 0px 0px",
         "btnStyle": {
-          "background": "#409EFF"
+          "background": "#409EFF",
+          color: "#fff",
+          borderColor: "#409EFF",
+          borderRadius: '5px',
+          borderradius: 5,
         }
       }
     },
@@ -126,7 +130,7 @@
     {
       "type": "h-picker",
       "name": "横向滑动单选",
-      "value": "",
+      "value": "20",
       "options": [
         "20",
         "21",
@@ -183,8 +187,13 @@
       ],
       "style": {
         "margin": "0px 0px 0px 0px",
-        "btnStyle": {
-          "background": "#409EFF"
+        isImgBtn: false,
+        value: "",
+        btnStyle: {
+          borderRadius: '20px',
+          borderradius: 20,
+          background: "#409EFF",
+          color: "#fff"
         }
       }
     }
@@ -247,6 +256,22 @@
         "borderStyle": "solid",
         "borderTopWidth": "1px",
         "margin": "20px 0px 20px 0px"
+      }
+    }
+  ],
+  "advancedComponents": [
+    {
+      "type": "formList",
+      "name": "表单内容区",
+      "list": [],
+      "style": {
+        margin: "10px 20px 0px 20px",
+        borderradius: 10,
+        borderRadius: '10px',
+        borderColor: "#409eff",
+        borderwidth: 3,
+        borderWidth: '3px',
+        borderStyle:"solid"
       }
     }
   ]
