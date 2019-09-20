@@ -110,25 +110,17 @@ export default {
       this.$store.commit('setConfigTab', "widget");
     },
     handleWidgetAdd(evt) {
+      // console.log(evt);
       const newIndex = evt.newIndex;
-
-      const elKey = Date.now() + '_' + Math.ceil(Math.random() * 1000000);
-      let newObj = this.$util.deepClone(this.pageData.list[newIndex]);
-
-      newObj.key = newObj.type + '_' + elKey;
-      this.$set(this.pageData.list, newIndex, newObj);
+      let newObj = this.pageData.list[newIndex];
       this.$store.commit('setSelectWg', newObj);
       this.$store.commit('setConfigTab', "widget");
     },
     formWidgetAdd(evt) {
+      // console.log(evt);
       const formIndex = this.pageData.list.findIndex(item => item.type === 'formList');
       const newIndex = evt.newIndex;
-
-      const elKey = Date.now() + '_' + Math.ceil(Math.random() * 1000000);
-      let newObj = this.$util.deepClone(this.pageData.list[formIndex].list[newIndex]);
-
-      newObj.key = newObj.type + '_' + elKey;
-      this.$set(this.pageData.list[formIndex].list, newIndex, newObj);
+      let newObj = this.pageData.list[formIndex].list[newIndex];
       this.$store.commit('setSelectWg', newObj);
       this.$store.commit('setConfigTab', "widget");
     },
