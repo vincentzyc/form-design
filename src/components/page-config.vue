@@ -2,7 +2,7 @@
   <div class="form-config-container">
     <el-form label-position="top">
       <el-form-item label="页面标题">
-        <el-input v-model="pageData.title"></el-input>
+        <el-input v-model.trim="pageData.title"></el-input>
       </el-form-item>
       <el-form-item label="页面背景色">
         <el-color-picker v-model="pageData.style.backgroundColor" />
