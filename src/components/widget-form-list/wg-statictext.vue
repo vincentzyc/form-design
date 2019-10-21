@@ -1,5 +1,5 @@
 <template>
-  <div class="wg-staticText clearfix" :style="{backgroundImage:`url(${item.backgroundImage||''})`}">
+  <div class="wg-staticText clearfix" :style="{backgroundColor:item.backgroundColor,backgroundImage:`url(${item.backgroundImage||''})`}">
     <p :style="item.style">{{item.value}}</p>
   </div>
 </template>

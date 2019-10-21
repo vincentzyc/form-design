@@ -238,7 +238,8 @@ export default {
       "name": "文本描述",
       "value": "文本描述",
       "link":"",
-      "backgroundImage":"",
+      backgroundImage:"",
+      backgroundColor:"",
       "style": {
         "textAlign": "left",
         "fontsize": 14,

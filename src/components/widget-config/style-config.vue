@@ -34,6 +34,9 @@
         <el-radio-button label="double">双实线</el-radio-button>
       </el-radio-group>
     </el-form-item>
+    <el-form-item label="背景颜色" v-if="selectWg.hasOwnProperty('backgroundColor')">
+      <el-color-picker v-model="selectWg.backgroundColor" />
+    </el-form-item>
     <el-form-item label="背景图片" v-if="selectWg.hasOwnProperty('backgroundImage')">
       <ImgUpload :value.sync="selectWg.backgroundImage" />
     </el-form-item>
