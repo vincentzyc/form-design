@@ -112,7 +112,9 @@ export default {
     handleWidgetAdd(evt) {
       // console.log(evt);
       const newIndex = evt.newIndex;
-      let newObj = this.pageData.list[newIndex];
+      let newObj = this.$util.deepClone(this.pageData.list[newIndex]);
+      newObj.key = newObj.type + '_' + Date.now() + '_' + Math.ceil(Math.random() * 1000000);
+      this.$set(this.pageData.list, newIndex, newObj);
       this.$store.commit('setSelectWg', newObj);
       this.$store.commit('setConfigTab', "widget");
     },

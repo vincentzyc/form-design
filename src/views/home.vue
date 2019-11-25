@@ -12,7 +12,6 @@
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
               ghostClass="ghost"
-              :clone="cloneData"
             >
               <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
                 <a>{{item.name}}</a>
@@ -25,7 +24,6 @@
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
               ghostClass="ghost"
-              :clone="cloneData"
             >
               <li class="form-edit-widget-label" v-for="(item, index) in imgComponents" :key="index">
                 <a>{{item.name}}</a>
@@ -38,7 +36,6 @@
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
               ghostClass="ghost"
-              :clone="cloneData"
             >
               <li class="form-edit-widget-label" v-for="(item, index) in assistComponents" :key="index">
                 <a>{{item.name}}</a>
@@ -52,7 +49,6 @@
               filter=".disdraggable"
               :sort="false"
               ghostClass="ghost"
-              :clone="cloneData"
             >
               <li
                 class="form-edit-widget-label"
@@ -145,10 +141,6 @@ export default {
     })
   },
   methods: {
-    cloneData(obj) {
-      const elKey = obj.type + '_' + Date.now() + '_' + Math.ceil(Math.random() * 1000000);
-      return { ...obj, key: elKey }
-    },
     handleConfigSelect(value) {
       this.$store.commit('setConfigTab', value)
     },
