@@ -122,7 +122,9 @@ export default {
       // console.log(evt);
       const formIndex = this.pageData.list.findIndex(item => item.type === 'formList');
       const newIndex = evt.newIndex;
-      let newObj = this.pageData.list[formIndex].list[newIndex];
+      let newObj = this.$util.deepClone(this.pageData.list[formIndex].list[newIndex]);
+      newObj.key = newObj.type + '_' + Date.now() + '_' + Math.ceil(Math.random() * 1000000);
+      this.$set(this.pageData.list[formIndex].list, newIndex, newObj);
       this.$store.commit('setSelectWg', newObj);
       this.$store.commit('setConfigTab', "widget");
     },

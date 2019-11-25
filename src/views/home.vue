@@ -11,7 +11,7 @@
               :list="basicComponents"
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
-              ghostClass="ghost"
+              ghostClass="ghost" 
             >
               <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
                 <a>{{item.name}}</a>
@@ -23,7 +23,7 @@
               :list="imgComponents"
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
-              ghostClass="ghost"
+              ghostClass="ghost" 
             >
               <li class="form-edit-widget-label" v-for="(item, index) in imgComponents" :key="index">
                 <a>{{item.name}}</a>
@@ -35,7 +35,7 @@
               :list="assistComponents"
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
-              ghostClass="ghost"
+              ghostClass="ghost" 
             >
               <li class="form-edit-widget-label" v-for="(item, index) in assistComponents" :key="index">
                 <a>{{item.name}}</a>
@@ -48,7 +48,7 @@
               :group="{ name:'widget', pull:'clone',put:false}"
               filter=".disdraggable"
               :sort="false"
-              ghostClass="ghost"
+              ghostClass="ghost" 
             >
               <li
                 class="form-edit-widget-label"
