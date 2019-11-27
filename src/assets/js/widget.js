@@ -241,6 +241,7 @@ export default {
       backgroundImage:"",
       backgroundColor:"",
       "style": {
+        "fontWeight":"normal",
         "textAlign": "left",
         "fontsize": 14,
         "fontSize": "14px",

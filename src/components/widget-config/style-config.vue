@@ -16,6 +16,13 @@
         @change="val=>selectWg.style.fontSize = `${val}px`"
       />
     </el-form-item>
+    <el-form-item label="文字粗细" v-if="selectWg.style.hasOwnProperty('fontWeight')">
+      <el-radio-group v-model="selectWg.style.fontWeight" size="mini">
+        <el-radio-button label="lighter">细</el-radio-button>
+        <el-radio-button label="normal">正常</el-radio-button>
+        <el-radio-button label="bold">加粗</el-radio-button>
+      </el-radio-group>
+    </el-form-item>
     <el-form-item label="文字颜色" v-if="selectWg.style.hasOwnProperty('color')">
       <el-color-picker v-model="selectWg.style.color" />
     </el-form-item>
