@@ -25,6 +25,13 @@
       <el-input v-model="selectWg.placeholder"></el-input>
     </el-form-item>
     <el-form-item label="文本内容" v-if="selectWg.type==='staticText'">
+      <!-- <div id="toolbar">
+        <button class="ql-bold">Bold</button>
+        <button class="ql-italic">Italic</button>
+      </div>
+      <div id="editor">
+        <p>Hello World!</p>
+      </div> -->
       <el-input type="textarea" v-model="selectWg.value"></el-input>
     </el-form-item>
     <el-form-item label="跳转地址(空或格式错误都不会跳转)" v-if="selectWg.hasOwnProperty('link')">
@@ -153,6 +160,23 @@ export default {
         image: "https://www.baidu.com/img/bd_logo1.png"
       })
     }
-  }
+  },
+  // mounted() {
+  //   this.$nextTick(() => {
+  //     let editor = new Quill('#editor', {
+  //       modules: { toolbar: '#toolbar' },
+  //       theme: 'snow'
+  //     });
+  //     // editor.on('text-change', (delta, oldDelta, source) => {
+  //     //   let html = this.$refs.editor.children[0].innerHTML
+  //     //   const quill = this.quill
+  //     //   const text = this.quill.getText()
+  //     //   if (html === '<p><br></p>') html = ''
+  //     //   this._content = html
+  //     //   this.$emit('input', this._content)
+  //     //   this.$emit('change', { html, text, quill })
+  //     // })
+  //   })
+  // }
 }
 </script>
