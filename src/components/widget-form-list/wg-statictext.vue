@@ -1,6 +1,6 @@
 <template>
   <div class="wg-staticText clearfix" :style="{backgroundColor:item.backgroundColor,backgroundImage:`url(${item.backgroundImage||''})`}">
-    <p :style="item.style">{{item.value}}</p>
+    <p :style="item.style" v-html="item.value"></p>
   </div>
 </template>
 
