@@ -25,14 +25,30 @@
       <el-input v-model="selectWg.placeholder"></el-input>
     </el-form-item>
     <el-form-item label="文本内容" v-if="selectWg.type==='staticText'">
-      <!-- <div id="toolbar">
-        <button class="ql-bold">Bold</button>
-        <button class="ql-italic">Italic</button>
-      </div>
-      <div id="editor">
-        <p>Hello World!</p>
-      </div> -->
-      <el-input type="textarea" v-model="selectWg.value"></el-input>
+      <quill-editor v-model="selectWg.value" :options="editorOption">
+        <div id="toolbar" slot="toolbar">
+          <button class="ql-bold">Bold</button>
+          <button class="ql-italic">Italic</button>
+          <!-- <button class="ql-color">Color</button> -->
+          <!-- <select class="ql-size">
+            <option value="small"></option>
+            <option selected></option>
+            <option value="large"></option>
+            <option value="huge"></option>
+          </select>
+          <select class="ql-font">
+            <option selected="selected"></option>
+            <option value="serif"></option>
+            <option value="monospace"></option>
+          </select> -->
+          <!-- Add subscript and superscript buttons -->
+          <button class="ql-script" value="sub"></button>
+          <button class="ql-script" value="super"></button>
+          <!-- You can also add your own -->
+          <!-- <button id="custom-button" @click="customButtonClick">[ Click me ]</button> -->
+        </div>
+      </quill-editor>
+      <!-- <el-input type="textarea" v-model="selectWg.value"></el-input> -->
     </el-form-item>
     <el-form-item label="跳转地址(空或格式错误都不会跳转)" v-if="selectWg.hasOwnProperty('link')">
       <el-input v-model="selectWg.link" @change="isLink"></el-input>
@@ -126,7 +142,12 @@ export default {
   },
   data() {
     return {
-      fieldTypes: allFieldTypes
+      fieldTypes: allFieldTypes,
+      editorOption: {
+        modules: {
+          toolbar: '#toolbar'
+        }
+      }
     }
   },
   methods: {
