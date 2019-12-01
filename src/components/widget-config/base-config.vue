@@ -30,7 +30,7 @@
           <button class="ql-bold">Bold</button>
           <button class="ql-italic">Italic</button>
           <!-- <button class="ql-color">Color</button> -->
-          <!-- <select class="ql-size">
+          <select class="ql-size">
             <option value="small"></option>
             <option selected></option>
             <option value="large"></option>
@@ -40,7 +40,7 @@
             <option selected="selected"></option>
             <option value="serif"></option>
             <option value="monospace"></option>
-          </select> -->
+          </select>
           <!-- Add subscript and superscript buttons -->
           <button class="ql-script" value="sub"></button>
           <button class="ql-script" value="super"></button>
