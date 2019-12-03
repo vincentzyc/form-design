@@ -25,27 +25,7 @@
       <el-input v-model="selectWg.placeholder"></el-input>
     </el-form-item>
     <el-form-item label="文本内容" v-if="selectWg.type==='staticText'">
-      <quill-editor v-model="selectWg.value" :options="editorOption">
-        <div id="toolbar" slot="toolbar">
-          <button class="ql-bold">Bold</button>
-          <button class="ql-italic">Italic</button>
-          <!-- <button class="ql-color">Color</button> -->
-          <select class="ql-color">
-            <!-- <option selected></option> -->
-          </select>
-          <!-- <select class="ql-font">
-            <option selected="selected"></option>
-            <option value="serif"></option>
-            <option value="monospace"></option>
-          </select> -->
-          <!-- Add subscript and superscript buttons -->
-          <!-- <button class="ql-script" value="sub"></button>
-          <button class="ql-script" value="super"></button> -->
-          <!-- You can also add your own -->
-          <!-- <button id="custom-button" @click="customButtonClick">[ Click me ]</button> -->
-        </div>
-      </quill-editor>
-      <!-- <el-input type="textarea" v-model="selectWg.value"></el-input> -->
+      <Editor v-model="selectWg.value" />
     </el-form-item>
     <el-form-item label="跳转地址(空或格式错误都不会跳转)" v-if="selectWg.hasOwnProperty('link')">
       <el-input v-model="selectWg.link" @change="isLink"></el-input>
@@ -126,10 +106,12 @@
 
 <script>
 import Draggable from 'vuedraggable'
+import Editor from '@/components/editor'
+
 import allFieldTypes from '@/assets/js/field-types.js'
 export default {
   components: {
-    Draggable
+    Draggable, Editor
   },
   props: {
     selectWg: {
@@ -178,23 +160,6 @@ export default {
         image: "https://www.baidu.com/img/bd_logo1.png"
       })
     }
-  },
-  // mounted() {
-  //   this.$nextTick(() => {
-  //     let editor = new Quill('#editor', {
-  //       modules: { toolbar: '#toolbar' },
-  //       theme: 'snow'
-  //     });
-  //     // editor.on('text-change', (delta, oldDelta, source) => {
-  //     //   let html = this.$refs.editor.children[0].innerHTML
-  //     //   const quill = this.quill
-  //     //   const text = this.quill.getText()
-  //     //   if (html === '<p><br></p>') html = ''
-  //     //   this._content = html
-  //     //   this.$emit('input', this._content)
-  //     //   this.$emit('change', { html, text, quill })
-  //     // })
-  //   })
-  // }
+  }
 }
 </script>
