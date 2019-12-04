@@ -1,13 +1,21 @@
 <template>
-  <quill-editor v-model="model" :options="editorOption">
+  <quill-editor ref="myTextEditor" v-model="model" :options="editorOption">
     <div id="toolbar" slot="toolbar">
+      <button class="ql-color-picker">
+        <el-color-picker size="mini" @change="pickerColor" />
+      </button>
       <button class="ql-bold">Bold</button>
       <button class="ql-italic">Italic</button>
-      <button class="ql-color"></button>
       <select class="ql-align"></select>
+      
+      <button class="ql-underline"></button>
+      <button class="ql-strike"></button>
       <button class="ql-link"></button>
-      <!-- <select class="ql-fontsize">
-        <option selected value="12px"></option>
+      <button class="ql-list" value="ordered"></button>
+      <button class="ql-list" value="bullet"></button>
+      
+      <!-- <select class="ql-fontsize" @change="pickerFontsize($event)">
+        <option value="12px"></option>
         <option value="14px"></option>
         <option value="16px"></option>
         <option value="18px"></option>
@@ -16,7 +24,7 @@
         <option value="36px"></option>
         <option value="48px"></option>
       </select> -->
-      <!-- <el-color-picker v-model="selectWg" /> -->
+
       <!-- <select class="ql-size">
         <option value="small"></option>
         <option selected></option>
@@ -55,7 +63,6 @@ export default {
                 if (value) {
                   var href = prompt('Enter the URL');
                   this.quill.format('link', href);
-                  // this.quill.format('color', 'red');
                 } else {
                   this.quill.format('link', false);
                 }
@@ -74,8 +81,24 @@ export default {
       set(val) {
         this.$emit("input", val);
       }
+    },
+    editor() {
+      return this.$refs.myTextEditor.quill
     }
   },
+  methods: {
+    // pickerFontsize(v) {
+    //   console.log(this.editor);
+    //   // let selection = this.editor.getSelection();
+    //   // let selectedIndex = v.target.selectedIndex;
+    //   // let value = v.target.options[selectedIndex].value;
+    //   // this.editor.formatText(selection.index, selection.length, 'font-size', value);  
+    //   // this.editor.format('font', 20);
+    // },
+    pickerColor(v) {
+      this.editor.format('color', v);
+    }
+  }
 }
 </script>
 
