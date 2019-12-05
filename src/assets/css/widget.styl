@@ -9,9 +9,11 @@ $primary-background-color = #d8e8fa;
   bottom: 0;
 
   .widget-form-container {
-    min-height: calc(100% - 40px);
-    box-shadow: 0 2px 5px 1px rgba(124, 124, 124, 0.2);
-    margin: 20px;
+    width: 375px;
+    min-height: 640px;
+    margin: 20px auto;
+    -webkit-box-shadow: 0 2px 5px 1px hsla(0,0%,48.6%,.2);
+    box-shadow: 0 2px 5px 1px hsla(0,0%,48.6%,.2);
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: 0 0;
@@ -29,8 +31,7 @@ $primary-background-color = #d8e8fa;
   }
 
   .widget-form-list {
-    min-height: 360px;
-    padding: 1px;
+    min-height: 230px;
 
     .ghost {
       background: #fff;
@@ -126,6 +127,7 @@ $primary-background-color = #d8e8fa;
     // background: #fff;
     position: relative;
 
+    // border: 2px solid transparent
     &:after {
       content: '';
       position: absolute;
@@ -143,12 +145,14 @@ $primary-background-color = #d8e8fa;
     }
 
     &:hover {
-      background: #ecf5ff;
+      box-shadow: 0px 1px 10px 1px #90c7ff inset;
+      // background: #ecf5ff;
+      // border: 2px dotted #90c7ff
     }
 
     &.active {
-      background: $primary-background-color;
-      // box-shadow: 0px 1px 10px 1px #90c7ff;
+      // background: $primary-background-color;
+      box-shadow: 0px 1px 10px 1px #90c7ff;
       z-index: 1111;
     }
 
