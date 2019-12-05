@@ -185,7 +185,8 @@ export default {
           "label": "提交"
         }
       ],
-      "style": {
+      position:'normal', // bottom top normal
+      style: {
         "margin": "0px 0px 0px 0px",
         isImgBtn: false,
         value: "",
@@ -245,7 +246,6 @@ export default {
         "textAlign": "left",
         "fontsize": 14,
         "fontSize": "14px",
-        "color": "#333333",
         "margin": "0px 0px 0px 0px"
       }
     },
