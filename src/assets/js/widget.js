@@ -242,10 +242,9 @@ export default {
       backgroundImage:"",
       backgroundColor:"",
       "style": {
-        "fontWeight":"normal",
-        "textAlign": "left",
-        "fontsize": 14,
-        "fontSize": "14px",
+        // "fontWeight":"normal",
+        // "fontsize": 14,
+        // "fontSize": "14px",
         "margin": "0px 0px 0px 0px"
       }
     },
