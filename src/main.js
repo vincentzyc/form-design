@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import './plugins/quill.js'
 import './plugins/element.js'
 import Api from './api';
 import Util from './utils';
@@ -13,8 +14,6 @@ Vue.prototype.$util = Util;
 
 Vue.config.productionTip = false
 Vue.prototype.BASE_URL = process.env.BASE_URL;
-
-Vue.use(window.VueQuillEditor)
 
 new Vue({
   router,
