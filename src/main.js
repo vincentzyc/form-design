@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './plugins/quill.js'
+import './plugins/quill'
 import './plugins/element.js'
 import Api from './api';
 import Util from './utils';
