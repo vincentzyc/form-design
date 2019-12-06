@@ -4,17 +4,11 @@
       <button class="ql-color-picker">
         <el-color-picker size="mini" @change="pickerColor" />
       </button>
-      <button class="ql-bold">Bold</button>
-      <button class="ql-italic">Italic</button>
-      <select class="ql-align"></select>
-      
-      <button class="ql-underline"></button>
-      <button class="ql-strike"></button>
+      <button class="ql-bold"></button>
+      <button class="ql-italic"></button>
       <button class="ql-link"></button>
-      <button class="ql-list" value="ordered"></button>
-      <button class="ql-list" value="bullet"></button>
-      
-      <!-- <select class="ql-fontsize" @change="pickerFontsize($event)">
+      <select class="ql-align"></select>
+      <select class="ql-size">
         <option value="12px"></option>
         <option value="14px"></option>
         <option value="16px"></option>
@@ -23,19 +17,26 @@
         <option value="24px"></option>
         <option value="36px"></option>
         <option value="48px"></option>
+        <option value="64px"></option>
+      </select>
+      <button class="ql-underline"></button>
+      <button class="ql-strike"></button>
+
+      <!-- <button class="ql-indent" value="-1"></button> -->
+      <!-- <select class="ql-indent">
+        <option value="1em"></option>
+        <option value="2em"></option>
+        <option value="3em"></option>
+        <option value="4em"></option>
+        <option value="5em"></option>
+        <option value="6em"></option>
+        <option value="7em"></option>
+        <option value="8em"></option>
       </select> -->
 
-      <!-- <select class="ql-size">
-        <option value="small"></option>
-        <option selected></option>
-        <option value="large"></option>
-        <option value="huge"></option>
-      </select>
-      <select class="ql-fontsize">
-        <option selected value="12px"></option>
-        <option value="14px"></option>
-        <option value="20px"></option>
-      </select>-->
+      <button class="ql-list" value="ordered"></button>
+      <button class="ql-list" value="bullet"></button>
+
       <!-- Add subscript and superscript buttons -->
       <!-- <button class="ql-script" value="sub"></button>
       <button class="ql-script" value="super"></button>-->
