@@ -22,7 +22,7 @@ function loadScript(src, callback) {
 }
 
 function initQuill() {
-  console.log(window.Quill.imports)
+  // console.log(window.Quill.imports)
   // let ColorClass = window.Quill.import('attributors/class/color');
   let SizeStyle = window.Quill.import('attributors/style/size');
   let AlignStyle = window.Quill.import('attributors/style/align');
