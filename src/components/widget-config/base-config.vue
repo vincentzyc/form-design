@@ -44,13 +44,13 @@
         <el-option v-for="item in selectWg.btnTypes" :key="item.value" :label="item.label" :value="item.value"></el-option>
       </el-select>
     </el-form-item>
-    <!-- <el-form-item label="按钮位置" v-if="selectWg.hasOwnProperty('position')">
+    <el-form-item label="按钮位置" v-if="selectWg.hasOwnProperty('position')">
       <el-radio-group v-model="selectWg.position" size="mini">
         <el-radio-button label="normal">正常</el-radio-button>
         <el-radio-button label="top">顶部</el-radio-button>
         <el-radio-button label="bottom">底部</el-radio-button>
       </el-radio-group>
-    </el-form-item> -->
+    </el-form-item>
     <el-form-item label="选项" v-if="selectWg.hasOwnProperty('options')">
       <draggable tag="ul" :list="selectWg.options" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">
         <li v-for="(item, index) in selectWg.options" :key="index">
