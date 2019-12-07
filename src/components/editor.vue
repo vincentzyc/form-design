@@ -5,7 +5,7 @@
         <el-color-picker size="mini" @change="pickerColor" />
       </button>
       <button class="ql-bold"></button>
-      <button class="ql-italic"></button>
+      <!-- <button class="ql-italic"></button> -->
       <button class="ql-link"></button>
       <select class="ql-align"></select>
       <select class="ql-size">
