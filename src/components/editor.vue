@@ -19,19 +19,16 @@
         <option value="48px"></option>
         <option value="64px"></option>
       </select>
-      <button class="ql-underline"></button>
-      <button class="ql-strike"></button>
-
-      <!-- <select class="ql-indent">
+      <select class="ql-textIndent">
+        <option value="0em"></option>
         <option value="1em"></option>
         <option value="2em"></option>
         <option value="3em"></option>
         <option value="4em"></option>
         <option value="5em"></option>
-        <option value="6em"></option>
-        <option value="7em"></option>
-        <option value="8em"></option>
-      </select> -->
+      </select>Z
+      <button class="ql-underline"></button>
+      <button class="ql-strike"></button>
 
       <button class="ql-list" value="ordered"></button>
       <button class="ql-list" value="bullet"></button>
