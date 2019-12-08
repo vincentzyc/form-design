@@ -22,7 +22,6 @@
       <button class="ql-underline"></button>
       <button class="ql-strike"></button>
 
-      <!-- <button class="ql-indent" value="-1"></button> -->
       <!-- <select class="ql-indent">
         <option value="1em"></option>
         <option value="2em"></option>
