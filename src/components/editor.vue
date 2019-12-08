@@ -26,7 +26,7 @@
         <option value="3em"></option>
         <option value="4em"></option>
         <option value="5em"></option>
-      </select>Z
+      </select>
       <button class="ql-underline"></button>
       <button class="ql-strike"></button>
 
