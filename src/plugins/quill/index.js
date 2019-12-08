@@ -3,7 +3,7 @@ import Quill from 'quill'
 import VueQuillEditor from 'vue-quill-editor'
 
 import TextBold from './text-bold';
-// import TextIndent from './text-indent';
+import TextIndent from './text-indent';
 
 // console.log(Quill.imports)
 
@@ -16,7 +16,7 @@ SizeStyle.whitelist = ['12px', '14px', '16px', '18px', '20px', '24px', '36px', '
 Quill.register(SizeStyle, true);
 Quill.register(AlignStyle, true);
 Quill.register("formats/bold", TextBold, true);
-// Quill.register("formats/indent", TextIndent, true);
+Quill.register("formats/textIndent", TextIndent, true);
 
 Vue.use(VueQuillEditor)
 
