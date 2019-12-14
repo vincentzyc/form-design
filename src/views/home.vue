@@ -11,7 +11,8 @@
               :list="basicComponents"
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
-              ghostClass="ghost" 
+              :clone="cloneData"
+              ghostClass="ghost"
             >
               <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
                 <a>{{item.name}}</a>
@@ -23,7 +24,8 @@
               :list="imgComponents"
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
-              ghostClass="ghost" 
+              :clone="cloneData"
+              ghostClass="ghost"
             >
               <li class="form-edit-widget-label" v-for="(item, index) in imgComponents" :key="index">
                 <a>{{item.name}}</a>
@@ -35,7 +37,8 @@
               :list="assistComponents"
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
-              ghostClass="ghost" 
+              :clone="cloneData"
+              ghostClass="ghost"
             >
               <li class="form-edit-widget-label" v-for="(item, index) in assistComponents" :key="index">
                 <a>{{item.name}}</a>
@@ -48,7 +51,8 @@
               :group="{ name:'widget', pull:'clone',put:false}"
               filter=".disdraggable"
               :sort="false"
-              ghostClass="ghost" 
+              :clone="cloneData"
+              ghostClass="ghost"
             >
               <li
                 class="form-edit-widget-label"
@@ -134,6 +138,7 @@ export default {
         });
       }
       return false
+      // return false
     },
     ...mapState({
       pageData: state => state.common.pageData,
@@ -141,6 +146,13 @@ export default {
     })
   },
   methods: {
+    cloneData(obj) {
+      const elKey = Date.now() + '_' + Math.ceil(Math.random() * 1000000);
+      let newObj = this.$util.deepClone(obj);
+      newObj.key = newObj.type + '_' + elKey;
+      // this.$store.commit('setDragWg', newObj)
+      return newObj;
+    },
     handleConfigSelect(value) {
       this.$store.commit('setConfigTab', value)
     },
