@@ -2,10 +2,9 @@
   <div class="widget-form-wrapper">
     <div
       class="widget-form-container"
-      :class="'industry-'+pageData.industry"
       :style="{...pageData.style,backgroundImage:`url(${pageData.style.backgroundImage})`}"
     >
-      <div :class="'template-'+pageData.template">
+      <div :class="'template-'+pageData.theme">
         <Draggable
           v-model="pageData.list"
           :group="{ name:'widget',put:true}"
