@@ -44,13 +44,19 @@
         <el-option v-for="item in selectWg.btnTypes" :key="item.value" :label="item.label" :value="item.value"></el-option>
       </el-select>
     </el-form-item>
-    <el-form-item label="按钮位置" v-if="selectWg.hasOwnProperty('position')">
+    <!-- <el-form-item v-if="selectWg.hasOwnProperty('position')">
+      <span slot="label">
+        <span>按钮位置</span>
+        <el-tooltip effect="dark" content="只能放置一个顶部和一个底部按钮" placement="top">
+          <i class="el-icon-info fs12 mg-l10"></i>
+        </el-tooltip>
+      </span>
       <el-radio-group v-model="selectWg.position" size="mini">
         <el-radio-button label="normal">正常</el-radio-button>
-        <el-radio-button label="top">顶部</el-radio-button>
-        <el-radio-button label="bottom">底部</el-radio-button>
+        <el-radio-button label="top" :disabled="buttonPosition('top')">顶部</el-radio-button>
+        <el-radio-button label="bottom" :disabled="buttonPosition('bottom')">底部</el-radio-button>
       </el-radio-group>
-    </el-form-item>
+    </el-form-item> -->
     <el-form-item label="选项" v-if="selectWg.hasOwnProperty('options')">
       <draggable tag="ul" :list="selectWg.options" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">
         <li v-for="(item, index) in selectWg.options" :key="index">
@@ -112,6 +118,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Draggable from 'vuedraggable'
 import Editor from '@/components/editor'
 
@@ -136,7 +143,24 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState({
+      pageData: state => state.common.pageData,
+      wgConfig: state => state.common.wgConfig
+    })
+  },
   methods: {
+    // buttonPosition(val) {
+    //   let bool = false;
+    //   for (const item of this.pageData.list) {
+    //     if (bool) break;
+    //     if (item.type === 'button') {
+    //       bool = item.position === val;
+    //       this.wgConfig[val + 'Fixed'] = bool ? item : ""
+    //     }
+    //   }
+    //   return bool;
+    // },
     isLink(val) {
       let isLink = this.$util.isLink(val);
       if (!isLink) this.$message.error('请输入正确的网址');
