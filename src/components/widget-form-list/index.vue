@@ -1,5 +1,9 @@
 <template>
-  <div class="widget-view" :class="{active: selectWg.key === item.key,'no-padding':noPaddingType.includes(item.type)}">
+  <div
+    @click.stop="handleSelectWidget()"
+    :class="[Array.isArray(item.list)?'widget-child-form-list':'widget-view',{active: selectWg.key === item.key,'no-padding':noPaddingType.includes(item.type)}]"
+    :style="Array.isArray(item.list)?{...item.style,backgroundImage:`url(${item.backgroundImage})`}:{}"
+  >
     <!-- 手机 -->
     <WgPhone v-if="item.type === 'phone'" :item="item" />
 
@@ -36,10 +40,13 @@
     <!-- 横向滑动自动选择 -->
     <WgHpicker v-if="item.type === 'h-picker'" :item="item" />
 
+    <!-- 表单内容区 -->
+    <WgFormList v-if="item.type === 'formList'" :item="item" />
+
     <el-button
       title="删除"
       @click.stop="handleWidgetDelete()"
-      class="widget-action-delete"
+      class="widget-action-btn widget-action-delete"
       v-if="selectWg.key === item.key"
       circle
       plain
@@ -48,8 +55,8 @@
     <el-button
       title="复制"
       @click.stop="handleWidgetClone()"
-      class="widget-action-clone"
-      v-if="selectWg.key === item.key"
+      class="widget-action-btn widget-action-clone"
+      v-if="selectWg.key === item.key&&!Array.isArray(selectWg.list)"
       circle
       plain
       type="primary"
@@ -71,6 +78,7 @@ import WgButton from './wg-button'
 import WgStaticText from './wg-statictext'
 import WgSplitLine from './wg-splitLine'
 import WgHpicker from './wg-hpicker'
+import WgFormList from './wg-formlist'
 
 export default {
   components: {
@@ -85,7 +93,8 @@ export default {
     WgButton,
     WgStaticText,
     WgSplitLine,
-    WgHpicker
+    WgHpicker,
+    WgFormList
   },
   props: {
     item: Object,
@@ -103,6 +112,10 @@ export default {
     })
   },
   methods: {
+    handleSelectWidget() {
+      this.$store.commit('setSelectWg', this.data[this.index]);
+      this.$store.commit('setConfigTab', "widget");
+    },
     handleWidgetDelete() {
       if (this.data.length - 1 === this.index) {
         if (this.index === 0) {
