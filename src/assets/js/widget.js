@@ -174,20 +174,21 @@ export default {
       }
     },
     {
-      "type": "button",
-      "name": "按钮",
-      "btnText": "提交",
-      "btnType": "submit",
-      "apiKey": "",
-      "btnTypes": [
-        {
-          "value": "submit",
-          "label": "提交"
-        }
-      ],
-      position:'normal', // bottom top normal
+      type: "button",
+      name: "按钮",
+      btnText: "提交",
+      btnType: "submit",
+      apiKey: "",
+      btnTypes: [{
+        value: "submit",
+        label: "提交"
+      }, {
+        value: "link",
+        label: "跳转"
+      }],
+      position: 'normal', // bottom top normal
       style: {
-        "margin": "0px 0px 0px 0px",
+        margin: "0px 0px 0px 0px",
         isImgBtn: false,
         value: "",
         btnStyle: {
@@ -227,7 +228,7 @@ export default {
       "type": "imgShow",
       "name": "图片展示",
       "value": "",
-      "link":"",
+      "link": "",
       "style": {
         "margin": "0px 0px 0px 0px"
       }
@@ -238,9 +239,9 @@ export default {
       "type": "staticText",
       "name": "文本描述",
       "value": "文本描述",
-      "link":"",
-      backgroundImage:"",
-      backgroundColor:"",
+      "link": "",
+      backgroundImage: "",
+      backgroundColor: "",
       "style": {
         // "fontWeight":"normal",
         // "fontsize": 14,
@@ -272,7 +273,7 @@ export default {
         borderColor: "#409eff",
         borderwidth: 3,
         borderWidth: '3px',
-        borderStyle:"solid"
+        borderStyle: "solid"
       }
     }
   ]
