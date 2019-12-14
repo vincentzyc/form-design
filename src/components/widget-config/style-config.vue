@@ -1,12 +1,5 @@
 <template>
   <section>
-    <!-- <el-form-item label="文本对齐方式" v-if="selectWg.style.hasOwnProperty('textAlign')">
-      <el-radio-group v-model="selectWg.style.textAlign" size="mini">
-        <el-radio-button label="left">左对齐</el-radio-button>
-        <el-radio-button label="center">居中对齐</el-radio-button>
-        <el-radio-button label="right">右对齐</el-radio-button>
-      </el-radio-group>
-    </el-form-item> -->
     <el-form-item label="文字大小(px)" v-if="selectWg.style.hasOwnProperty('fontSize')">
       <el-input-number
         v-model="selectWg.style.fontsize"

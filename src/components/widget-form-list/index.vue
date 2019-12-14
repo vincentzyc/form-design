@@ -56,7 +56,7 @@
       title="复制"
       @click.stop="handleWidgetClone()"
       class="widget-action-btn widget-action-clone"
-      v-if="selectWg.key === item.key&&!Array.isArray(selectWg.list)"
+      v-if="clonebtn"
       circle
       plain
       type="primary"
@@ -107,6 +107,11 @@ export default {
     }
   },
   computed: {
+    clonebtn() {
+      if (Array.isArray(this.selectWg.list)) return false;
+      if (this.selectWg.position !== 'normal') return false;
+      if (this.selectWg.key === this.item.key) return true;
+    },
     ...mapState({
       selectWg: state => state.common.selectWg
     })
