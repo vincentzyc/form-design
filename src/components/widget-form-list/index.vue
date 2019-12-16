@@ -1,26 +1,26 @@
 <template>
   <div
     @click.stop="handleSelectWidget()"
-    :class="[Array.isArray(item.list)?'widget-child-form-list':'widget-view',{active: selectWg.key === item.key,'no-padding':noPaddingType.includes(item.type)}]"
+    :class="[Array.isArray(item.list)?'widget-child-form-list':'widget-view',{active: selectWg.key === item.key}]"
     :style="Array.isArray(item.list)?{...item.style,backgroundImage:`url(${item.backgroundImage})`}:{}"
   >
     <!-- 手机 -->
-    <WgPhone v-if="item.type === 'phone'" :item="item" />
+    <WgPhone v-if="item.type === 'phone'" :item="item" class="wg-padding" />
 
     <!-- 输入框 -->
-    <WgInput v-if="item.type === 'input'" :item="item" />
+    <WgInput v-if="item.type === 'input'" :item="item" class="wg-padding" />
 
     <!-- 选择框 -->
-    <WgCheckbox v-if="item.type === 'checkbox'" :item="item" />
+    <WgCheckbox v-if="item.type === 'checkbox'" :item="item" class="wg-padding" />
 
     <!-- 下拉选择 -->
-    <WgSelect v-if="item.type === 'select'" :item="item" />
+    <WgSelect v-if="item.type === 'select'" :item="item" class="wg-padding" />
 
     <!-- 开关 -->
-    <WgSwitch v-if="item.type==='switch'" :item="item" />
+    <WgSwitch v-if="item.type==='switch'" :item="item" class="wg-padding" />
 
     <!-- 日期选择 -->
-    <WgDate v-if="item.type === 'date'" :item="item" />
+    <WgDate v-if="item.type === 'date'" :item="item" class="wg-padding" />
 
     <!-- 图片展示 -->
     <WgImgshow v-if="item.type === 'imgShow'" :item="item" />
@@ -29,19 +29,19 @@
     <WgImgslide v-if="item.type === 'imgSlide'" :item="item" />
 
     <!-- 按钮 -->
-    <WgButton v-if="item.type === 'button'" :item="item" />
+    <WgButton v-if="item.type === 'button'" :item="item" class="wg-padding" />
 
     <!-- 文本描述 -->
-    <WgStaticText v-if="item.type === 'staticText'" :item="item" />
+    <WgStaticText v-if="item.type === 'staticText'" :item="item"/>
 
     <!-- 分割线 -->
-    <WgSplitLine v-if="item.type === 'splitLine'" :item="item" />
+    <WgSplitLine v-if="item.type === 'splitLine'" :item="item" class="wg-padding"/>
 
     <!-- 横向滑动自动选择 -->
-    <WgHpicker v-if="item.type === 'h-picker'" :item="item" />
+    <WgHpicker v-if="item.type === 'h-picker'" :item="item" class="wg-padding" />
 
     <!-- 表单内容区 -->
-    <WgFormList v-if="item.type === 'formList'" :item="item" />
+    <WgFormList v-if="item.type === 'formList'" :item="item" class="wg-padding" />
 
     <el-button
       title="删除"
