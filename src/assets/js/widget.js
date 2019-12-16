@@ -182,11 +182,7 @@ export default {
       btnTypes: [{
         value: "submit",
         label: "提交"
-      }, {
-        value: "link",
-        label: "跳转"
       }],
-      position: 'normal', // bottom top normal
       style: {
         margin: "0px 0px 0px 0px",
         isImgBtn: false,
