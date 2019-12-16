@@ -238,11 +238,8 @@ export default {
       "link": "",
       backgroundImage: "",
       backgroundColor: "",
-      "style": {
-        // "fontWeight":"normal",
-        // "fontsize": 14,
-        // "fontSize": "14px",
-        "margin": "0px 0px 0px 0px"
+      style: {
+        margin: "0px 0px 0px 0px"
       }
     },
     {
@@ -257,20 +254,34 @@ export default {
       }
     }
   ],
-  "advancedComponents": [
-    {
-      "type": "formList",
-      "name": "表单内容区",
-      "list": [],
-      "style": {
-        margin: "10px 20px 0px 20px",
-        borderradius: 10,
-        borderRadius: '10px',
-        borderColor: "#409eff",
-        borderwidth: 3,
-        borderWidth: '3px',
-        borderStyle: "solid"
-      }
+  "advancedComponents": [{
+    "type": "formList",
+    "name": "表单内容区",
+    "list": [],
+    "style": {
+      margin: "10px 20px 0px 20px",
+      borderradius: 10,
+      borderRadius: '10px',
+      borderColor: "#409eff",
+      borderwidth: 3,
+      borderWidth: '3px',
+      borderStyle: "solid"
     }
-  ]
+  }
+  // {
+  //   "type": "topFixed",
+  //   "name": "顶部悬浮",
+  //   "list": [],
+  //   "style": {
+  //     margin: "10px 20px 0px 20px"
+  //   }
+  // }, {
+  //   "type": "bottomFixed",
+  //   "name": "底部悬浮",
+  //   "list": [],
+  //   "style": {
+  //     margin: "10px 20px 0px 20px"
+  //   }
+  // }
+]
 }

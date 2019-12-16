@@ -9,10 +9,6 @@ const state = {
       backgroundImage: "",
     }
   },
-  wgConfig: {
-    topFixed: '',
-    bottomFixed: ''
-  },
   selectWg: [],
   configTab: 'page',
   wgCollapse: "base"
