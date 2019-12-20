@@ -44,19 +44,9 @@
         <el-option v-for="item in selectWg.btnTypes" :key="item.value" :label="item.label" :value="item.value"></el-option>
       </el-select>
     </el-form-item>
-    <!-- <el-form-item v-if="selectWg.hasOwnProperty('position')">
-      <span slot="label">
-        <span>按钮位置</span>
-        <el-tooltip effect="dark" content="只能放置一个顶部和一个底部按钮" placement="top">
-          <i class="el-icon-info fs12 mg-l10"></i>
-        </el-tooltip>
-      </span>
-      <el-radio-group v-model="selectWg.position" size="mini">
-        <el-radio-button label="normal">正常</el-radio-button>
-        <el-radio-button label="top" :disabled="buttonPosition('top')">顶部</el-radio-button>
-        <el-radio-button label="bottom" :disabled="buttonPosition('bottom')">底部</el-radio-button>
-      </el-radio-group>
-    </el-form-item> -->
+    <el-form-item label="高度" v-if="selectWg.hasOwnProperty('height')">
+      <el-input-number v-model="selectWg.height" :min="30" :max="200" :step="1" step-strictly size="small" />
+    </el-form-item>
     <el-form-item label="选项" v-if="selectWg.hasOwnProperty('options')">
       <draggable tag="ul" :list="selectWg.options" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">
         <li v-for="(item, index) in selectWg.options" :key="index">
