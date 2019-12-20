@@ -9,6 +9,7 @@ const state = {
       backgroundImage: "",
     }
   },
+  dragWg:{},
   selectWg: [],
   configTab: 'page',
   wgCollapse: "base"
@@ -23,6 +24,9 @@ const state = {
 // }
 
 const mutations = {
+  setDragWg(state, payload) {
+    state.dragWg = payload;
+  },
   setPageData(state, payload) {
     state.pageData = payload;
   },

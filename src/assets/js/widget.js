@@ -258,8 +258,9 @@ export default {
     "type": "formList",
     "name": "表单内容区",
     "list": [],
+    wgClassName:"wg-formlist",
     "style": {
-      margin: "10px 20px 0px 20px",
+      margin: "0px 20px 0px 20px",
       borderradius: 10,
       borderRadius: '10px',
       borderColor: "#409eff",
@@ -267,21 +268,23 @@ export default {
       borderWidth: '3px',
       borderStyle: "solid"
     }
+  }, {
+    "type": "fixedBottom",
+    "name": "底部悬浮",
+    "list": [],
+    height:"",
+    wgClassName:"wg-fixed-bottom",
+    "style": {
+      margin: "0px 0px 0px 0px"
+    }
   }
-  // {
-  //   "type": "topFixed",
-  //   "name": "顶部悬浮",
-  //   "list": [],
-  //   "style": {
-  //     margin: "10px 20px 0px 20px"
-  //   }
-  // }, {
-  //   "type": "bottomFixed",
-  //   "name": "底部悬浮",
-  //   "list": [],
-  //   "style": {
-  //     margin: "10px 20px 0px 20px"
-  //   }
-  // }
-]
+    // {
+    //   "type": "fixedTop",
+    //   "name": "顶部悬浮",
+    //   "list": [],
+    //   "style": {
+    //     margin: "10px 20px 0px 20px"
+    //   }
+    // }, 
+  ]
 }

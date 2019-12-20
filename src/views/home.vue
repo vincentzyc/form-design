@@ -11,6 +11,7 @@
               :list="basicComponents"
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
+              @end="dragEnd"
               :clone="cloneData"
               ghostClass="ghost"
             >
@@ -24,6 +25,7 @@
               :list="imgComponents"
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
+              @end="dragEnd"
               :clone="cloneData"
               ghostClass="ghost"
             >
@@ -37,6 +39,7 @@
               :list="assistComponents"
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
+              @end="dragEnd"
               :clone="cloneData"
               ghostClass="ghost"
             >
@@ -51,16 +54,17 @@
               :group="{ name:'widget', pull:'clone',put:false}"
               filter=".disdraggable"
               :sort="false"
+              @end="dragEnd"
               :clone="cloneData"
               ghostClass="ghost"
             >
               <li
-                class="form-edit-widget-label"
-                :class="{disdraggable:disFormList}"
                 v-for="(item, index) in advancedComponents"
                 :key="index"
+                class="form-edit-widget-label"
+                :class="{disdraggable:disFormList(item.type)}"
               >
-                <a :style="{cursor:disFormList?'no-drop':'move'}">{{item.name}}</a>
+                <a :style="{cursor:disFormList(item.type)?'no-drop':'move'}">{{item.name}}</a>
               </li>
             </draggable>
           </div>
@@ -131,26 +135,28 @@ export default {
     }
   },
   computed: {
-    disFormList() {
-      if (this.pageData.list) {
-        return this.pageData.list.some(v => {
-          return v.type === 'formList';
-        });
-      }
-      return false
-      // return false
-    },
     ...mapState({
       pageData: state => state.common.pageData,
       configTab: state => state.common.configTab,
     })
   },
   methods: {
+    dragEnd() {
+      this.$store.commit('setDragWg', '')
+    },
+    disFormList(type) {
+      if (this.pageData.list) {
+        return this.pageData.list.some(v => {
+          return v.type === type;
+        });
+      }
+      return false
+    },
     cloneData(obj) {
       const elKey = Date.now() + '_' + Math.ceil(Math.random() * 1000000);
       let newObj = this.$util.deepClone(obj);
       newObj.key = newObj.type + '_' + elKey;
-      // this.$store.commit('setDragWg', newObj)
+      this.$store.commit('setDragWg', newObj)
       return newObj;
     },
     handleConfigSelect(value) {

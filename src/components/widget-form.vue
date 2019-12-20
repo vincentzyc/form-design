@@ -11,6 +11,8 @@
           ghostClass="ghost"
           :swapThreshold="0.7"
           :animation="100"
+          @start="dragStart"
+          @end="dragEnd"
           @add="handleWidgetAdd"
           class="widget-form-list"
           :class="{'widget-empty': pageData.list.length === 0&&!pageData.style.backgroundImage}"
@@ -39,6 +41,12 @@ export default {
     })
   },
   methods: {
+    dragStart(evt) {
+      this.$store.commit('setDragWg', this.pageData.list[evt.oldIndex])
+    },
+    dragEnd() {
+      this.$store.commit('setDragWg', '')
+    },
     handleWidgetAdd(evt) {
       const newIndex = evt.newIndex;
       this.$store.commit('setSelectWg', this.pageData.list[newIndex]);

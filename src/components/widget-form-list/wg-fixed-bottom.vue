@@ -6,8 +6,9 @@
     :swapThreshold="0.6"
     :animation="100"
     @add="handleWidgetAdd"
-    class="widget-form-list"
+    class="widget-form-list widget-list-wrapper"
     :class="{'widget-empty': item.list.length === 0}"
+    :style="{height:item.height+'px'}"
   >
     <template v-for="(formItem,i) in item.list">
       <WidgetFormList :item="formItem" :index="i" :data="item.list" :key="formItem.key" />
