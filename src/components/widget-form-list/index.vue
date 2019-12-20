@@ -1,9 +1,10 @@
 <template>
   <div
     @click.stop="handleSelectWidget()"
-    :class="[Array.isArray(item.list)?'widget-child-form-list':'widget-view',{active: selectWg.key === item.key}]"
+    :class="['relative',item.wgClassName?item.wgClassName:'widget-view',{active: selectWg.key === item.key}]"
     :style="Array.isArray(item.list)?{...item.style,backgroundImage:`url(${item.backgroundImage})`}:{}"
   >
+    <i class="el-icon-rank" v-if="Array.isArray(item.list)"></i>
     <!-- 手机 -->
     <WgPhone v-if="item.type === 'phone'" :item="item" class="wg-padding" />
 
@@ -32,10 +33,10 @@
     <WgButton v-if="item.type === 'button'" :item="item" class="wg-padding" />
 
     <!-- 文本描述 -->
-    <WgStaticText v-if="item.type === 'staticText'" :item="item"/>
+    <WgStaticText v-if="item.type === 'staticText'" :item="item" />
 
     <!-- 分割线 -->
-    <WgSplitLine v-if="item.type === 'splitLine'" :item="item" class="wg-padding"/>
+    <WgSplitLine v-if="item.type === 'splitLine'" :item="item" class="wg-padding" />
 
     <!-- 横向滑动自动选择 -->
     <WgHpicker v-if="item.type === 'h-picker'" :item="item" class="wg-padding" />
@@ -43,24 +44,21 @@
     <!-- 表单内容区 -->
     <WgFormList v-if="item.type === 'formList'" :item="item" class="wg-padding" />
 
-    <el-button
+    <!-- 底部悬浮区 -->
+    <WgFixedBottom v-if="item.type === 'fixedBottom'" :item="item" />
+
+    <span
       title="删除"
       @click.stop="handleWidgetDelete()"
-      class="widget-action-btn widget-action-delete"
       v-if="selectWg.key === item.key"
-      circle
-      plain
-      type="danger"
-    >删除</el-button>
-    <el-button
+      class="widget-action-btn widget-action-delete el-icon-delete"
+    ></span>
+    <span
       title="复制"
       @click.stop="handleWidgetClone()"
-      class="widget-action-btn widget-action-clone"
       v-if="clonebtn"
-      circle
-      plain
-      type="primary"
-    >复制</el-button>
+      class="widget-action-btn widget-action-clone el-icon-document-copy"
+    ></span>
   </div>
 </template>
 
@@ -79,6 +77,7 @@ import WgStaticText from './wg-statictext'
 import WgSplitLine from './wg-splitLine'
 import WgHpicker from './wg-hpicker'
 import WgFormList from './wg-formlist'
+import WgFixedBottom from './wg-fixed-bottom'
 
 export default {
   components: {
@@ -94,7 +93,8 @@ export default {
     WgStaticText,
     WgSplitLine,
     WgHpicker,
-    WgFormList
+    WgFormList,
+    WgFixedBottom
   },
   props: {
     item: Object,
@@ -109,8 +109,8 @@ export default {
   computed: {
     clonebtn() {
       if (Array.isArray(this.selectWg.list)) return false;
-      if (this.selectWg.position !== 'normal') return false;
       if (this.selectWg.key === this.item.key) return true;
+      return false;
     },
     ...mapState({
       selectWg: state => state.common.selectWg

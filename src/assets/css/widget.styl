@@ -9,6 +9,7 @@ $primary-background-color = #d8e8fa;
   bottom: 0;
 
   .widget-form-container {
+    position: relative;
     width: 375px;
     min-height: 640px;
     margin: 20px auto;
@@ -63,31 +64,8 @@ $primary-background-color = #d8e8fa;
         z-index: 10;
       }
     }
-  }
-
-  .widget-action-btn {
-    position: absolute;
-    bottom: -17px;
-    z-index: 1199;
-    padding: 10px;
-    font-size: 12px;
-  }
-
-  .widget-action-delete {
-    right: 8px;
-  }
-
-  .widget-action-clone {
-    right: 60px;
-  }
-
-  .widget-child-form-list {
-    position: relative;
-    transition: 0.2s;
-    padding: 10px;
 
     .el-icon-rank {
-      display: none;
       position: absolute;
       left: -28px;
       top: 15px;
@@ -98,23 +76,28 @@ $primary-background-color = #d8e8fa;
       z-index: 1001;
       cursor: move;
     }
+  }
 
-    &:hover {
-      box-shadow: 0px 1px 10px 1px #90c7ff inset;
+  .widget-action-btn {
+    position: absolute;
+    bottom: -10px;
+    color: #fff;
+    z-index: 1199;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 100%;
+    transition: 0.3s;
+    cursor: pointer;
+  }
 
-      .el-icon-rank {
-        display: block;
-      }
-    }
+  .widget-action-delete {
+    background-color: #F56C6C;
+    right: 8px;
+  }
 
-    &.active {
-      box-shadow: 0px 1px 10px 1px #90c7ff;
-      z-index: 1111;
-
-      .el-icon-rank {
-        display: block;
-      }
-    }
+  .widget-action-clone {
+    background-color: #409EFF;
+    right: 40px;
   }
 
   .widget-view {
@@ -331,6 +314,47 @@ $primary-background-color = #d8e8fa;
     .wg-splitLine .splitLine-hr {
       border: 0 none;
       border-top: 1px solid #d3d3d3;
+    }
+  }
+
+  .wg-formlist {
+    transition: 0.2s;
+    padding: 10px;
+  }
+
+  .wg-fixed-bottom {
+    border: 1px dashed #ccc;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .widget-form-list {
+      min-height: 30px;
+    }
+
+    .el-icon-rank {
+      top: 0px;
+    }
+
+    .widget-list-wrapper {
+      height: 30px;
+      overflow: hidden;
+    }
+
+    .widget-empty {
+      position: relative;
+      background-image: none;
+
+      &:after {
+        content: '底部悬浮区';
+        color: #999;
+        font-size: 12px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 }
