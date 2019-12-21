@@ -8,6 +8,7 @@
         <Draggable
           v-model="pageData.list"
           :group="{ name:'widget',put:true}"
+          filter=".disdraggable"
           ghostClass="ghost"
           :swapThreshold="0.7"
           :animation="100"
