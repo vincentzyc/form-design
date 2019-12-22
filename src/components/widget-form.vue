@@ -39,6 +39,7 @@ export default {
   computed: {
     ...mapState({
       pageData: state => state.common.pageData,
+      selectWg: state => state.common.selectWg
     })
   },
   methods: {
@@ -52,6 +53,9 @@ export default {
       const newIndex = evt.newIndex;
       this.$store.commit('setSelectWg', this.pageData.list[newIndex]);
       this.$store.commit('setConfigTab', "widget");
+      if (this.selectWg.type === "fixedBottom") {
+        this.$set(this.pageData.style, 'paddingBottom', this.selectWg.height + 'px')
+      }
     }
   }
 }
