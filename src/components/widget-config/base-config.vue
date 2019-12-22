@@ -45,7 +45,15 @@
       </el-select>
     </el-form-item>
     <el-form-item label="高度" v-if="selectWg.hasOwnProperty('height')">
-      <el-input-number v-model="selectWg.height" :min="30" :max="200" :step="1" step-strictly size="small" />
+      <el-input-number
+        v-model="selectWg.height"
+        :min="30"
+        :max="200"
+        :step="1"
+        step-strictly
+        size="small"
+        @change="setHeight()"
+      />
     </el-form-item>
     <el-form-item label="选项" v-if="selectWg.hasOwnProperty('options')">
       <draggable tag="ul" :list="selectWg.options" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">
@@ -140,17 +148,16 @@ export default {
     })
   },
   methods: {
-    // buttonPosition(val) {
-    //   let bool = false;
-    //   for (const item of this.pageData.list) {
-    //     if (bool) break;
-    //     if (item.type === 'button') {
-    //       bool = item.position === val;
-    //       this.wgConfig[val + 'Fixed'] = bool ? item : ""
-    //     }
-    //   }
-    //   return bool;
-    // },
+    setHeight() {
+      switch (this.selectWg.type) {
+        case 'fixedBottom':
+          this.$set(this.pageData.style, 'paddingBottom', this.selectWg.height + 'px')
+          break;
+
+        default:
+          break;
+      }
+    },
     isLink(val) {
       let isLink = this.$util.isLink(val);
       if (!isLink) this.$message.error('请输入正确的网址');
