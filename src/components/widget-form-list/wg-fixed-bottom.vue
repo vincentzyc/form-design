@@ -33,6 +33,7 @@ export default {
   },
   computed: {
     ...mapState({
+      pageData: state => state.common.pageData,
       selectWg: state => state.common.selectWg,
       dragWg: state => state.common.dragWg
     })
@@ -43,6 +44,14 @@ export default {
       this.$store.commit('setSelectWg', this.item.list[newIndex]);
       this.$store.commit('setConfigTab', "widget");
     }
+  },
+  destroyed() {
+    this.$delete(this.pageData.style, 'paddingBottom')
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$set(this.pageData.style, 'paddingBottom', this.selectWg.height + 'px')
+    })
   }
 }
 </script>
