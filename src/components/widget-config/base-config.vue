@@ -47,10 +47,10 @@
     <el-form-item label="高度" v-if="selectWg.hasOwnProperty('height')">
       <el-input-number
         v-model="selectWg.height"
-        :min="30"
+        :min="40"
         :max="200"
-        :step="1"
-        step-strictly
+        :step="5"
+        :precision="0"
         size="small"
         @change="setHeight()"
       />
