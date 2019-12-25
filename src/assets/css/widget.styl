@@ -318,30 +318,34 @@ $primary-background-color = #d8e8fa;
   }
 
   .wg-formlist {
+    position: relative;
     transition: 0.2s;
     padding: 10px;
   }
 
   .wg-fixed-bottom {
-    border: 1px dashed #ccc;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    .wg-fixed-bottom-wrapper {
+      border: 1px dashed #ccc;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
 
     .widget-form-list {
       min-height: 40px;
     }
 
     .el-icon-rank {
-      top: 0px;
-      cursor: no-drop;
+      display: none;
+      // top: 0px;
+      // cursor: no-drop;
     }
 
     .widget-list-wrapper {
       height: 40px;
       transition: 0.3s;
-      overflow: hidden;
+      overflow-y: scroll;
     }
 
     .widget-empty {
