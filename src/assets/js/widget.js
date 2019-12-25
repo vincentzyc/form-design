@@ -272,11 +272,8 @@ export default {
     "type": "fixedBottom",
     "name": "底部悬浮",
     "list": [],
-    height:"50",
-    wgClassName:"wg-fixed-bottom disdraggable",
-    "style": {
-      margin: "0px 0px 0px 0px"
-    }
+    height:"60",
+    wgClassName:"wg-fixed-bottom disdraggable"
   }
     // {
     //   "type": "fixedTop",
