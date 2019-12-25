@@ -1,7 +1,7 @@
 <template>
   <div
     @click.stop="handleSelectWidget()"
-    :class="['relative',item.wgClassName?item.wgClassName:'widget-view',{active: selectWg.key === item.key}]"
+    :class="[item.wgClassName?item.wgClassName:'widget-view',{active: selectWg.key === item.key}]"
     :style="Array.isArray(item.list)?{...item.style,backgroundImage:`url(${item.backgroundImage})`}:{}"
   >
     <i class="el-icon-rank" v-if="Array.isArray(item.list)"></i>
