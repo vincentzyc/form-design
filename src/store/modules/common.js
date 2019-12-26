@@ -4,13 +4,16 @@ const state = {
     title: "云忆网络",
     statsCode: "",
     theme: "theme1",
+    fixedBottom:[],
     style: {
       backgroundColor: "#fff",
       backgroundImage: "",
     }
   },
   dragWg:{},
-  selectWg: [],
+  selectWg: {},
+  selectWgIndex:null,
+  selectWginList:[],
   configTab: 'page',
   wgCollapse: "base"
 }

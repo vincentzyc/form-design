@@ -1,5 +1,8 @@
 <template>
   <section>
+    <el-form-item label="底部悬浮" v-if="selectWg.hasOwnProperty('fixedBottom')">
+      <el-switch v-model="selectWg.fixedBottom" @change="fixedBottom"></el-switch>
+    </el-form-item>
     <el-form-item label="选择控件" v-if="selectWg.hasOwnProperty('fieldTypes')">
       <el-select
         v-model="selectWg.apiKey"
@@ -44,17 +47,7 @@
         <el-option v-for="item in selectWg.btnTypes" :key="item.value" :label="item.label" :value="item.value"></el-option>
       </el-select>
     </el-form-item>
-    <el-form-item label="高度" v-if="selectWg.hasOwnProperty('height')">
-      <el-input-number
-        v-model="selectWg.height"
-        :min="40"
-        :max="200"
-        :step="5"
-        :precision="0"
-        size="small"
-        @change="setHeight()"
-      />
-    </el-form-item>
+
     <el-form-item label="选项" v-if="selectWg.hasOwnProperty('options')">
       <draggable tag="ul" :list="selectWg.options" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">
         <li v-for="(item, index) in selectWg.options" :key="index">
@@ -148,14 +141,21 @@ export default {
     })
   },
   methods: {
-    setHeight() {
-      switch (this.selectWg.type) {
-        case 'fixedBottom':
-          this.$set(this.pageData.style, 'paddingBottom', this.selectWg.height + 'px')
-          break;
-
-        default:
-          break;
+    deleteArrayEle(array, key) {
+      for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        if (element.key === key) return array.splice(index, 1);
+        if (Array.isArray(element.list) && element.list.length > 0) this.deleteArrayEle(element.list, key)
+      }
+    },
+    fixedBottom(v) {
+      if (v) {
+        this.deleteArrayEle(this.pageData.list,this.selectWg.key);
+        this.pageData.fixedBottom = [];
+        this.pageData.fixedBottom.push(this.selectWg)
+      } else {
+        this.pageData.list.push(this.selectWg)
+        this.pageData.fixedBottom = []
       }
     },
     isLink(val) {

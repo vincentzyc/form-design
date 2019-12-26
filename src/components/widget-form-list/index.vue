@@ -4,7 +4,7 @@
     :class="[item.wgClassName?item.wgClassName:'widget-view',{active: selectWg.key === item.key}]"
     :style="Array.isArray(item.list)?{...item.style,backgroundImage:`url(${item.backgroundImage})`}:{}"
   >
-    <i class="el-icon-rank" v-if="Array.isArray(item.list)"></i>
+    <i class="el-icon-rank" v-if="Array.isArray(item.list)&&!item.wgClassName.includes('disdraggable')"></i>
     <!-- 手机 -->
     <WgPhone v-if="item.type === 'phone'" :item="item" class="wg-padding" />
 
@@ -102,12 +102,11 @@ export default {
     data: Array
   },
   data() {
-    return {
-      noPaddingType: ['imgshow', 'staticText']
-    }
+    return {}
   },
   computed: {
     clonebtn() {
+      if (this.selectWg.fixedBottom) return false;
       if (Array.isArray(this.selectWg.list)) return false;
       if (this.selectWg.key === this.item.key) return true;
       return false;

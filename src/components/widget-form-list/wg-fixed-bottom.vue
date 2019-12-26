@@ -43,7 +43,7 @@ export default {
   methods: {
     handleWidgetAdd(evt) {
       const newIndex = evt.newIndex;
-      this.$store.commit('setSelectWg', this.item.list[newIndex]);
+      this.$store.commit('setSelectWg', this.item.list[newIndex])
       this.$store.commit('setConfigTab', "widget");
     }
   },

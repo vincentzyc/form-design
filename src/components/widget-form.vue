@@ -22,6 +22,12 @@
             <WidgetFormList :item="item" :index="index" :data="pageData.list" :key="item.key" />
           </template>
         </Draggable>
+
+        <div v-if="pageData.fixedBottom.length>0" class="wg-fixed-bottom">
+          <template v-for="(item,index) in pageData.fixedBottom">
+            <WidgetFormList :item="item" :index="index" :data="pageData.fixedBottom" :key="item.key" />
+          </template>
+        </div>
       </div>
     </div>
   </div>
