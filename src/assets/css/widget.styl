@@ -33,8 +33,12 @@ $primary-background-color = #d8e8fa;
   }
 
   .widget-form-list {
-    min-height: 360px;
+    min-height: 584px;
     padding-bottom: 36px;
+
+    .widget-form-list {
+      min-height: 360px;
+    }
 
     .ghost {
       background: #fff;
@@ -324,34 +328,10 @@ $primary-background-color = #d8e8fa;
   }
 
   .wg-fixed-bottom {
-    position: absolute;
+    position: sticky;
     bottom: 0;
     left: 0;
     right: 0;
-
-    .widget-form-list {
-      min-height: 40px;
-    }
-
-    .widget-list-wrapper {
-      height: 40px;
-      transition: 0.3s;
-      overflow-y: scroll;
-    }
-
-    .widget-empty {
-      position: relative;
-      background-image: none;
-
-      &:after {
-        content: '底部悬浮区';
-        color: #999;
-        font-size: 12px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
+    z-index: 1111;
   }
 }
