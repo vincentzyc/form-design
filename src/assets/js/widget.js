@@ -179,6 +179,7 @@ export default {
       btnText: "提交",
       btnType: "submit",
       apiKey: "",
+      fixedBottom:false,
       btnTypes: [{
         value: "submit",
         label: "提交"
@@ -268,13 +269,14 @@ export default {
       borderWidth: '3px',
       borderStyle: "solid"
     }
-  }, {
-    "type": "fixedBottom",
-    "name": "底部悬浮",
-    "list": [],
-    height:"60",
-    wgClassName:"wg-fixed-bottom disdraggable"
   }
+  // {
+  //   "type": "fixedBottom",
+  //   "name": "底部悬浮",
+  //   "list": [],
+  //   height:"60",
+  //   wgClassName:"wg-fixed-bottom disdraggable"
+  // }
     // {
     //   "type": "fixedTop",
     //   "name": "顶部悬浮",

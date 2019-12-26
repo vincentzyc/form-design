@@ -5,6 +5,7 @@ export default {
     title: "云忆网络",
     statsCode: "",
     theme: "theme1",
+    fixedBottom:[],
     style: {
       backgroundColor: "#fff",
       backgroundImage: ""
