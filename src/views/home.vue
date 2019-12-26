@@ -173,7 +173,7 @@ export default {
       }, false);
     },
     handleReset() {
-      this.$store.commit('setSelectWg', []);
+      this.$store.commit('setSelectWg', {});
       this.$store.commit('setPageData', this.$util.deepClone(pageConfigData.pageConfig));
     },
     handleSave() {
