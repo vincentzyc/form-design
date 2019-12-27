@@ -44,9 +44,6 @@
     <!-- 表单内容区 -->
     <WgFormList v-if="item.type === 'formList'" :item="item" class="wg-padding" />
 
-    <!-- 底部悬浮区 -->
-    <WgFixedBottom v-if="item.type === 'fixedBottom'" :item="item" />
-
     <span
       title="删除"
       @click.stop="handleWidgetDelete()"
@@ -77,7 +74,6 @@ import WgStaticText from './wg-statictext'
 import WgSplitLine from './wg-splitLine'
 import WgHpicker from './wg-hpicker'
 import WgFormList from './wg-formlist'
-import WgFixedBottom from './wg-fixed-bottom'
 
 export default {
   components: {
@@ -93,8 +89,7 @@ export default {
     WgStaticText,
     WgSplitLine,
     WgHpicker,
-    WgFormList,
-    WgFixedBottom
+    WgFormList
   },
   props: {
     item: Object,
