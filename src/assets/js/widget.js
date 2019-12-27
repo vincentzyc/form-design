@@ -180,6 +180,7 @@ export default {
       btnType: "submit",
       apiKey: "",
       fixedBottom:false,
+      scrollHeight:0,
       btnTypes: [{
         value: "submit",
         label: "提交"
@@ -227,6 +228,7 @@ export default {
       "value": "",
       "link": "",
       fixedBottom:false,
+      scrollHeight:0,
       "style": {
         "margin": "0px 0px 0px 0px"
       }

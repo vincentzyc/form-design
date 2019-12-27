@@ -3,6 +3,10 @@
     <el-form-item label="底部悬浮" v-if="selectWg.hasOwnProperty('fixedBottom')">
       <el-switch v-model="selectWg.fixedBottom" @change="fixedBottom"></el-switch>
     </el-form-item>
+    <el-form-item label="设置页面滑动距离显示悬浮内容" v-if="selectWg.fixedBottom&&selectWg.hasOwnProperty('scrollHeight')">
+      <p class="lh24 c999 fs12">请预览查看具体效果（0则一直显示）</p>
+      <el-input-number v-model="selectWg.scrollHeight" :min="0" :max="1000" :step="1" step-strictly size="small" />
+    </el-form-item>
     <el-form-item label="选择控件" v-if="selectWg.hasOwnProperty('fieldTypes')">
       <el-select
         v-model="selectWg.apiKey"
@@ -150,7 +154,7 @@ export default {
     },
     fixedBottom(v) {
       if (v) {
-        this.deleteArrayEle(this.pageData.list,this.selectWg.key);
+        this.deleteArrayEle(this.pageData.list, this.selectWg.key);
         this.pageData.fixedBottom = [];
         this.pageData.fixedBottom.push(this.selectWg)
       } else {
