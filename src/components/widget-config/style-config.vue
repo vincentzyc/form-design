@@ -33,8 +33,11 @@
     <el-form-item label="背景图片" v-if="selectWg.hasOwnProperty('backgroundImage')">
       <ImgUpload :value.sync="selectWg.backgroundImage" />
     </el-form-item>
-    <el-form-item label="边距（上 右 下 左 、空格隔开）" v-if="selectWg.style.hasOwnProperty('margin')">
+    <el-form-item label="外边距（上 右 下 左 、空格隔开）" v-if="selectWg.style.hasOwnProperty('margin')">
       <el-input v-model="selectWg.style.margin"></el-input>
+    </el-form-item>
+    <el-form-item label="内边距（上 右 下 左 、空格隔开）" v-if="selectWg.style.hasOwnProperty('padding')">
+      <el-input v-model="selectWg.style.padding"></el-input>
     </el-form-item>
 
     <el-form-item label="使用图片按钮" v-if="selectWg.style.hasOwnProperty('isImgBtn')">

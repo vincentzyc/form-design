@@ -30,7 +30,7 @@
     <WgImgslide v-if="item.type === 'imgSlide'" :item="item" />
 
     <!-- 按钮 -->
-    <WgButton v-if="item.type === 'button'" :item="item" class="wg-padding" />
+    <WgButton v-if="item.type === 'button'" :item="item" />
 
     <!-- 文本描述 -->
     <WgStaticText v-if="item.type === 'staticText'" :item="item" />

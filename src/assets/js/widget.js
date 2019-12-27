@@ -186,7 +186,8 @@ export default {
         label: "提交"
       }],
       style: {
-        margin: "0px 0px 0px 0px",
+        margin: "10px 10px 10px 10px",
+        padding: "0px 0px 0px 0px",
         isImgBtn: false,
         value: "",
         btnStyle: {
