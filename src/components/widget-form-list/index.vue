@@ -44,6 +44,9 @@
     <!-- 表单内容区 -->
     <WgFormList v-if="item.type === 'formList'" :item="item" class="wg-padding" />
 
+    <!-- 微信关注 -->
+    <WgWechat v-if="item.type === 'wechat'" :item="item" />
+
     <span
       title="删除"
       @click.stop="handleWidgetDelete()"
@@ -73,6 +76,7 @@ import WgButton from './wg-button'
 import WgStaticText from './wg-statictext'
 import WgSplitLine from './wg-splitLine'
 import WgHpicker from './wg-hpicker'
+import WgWechat from './wg-wechat'
 import WgFormList from './wg-formlist'
 
 export default {
@@ -89,6 +93,7 @@ export default {
     WgStaticText,
     WgSplitLine,
     WgHpicker,
+    WgWechat,
     WgFormList
   },
   props: {
