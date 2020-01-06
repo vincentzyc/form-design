@@ -7,8 +7,9 @@
     :before-upload="beforeAvatarUpload"
     :on-error="uploadError"
   >
-    <img v-if="value" :src="value" class="avatar">
+    <img v-if="value" :src="value" class="avatar" />
     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+    <i v-show="value" class="el-icon-close avatar-close-icon" @click.stop="removeImg()"></i>
   </el-upload>
 </template>
 <script>
@@ -19,6 +20,9 @@ export default {
   },
   methods: {
     /* eslint-disable */
+    removeImg() {
+      this.$emit('update:value', '');
+    },
     handleAvatarSuccess(res, file) {
       this.$emit('update:value', URL.createObjectURL(file.raw))
       this.fullLoading.close()
