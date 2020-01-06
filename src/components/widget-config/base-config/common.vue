@@ -6,6 +6,7 @@
     <el-form-item label="设置页面滑动距离显示悬浮内容" v-if="selectWg.fixedBottom&&selectWg.hasOwnProperty('scrollHeight')">
       <p class="lh24 c999 fs12">请预览查看具体效果（0则一直显示）</p>
       <el-input-number v-model="selectWg.scrollHeight" :min="0" :max="1000" :step="1" step-strictly size="small" />
+      <span class="mg-l10">px</span>
     </el-form-item>
     <el-form-item label="选择控件" v-if="selectWg.hasOwnProperty('fieldTypes')">
       <el-select
