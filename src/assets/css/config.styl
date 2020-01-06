@@ -54,11 +54,14 @@
     border-radius: 6px;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
   }
 
   .avatar-uploader .el-upload:hover {
     border-color: $primary-color;
+
+    .avatar-close-icon {
+      display: block;
+    }
   }
 
   .avatar-uploader-icon {
@@ -69,6 +72,22 @@
     line-height: 100px;
     text-align: center;
     border: 1px dashed #d9d9d9;
+  }
+
+  .avatar-close-icon {
+    display: none;
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    color: $primary-color;
+    font-size: 18px;
+    border: 1px dashed $primary-color;
+    border-radius: 18px;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.3);
+    }
   }
 
   .avatar {
