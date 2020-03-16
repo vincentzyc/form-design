@@ -4,18 +4,33 @@ const state = {
     title: "云忆网络",
     statsCode: "",
     theme: "theme1",
-    fixedBottom:[],
+    fixedBottom: [],
     style: {
       backgroundColor: "#fff",
       backgroundImage: "",
     }
   },
-  dragWg:{},
+  dragWg: {},
   selectWg: {},
-  selectWgIndex:null,
-  selectWginList:[],
+  selectWgIndex: null,
+  selectWginList: [],
   configTab: 'page',
-  wgCollapse: "base"
+  wgCollapse: "base",
+  predefineColors: [
+    '#000000',
+    '#666666',
+    '#cccccc',
+    '#ffffff',
+    'rgba(255, 255, 255, 0)',
+    '#ff0000',
+    '#ff4500',
+    '#ff8c00',
+    '#ffd700',
+    '#90ee90',
+    '#00ced1',
+    '#1e90ff',
+    '#c71585'
+  ]
 }
 
 // const actions = {

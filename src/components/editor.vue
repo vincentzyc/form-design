@@ -2,7 +2,7 @@
   <quill-editor ref="myTextEditor" v-model="model" :options="editorOption">
     <div id="toolbar" slot="toolbar">
       <button class="ql-color-picker">
-        <el-color-picker size="mini" @change="pickerColor" />
+        <el-color-picker :predefine="predefineColors" size="mini" @active-change="pickerColor" />
       </button>
       <button class="ql-bold"></button>
       <!-- <button class="ql-italic"></button> -->
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   props: {
     value: String
@@ -79,6 +80,9 @@ export default {
         this.$emit("input", val);
       }
     },
+    ...mapState({
+      predefineColors: state => state.common.predefineColors
+    }),
     editor() {
       return this.$refs.myTextEditor.quill
     }
