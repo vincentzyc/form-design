@@ -19,18 +19,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 export default {
   props: {
     selectWg: {
       type: Object,
       required: true
     }
-  },
-  computed: {
-    ...mapState({
-      predefineColors: state => state.createh5.predefineColors
-    })
   }
 }
 </script>
