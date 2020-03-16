@@ -5,7 +5,7 @@
         <el-input v-model.trim="pageData.title"></el-input>
       </el-form-item>
       <el-form-item label="页面背景色">
-        <el-color-picker v-model="pageData.style.backgroundColor" />
+        <el-color-picker :predefine="predefineColors" v-model="pageData.style.backgroundColor" />
       </el-form-item>
       <el-form-item label="页面背景图片">
         <ImgUpload :value.sync="pageData.style.backgroundImage" />
@@ -33,7 +33,8 @@ export default {
   },
   computed: {
     ...mapState({
-      pageData: state => state.common.pageData
+      pageData: state => state.common.pageData,
+      predefineColors: state => state.common.predefineColors
     })
   },
   methods: {

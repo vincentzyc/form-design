@@ -10,10 +10,10 @@
       />
     </el-form-item>
     <el-form-item label="文字颜色" v-if="selectWg.style.hasOwnProperty('color')">
-      <el-color-picker v-model="selectWg.style.color" />
+      <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.color" />
     </el-form-item>
     <el-form-item label="线条颜色" v-if="selectWg.style.hasOwnProperty('borderColor')">
-      <el-color-picker v-model="selectWg.style.borderColor" />
+      <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.borderColor" />
     </el-form-item>
     <el-form-item label="线条类型" v-if="selectWg.style.hasOwnProperty('borderStyle')">
       <el-radio-group
@@ -28,7 +28,7 @@
       </el-radio-group>
     </el-form-item>
     <el-form-item label="背景颜色" v-if="selectWg.hasOwnProperty('backgroundColor')">
-      <el-color-picker v-model="selectWg.backgroundColor" />
+      <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.backgroundColor" />
     </el-form-item>
     <el-form-item label="背景图片" v-if="selectWg.hasOwnProperty('backgroundImage')">
       <ImgUpload :value.sync="selectWg.backgroundImage" />
@@ -49,13 +49,13 @@
       </el-form-item>
       <div v-else>
         <el-form-item label="按钮背景色" v-if="selectWg.style.btnStyle.hasOwnProperty('background')">
-          <el-color-picker v-model="selectWg.style.btnStyle.background" />
+          <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.btnStyle.background" />
         </el-form-item>
         <el-form-item label="按钮文字色" v-if="selectWg.style.btnStyle.hasOwnProperty('color')">
-          <el-color-picker v-model="selectWg.style.btnStyle.color" />
+          <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.btnStyle.color" />
         </el-form-item>
         <el-form-item label="按钮边框色" v-if="selectWg.style.btnStyle.hasOwnProperty('borderColor')">
-          <el-color-picker v-model="selectWg.style.btnStyle.borderColor" />
+          <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.btnStyle.borderColor" />
         </el-form-item>
         <el-form-item label="按钮圆角" v-if="selectWg.style.btnStyle.hasOwnProperty('borderradius')">
           <el-input-number
@@ -82,7 +82,7 @@
       />
     </el-form-item>
     <el-form-item label="表单边框颜色" v-if="selectWg.style.hasOwnProperty('borderColor')&&selectWg.style.borderwidth>0">
-      <el-color-picker v-model="selectWg.style.borderColor" />
+      <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.borderColor" />
     </el-form-item>
     <el-form-item label="表单区域圆角" v-if="selectWg.style.hasOwnProperty('borderradius')">
       <el-input-number
@@ -104,7 +104,7 @@
     </el-form-item>
     <template v-if="selectWg.hasOwnProperty('pickerStyle')">
       <el-form-item label="选中后文字颜色">
-        <el-color-picker v-model="selectWg.pickerStyle.color" />
+        <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.pickerStyle.color" />
       </el-form-item>
       <el-form-item label="选中后文字大小(px)">
         <el-input-number
@@ -119,12 +119,18 @@
   </section>
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
   props: {
     selectWg: {
       type: Object,
       required: true
     }
-  }
+  },
+  computed: {
+    ...mapState({
+      predefineColors: state => state.common.predefineColors
+    })
+  },
 }
 </script>
