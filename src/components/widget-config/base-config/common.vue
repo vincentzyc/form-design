@@ -67,9 +67,9 @@
         <el-button type="text" @click="handleAddOption()">添加选项</el-button>
       </div>
     </el-form-item>
-    <el-form-item label="图片上传" v-if="selectWg.type === 'imgShow'">
+    <!-- <el-form-item label="图片上传" v-if="selectWg.type === 'imgShow'">
       <ImgUpload :value.sync="selectWg.value" />
-    </el-form-item>
+    </el-form-item> -->
     <template v-if="selectWg.type ==='imgSlide'">
       <el-form-item label="轮播图片设置">
         <draggable tag="ul" :list="selectWg.value" :group="{ name:'slideList'}" ghostClass="ghost" handle=".move-icon">
