@@ -227,7 +227,7 @@ export default {
       }
     }
   ],
-  "imgComponents": [
+  "displayComponents": [
     {
       "type": "imgSlide",
       "name": "图片轮播",
@@ -268,6 +268,15 @@ export default {
         img: "",
         link: ""
       }],
+      style: {
+        margin: "0px 0px 0px 0px"
+      }
+    },
+    {
+      type: "marquee",
+      name: "跑马灯",
+      fixedBottom:false,
+      scrollHeight:0,
       style: {
         margin: "0px 0px 0px 0px"
       }
