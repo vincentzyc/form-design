@@ -277,6 +277,8 @@ export default {
       name: "跑马灯",
       fixedBottom:false,
       scrollHeight:0,
+      direction:"left",
+      scrollamount:"5", //滚动速度是设置每次滚动时移动的长度，以像素为单位
       style: {
         margin: "0px 0px 0px 0px"
       }
