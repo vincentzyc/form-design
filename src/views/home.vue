@@ -19,17 +19,17 @@
                 <a>{{item.name}}</a>
               </li>
             </draggable>
-            <div class="widget-cate">图片类组件</div>
+            <div class="widget-cate">展示类组件</div>
             <draggable
               tag="ul"
-              :list="imgComponents"
+              :list="displayComponents"
               :group="{ name:'widget', pull:'clone',put:false}"
               :sort="false"
               @end="dragEnd"
               :clone="cloneData"
               ghostClass="ghost"
             >
-              <li class="form-edit-widget-label" v-for="(item, index) in imgComponents" :key="index">
+              <li class="form-edit-widget-label" v-for="(item, index) in displayComponents" :key="index">
                 <a>{{item.name}}</a>
               </li>
             </draggable>
@@ -129,7 +129,7 @@ export default {
   data() {
     return {
       basicComponents: allWidget.basicComponents,
-      imgComponents: allWidget.imgComponents,
+      displayComponents: allWidget.displayComponents,
       assistComponents: allWidget.assistComponents,
       advancedComponents: allWidget.advancedComponents
     }
