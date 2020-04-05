@@ -22,6 +22,11 @@ const router = new Router({
 			name: 'home',
 			component: () => import('@/views/home.vue')
     },
+    {
+			path: "/marquee",
+			name: 'marquee',
+			component: () => import('@/views/marquee-demo.vue')
+    },
 		{
 			path: '*',
 			name: '404',
