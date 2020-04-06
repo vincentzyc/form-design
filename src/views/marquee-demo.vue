@@ -1,7 +1,7 @@
 <template>
   <div>
-    <marquee :sendVal="comment" direction="up" :durationTime="5">
-      <div class="marquee">
+    <marquee :sendVal="comment" direction="up" :durationTime="6" class="marquee">
+      <div class="marquee-wrap">
         <div class="my-listbox" v-for="(item,index) in comment" :key="index">
           <div class="my-title">
             {{item.name}}
@@ -50,6 +50,9 @@ export default {
 </script>
 
 <style scoped>
+.marquee{
+  padding: 30px;
+}
 .marquee .my-listbox {
   padding: 20px 0;
   font-size: 18px;
