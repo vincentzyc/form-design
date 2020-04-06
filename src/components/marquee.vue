@@ -17,7 +17,15 @@
 export default {
   name: 'my-marquee-top',
   props: {
-    sendVal: Array
+    sendVal: Array,
+    durationTime: {
+      type: Number,
+      default: 5
+    },
+    direction: {
+      type: String,
+      default: 'up'
+    }
   },
   data() {
     return {
@@ -47,8 +55,8 @@ export default {
 }
 .my-outbox .my-inbox {
   margin: 0 45px;
-  -webkit-animation: marquee 5s linear infinite;
-  animation: marquee 5s linear infinite;
+  -webkit-animation: marquee-up 5s linear infinite;
+  animation: marquee-up 5s linear infinite;
 }
 .my-outbox .my-listbox {
   padding: 20px 0;
@@ -75,12 +83,20 @@ export default {
   font-size: 14px;
   color: #53565d;
 }
-@keyframes marquee {
+@keyframes marquee-up {
   0% {
     transform: translateY(0);
   }
   100% {
     transform: translateY(-50%);
+  }
+}
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 </style>
