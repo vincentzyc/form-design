@@ -1,14 +1,25 @@
 <template>
   <div>
-    <marqueeY :sendVal="comment" direction="up" :durationTime="5"/>
+    <marquee :sendVal="comment" direction="up" :durationTime="5">
+      <div class="marquee">
+        <div class="my-listbox" v-for="(item,index) in comment" :key="index">
+          <div class="my-title">
+            {{item.name}}
+            <text class="my-utel">{{item.mobile}}</text>
+            <text class="my-addr">{{item.place}}</text>
+          </div>
+          <div class="my-content">{{item.content}}</div>
+        </div>
+      </div>
+    </marquee>
   </div>
 </template>
 
 <script>
-import marqueeY from "@/components/marquee"
+import marquee from "@/components/marquee"
 export default {
   components: {
-    marqueeY
+    marquee
   },
   data() {
     return {
@@ -37,3 +48,31 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.marquee .my-listbox {
+  padding: 20px 0;
+  font-size: 18px;
+  border-bottom: 1px solid #c7beb1;
+}
+.marquee .my-title {
+  color: #db7000;
+  margin-bottom: 10px;
+  clear: both;
+  overflow: hidden;
+}
+.marquee .my-utel {
+  font-size: 16px;
+  margin-left: 20px;
+}
+.marquee .my-addr {
+  font-size: 16px;
+  float: right;
+}
+.marquee .my-content {
+  text-align: justify;
+  word-break: break-all;
+  font-size: 14px;
+  color: #53565d;
+}
+</style>
