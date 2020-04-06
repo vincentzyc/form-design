@@ -1,6 +1,6 @@
 <template>
   <div>
-    <marqueeY :sendVal="comment" />
+    <marqueeY :sendVal="comment" direction="up" :durationTime="5"/>
   </div>
 </template>
 
