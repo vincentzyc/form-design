@@ -1,7 +1,6 @@
 <template>
-  <div class="marquee-outbox" ref="outbox">
+  <div class="marquee-outbox">
     <div
-      ref="movebox"
       :class="`marquee-inbox-${this.direction}`"
       :style="{animation:`marquee-${this.direction} ${this.durationTime}s linear infinite`}"
     >
@@ -15,7 +14,6 @@
 export default {
   name: 'my-marquee',
   props: {
-    sendVal: Array,
     durationTime: {
       type: Number,
       default: 5
@@ -24,23 +22,15 @@ export default {
       type: String,
       default: 'up'
     }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      // this.$refs.movebox.style.animation = `marquee-${this.direction} ${this.durationTime}s linear infinite`
-    })
   }
 }
 </script>
 
 <style>
 .marquee-outbox {
-  color: #fee7b1;
-  height: 300px;
-  margin: 20px;
-  background: #fee7b1;
+  width: 100%;
+  height: 100px;
   overflow: hidden;
-  border: 2px solid #c46302;
 }
 .marquee-inbox-up {
   -webkit-animation: marquee-up 5s linear infinite;
@@ -49,6 +39,7 @@ export default {
   animation: marquee-up 5s linear infinite;
 }
 .marquee-inbox-left {
+  display: inline-flex !important;
   -webkit-animation: marquee-left 5s linear infinite;
   -ms-animation: marquee-left 5s linear infinite;
   -o-animation: marquee-left 5s linear infinite;
