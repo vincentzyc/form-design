@@ -4,7 +4,7 @@
       <button @click="moveup()" :style="{marginLeft:'10px',background:direction==='up'?'#409eff':'#fff'}">向上滚动（ ↑ ）</button>
       <button @click="moveleft()" :style="{marginLeft:'10px',background:direction==='left'?'#409eff':'#fff'}">向左滚动（ ← ）</button>
     </div>
-    <marquee :direction="direction" :durationTime="6" class="marquee">
+    <marquee :direction="direction" :durationTime="10" class="marquee">
       <div class="marquee-wrap" :class="{'flex-inline':direction==='left'}">
         <div class="my-listbox" v-for="(item,index) in comment" :key="index" :class="{'width250':direction==='left'}">
           <div class="my-title">
