@@ -30,8 +30,8 @@
       <button class="ql-underline"></button>
       <button class="ql-strike"></button>
 
-      <button class="ql-list" value="ordered"></button>
-      <button class="ql-list" value="bullet"></button>
+      <!-- <button class="ql-list" value="ordered"></button>
+      <button class="ql-list" value="bullet"></button> -->
 
       <!-- Add subscript and superscript buttons -->
       <!-- <button class="ql-script" value="sub"></button>
