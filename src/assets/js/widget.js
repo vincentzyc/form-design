@@ -274,8 +274,17 @@ export default {
 			name: "跑马灯",
 			fixedBottom: false,
 			scrollHeight: 0,
-			direction: "left", //滚动方向 向左=left  向上=up
-			durationTime: "5", //滚动时长 单位秒
+			direction: "up", //滚动方向 向左=left  向上=up
+      durationTime: 10, //滚动时长 单位秒
+      isImgBtn: false,
+      imgUrl: "",
+      options: [
+				"文字一",
+				"文字二",
+				"文字三",
+				"文字四",
+				"文字五"
+			],
 			style: {
 				margin: "0px 0px 0px 0px"
 			}
