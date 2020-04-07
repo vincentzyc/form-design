@@ -16,7 +16,7 @@ export default {
   props: {
     durationTime: {
       type: Number,
-      default: 5
+      default: 10
     },
     direction: {
       type: String,
