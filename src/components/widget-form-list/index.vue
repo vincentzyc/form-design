@@ -47,6 +47,9 @@
     <!-- 微信关注 -->
     <WgWechat v-if="item.type === 'wechat'" :item="item" />
 
+    <!-- 跑马灯 -->
+    <WgMarquee v-if="item.type === 'marquee'" :item="item" />
+
     <span
       title="删除"
       @click.stop="handleWidgetDelete()"
@@ -77,6 +80,7 @@ import WgStaticText from './wg-statictext'
 import WgSplitLine from './wg-splitLine'
 import WgHpicker from './wg-hpicker'
 import WgWechat from './wg-wechat'
+import WgMarquee from './wg-marquee'
 import WgFormList from './wg-formlist'
 
 export default {
@@ -94,6 +98,7 @@ export default {
     WgSplitLine,
     WgHpicker,
     WgWechat,
+    WgMarquee,
     WgFormList
   },
   props: {
