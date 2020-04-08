@@ -3,6 +3,7 @@
     <Common :selectWg="selectWg" />
     <WgImg v-if="selectWg.type==='imgShow'" :selectWg="selectWg" />
     <WeChat v-if="selectWg.type==='wechat'" :selectWg="selectWg" />
+    <WgMarquee v-if="selectWg.type==='marquee'" :selectWg="selectWg" />
   </section>
 </template>
 
@@ -11,12 +12,14 @@ import { mapState } from 'vuex';
 import Common from "./common"
 import WgImg from "./imgshow"
 import WeChat from "./wechat"
+import WgMarquee from "./marquee"
 
 export default {
   components: {
     Common,
     WgImg,
-    WeChat
+    WeChat,
+    WgMarquee
   },
   props: {
     selectWg: {
