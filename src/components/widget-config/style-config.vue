@@ -12,6 +12,23 @@
     <el-form-item label="文字颜色" v-if="selectWg.style.hasOwnProperty('color')">
       <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.color" />
     </el-form-item>
+
+    <el-form-item label="对齐方式" v-if="selectWg.style.hasOwnProperty('textAlign')">
+      <el-radio-group v-model="selectWg.style.textAlign" size="mini">
+        <el-radio-button label="left">左</el-radio-button>
+        <el-radio-button label="center">居中</el-radio-button>
+        <el-radio-button label="right">右</el-radio-button>
+      </el-radio-group>
+    </el-form-item>
+    <el-form-item label="文本行高(px)" v-if="selectWg.style.hasOwnProperty('lineheight')">
+      <el-input-number
+        v-model="selectWg.style.lineheight"
+        :min="10"
+        :max="200"
+        size="small"
+        @change="v=>selectWg.style.lineHeight=v+'px'"
+      />
+    </el-form-item>
     <el-form-item label="线条颜色" v-if="selectWg.style.hasOwnProperty('borderColor')">
       <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.borderColor" />
     </el-form-item>
