@@ -44,6 +44,9 @@
         <el-radio-button label="double">双实线</el-radio-button>
       </el-radio-group>
     </el-form-item>
+    <el-form-item label="背景颜色" v-if="selectWg.style.hasOwnProperty('backgroundColor')">
+      <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.backgroundColor" />
+    </el-form-item>
     <el-form-item label="背景颜色" v-if="selectWg.hasOwnProperty('backgroundColor')">
       <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.backgroundColor" />
     </el-form-item>
@@ -65,8 +68,8 @@
         <ImgUpload :value.sync="selectWg.style.value" />
       </el-form-item>
       <div v-else>
-        <el-form-item label="按钮背景色" v-if="selectWg.style.btnStyle.hasOwnProperty('background')">
-          <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.btnStyle.background" />
+        <el-form-item label="按钮背景色" v-if="selectWg.style.btnStyle.hasOwnProperty('backgroundColor')">
+          <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.btnStyle.backgroundColor" />
         </el-form-item>
         <el-form-item label="按钮文字色" v-if="selectWg.style.btnStyle.hasOwnProperty('color')">
           <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.btnStyle.color" />
