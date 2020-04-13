@@ -293,7 +293,6 @@ export default {
       fontSize: "14px",
       lineheight: 28,
       lineHeight: "28px",
-      textAlign: "center",
       margin: "0px 0px 0px 0px"
     }
   }
