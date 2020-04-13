@@ -18,7 +18,7 @@ export default {
     style: {
       margin: "0px 0px 0px 0px",
       btnStyle: {
-        background: "#409EFF",
+        backgroundColor: "#409EFF",
         color: "#fff",
         borderColor: "#409EFF",
         borderRadius: '5px',
@@ -192,7 +192,7 @@ export default {
       btnStyle: {
         borderRadius: '20px',
         borderradius: 20,
-        background: "#409EFF",
+        backgroundColor: "#409EFF",
         color: "#fff"
       }
     }
@@ -285,6 +285,7 @@ export default {
       '梁小姐  5分钟前  已报名'
     ],
     style: {
+      backgroundColor: "",
       Height: 50,
       height: '50px',
       overflow: 'hidden',
