@@ -23,6 +23,9 @@
         ></el-option>
       </el-select>
     </el-form-item>
+    <el-form-item label="是否必填/选" v-if="selectWg.hasOwnProperty('isRequired')">
+      <el-switch v-model="selectWg.isRequired"></el-switch>
+    </el-form-item>
     <el-form-item label="是否显示标签" v-if="selectWg.hasOwnProperty('showLabel')">
       <el-switch v-model="selectWg.showLabel" @change="selectWg.showLabel?$store.commit('setWgCollapse', 'tag'):''"></el-switch>
     </el-form-item>
@@ -69,7 +72,7 @@
     </el-form-item>
     <!-- <el-form-item label="图片上传" v-if="selectWg.type === 'imgShow'">
       <ImgUpload :value.sync="selectWg.value" />
-    </el-form-item> -->
+    </el-form-item>-->
     <template v-if="selectWg.type ==='imgSlide'">
       <el-form-item label="轮播图片设置">
         <draggable tag="ul" :list="selectWg.value" :group="{ name:'slideList'}" ghostClass="ghost" handle=".move-icon">
