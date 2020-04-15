@@ -336,6 +336,29 @@ $primary-background-color = #d8e8fa;
     }
   }
 
+  .wg-agreement {
+    .el-checkbox {
+      width: 100%;
+      display: flex;
+    }
+
+    .el-checkbox__input {
+      display: flex;
+      align-items: center;
+    }
+
+    .el-checkbox__label {
+      width: calc(100% - 16px);
+      line-height: 1.5;
+      font-size: inherit;
+
+      p>span {
+        word-break: break-all;
+        white-space: normal;
+      }
+    }
+  }
+
   .wg-formlist {
     position: relative;
     transition: 0.2s;
