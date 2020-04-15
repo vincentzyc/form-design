@@ -50,6 +50,9 @@
     <!-- 跑马灯 -->
     <WgMarquee v-if="item.type === 'marquee'" :item="item" />
 
+    <!-- 用户协议 -->
+    <WgAgreement v-if="item.type === 'agreement'" :item="item" class="wg-padding" />
+
     <span
       title="删除"
       @click.stop="handleWidgetDelete()"
@@ -81,6 +84,7 @@ import WgSplitLine from './wg-splitLine'
 import WgHpicker from './wg-hpicker'
 import WgWechat from './wg-wechat'
 import WgMarquee from './wg-marquee'
+import WgAgreement from './wg-agreement'
 import WgFormList from './wg-formlist'
 
 export default {
@@ -99,6 +103,7 @@ export default {
     WgHpicker,
     WgWechat,
     WgMarquee,
+    WgAgreement,
     WgFormList
   },
   props: {
