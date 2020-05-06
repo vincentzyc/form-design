@@ -58,7 +58,11 @@ export default {
       this.selectWg.textList.splice(index, 1)
     },
     handleAddOption() {
-      this.selectWg.textList.push('新增文本')
+      let newItem =
+        this.selectWg.textList.length > 0
+          ? this.selectWg.textList[this.selectWg.textList.length - 1]
+          : ''
+      this.selectWg.textList.push(newItem)
     },
   }
 }
