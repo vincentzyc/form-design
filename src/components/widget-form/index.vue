@@ -36,7 +36,7 @@
 <script>
 import { mapState } from 'vuex';
 import Draggable from 'vuedraggable'
-import WidgetFormList from '@/components/widget-form-list'
+import WidgetFormList from './widget-form-list'
 
 export default {
   components: {
