@@ -114,8 +114,8 @@ import WidgetConfig from '@/components/widget-config'
 import PageConfig from '@/components/page-config'
 import WidgetForm from '@/components/widget-form'
 
-import allWidget from '@/assets/js/widget.js'
-import pageConfigData from '@/assets/js/page-config.js'
+import allWidget from '@/assets/js/widget'
+import pageConfigData from '@/assets/js/page-config'
 
 export default {
   name: 'form-design',
