@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form-item>
+    <!-- <el-form-item>
       <span class="flex align-middle" slot="label">
         <span class="mg-r20">样式</span>
         <el-button type="primary" size="mini" @click="drawerVisible=true">选择样式</el-button>
@@ -20,7 +20,7 @@
           <img :src="require('@/assets/img/widget/marquee/'+item.value+'.jpg')" alt width="100%" />
         </li>
       </ul>
-    </el-drawer>
+    </el-drawer> -->
 
     <component :is="selectWg.marqueeType" :selectWg="selectWg" />
   </div>
