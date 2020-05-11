@@ -51,18 +51,20 @@ $primary-background-color = #d8e8fa;
 
     li.ghost {
       position: relative;
-      line-height: 30px;
-      list-style: none;
-      font-size: 0;
+      height: 40px;
+      line-height: 40px;
+      overflow: hidden;
 
       &::after {
         content: '放到这里';
         display: block;
         background: #fff;
         position: absolute;
-        left: 50%;
-        margin-left: -32px;
+        left: 0;
+        right: 0;
         top: 0;
+        bottom: 0;
+        text-align: center;
         font-size: 16px;
         color: #999;
         z-index: 10;
