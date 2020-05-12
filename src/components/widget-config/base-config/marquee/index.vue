@@ -29,14 +29,14 @@
 <script>
 import MarqueeList from '@/assets/js/widget/marquee-list'
 import MarqueeBase from './marquee-base'
-import MarqueeFixed from './marquee-fixed'
-import MarqueeFixedMore from './marquee-fixed-more'
+// import MarqueeFixed from './marquee-fixed'
+// import MarqueeFixedMore from './marquee-fixed-more'
 
 export default {
   components: {
     'marquee-base': MarqueeBase,
-    'marquee-fixed': MarqueeFixed,
-    'marquee-fixed-more': MarqueeFixedMore
+    // 'marquee-fixed': MarqueeFixed,
+    // 'marquee-fixed-more': MarqueeFixedMore
   },
   props: {
     selectWg: {
@@ -46,21 +46,21 @@ export default {
   },
   data() {
     return {
-      drawerVisible: false,
+      // drawerVisible: false,
       MarqueeList: MarqueeList
     }
   },
-  computed: {
-    curStyleImg() {
-      let curStyleImg = require('@/assets/img/widget/marquee/' + this.selectWg.marqueeType + '.jpg');
-      return curStyleImg ? curStyleImg : ""
-    }
-  },
-  methods: {
-    selectStyle(data) {
-      this.$store.commit('setSelectWg', data);
-      this.drawerVisible = false
-    }
-  }
+  // computed: {
+  //   curStyleImg() {
+  //     let curStyleImg = require('@/assets/img/widget/marquee/' + this.selectWg.marqueeType + '.jpg');
+  //     return curStyleImg ? curStyleImg : ""
+  //   }
+  // },
+  // methods: {
+  //   selectStyle(data) {
+  //     this.$store.commit('setSelectWg', data);
+  //     this.drawerVisible = false
+  //   }
+  // }
 }
 </script>
