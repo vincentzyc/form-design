@@ -6,7 +6,7 @@
     :swapThreshold="0.6"
     :animation="100"
     @add="handleWidgetAdd"
-    class="widget-form-list"
+    class="widget-form-list wg-padding"
     :class="{'widget-empty': item.list.length === 0}"
   >
     <template v-for="(formItem,i) in item.list">

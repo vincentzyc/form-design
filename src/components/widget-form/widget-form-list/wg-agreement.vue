@@ -1,5 +1,5 @@
 <template>
-  <div class="wg-agreement clearfix">
+  <div class="wg-agreement clearfix wg-padding">
     <el-checkbox v-model="item.value" :style="item.style">
       <p :style="{color:item.style.color}">
         <span>{{item.tipText}}</span>

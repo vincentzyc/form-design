@@ -1,5 +1,5 @@
 <template>
-  <div class="wg-splitLine">
+  <div class="wg-splitLine wg-padding">
     <hr class="splitLine-hr" :style="item.style">
   </div>
 </template>

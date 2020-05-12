@@ -1,6 +1,6 @@
 <template>
   <div
-    class="wg-item wg-switch"
+    class="wg-item wg-switch wg-padding"
     :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']"
     :style="item.style"
   >

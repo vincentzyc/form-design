@@ -1,6 +1,6 @@
 <template>
   <div
-    class="wg-item flex-wrap wg-checkbox"
+    class="wg-item flex-wrap wg-checkbox wg-padding"
     :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']"
     :style="item.style"
   >

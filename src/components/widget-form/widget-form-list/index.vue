@@ -2,57 +2,10 @@
   <div
     @click.stop="handleSelectWidget()"
     :class="[item.wgClassName?item.wgClassName:'widget-view',{active: selectWg.key === item.key}]"
-    :style="Array.isArray(item.list)?{...item.style,backgroundImage:`url(${item.backgroundImage})`}:{}"
+    :style="wgViewStyle"
   >
     <i class="el-icon-rank" v-if="Array.isArray(item.list)"></i>
-    <!-- 手机 -->
-    <WgPhone v-if="item.type === 'phone'" :item="item" class="wg-padding" />
-
-    <!-- 输入框 -->
-    <WgInput v-if="item.type === 'input'" :item="item" class="wg-padding" />
-
-    <!-- 选择框 -->
-    <WgCheckbox v-if="item.type === 'checkbox'" :item="item" class="wg-padding" />
-
-    <!-- 下拉选择 -->
-    <WgSelect v-if="item.type === 'select'" :item="item" class="wg-padding" />
-
-    <!-- 开关 -->
-    <WgSwitch v-if="item.type==='switch'" :item="item" class="wg-padding" />
-
-    <!-- 日期选择 -->
-    <WgDate v-if="item.type === 'date'" :item="item" class="wg-padding" />
-
-    <!-- 图片展示 -->
-    <WgImgshow v-if="item.type === 'imgShow'" :item="item" />
-
-    <!-- 图片轮播 -->
-    <WgImgslide v-if="item.type === 'imgSlide'" :item="item" />
-
-    <!-- 按钮 -->
-    <WgButton v-if="item.type === 'button'" :item="item" />
-
-    <!-- 文本描述 -->
-    <WgStaticText v-if="item.type === 'staticText'" :item="item" />
-
-    <!-- 分割线 -->
-    <WgSplitLine v-if="item.type === 'splitLine'" :item="item" class="wg-padding" />
-
-    <!-- 横向滑动自动选择 -->
-    <WgHpicker v-if="item.type === 'hPicker'" :item="item" class="wg-padding" />
-
-    <!-- 表单内容区 -->
-    <WgFormList v-if="item.type === 'formList'" :item="item" class="wg-padding" />
-
-    <!-- 微信关注 -->
-    <WgWechat v-if="item.type === 'wechat'" :item="item" />
-
-    <!-- 跑马灯 -->
-    <WgMarquee v-if="item.type === 'marquee'" :item="item" />
-
-    <!-- 用户协议 -->
-    <WgAgreement v-if="item.type === 'agreement'" :item="item" class="wg-padding" />
-
+    <component :is="wgNameMap[item.type]" :item="item" />
     <span
       title="删除"
       @click.stop="handleWidgetDelete()"
@@ -70,41 +23,25 @@
 
 <script>
 import { mapState } from 'vuex';
-import WgPhone from './wg-phone'
-import WgInput from './wg-input'
-import WgCheckbox from './wg-checkbox'
-import WgSelect from './wg-select'
-import WgSwitch from './wg-switch'
-import WgDate from './wg-date'
-import WgImgshow from './wg-imgshow'
-import WgImgslide from './wg-imgslide'
-import WgButton from './wg-button'
-import WgStaticText from './wg-statictext'
-import WgSplitLine from './wg-splitLine'
-import WgHpicker from './wg-hpicker'
-import WgWechat from './wg-wechat'
-import WgMarquee from './wg-marquee'
-import WgAgreement from './wg-agreement'
-import WgFormList from './wg-formlist'
 
 export default {
   components: {
-    WgPhone,
-    WgInput,
-    WgCheckbox,
-    WgSelect,
-    WgSwitch,
-    WgDate,
-    WgImgshow,
-    WgImgslide,
-    WgButton,
-    WgStaticText,
-    WgSplitLine,
-    WgHpicker,
-    WgWechat,
-    WgMarquee,
-    WgAgreement,
-    WgFormList
+    WgPhone: () => import('./wg-phone'),
+    WgInput: () => import('./wg-input'),
+    WgCheckbox: () => import('./wg-checkbox'),
+    WgSelect: () => import('./wg-select'),
+    WgSwitch: () => import('./wg-switch'),
+    WgDate: () => import('./wg-date'),
+    WgImgshow: () => import('./wg-imgshow'),
+    WgImgslide: () => import('./wg-imgslide'),
+    WgButton: () => import('./wg-button'),
+    WgStaticText: () => import('./wg-statictext'),
+    WgSplitLine: () => import('./wg-splitLine'),
+    WgHpicker: () => import('./wg-hpicker'),
+    WgWechat: () => import('./wg-wechat'),
+    WgMarquee: () => import('./wg-marquee'),
+    WgAgreement: () => import('./wg-agreement'),
+    WgFormList: () => import('./wg-formlist')
   },
   props: {
     item: Object,
@@ -112,7 +49,26 @@ export default {
     data: Array
   },
   data() {
-    return {}
+    return {
+      wgNameMap: {
+        phone: 'WgPhone', // 手机
+        input: 'WgInput', // 输入框
+        checkbox: 'WgCheckbox', // 选择框
+        select: 'WgSelect', // 下拉选择
+        switch: 'WgSwitch', // 开关
+        date: 'WgDate', // 日期选择
+        imgShow: 'WgImgshow', // 图片展示
+        imgSlide: 'WgImgslide', // 图片轮播
+        button: 'WgButton', // 按钮
+        staticText: 'WgStaticText', // 文本描述
+        splitLine: 'WgSplitLine', // 分割线
+        hPicker: 'WgHpicker', // 横向滑动自动选择
+        wechat: 'WgWechat', // 表单内容区
+        marquee: 'WgMarquee', // 微信关注
+        agreement: 'WgAgreement', // 跑马灯
+        formList: 'WgFormList', // 用户协议
+      }
+    }
   },
   computed: {
     clonebtn() {
@@ -120,6 +76,11 @@ export default {
       if (Array.isArray(this.selectWg.list)) return false;
       if (this.selectWg.key === this.item.key) return true;
       return false;
+    },
+    wgViewStyle() {
+      if (Array.isArray(this.item.list)) return { ...this.item.style, backgroundImage: `url(${this.item.backgroundImage})` };
+      if (this.item.position) return this.item.position;
+      return {}
     },
     ...mapState({
       selectWg: state => state.common.selectWg
