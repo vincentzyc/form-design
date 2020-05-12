@@ -4,69 +4,45 @@
     <el-container>
       <div class="form-edit-wrapper flex">
         <el-aside style="min-width:300px;width:20vw">
-          <div class="components-list">
-            <div class="widget-cate">基础类组件</div>
-            <draggable
-              tag="ul"
-              :list="basicComponents"
-              :group="{ name:'widget', pull:'clone',put:false}"
-              :sort="false"
-              @end="dragEnd"
-              :clone="cloneData"
-              ghostClass="ghost"
-            >
-              <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
-                <a>{{item.name}}</a>
+          <div class="flex components-list">
+            <div class="flex flex-column flex-none components-title">
+              <el-button
+                size="small"
+                round
+                v-for="item in widgetLevel1"
+                :key="item.value"
+                :type="item.value===widgetLevel2.value?'primary':''"
+                @click="handleWidget(item)"
+              >{{item.name}}</el-button>
+            </div>
+            <ul class="flex-auto components-content">
+              <li v-for="level2 in widgetLevel2.data" :key="level2.value">
+                <h4 class="widget-title">{{level2.name}}</h4>
+                <Draggable
+                  tag="ul"
+                  :list="level2.data"
+                  :group="{ name:'widget', pull:'clone', put:false }"
+                  :sort="false"
+                  @end="dragEnd"
+                  :clone="cloneData"
+                  ghostClass="ghost"
+                  :filter="level2.dragOnce?'.disdraggable':''"
+                >
+                  <li
+                    v-for="level3 in level2.data"
+                    :key="level3.apiKey"
+                    class="form-edit-widget-label"
+                    :class="{disdraggable:disFormList(level3)}"
+                  >
+                    <img
+                      :src="BASE_URL+'static/img/widget/'+widgetLevel2.value+'/'+level3.type+'.jpg'"
+                      :alt="level3.name"
+                      width="100%"
+                    />
+                  </li>
+                </Draggable>
               </li>
-            </draggable>
-            <div class="widget-cate">展示类组件</div>
-            <draggable
-              tag="ul"
-              :list="displayComponents"
-              :group="{ name:'widget', pull:'clone',put:false}"
-              :sort="false"
-              @end="dragEnd"
-              :clone="cloneData"
-              ghostClass="ghost"
-            >
-              <li class="form-edit-widget-label" v-for="(item, index) in displayComponents" :key="index">
-                <a>{{item.name}}</a>
-              </li>
-            </draggable>
-            <div class="widget-cate">辅助类组件</div>
-            <draggable
-              tag="ul"
-              :list="assistComponents"
-              :group="{ name:'widget', pull:'clone',put:false}"
-              :sort="false"
-              @end="dragEnd"
-              :clone="cloneData"
-              ghostClass="ghost"
-            >
-              <li class="form-edit-widget-label" v-for="(item, index) in assistComponents" :key="index">
-                <a>{{item.name}}</a>
-              </li>
-            </draggable>
-            <div class="widget-cate">高级组件</div>
-            <draggable
-              tag="ul"
-              :list="advancedComponents"
-              :group="{ name:'widget', pull:'clone',put:false}"
-              filter=".disdraggable"
-              :sort="false"
-              @end="dragEnd"
-              :clone="cloneData"
-              ghostClass="ghost"
-            >
-              <li
-                v-for="(item, index) in advancedComponents"
-                :key="index"
-                class="form-edit-widget-label"
-                :class="{disdraggable:disFormList(item.type)}"
-              >
-                <a :style="{cursor:disFormList(item.type)?'no-drop':'move'}">{{item.name}}</a>
-              </li>
-            </draggable>
+            </ul>
           </div>
         </el-aside>
 
@@ -114,7 +90,7 @@ import WidgetConfig from '@/components/widget-config'
 import PageConfig from '@/components/page-config'
 import WidgetForm from '@/components/widget-form'
 
-import allWidget from '@/assets/js/widget'
+import widgetLevel1 from '@/assets/js/widget'
 import pageConfigData from '@/assets/js/page-config'
 
 export default {
@@ -128,10 +104,8 @@ export default {
   },
   data() {
     return {
-      basicComponents: allWidget.basicComponents,
-      displayComponents: allWidget.displayComponents,
-      assistComponents: allWidget.assistComponents,
-      advancedComponents: allWidget.advancedComponents
+      widgetLevel1: widgetLevel1,
+      widgetLevel2: widgetLevel1[0]
     }
   },
   computed: {
@@ -141,13 +115,18 @@ export default {
     })
   },
   methods: {
+    handleWidget(item) {
+      this.widgetLevel2 = item;
+    },
     dragEnd() {
       this.$store.commit('setDragWg', '')
     },
-    disFormList(type) {
+    disFormList(wgItem) {
+      // 阻止组件嵌套
+      if (!wgItem.hasOwnProperty('list')) return false;
       if (this.pageData.list) {
         return this.pageData.list.some(v => {
-          return v.type === type;
+          return v.type === wgItem.type;
         });
       }
       return false
