@@ -39,7 +39,7 @@
     <WgSplitLine v-if="item.type === 'splitLine'" :item="item" class="wg-padding" />
 
     <!-- 横向滑动自动选择 -->
-    <WgHpicker v-if="item.type === 'h-picker'" :item="item" class="wg-padding" />
+    <WgHpicker v-if="item.type === 'hPicker'" :item="item" class="wg-padding" />
 
     <!-- 表单内容区 -->
     <WgFormList v-if="item.type === 'formList'" :item="item" class="wg-padding" />

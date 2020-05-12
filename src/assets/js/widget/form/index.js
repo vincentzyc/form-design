@@ -30,7 +30,7 @@ export default [{
   data: DateList
 }, {
   name: "横向滑动单选",
-  value: "h-picker",
+  value: "hPicker",
   data: Hpicker
 }, {
   name: "下拉选择框",

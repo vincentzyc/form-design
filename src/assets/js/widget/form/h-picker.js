@@ -1,5 +1,5 @@
 export default [{
-  "type": "h-picker",
+  "type": "hPicker",
   "name": "横向滑动单选",
   "value": "20",
   "options": [
