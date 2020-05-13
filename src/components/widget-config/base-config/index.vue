@@ -1,28 +1,21 @@
 <template>
   <section>
     <Common :selectWg="selectWg" />
-    <WgImg v-if="selectWg.type==='imgShow'" :selectWg="selectWg" />
-    <WeChat v-if="selectWg.type==='wechat'" :selectWg="selectWg" />
-    <WgMarquee v-if="selectWg.type==='marquee'" :selectWg="selectWg" />
-    <Agreement v-if="selectWg.type==='agreement'" :selectWg="selectWg" />
+    <component v-if="wgNameMap[selectWg.type]" :is="wgNameMap[selectWg.type]" :selectWg="selectWg" />
   </section>
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import Common from "./common"
-import WgImg from "./imgshow"
-import WeChat from "./wechat"
-import WgMarquee from "./marquee"
-import Agreement from "./agreement"
 
 export default {
   components: {
     Common,
-    WgImg,
-    WeChat,
-    WgMarquee,
-    Agreement
+    WgImgshow: () => import('./imgshow'),
+    WgWechat: () => import('./wechat'),
+    WgMarquee: () => import('./marquee'),
+    // WgMarqueeFixed: () => import('./marquee-fixed'),
+    WgAgreement: () => import('./agreement')
   },
   props: {
     selectWg: {
@@ -30,10 +23,17 @@ export default {
       required: true
     }
   },
-  computed: {
-    ...mapState({
-      pageData: state => state.createh5.pageData,
-    })
+  data() {
+    return {
+      wgNameMap: {
+        imgShow: 'WgImgshow', // 图片展示
+        imgSlide: 'WgImgslide', // 图片轮播
+        wechat: 'WgWechat', // 微信关注 
+        marquee: 'WgMarquee', // 跑马灯 
+        // marqueeFixed: 'WgMarqueeFixed', // 跑马灯-悬浮
+        agreement: 'WgAgreement', // 用户协议
+      }
+    }
   }
 }
 </script>
