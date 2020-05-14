@@ -7,9 +7,11 @@ import Assist from "./assist"
 import StaticText from "./static-text"
 import Wechat from "./wechat"
 
+// 组件的type字段对应示意图片文件名 （小驼峰命名）
+
 export default [{
   name: '表单',
-  value: 'form',
+  value: 'form',  // 对应同级组件文件夹名，下同。 （命名方式: aaa-bbb）
   data: Form
 }, {
   name: '按钮',
