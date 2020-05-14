@@ -7,15 +7,25 @@
 
 <script>
 import Common from "./common"
+import WgImgshow from "./imgshow"
+import WgWechat from "./wechat"
+import WgAgreement from "./agreement"
+import WgMarquee from "./marquee"
 
 export default {
   components: {
     Common,
-    WgImgshow: () => import('./imgshow'),
-    WgWechat: () => import('./wechat'),
-    WgMarquee: () => import('./marquee'),
+    WgImgshow,
+    WgWechat,
+    WgAgreement,
+    WgMarquee
+    //按需加载
+    // WgImgshow: () => import('./imgshow'),
+    // WgWechat: () => import('./wechat'),
+    // WgAgreement: () => import('./agreement'),
+    // WgMarquee: () => import('./marquee'),
     // WgMarqueeFixed: () => import('./marquee-fixed'),
-    WgAgreement: () => import('./agreement')
+
   },
   props: {
     selectWg: {
