@@ -24,24 +24,62 @@
 <script>
 import { mapState } from 'vuex';
 
+import WgPhone from './wg-phone'
+import WgInput from './wg-input'
+import WgCheckbox from './wg-checkbox'
+import WgSelect from './wg-select'
+import WgSwitch from './wg-switch'
+import WgDate from './wg-date'
+import WgImgshow from './wg-imgshow'
+import WgImgslide from './wg-imgslide'
+import WgButton from './wg-button'
+import WgStaticText from './wg-statictext'
+import WgSplitLine from './wg-splitLine'
+import WgHpicker from './wg-hpicker'
+import WgWechat from './wg-wechat'
+import WgMarquee from './wg-marquee'
+import WgMarqueeFixed from './wg-marquee-fixed'
+import WgAgreement from './wg-agreement'
+import WgFormList from './wg-formlist'
+
 export default {
   components: {
-    WgPhone: () => import('./wg-phone'),
-    WgInput: () => import('./wg-input'),
-    WgCheckbox: () => import('./wg-checkbox'),
-    WgSelect: () => import('./wg-select'),
-    WgSwitch: () => import('./wg-switch'),
-    WgDate: () => import('./wg-date'),
-    WgImgshow: () => import('./wg-imgshow'),
-    WgImgslide: () => import('./wg-imgslide'),
-    WgButton: () => import('./wg-button'),
-    WgStaticText: () => import('./wg-statictext'),
-    WgSplitLine: () => import('./wg-splitLine'),
-    WgHpicker: () => import('./wg-hpicker'),
-    WgWechat: () => import('./wg-wechat'),
-    WgMarquee: () => import('./wg-marquee'),
-    WgAgreement: () => import('./wg-agreement'),
-    WgFormList: () => import('./wg-formlist')
+    WgPhone,
+    WgInput,
+    WgCheckbox,
+    WgSelect,
+    WgSwitch,
+    WgDate,
+    WgImgshow,
+    WgImgslide,
+    WgButton,
+    WgStaticText,
+    WgSplitLine,
+    WgHpicker,
+    WgWechat,
+    WgMarquee,
+    WgMarqueeFixed,
+    WgAgreement,
+    WgFormList
+
+    //下面是按需加载，组件多的话可选择此方式
+    // WgPhone: () => import('./wg-phone'),
+    // WgInput: () => import('./wg-input'),
+    // WgCheckbox: () => import('./wg-checkbox'),
+    // WgSelect: () => import('./wg-select'),
+    // WgSwitch: () => import('./wg-switch'),
+    // WgDate: () => import('./wg-date'),
+    // WgImgshow: () => import('./wg-imgshow'),
+    // WgImgslide: () => import('./wg-imgslide'),
+    // WgButton: () => import('./wg-button'),
+    // WgStaticText: () => import('./wg-statictext'),
+    // WgSplitLine: () => import('./wg-splitLine'),
+    // WgHpicker: () => import('./wg-hpicker'),
+    // WgWechat: () => import('./wg-wechat'),
+    // WgMarquee: () => import('./wg-marquee'),
+    // WgMarqueeFixed: () => import('./wg-marquee-fixed'),
+    // WgAgreement: () => import('./wg-agreement'),
+    // WgFormList: () => import('./wg-formlist')
   },
   props: {
     item: Object,
@@ -63,15 +101,17 @@ export default {
         staticText: 'WgStaticText', // 文本描述
         splitLine: 'WgSplitLine', // 分割线
         hPicker: 'WgHpicker', // 横向滑动自动选择
-        wechat: 'WgWechat', // 表单内容区
-        marquee: 'WgMarquee', // 微信关注
-        agreement: 'WgAgreement', // 跑马灯
-        formList: 'WgFormList', // 用户协议
+        wechat: 'WgWechat', // 微信关注 
+        marquee: 'WgMarquee', // 跑马灯 
+        marqueeFixed: 'WgMarqueeFixed', // 跑马灯-悬浮
+        agreement: 'WgAgreement', // 用户协议
+        formList: 'WgFormList', // 表单内容区 
       }
     }
   },
   computed: {
     clonebtn() {
+      if (this.selectWg.position) return false;
       if (this.selectWg.fixedBottom) return false;
       if (Array.isArray(this.selectWg.list)) return false;
       if (this.selectWg.key === this.item.key) return true;
