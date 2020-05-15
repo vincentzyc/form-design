@@ -38,7 +38,7 @@ import WgSplitLine from './wg-splitLine'
 import WgHpicker from './wg-hpicker'
 import WgWechat from './wg-wechat'
 import WgMarquee from './wg-marquee'
-import WgMarqueeFixed from './wg-marquee-fixed'
+import WgMarqueeSingle from './wg-marquee-single'
 import WgAgreement from './wg-agreement'
 import WgFormList from './wg-formlist'
 
@@ -58,7 +58,7 @@ export default {
     WgHpicker,
     WgWechat,
     WgMarquee,
-    WgMarqueeFixed,
+    WgMarqueeSingle,
     WgAgreement,
     WgFormList
 
@@ -103,7 +103,7 @@ export default {
         hPicker: 'WgHpicker', // 横向滑动自动选择
         wechat: 'WgWechat', // 微信关注 
         marquee: 'WgMarquee', // 跑马灯 
-        marqueeFixed: 'WgMarqueeFixed', // 跑马灯-悬浮
+        marqueeSingle: 'WgMarqueeSingle', // 跑马灯-单个
         agreement: 'WgAgreement', // 用户协议
         formList: 'WgFormList', // 表单内容区 
       }
