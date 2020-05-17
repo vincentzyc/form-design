@@ -5,6 +5,11 @@
       :style="{...pageData.style,backgroundImage:`url(${pageData.style.backgroundImage})`}"
     >
       <div :class="'template-'+pageData.theme">
+        <div v-if="Array.isArray(pageData.fixedCustom)&&pageData.fixedCustom.length>0" class="wg-fixed-custom">
+          <template v-for="(item,index) in pageData.fixedCustom">
+            <WidgetFormList :item="item" :index="index" :data="pageData.fixedCustom" :key="item.key" />
+          </template>
+        </div>
         <Draggable
           v-model="pageData.list"
           :group="{ name:'widget',put:true}"
@@ -23,7 +28,7 @@
           </template>
         </Draggable>
 
-        <div v-if="pageData.fixedBottom.length>0" class="wg-fixed-bottom">
+        <div v-if="Array.isArray(pageData.fixedBottom)&&pageData.fixedBottom.length>0" class="wg-fixed-bottom">
           <template v-for="(item,index) in pageData.fixedBottom">
             <WidgetFormList :item="item" :index="index" :data="pageData.fixedBottom" :key="item.key" />
           </template>
