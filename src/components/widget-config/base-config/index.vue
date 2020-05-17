@@ -1,11 +1,13 @@
 <template>
   <section>
+    <FixedConfig :selectWg="selectWg" />
     <Common :selectWg="selectWg" />
     <component v-if="wgNameMap[selectWg.type]" :is="wgNameMap[selectWg.type]" :selectWg="selectWg" />
   </section>
 </template>
 
 <script>
+import FixedConfig from "./fixed-config"
 import Common from "./common"
 import WgImgshow from "./imgshow"
 import WgWechat from "./wechat"
@@ -18,7 +20,8 @@ export default {
     WgImgshow,
     WgWechat,
     WgAgreement,
-    WgMarquee
+    WgMarquee,
+    FixedConfig
     //按需加载
     // WgImgshow: () => import('./imgshow'),
     // WgWechat: () => import('./wechat'),
