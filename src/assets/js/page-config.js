@@ -6,6 +6,7 @@ export default {
     statsCode: "",
     theme: "theme1",
     fixedBottom: [],
+    fixedCustom: [],
     style: {
       backgroundColor: "#fff",
       backgroundImage: ""
