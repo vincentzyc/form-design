@@ -7,7 +7,7 @@ $primary-background-color = #d8e8fa;
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: auto
+  overflow: auto;
 
   .widget-form-container {
     position: relative;
@@ -376,23 +376,53 @@ $primary-background-color = #d8e8fa;
     z-index: 1111;
   }
 
+  .wg-fixed-custom {
+    position: fixed;
+    z-index: 1211;
+  }
+
   .wg-marquee {
     height: 50px;
     overflow: hidden;
+
+    .wg-marquee-up {
+      -webkit-animation: marquee-up 5s linear infinite;
+      -ms-animation: marquee-up 5s linear infinite;
+      -o-animation: marquee-up 5s linear infinite;
+      animation: marquee-up 5s linear infinite;
+    }
+
+    .wg-marquee-left {
+      display: inline-flex !important;
+      -webkit-animation: marquee-left 5s linear infinite;
+      -ms-animation: marquee-left 5s linear infinite;
+      -o-animation: marquee-left 5s linear infinite;
+      animation: marquee-left 5s linear infinite;
+    }
   }
 
-  .wg-marquee-up {
-    -webkit-animation: marquee-up 5s linear infinite;
-    -ms-animation: marquee-up 5s linear infinite;
-    -o-animation: marquee-up 5s linear infinite;
-    animation: marquee-up 5s linear infinite;
-  }
+  .wg-marquee-single {
+    .scroll-wrapper {
+      overflow: hidden;
+      padding: 0;
+      margin: 0 auto;
 
-  .wg-marquee-left {
-    display: inline-flex !important;
-    -webkit-animation: marquee-left 5s linear infinite;
-    -ms-animation: marquee-left 5s linear infinite;
-    -o-animation: marquee-left 5s linear infinite;
-    animation: marquee-left 5s linear infinite;
+      .scroll-item {
+        height: 100%;
+      }
+
+      .userimg {
+        height: 100%;
+        padding: 1%;
+      }
+
+      .scroll-text {
+        margin-left: 5px;
+      }
+
+      .anim {
+        transition: all 0.5s linear;
+      }
+    }
   }
 }
