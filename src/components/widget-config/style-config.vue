@@ -1,5 +1,16 @@
 <template>
   <section>
+    <el-form-item label="宽度(px)" v-if="selectWg.style.hasOwnProperty('pxWidth')">
+      <el-input-number
+        v-model="selectWg.style.pxWidth"
+        :min="100"
+        :max="375"
+        :step="1"
+        step-strictly
+        size="small"
+        @change="val=>selectWg.style.width = `${val}px`"
+      />
+    </el-form-item>
     <el-form-item label="文字大小(px)" v-if="selectWg.style.hasOwnProperty('fontSize')">
       <el-input-number
         v-model="selectWg.style.fontsize"
