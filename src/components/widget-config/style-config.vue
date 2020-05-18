@@ -64,6 +64,26 @@
     <el-form-item label="背景图片" v-if="selectWg.hasOwnProperty('backgroundImage')">
       <ImgUpload :value.sync="selectWg.backgroundImage" />
     </el-form-item>
+    <el-form-item label="左边距(px)" v-if="selectWg.style.hasOwnProperty('marginleft')">
+      <el-input-number
+        v-model="selectWg.style.marginleft"
+        :min="0"
+        :step="1"
+        step-strictly
+        size="small"
+        @change="val=>selectWg.style.marginLeft= `${val}px`"
+      />
+    </el-form-item>
+    <el-form-item label="上边距(px)" v-if="selectWg.style.hasOwnProperty('margintop')">
+      <el-input-number
+        v-model="selectWg.style.margintop"
+        :min="0"
+        :step="1"
+        step-strictly
+        size="small"
+        @change="val=>selectWg.style.marginTop = `${val}px`"
+      />
+    </el-form-item>
     <el-form-item label="外边距（上 右 下 左 、空格隔开）" v-if="selectWg.style.hasOwnProperty('margin')">
       <el-input v-model="selectWg.style.margin"></el-input>
     </el-form-item>
