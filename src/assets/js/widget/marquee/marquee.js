@@ -46,15 +46,12 @@ export default [{
   style: {
     width: "200px",
     pxWidth: 200,
-    backgroundColor: "#333",
-    Height: 40,
     height: '40px',
+    pxHeight: 40,
+    backgroundColor: "#333",
     color: "#fff",
     fontsize: 14,
     fontSize: "14px",
-    marginleft: 0,
-    marginLeft: '0px',
-    margintop: 0,
-    marginTop: '0px'
+    margin: "0px 0px 0px 0px"
   }
 }]
