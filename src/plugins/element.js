@@ -40,7 +40,7 @@ import {
   // Tag,
   // Tree,
   // Alert,
-  // Slider,
+  Slider,
   // Icon,
   // Row,
   // Col,
@@ -110,7 +110,7 @@ Vue.use(FormItem);
 // Vue.use(Tag);
 // Vue.use(Tree);
 // Vue.use(Alert);
-// Vue.use(Slider);
+Vue.use(Slider);
 // Vue.use(Icon);
 // Vue.use(Row);
 // Vue.use(Col);
