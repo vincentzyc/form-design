@@ -19,8 +19,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
@@ -28,6 +27,8 @@
     "babel-plugin-component": "^1.1.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "vue-cli-plugin-element": "^1.0.1",
     "vue-template-compiler": "^2.6.10"
   }
