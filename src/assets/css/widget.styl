@@ -11,7 +11,7 @@ $primary-background-color = #d8e8fa;
 
   .widget-form-container {
     position: relative;
-    width: 375px;
+    width: 375px;  // 如要修改宽度的话，需同步修改 .wg-fixed-custom 的宽度和 style-config 文件的宽度最大值配置项
     min-height: 640px;
     margin: 20px auto;
     -webkit-box-shadow: 0 2px 5px 1px hsla(0, 0%, 48.6%, 0.2);
@@ -379,6 +379,14 @@ $primary-background-color = #d8e8fa;
   .wg-fixed-custom {
     position: fixed;
     z-index: 1211;
+    width: 375px;
+    height: 0 !important;
+
+    .fixed-item {
+      position: absolute !important;
+      top: 0;
+      transition: 0.5s;
+    }
   }
 
   .wg-marquee {
