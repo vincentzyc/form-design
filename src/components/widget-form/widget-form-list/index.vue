@@ -119,7 +119,6 @@ export default {
     },
     wgViewStyle() {
       if (Array.isArray(this.item.list)) return { ...this.item.style, backgroundImage: `url(${this.item.backgroundImage})` };
-      if (this.item.position) return this.item.position;
       return {}
     },
     ...mapState({
