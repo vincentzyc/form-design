@@ -1,6 +1,6 @@
 <template>
   <div class="wg-marquee-single flex flex-center">
-    <ul class="scroll-wrapper" :style="{...item.style,borderRadius:item.style.height}">
+    <ul class="scroll-wrapper" :style="{ ...this.item.style, borderRadius: this.item.style.height }">
       <li
         v-for="(text, i) in scrollList"
         :key="i"
@@ -8,7 +8,11 @@
         :class="{'anim' : animate&&i===0 }"
         :style="{marginTop:animate&&i===0?`-${item.style.height}`:''}"
       >
-        <img :src="require(`@/assets/img/${text.sex==='man'?'manhead.png':'womanhead.png'}`)" alt="头像" class="userimg flex-none" />
+        <img
+          :src="require(`@/assets/img/${text.sex==='man'?'manhead.png':'womanhead.png'}`)"
+          alt="头像"
+          class="userimg flex-none"
+        />
         <span class="scroll-text txtover">{{ text.text }}</span>
       </li>
     </ul>
