@@ -7,7 +7,14 @@
       <div :class="'template-'+pageData.theme">
         <div v-if="Array.isArray(pageData.fixedCustom)&&pageData.fixedCustom.length>0" class="wg-fixed-custom">
           <template v-for="(item,index) in pageData.fixedCustom">
-            <WidgetFormList :item="item" :index="index" :data="pageData.fixedCustom" :key="item.key" />
+            <WidgetFormList
+              :item="item"
+              :index="index"
+              :data="pageData.fixedCustom"
+              :key="item.key"
+              class="fixed-item"
+              :style="fixedCustomStyle(item)"
+            />
           </template>
         </div>
         <Draggable
@@ -49,11 +56,19 @@ export default {
   },
   computed: {
     ...mapState({
-      pageData: state => state.common.pageData,
-      selectWg: state => state.common.selectWg
+      pageData: state => state.common.pageData
     })
   },
   methods: {
+    fixedCustomStyle(item) {
+      if (item.position) {
+        return {
+          width: item.style.width,
+          top: item.position.top + 'px',
+          [item.position.side]: item.position[item.position.side] + '%'
+        }
+      }
+    },
     dragStart(evt) {
       this.$store.commit('setDragWg', this.pageData.list[evt.oldIndex])
     },
