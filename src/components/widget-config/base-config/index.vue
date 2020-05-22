@@ -13,6 +13,7 @@ import WgImgshow from "./imgshow"
 import WgWechat from "./wechat"
 import WgAgreement from "./agreement"
 import WgMarquee from "./marquee"
+import WgMarqueeSingle from "./marquee-single"
 
 export default {
   components: {
@@ -21,6 +22,7 @@ export default {
     WgWechat,
     WgAgreement,
     WgMarquee,
+    WgMarqueeSingle,
     FixedConfig
     //按需加载
     // WgImgshow: () => import('./imgshow'),
@@ -39,12 +41,12 @@ export default {
   data() {
     return {
       wgNameMap: {
-        imgShow: 'WgImgshow', // 图片展示
-        imgSlide: 'WgImgslide', // 图片轮播
-        wechat: 'WgWechat', // 微信关注 
-        marquee: 'WgMarquee', // 跑马灯 
-        // marqueeFixed: 'WgMarqueeFixed', // 跑马灯-悬浮
-        agreement: 'WgAgreement', // 用户协议
+        imgShow: 'WgImgshow',
+        imgSlide: 'WgImgslide',
+        wechat: 'WgWechat',
+        marquee: 'WgMarquee',
+        marqueeSingle: 'WgMarqueeSingle',
+        agreement: 'WgAgreement'
       }
     }
   }
