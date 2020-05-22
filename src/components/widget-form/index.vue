@@ -6,6 +6,7 @@
     >
       <div :class="'template-'+pageData.theme">
         <div v-if="Array.isArray(pageData.fixedCustom)&&pageData.fixedCustom.length>0" class="wg-fixed-custom">
+          <!-- 可支持多个悬浮，目前未开放 -->
           <template v-for="(item,index) in pageData.fixedCustom">
             <WidgetFormList
               :item="item"
@@ -36,6 +37,7 @@
         </Draggable>
 
         <div v-if="Array.isArray(pageData.fixedBottom)&&pageData.fixedBottom.length>0" class="wg-fixed-bottom">
+          <!-- 可支持多个悬浮，目前未开放 -->
           <template v-for="(item,index) in pageData.fixedBottom">
             <WidgetFormList :item="item" :index="index" :data="pageData.fixedBottom" :key="item.key" />
           </template>
