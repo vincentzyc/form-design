@@ -95,7 +95,7 @@ export default {
         if (oldPosition === true) oldPosition = AUTO_NAME; // 兼容之前底部悬浮配置
         if (this.pageData.fixedBottom?.length > 0) {
           if (this.pageData.fixedBottom.some(v => v.key === this.selectWg.key)) return
-          // 可支持多个悬浮，目前未开放，限制一个 
+          // 可支持多个组件悬浮，目前未开放，限制一个 
           this.$confirm('当前页面已有底部悬浮，为保证视觉效果，是否替换当前组件？', '底部悬浮').then(() => {
             this.positionConfig(BOTTOM_NAME);
             this.setPageFixed(this.listKey[BOTTOM_NAME], oldPosition)
@@ -115,7 +115,7 @@ export default {
     setFixedCustom(oldPosition) {
       if (this.pageData.fixedCustom?.length > 0) {
         if (this.pageData.fixedCustom.some(v => v.key === this.selectWg.key)) return
-        // 可支持多个悬浮，目前未开放，限制一个 
+        // 可支持多个组件悬浮，目前未开放，限制一个 
         this.$confirm('当前页面已有自定义悬浮组件，为保证视觉效果，是否替换当前组件？', '自定义悬浮').then(() => {
           this.positionConfig(CUSTOM_NAME);
           this.setPageFixed(this.listKey[CUSTOM_NAME], oldPosition)
