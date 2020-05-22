@@ -1,13 +1,5 @@
 <template>
   <section>
-    <el-form-item label="底部悬浮" v-if="selectWg.hasOwnProperty('fixedBottom')">
-      <el-switch v-model="selectWg.fixedBottom" @change="fixedBottom"></el-switch>
-    </el-form-item>
-    <el-form-item label="设置页面滑动距离显示悬浮内容" v-if="selectWg.fixedBottom&&selectWg.hasOwnProperty('scrollHeight')">
-      <p class="lh24 c999 fs12">请预览查看具体效果（0则一直显示）</p>
-      <el-input-number v-model="selectWg.scrollHeight" :min="0" :max="1000" :step="1" step-strictly size="small" />
-      <span class="mg-l10">px</span>
-    </el-form-item>
     <el-form-item label="选择控件" v-if="selectWg.hasOwnProperty('fieldTypes')">
       <el-select
         v-model="selectWg.apiKey"
@@ -149,23 +141,6 @@ export default {
     })
   },
   methods: {
-    deleteArrayEle(array, key) {
-      for (let index = 0; index < array.length; index++) {
-        const element = array[index];
-        if (element.key === key) return array.splice(index, 1);
-        if (Array.isArray(element.list) && element.list.length > 0) this.deleteArrayEle(element.list, key)
-      }
-    },
-    fixedBottom(v) {
-      if (v) {
-        this.deleteArrayEle(this.pageData.list, this.selectWg.key);
-        this.pageData.fixedBottom = [];
-        this.pageData.fixedBottom.push(this.selectWg)
-      } else {
-        this.pageData.list.push(this.selectWg)
-        this.pageData.fixedBottom = []
-      }
-    },
     isLink(val) {
       let isLink = this.$util.isLink(val);
       if (!isLink) this.$message.error('请输入正确的网址');
