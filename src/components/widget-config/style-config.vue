@@ -1,25 +1,36 @@
 <template>
   <section>
+    <el-form-item label="宽度(%)" v-if="selectWg.style.hasOwnProperty('percentWidth')">
+      <el-slider
+        class="pd-l10 pd-r10"
+        v-model="selectWg.style.percentWidth"
+        :format-tooltip="formatTooltip"
+        @input="val=>selectWg.style.width = `${val}%`"
+      ></el-slider>
+    </el-form-item>
     <el-form-item label="宽度(px)" v-if="selectWg.style.hasOwnProperty('pxWidth')">
       <el-input-number
         v-model="selectWg.style.pxWidth"
-        :min="100"
+        :precision="0"
+        :step="5"
+        :min="0"
         :max="375"
-        :step="1"
         step-strictly
         size="small"
         @change="val=>selectWg.style.width = `${val}px`"
       />
     </el-form-item>
-    <el-form-item label="文字大小(px)" v-if="selectWg.style.hasOwnProperty('fontSize')">
+    <el-form-item label="高度(px)" v-if="selectWg.style.hasOwnProperty('pxHeight')">
       <el-input-number
-        v-model="selectWg.style.fontsize"
-        :min="10"
-        :max="30"
+        v-model="selectWg.style.pxHeight"
+        :precision="0"
+        :step="5"
+        :min="0"
         size="small"
-        @change="val=>selectWg.style.fontSize = `${val}px`"
+        @change="v=>selectWg.style.height=v+'px'"
       />
     </el-form-item>
+    
     <el-form-item label="文字颜色" v-if="selectWg.style.hasOwnProperty('color')">
       <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.color" />
     </el-form-item>
