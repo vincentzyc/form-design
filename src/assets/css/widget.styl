@@ -11,7 +11,7 @@ $primary-background-color = #d8e8fa;
 
   .widget-form-container {
     position: relative;
-    width: 375px;  // 如要修改宽度的话，需同步修改 .wg-fixed-custom 的宽度和 style-config 文件的宽度最大值配置项
+    width: 375px; // 如要修改宽度的话，需同步修改 .wg-fixed-custom 的宽度和 style-config 文件的宽度最大值配置项
     min-height: 640px;
     margin: 20px auto;
     -webkit-box-shadow: 0 2px 5px 1px hsla(0, 0%, 48.6%, 0.2);
@@ -415,21 +415,43 @@ $primary-background-color = #d8e8fa;
       padding: 0;
       margin: 0 auto;
 
-      .scroll-item {
-        height: 100%;
-      }
-
-      .userimg {
-        height: 100%;
-        padding: 1%;
-      }
-
       .scroll-text {
         margin-left: 5px;
       }
 
       .anim {
         transition: all 0.5s linear;
+      }
+
+      /* 如需要支持自定义头像，使用注释的样式 */
+      /*
+        .scroll-item {
+           height: 100%;
+         }
+      
+         .userimg {
+           height: 100%;
+           padding: 1%;
+         }
+      */
+      .scroll-item {
+        height: 100%;
+        padding: 2px;
+      }
+
+      .userimg {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: 0 center;
+        background-size: 100% 100%;
+      }
+
+      .man {
+        background-image: url('~@/assets/img/manhead.png');
+      }
+
+      .woman {
+        background-image: url('~@/assets/img/womanhead.png');
       }
     }
   }
