@@ -47,9 +47,8 @@ const mutations = {
     state.dragWg = payload;
   },
   setPageData(state, payload) {
-    if (!payload.fixedBottom) {
-      payload.fixedBottom = []
-    }
+    if (!payload.fixedBottom) payload.fixedBottom = [];
+    if (!payload.fixedCustom) payload.fixedCustom = [];
     state.pageData = payload;
   },
   setSelectWg(state, payload) {
