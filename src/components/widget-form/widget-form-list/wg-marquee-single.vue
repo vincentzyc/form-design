@@ -8,11 +8,13 @@
         :class="{'anim' : animate&&i===0 }"
         :style="{marginTop:animate&&i===0?`-${item.style.height}`:''}"
       >
-        <img
+      <!-- 如需要支持自定义头像，使用 img 标签方式 -->
+        <!-- <img
           :src="require(`@/assets/img/${text.sex==='man'?'manhead.png':'womanhead.png'}`)"
           alt="头像"
           class="userimg flex-none"
-        />
+        />-->
+        <span class="userimg flex-none" :class="text.sex==='man'?'man':'woman'" :style="{width:item.style.height}"></span>
         <span class="scroll-text txtover">{{ text.text }}</span>
       </li>
     </ul>
