@@ -16,32 +16,34 @@
               >{{item.name}}</el-button>
             </div>
             <ul class="flex-auto components-content">
-              <li v-for="level2 in widgetLevel2.data" :key="level2.value">
-                <h4 class="widget-title">{{level2.name}}</h4>
-                <Draggable
-                  tag="ul"
-                  :list="level2.data"
-                  :group="{ name:'widget', pull:'clone', put:false }"
-                  :sort="false"
-                  @end="dragEnd"
-                  :clone="cloneData"
-                  ghostClass="ghost"
-                  :filter="level2.dragOnce?'.disdraggable':''"
-                >
-                  <li
-                    v-for="level3 in level2.data"
-                    :key="level3.apiKey"
-                    class="form-edit-widget-label"
-                    :class="{disdraggable:disFormList(level3)}"
+              <div v-for="level1 in widgetLevel1" :key="level1.value" v-show="level1.value===widgetLevel2.value">
+                <li v-for="level2 in level1.data" :key="level2.value">
+                  <h4 class="widget-title">{{level2.name}}</h4>
+                  <Draggable
+                    tag="ul"
+                    :list="level2.data"
+                    :group="{ name:'widget', pull:'clone', put:false }"
+                    :sort="false"
+                    @end="dragEnd"
+                    :clone="cloneData"
+                    ghostClass="ghost"
+                    :filter="level2.dragOnce?'.disdraggable':''"
                   >
-                    <img
-                      :src="BASE_URL+'static/img/widget/'+widgetLevel2.value+'/'+level3.type+'.jpg'"
-                      :alt="level3.name"
-                      width="100%"
-                    />
-                  </li>
-                </Draggable>
-              </li>
+                    <li
+                      v-for="level3 in level2.data"
+                      :key="level3.apiKey"
+                      class="form-edit-widget-label"
+                      :class="{disdraggable:disFormList(level3)}"
+                    >
+                      <img
+                        :src="BASE_URL+'static/img/widget/'+level1.value+'/'+level3.type+'.jpg'"
+                        :alt="level3.name"
+                        width="100%"
+                      />
+                    </li>
+                  </Draggable>
+                </li>
+              </div>
             </ul>
           </div>
         </el-aside>
