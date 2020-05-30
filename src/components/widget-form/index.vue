@@ -5,6 +5,12 @@
       :style="{...pageData.style,backgroundImage:`url(${pageData.style.backgroundImage})`}"
     >
       <div :class="'template-'+pageData.theme">
+        <div v-if="Array.isArray(pageData.fixedTop)&&pageData.fixedTop.length>0" class="wg-fixed-top">
+          <!-- 可支持多个组件悬浮，目前未开放，限制一个-->
+          <template v-for="(item,index) in pageData.fixedTop">
+            <WidgetFormList :item="item" :index="index" :data="pageData.fixedTop" :key="item.key" />
+          </template>
+        </div>
         <div v-if="Array.isArray(pageData.fixedCustom)&&pageData.fixedCustom.length>0" class="wg-fixed-custom">
           <!-- 可支持多个组件悬浮，目前未开放，限制一个 -->
           <template v-for="(item,index) in pageData.fixedCustom">
