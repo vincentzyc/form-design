@@ -3,7 +3,7 @@
     <el-form-item label="显示位置" v-if="selectWg.hasOwnProperty('positionFixed')">
       <el-radio-group v-model="selectWg.positionFixed" size="small">
         <el-radio-button label="auto">正常</el-radio-button>
-        <!-- <el-radio-button label="top">顶部悬浮</el-radio-button> -->
+        <el-radio-button label="top">顶部悬浮</el-radio-button>
         <el-radio-button label="custom">自定义</el-radio-button>
         <el-radio-button label="bottom">底部悬浮</el-radio-button>
       </el-radio-group>
@@ -22,7 +22,8 @@
 <script>
 import { mapState } from 'vuex';
 
-const BOTTOM_NAME = 'bottom',
+const TOP_NAME = 'top',
+  BOTTOM_NAME = 'bottom',
   CUSTOM_NAME = 'custom',
   AUTO_NAME = 'auto';
 
@@ -36,6 +37,7 @@ export default {
   data() {
     return {
       listKey: {
+        [TOP_NAME]: 'fixedTop',
         [BOTTOM_NAME]: 'fixedBottom',
         [CUSTOM_NAME]: 'fixedCustom',
         [AUTO_NAME]: 'list',
@@ -46,6 +48,7 @@ export default {
     'selectWg.positionFixed': {
       handler(newValue, oldValue) {
         if (newValue && oldValue) {
+          if (newValue === TOP_NAME) return this.setFixedTop(oldValue)
           if (newValue === BOTTOM_NAME) return this.setFixedBottom(oldValue)
           if (newValue === CUSTOM_NAME) return this.setFixedCustom(oldValue)
           if (newValue === AUTO_NAME) return this.setPositionAuto(oldValue)
@@ -56,7 +59,7 @@ export default {
   },
   computed: {
     setScrollHeight() {
-      return (this.selectWg.fixedBottom || this.selectWg.positionFixed === BOTTOM_NAME) && this.selectWg.hasOwnProperty('scrollHeight')
+      return (this.selectWg.fixedBottom || [TOP_NAME, BOTTOM_NAME].includes(this.selectWg.positionFixed)) && this.selectWg.hasOwnProperty('scrollHeight')
     },
     ...mapState({
       pageData: state => state.common.pageData,
@@ -69,7 +72,7 @@ export default {
         this.$set(this.selectWg, 'position', { side: 'left', top: 100, left: 0 });
         return
       }
-      if (p === BOTTOM_NAME) {
+      if (p === TOP_NAME || p === BOTTOM_NAME) {
         this.$set(this.selectWg, 'scrollHeight', 0);
       }
       if (this.selectWg.style) this.$set(this.selectWg.style, 'margin', '0px 0px 0px 0px');
@@ -88,6 +91,21 @@ export default {
       this.deleteArrayEle(this.pageData[oldListKey], this.selectWg.key);
       this.pageData[key] = [];
       this.pageData[key].push(this.selectWg)
+    },
+    setFixedTop(oldPosition) {
+      if (this.pageData.fixedTop?.length > 0) {
+        if (this.pageData.fixedTop.some(v => v.key === this.selectWg.key)) return
+        // 可支持多个组件悬浮，目前未开放，限制一个 
+        this.$confirm('当前页面已有顶部悬浮组件，为保证视觉效果，是否替换当前组件？', '顶部悬浮').then(() => {
+          this.positionConfig(TOP_NAME);
+          this.setPageFixed(this.listKey[TOP_NAME], oldPosition)
+        }).catch(() => {
+          this.selectWg.positionFixed = oldPosition
+        });
+        return
+      }
+      this.positionConfig(TOP_NAME);
+      this.setPageFixed(this.listKey[TOP_NAME], oldPosition)
     },
     // 为兼容之前底部悬浮配置，oldPosition可能为boolean值
     setFixedBottom(oldPosition) {
