@@ -2,14 +2,12 @@
   <div>
     <el-form-item label="显示位置" v-if="selectWg.hasOwnProperty('positionFixed')">
       <el-radio-group v-model="selectWg.positionFixed" size="small">
-        <el-radio-button label="auto">正常</el-radio-button>
-        <el-radio-button label="top">顶部悬浮</el-radio-button>
-        <el-radio-button label="custom">自定义</el-radio-button>
-        <el-radio-button label="bottom">底部悬浮</el-radio-button>
+        <el-radio-button v-for="type in fixedTypeList" :label="type" :key="type">{{fixedName[type]}}</el-radio-button>
+        <!-- <el-radio-button v-if="selectWg.fixedTypes.includes('auto')" label="auto">正常</el-radio-button>
+        <el-radio-button v-if="selectWg.fixedTypes.includes('top')" label="top">顶部悬浮</el-radio-button>
+        <el-radio-button v-if="selectWg.fixedTypes.includes('custom')" label="custom">自定义</el-radio-button>
+        <el-radio-button v-if="selectWg.fixedTypes.includes('bottom')" label="bottom">底部悬浮</el-radio-button>-->
       </el-radio-group>
-    </el-form-item>
-    <el-form-item label="底部悬浮" v-if="selectWg.hasOwnProperty('fixedBottom')">
-      <el-switch v-model="selectWg.fixedBottom" @change="setFixedBottom"></el-switch>
     </el-form-item>
     <el-form-item label="设置页面滑动距离显示悬浮内容" v-if="setScrollHeight">
       <p class="lh24 c999 fs12">请预览查看具体效果（0则一直显示）</p>
@@ -36,11 +34,18 @@ export default {
   },
   data() {
     return {
+      fixedTypes: [AUTO_NAME, TOP_NAME, BOTTOM_NAME, CUSTOM_NAME],
       listKey: {
         [TOP_NAME]: 'fixedTop',
         [BOTTOM_NAME]: 'fixedBottom',
         [CUSTOM_NAME]: 'fixedCustom',
         [AUTO_NAME]: 'list',
+      },
+      fixedName: {
+        [TOP_NAME]: '顶部悬浮',
+        [BOTTOM_NAME]: '底部悬浮',
+        [CUSTOM_NAME]: '自定义悬浮',
+        [AUTO_NAME]: '正常'
       }
     }
   },
@@ -48,18 +53,20 @@ export default {
     'selectWg.positionFixed': {
       handler(newValue, oldValue) {
         if (newValue && oldValue) {
-          if (newValue === TOP_NAME) return this.setFixedTop(oldValue)
-          if (newValue === BOTTOM_NAME) return this.setFixedBottom(oldValue)
-          if (newValue === CUSTOM_NAME) return this.setFixedCustom(oldValue)
           if (newValue === AUTO_NAME) return this.setPositionAuto(oldValue)
+          this.setFixedPosition(newValue, oldValue)
         }
       },
       immediate: true
     }
   },
   computed: {
+    fixedTypeList() {
+      if (!Array.isArray(this.selectWg.fixedTypes)) return this.fixedTypes;
+      return this.selectWg.fixedTypes.filter(v => this.fixedTypes.includes(v))
+    },
     setScrollHeight() {
-      return (this.selectWg.fixedBottom || [TOP_NAME, BOTTOM_NAME].includes(this.selectWg.positionFixed)) && this.selectWg.hasOwnProperty('scrollHeight')
+      return [TOP_NAME, BOTTOM_NAME].includes(this.selectWg.positionFixed) && this.selectWg.hasOwnProperty('scrollHeight')
     },
     ...mapState({
       pageData: state => state.common.pageData,
@@ -92,58 +99,20 @@ export default {
       this.pageData[key] = [];
       this.pageData[key].push(this.selectWg)
     },
-    setFixedTop(oldPosition) {
-      if (this.pageData.fixedTop?.length > 0) {
-        if (this.pageData.fixedTop.some(v => v.key === this.selectWg.key)) return
+    setFixedPosition(newPosition, oldPosition) {
+      if (this.pageData[this.listKey[newPosition]]?.length > 0) {
+        if (this.pageData[this.listKey[newPosition]].some(v => v.key === this.selectWg.key)) return
         // 可支持多个组件悬浮，目前未开放，限制一个 
-        this.$confirm('当前页面已有顶部悬浮组件，为保证视觉效果，是否替换当前组件？', '顶部悬浮').then(() => {
-          this.positionConfig(TOP_NAME);
-          this.setPageFixed(this.listKey[TOP_NAME], oldPosition)
+        this.$confirm(`当前页面已有${this.fixedName[newPosition]}组件，为保证视觉效果，是否替换当前组件？`, this.fixedName[newPosition]).then(() => {
+          this.positionConfig(newPosition);
+          this.setPageFixed(this.listKey[newPosition], oldPosition)
         }).catch(() => {
           this.selectWg.positionFixed = oldPosition
         });
         return
       }
-      this.positionConfig(TOP_NAME);
-      this.setPageFixed(this.listKey[TOP_NAME], oldPosition)
-    },
-    // 为兼容之前底部悬浮配置，oldPosition可能为boolean值
-    setFixedBottom(oldPosition) {
-      if (oldPosition) {
-        if (oldPosition === true) oldPosition = AUTO_NAME; // 兼容之前底部悬浮配置
-        if (this.pageData.fixedBottom?.length > 0) {
-          if (this.pageData.fixedBottom.some(v => v.key === this.selectWg.key)) return
-          // 可支持多个组件悬浮，目前未开放，限制一个 
-          this.$confirm('当前页面已有底部悬浮，为保证视觉效果，是否替换当前组件？', '底部悬浮').then(() => {
-            this.positionConfig(BOTTOM_NAME);
-            this.setPageFixed(this.listKey[BOTTOM_NAME], oldPosition)
-          }).catch(() => {
-            if (this.selectWg.hasOwnProperty('fixedBottom')) this.selectWg.fixedBottom = false;
-            if (this.selectWg.hasOwnProperty('positionFixed')) this.selectWg.positionFixed = oldPosition
-          });
-          return
-        }
-        this.positionConfig(BOTTOM_NAME);
-        this.setPageFixed(this.listKey[BOTTOM_NAME], oldPosition)
-      } else {
-        this.pageData.list.push(this.selectWg)
-        this.pageData.fixedBottom = []
-      }
-    },
-    setFixedCustom(oldPosition) {
-      if (this.pageData.fixedCustom?.length > 0) {
-        if (this.pageData.fixedCustom.some(v => v.key === this.selectWg.key)) return
-        // 可支持多个组件悬浮，目前未开放，限制一个 
-        this.$confirm('当前页面已有自定义悬浮组件，为保证视觉效果，是否替换当前组件？', '自定义悬浮').then(() => {
-          this.positionConfig(CUSTOM_NAME);
-          this.setPageFixed(this.listKey[CUSTOM_NAME], oldPosition)
-        }).catch(() => {
-          this.selectWg.positionFixed = oldPosition
-        });
-        return
-      }
-      this.positionConfig(CUSTOM_NAME);
-      this.setPageFixed(this.listKey[CUSTOM_NAME], oldPosition)
+      this.positionConfig(newPosition);
+      this.setPageFixed(this.listKey[newPosition], oldPosition)
     },
     setPositionAuto(oldPosition) {
       let oldListKey = this.listKey[oldPosition];
