@@ -1,7 +1,8 @@
 export default [{
   type: "marquee",
   name: "跑马灯",
-  fixedBottom: false,
+  positionFixed: 'auto',
+  fixedTypes: ['auto', 'top', 'bottom'], // auto--正常 top--顶部悬浮  custom--自定义位置悬浮  bottom--底部悬浮
   scrollHeight: 0,
   direction: "up", //滚动方向 向左=left  向上=up
   durationTime: 6, //滚动时长 单位秒

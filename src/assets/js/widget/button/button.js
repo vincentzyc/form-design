@@ -4,7 +4,8 @@ export default [{
   btnText: "提交",
   btnType: "submit",
   apiKey: "",
-  fixedBottom: false,
+  positionFixed: 'auto',
+  fixedTypes: ['auto', 'top', 'bottom'], // auto--正常 top--顶部悬浮  custom--自定义位置悬浮  bottom--底部悬浮
   scrollHeight: 0,
   btnTypes: [{
     value: "submit",
