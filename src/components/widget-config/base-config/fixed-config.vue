@@ -3,12 +3,25 @@
     <el-form-item label="显示位置" v-if="selectWg.hasOwnProperty('positionFixed')">
       <el-radio-group v-model="selectWg.positionFixed" size="small">
         <el-radio-button v-for="type in fixedTypeList" :label="type" :key="type">{{fixedName[type]}}</el-radio-button>
-        <!-- <el-radio-button v-if="selectWg.fixedTypes.includes('auto')" label="auto">正常</el-radio-button>
-        <el-radio-button v-if="selectWg.fixedTypes.includes('top')" label="top">顶部悬浮</el-radio-button>
-        <el-radio-button v-if="selectWg.fixedTypes.includes('custom')" label="custom">自定义</el-radio-button>
-        <el-radio-button v-if="selectWg.fixedTypes.includes('bottom')" label="bottom">底部悬浮</el-radio-button>-->
       </el-radio-group>
     </el-form-item>
+    <div v-if="selectWg.hasOwnProperty('position')">
+      <el-form-item label="悬浮位置">
+        <el-radio-group v-model="selectWg.position.side" size="small">
+          <el-radio-button label="left">左悬浮</el-radio-button>
+          <el-radio-button label="right">右悬浮</el-radio-button>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="左边距(%)" v-show="selectWg.position.side==='left'">
+        <el-slider v-model="selectWg.position.left" class="pd-l10 pd-r10"></el-slider>
+      </el-form-item>
+      <el-form-item label="右边距(%)" v-show="selectWg.position.side==='right'">
+        <el-slider v-model="selectWg.position.right" class="pd-l10 pd-r10"></el-slider>
+      </el-form-item>
+      <el-form-item label="上边距(px)">
+        <el-input-number v-model="selectWg.position.top" :precision="0" :min="0" :step="5" size="small" />
+      </el-form-item>
+    </div>
     <el-form-item label="设置页面滑动距离显示悬浮内容" v-if="setScrollHeight">
       <p class="lh24 c999 fs12">请预览查看具体效果（0则一直显示）</p>
       <el-input-number v-model="selectWg.scrollHeight" :min="0" :max="1000" :step="1" step-strictly size="small" />
