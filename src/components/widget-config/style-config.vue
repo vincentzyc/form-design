@@ -30,7 +30,7 @@
         @change="v=>selectWg.style.height=v+'px'"
       />
     </el-form-item>
-    
+
     <el-form-item label="文字颜色" v-if="selectWg.style.hasOwnProperty('color')">
       <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.color" />
     </el-form-item>
@@ -49,6 +49,17 @@
         :max="200"
         size="small"
         @change="v=>selectWg.style.lineHeight=v+'px'"
+      />
+    </el-form-item>
+    <el-form-item label="文字大小(px)" v-if="selectWg.style.hasOwnProperty('fontSize')">
+      <el-input-number
+        v-model="selectWg.style.fontsize"
+        :min="10"
+        :max="50"
+        :step="1"
+        step-strictly
+        size="small"
+        @change="val=>selectWg.style.fontSize = `${val}px`"
       />
     </el-form-item>
     <el-form-item label="线条颜色" v-if="selectWg.style.hasOwnProperty('borderColor')">
