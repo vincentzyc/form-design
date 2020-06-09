@@ -14,6 +14,7 @@ import WgWechat from "./wechat"
 import WgAgreement from "./agreement"
 import WgMarquee from "./marquee"
 import WgMarqueeSingle from "./marquee-single"
+import WgVideoPlay from "./video-play"
 
 export default {
   components: {
@@ -23,6 +24,7 @@ export default {
     WgAgreement,
     WgMarquee,
     WgMarqueeSingle,
+    WgVideoPlay,
     FixedConfig
     //按需加载
     // WgImgshow: () => import('./imgshow'),
@@ -46,7 +48,8 @@ export default {
         wechat: 'WgWechat',
         marquee: 'WgMarquee',
         marqueeSingle: 'WgMarqueeSingle',
-        agreement: 'WgAgreement'
+        agreement: 'WgAgreement',
+        videoPlay: 'WgVideoPlay'
       }
     }
   }
