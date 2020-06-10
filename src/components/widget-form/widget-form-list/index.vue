@@ -40,6 +40,7 @@ import WgWechat from './wg-wechat'
 import WgMarquee from './wg-marquee'
 import WgMarqueeSingle from './wg-marquee-single'
 import WgAgreement from './wg-agreement'
+import WgVideoPlay from './wg-video-play'
 import WgFormList from './wg-formlist'
 
 export default {
@@ -60,6 +61,7 @@ export default {
     WgMarquee,
     WgMarqueeSingle,
     WgAgreement,
+    WgVideoPlay,
     WgFormList
 
     //下面是按需加载，组件多的话可选择此方式
@@ -79,6 +81,7 @@ export default {
     // WgMarquee: () => import('./wg-marquee'),
     // WgMarqueeFixed: () => import('./wg-marquee-fixed'),
     // WgAgreement: () => import('./wg-agreement'),
+    // WgVideoPlay: () => import('./wg-video-play'),
     // WgFormList: () => import('./wg-formlist')
   },
   props: {
@@ -105,6 +108,7 @@ export default {
         marquee: 'WgMarquee', // 跑马灯 
         marqueeSingle: 'WgMarqueeSingle', // 跑马灯-单个
         agreement: 'WgAgreement', // 用户协议
+        videoPlay: 'WgVideoPlay',//视频播放
         formList: 'WgFormList', // 表单内容区 
       }
     }
