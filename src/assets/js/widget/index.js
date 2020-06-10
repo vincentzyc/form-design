@@ -6,7 +6,7 @@ import Marquee from "./marquee"
 import Assist from "./assist"
 import StaticText from "./static-text"
 import Wechat from "./wechat"
-//import Video from "./video"
+import Video from "./video"
 
 // 组件的type字段对应示意图片文件名 （小驼峰命名）
 
@@ -22,13 +22,11 @@ export default [{
   name: '图片',
   value: 'img',
   data: Img
-},
-//{
-//  name: '视频',
-//  value: 'video',
- // data: Video
-//}, 
-{
+}, {
+  name: '视频',
+  value: 'video',
+  data: Video
+}, {
   name: '文本',
   value: 'static-text',
   data: StaticText
