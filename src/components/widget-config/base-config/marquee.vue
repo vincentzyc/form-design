@@ -22,7 +22,7 @@
       <el-switch v-model="selectWg.isImgBtn"></el-switch>
     </el-form-item>
     <el-form-item label="上传图片" v-if="selectWg.isImgBtn&&selectWg.hasOwnProperty('imgUrl')">
-      <ImgUpload :value.sync="selectWg.imgUrl" />
+      <FileUpload :value.sync="selectWg.imgUrl" />
     </el-form-item>
     <el-form-item label="选项（可使用空格分列）" v-if="!selectWg.isImgBtn&&selectWg.hasOwnProperty('textList')">
       <Draggable tag="ul" :list="selectWg.textList" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">

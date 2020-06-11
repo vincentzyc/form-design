@@ -7,7 +7,7 @@
       <el-input v-model="selectWg.wechatName" placeholder="请输入您的微信账号"></el-input>
     </el-form-item>
     <el-form-item label="微信头像">
-      <ImgUpload :value.sync="selectWg.logo" />
+      <FileUpload :value.sync="selectWg.logo" />
     </el-form-item>
     <el-form-item label="显示微信头像">
       <el-switch v-model="selectWg.showLogo"></el-switch>

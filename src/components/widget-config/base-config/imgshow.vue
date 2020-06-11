@@ -14,7 +14,7 @@
 
             <div class="flex pd5">
               <span class="width70 flex-none">上传图片：</span>
-              <ImgUpload class="mg-t10" :value.sync="selectWg.imglist[index].img" />
+              <FileUpload class="mg-t10" :value.sync="selectWg.imglist[index].img" />
             </div>
             <el-form-item label="跳转地址(空或格式错误都不会跳转)">
               <el-input v-model="selectWg.imglist[index].link" @change="v=>$util.checkLink(v)"></el-input>
