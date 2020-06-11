@@ -8,7 +8,7 @@
         <el-color-picker :predefine="predefineColors" v-model="pageData.style.backgroundColor" />
       </el-form-item>
       <el-form-item label="页面背景图片">
-        <ImgUpload :value.sync="pageData.style.backgroundImage" />
+        <FileUpload :value.sync="pageData.style.backgroundImage" />
       </el-form-item>
       <el-form-item label="主题" v-if="themes.length>0">
         <el-radio-group v-model="pageData.theme" @change="setTheme">
