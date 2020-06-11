@@ -84,7 +84,7 @@
       <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.backgroundColor" />
     </el-form-item>
     <el-form-item label="背景图片" v-if="selectWg.hasOwnProperty('backgroundImage')">
-      <ImgUpload :value.sync="selectWg.backgroundImage" />
+      <FileUpload :value.sync="selectWg.backgroundImage" />
     </el-form-item>
     <el-form-item label="左边距(px)" v-if="selectWg.style.hasOwnProperty('marginleft')">
       <el-input-number
@@ -118,7 +118,7 @@
     </el-form-item>
     <el-form-item label="按钮样式：" v-if="selectWg.style.hasOwnProperty('btnStyle')">
       <el-form-item label="上传按钮图片" v-if="selectWg.style.isImgBtn">
-        <ImgUpload :value.sync="selectWg.style.value" />
+        <FileUpload :value.sync="selectWg.style.value" />
       </el-form-item>
       <div v-else>
         <el-form-item label="按钮背景色" v-if="selectWg.style.btnStyle.hasOwnProperty('backgroundColor')">
