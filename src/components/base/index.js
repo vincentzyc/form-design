@@ -1,6 +1,6 @@
 import Vue from "vue"
 
-import ImgUpload from './img-upload'; //图片上传组件
+import FileUpload from './file-upload'; //图片上传组件
 
 let MyPlugin = {};
 
@@ -8,7 +8,7 @@ MyPlugin.install = function(Vue) {
 
 	if (this.installed) return;
 
-	Vue.component(ImgUpload.name, ImgUpload); //注册组件
+	Vue.component(FileUpload.name, FileUpload); //注册组件
 
 };
 
