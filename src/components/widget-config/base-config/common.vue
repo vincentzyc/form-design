@@ -63,7 +63,7 @@
       </div>
     </el-form-item>
     <!-- <el-form-item label="图片上传" v-if="selectWg.type === 'imgShow'">
-      <ImgUpload :value.sync="selectWg.value" />
+      <FileUpload :value.sync="selectWg.value" />
     </el-form-item>-->
     <template v-if="selectWg.type ==='imgSlide'">
       <el-form-item label="轮播图片设置">
@@ -71,7 +71,7 @@
           <li v-for="(item, index) in selectWg.value" :key="index" style="border:1px dashed #999">
             <div class="pd10">
               <div class="relative flex flex-center">
-                <ImgUpload :value.sync="item.image" />
+                <FileUpload :value.sync="item.image" />
                 <div class="absolute-top-right">
                   <i class="el-icon-menu move-icon"></i>
                   <i class="el-icon-delete delect-icon" @click="handleSlideRemove(index)"></i>
