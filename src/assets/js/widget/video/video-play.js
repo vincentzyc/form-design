@@ -5,6 +5,7 @@ export default [{
     src: "https://www.runoob.com/try/demo_source/movie.mp4",
     poster: "https://www.runoob.com/images/logo.png",
     autoplay: false,
+    loop: false,
     controls: true
   },
   style: {
