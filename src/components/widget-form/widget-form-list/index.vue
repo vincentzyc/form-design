@@ -36,6 +36,7 @@ import WgButton from './wg-button'
 import WgStaticText from './wg-statictext'
 import WgSplitLine from './wg-splitLine'
 import WgHpicker from './wg-hpicker'
+import WgSms from './wg-sms'
 import WgWechat from './wg-wechat'
 import WgMarquee from './wg-marquee'
 import WgMarqueeSingle from './wg-marquee-single'
@@ -57,6 +58,7 @@ export default {
     WgStaticText,
     WgSplitLine,
     WgHpicker,
+    WgSms,
     WgWechat,
     WgMarquee,
     WgMarqueeSingle,
@@ -77,6 +79,7 @@ export default {
     // WgStaticText: () => import('./wg-statictext'),
     // WgSplitLine: () => import('./wg-splitLine'),
     // WgHpicker: () => import('./wg-hpicker'),
+    // WgSms: () => import('./wg-sms'),
     // WgWechat: () => import('./wg-wechat'),
     // WgMarquee: () => import('./wg-marquee'),
     // WgMarqueeFixed: () => import('./wg-marquee-fixed'),
@@ -104,6 +107,7 @@ export default {
         staticText: 'WgStaticText', // 文本描述
         splitLine: 'WgSplitLine', // 分割线
         hPicker: 'WgHpicker', // 横向滑动自动选择
+        sms: 'WgSms', // 短信发送 
         wechat: 'WgWechat', // 微信关注 
         marquee: 'WgMarquee', // 跑马灯 
         marqueeSingle: 'WgMarqueeSingle', // 跑马灯-单个
