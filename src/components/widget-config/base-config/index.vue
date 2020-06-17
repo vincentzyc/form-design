@@ -10,6 +10,7 @@
 import FixedConfig from "./fixed-config"
 import Common from "./common"
 import WgImgshow from "./imgshow"
+import WgSms from "./sms"
 import WgWechat from "./wechat"
 import WgAgreement from "./agreement"
 import WgMarquee from "./marquee"
@@ -20,6 +21,7 @@ export default {
   components: {
     Common,
     WgImgshow,
+    WgSms,
     WgWechat,
     WgAgreement,
     WgMarquee,
@@ -45,6 +47,7 @@ export default {
       wgNameMap: {
         imgShow: 'WgImgshow',
         imgSlide: 'WgImgslide',
+        sms: 'WgSms',
         wechat: 'WgWechat',
         marquee: 'WgMarquee',
         marqueeSingle: 'WgMarqueeSingle',
