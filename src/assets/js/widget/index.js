@@ -7,6 +7,7 @@ import Assist from "./assist"
 import StaticText from "./static-text"
 import Wechat from "./wechat"
 import Video from "./video"
+import Sms from "./sms"
 
 // 组件的type字段对应示意图片文件名 （小驼峰命名）
 
@@ -31,6 +32,14 @@ export default [{
   value: 'static-text',
   data: StaticText
 }, {
+  name: '短信',
+  value: 'sms',
+  data: Sms
+}, {
+  name: '微信',
+  value: 'wechat',
+  data: Wechat
+}, {
   name: '用户协议',
   value: 'agreement',
   data: Agreement
@@ -38,10 +47,6 @@ export default [{
   name: '跑马灯',
   value: 'marquee',
   data: Marquee
-}, {
-  name: '微信',
-  value: 'wechat',
-  data: Wechat
 }, {
   name: '辅助类',
   value: 'assist',
