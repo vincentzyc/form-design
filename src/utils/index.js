@@ -1,4 +1,7 @@
+import Vue from "vue"
 import Crypto from "./crypto";
+
+const vm = new Vue();
 
 export default {
   /**
@@ -108,10 +111,14 @@ export default {
     let isNumber = pattern.test(val);
     return isNumber;
   },
-  isLink(val){
+  isLink(val) {
     let pattern = /^(?:(?:https?|ftp):\/\/)?(?:[\da-z.-]+)\.(?:[a-z.]{2,6})(?:\/\w\.-]*)*\/?/;
-		let isLink = pattern.test(val);
-		return isLink;
+    let isLink = pattern.test(val);
+    return isLink;
+  },
+  checkLink(val) {
+    let isLink = this.isLink(val);
+    if (!isLink) vm.$message.error('请输入正确的网址');
   },
 	/**
 	 * 四舍五入强制保留n位小数
