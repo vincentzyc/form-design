@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form-item label="显示位置" v-if="selectWg.hasOwnProperty('positionFixed')">
-      <el-radio-group v-model="selectWg.positionFixed" size="small">
+      <el-radio-group v-model="selectWg.positionFixed" size="mini">
         <el-radio-button v-for="type in fixedTypeList" :label="type" :key="type">{{fixedName[type]}}</el-radio-button>
       </el-radio-group>
     </el-form-item>
