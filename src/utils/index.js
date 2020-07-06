@@ -5,6 +5,15 @@ const vm = new Vue();
 
 export default {
   /**
+   * 判断是否存在 key
+   * @param obj 判断对象
+   * @param key 判断 key值
+   * @return {Boolean} 是否存在标识
+   */
+  hasKey(obj, key) {
+    return Object.prototype.hasOwnProperty.call(obj, key)
+  },
+  /**
    * 获取数据类型
    * @param value 需要判断的值
    * @return {String} 类型   String Number Object......
@@ -247,7 +256,7 @@ export default {
   deepClone(obj) {
     let result = Array.isArray(obj) ? [] : {};
     for (let key in obj) {
-      if (obj.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
         if (typeof obj[key] === 'object') {
           result[key] = this.deepClone(obj[key]); //递归复制
         } else {
