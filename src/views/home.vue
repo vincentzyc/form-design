@@ -125,7 +125,7 @@ export default {
     },
     disFormList(wgItem) {
       // 阻止组件嵌套
-      if (!wgItem.hasOwnProperty('list')) return false;
+      if (!this.$util.hasKey(wgItem,'list')) return false;
       if (this.pageData.list) {
         return this.pageData.list.some(v => {
           return v.type === wgItem.type;
