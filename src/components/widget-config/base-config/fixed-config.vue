@@ -1,11 +1,11 @@
 <template>
   <div>
-    <el-form-item label="显示位置" v-if="selectWg.hasOwnProperty('positionFixed')">
+    <el-form-item label="显示位置" v-if="$util.hasKey(selectWg,'positionFixed')">
       <el-radio-group v-model="selectWg.positionFixed" size="mini">
         <el-radio-button v-for="type in fixedTypeList" :label="type" :key="type">{{fixedName[type]}}</el-radio-button>
       </el-radio-group>
     </el-form-item>
-    <div v-if="selectWg.hasOwnProperty('position')">
+    <div v-if="$util.hasKey(selectWg,'position')">
       <el-form-item label="悬浮位置">
         <el-radio-group v-model="selectWg.position.side" size="small">
           <el-radio-button label="left">左悬浮</el-radio-button>
@@ -79,7 +79,7 @@ export default {
       return this.selectWg.fixedTypes.filter(v => this.fixedTypes.includes(v))
     },
     setScrollHeight() {
-      return [TOP_NAME, BOTTOM_NAME].includes(this.selectWg.positionFixed) && this.selectWg.hasOwnProperty('scrollHeight')
+      return [TOP_NAME, BOTTOM_NAME].includes(this.selectWg.positionFixed) && Object.prototype.hasOwnProperty.call(this.selectWg, 'scrollHeight')
     },
     ...mapState({
       pageData: state => state.common.pageData,
