@@ -130,6 +130,17 @@
         <el-form-item label="按钮边框色" v-if="selectWg.style.btnStyle.hasOwnProperty('borderColor')">
           <el-color-picker :predefine="predefineColors" show-alpha v-model="selectWg.style.btnStyle.borderColor" />
         </el-form-item>
+        <el-form-item label="按钮文字大小(px)" v-if="selectWg.style.btnStyle.hasOwnProperty('fontSize')">
+          <el-input-number
+            v-model="selectWg.style.btnStyle.fontsize"
+            :min="10"
+            :max="30"
+            :step="1"
+            step-strictly
+            size="small"
+            @change="val=>selectWg.style.btnStyle.fontSize = `${val}px`"
+          />
+        </el-form-item>
         <el-form-item label="按钮圆角" v-if="selectWg.style.btnStyle.hasOwnProperty('borderradius')">
           <el-input-number
             v-model="selectWg.style.btnStyle.borderradius"
