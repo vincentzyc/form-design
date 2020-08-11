@@ -41,6 +41,7 @@ import WgWechat from './wg-wechat'
 import WgMarquee from './wg-marquee'
 import WgMarqueeSingle from './wg-marquee-single'
 import WgAgreement from './wg-agreement'
+import WgRandomCode from './wg-random-code'
 import WgVideoPlay from './wg-video-play'
 import WgFormList from './wg-formlist'
 
@@ -63,6 +64,7 @@ export default {
     WgMarquee,
     WgMarqueeSingle,
     WgAgreement,
+    WgRandomCode,
     WgVideoPlay,
     WgFormList
 
@@ -84,6 +86,7 @@ export default {
     // WgMarquee: () => import('./wg-marquee'),
     // WgMarqueeFixed: () => import('./wg-marquee-fixed'),
     // WgAgreement: () => import('./wg-agreement'),
+    // WgRandomCode: () => import('./wg-random-code'),
     // WgVideoPlay: () => import('./wg-video-play'),
     // WgFormList: () => import('./wg-formlist')
   },
@@ -112,6 +115,7 @@ export default {
         marquee: 'WgMarquee', // 跑马灯 
         marqueeSingle: 'WgMarqueeSingle', // 跑马灯-单个
         agreement: 'WgAgreement', // 用户协议
+        randomCode: 'WgRandomCode', //随机码
         videoPlay: 'WgVideoPlay',//视频播放
         formList: 'WgFormList', // 表单内容区 
       }

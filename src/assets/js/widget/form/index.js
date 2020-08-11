@@ -5,6 +5,7 @@ import CheckboxList from "./checkbox"
 import DateList from "./date"
 import Select from "./select"
 import Switch from "./switch"
+import RandomCode from "./random-code"
 import Hpicker from "./h-picker"
 
 export default [{
@@ -20,6 +21,10 @@ export default [{
   name: "输入框",
   value: "input",
   data: InputList
+}, {
+  name: "随机码",
+  value: "randomCode",
+  data: RandomCode
 }, {
   name: "选择框",
   value: "checkbox",
