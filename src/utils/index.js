@@ -204,7 +204,7 @@ export default {
 	 */
   exportData(url, data) {
     if (typeof data !== "object") {
-      console.warn("导出参数错误");
+      // console.warn("导出参数错误");
       return;
     }
     let queryData = "",

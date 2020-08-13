@@ -83,8 +83,9 @@ export default {
         this.resetUpload()
       }, 500);
     },
-    uploadError(err) {
-      console.log(err);
+    // uploadError(err) {
+    uploadError() {
+      // console.log(err);
       this.resetUpload()
       this.$alert('网络繁忙，请稍后重试');
     },

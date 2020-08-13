@@ -42,7 +42,7 @@ export default {
           this.$util.setLStorage("loanuser", { username: this.ruleForm.userName }, true);
           this.$router.push("/home");
         } else {
-          console.log("error submit!!");
+          // console.log("error submit!!");
           return false;
         }
       });
