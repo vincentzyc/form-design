@@ -46,7 +46,6 @@ export default {
     return {
       wgNameMap: {
         imgShow: 'WgImgshow',
-        imgSlide: 'WgImgslide',
         sms: 'WgSms',
         wechat: 'WgWechat',
         marquee: 'WgMarquee',
