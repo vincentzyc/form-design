@@ -6,7 +6,7 @@
       </el-radio-group>
     </el-form-item>
     <el-form-item label="图片列表">
-      <draggable tag="ul" :list="selectWg.imglist" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">
+      <Draggable tag="ul" :list="selectWg.imglist" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">
         <li v-for="(item, index) in selectWg.imglist" :key="index">
           <div class="col-itemlist">
             <i class="el-icon-menu move-icon"></i>
@@ -21,7 +21,7 @@
             </el-form-item>
           </div>
         </li>
-      </draggable>
+      </Draggable>
       <div style="margin-left: 22px;">
         <el-button type="text" @click="handleAdd()">添加选项</el-button>
       </div>
