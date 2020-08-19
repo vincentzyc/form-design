@@ -43,9 +43,9 @@ import WgMarqueeSingle from './wg-marquee-single'
 import WgAgreement from './wg-agreement'
 import WgRandomCode from './wg-random-code'
 import WgVideoPlay from './wg-video-play'
-import WgFormList from './wg-formlist'
 
 export default {
+  name: "WidgetFormList",
   components: {
     WgPhone,
     WgInput,
@@ -66,7 +66,7 @@ export default {
     WgAgreement,
     WgRandomCode,
     WgVideoPlay,
-    WgFormList
+    WgFormList: () => import('./wg-formlist')
 
     //下面是按需加载，组件多的话可选择此方式
     // WgPhone: () => import('./wg-phone'),

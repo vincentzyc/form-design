@@ -18,12 +18,13 @@
 <script>
 import { mapState } from 'vuex';
 import Draggable from 'vuedraggable'
+import WidgetFormList from './index'
 
 export default {
   name: 'FormList',
   components: {
     Draggable,
-    WidgetFormList: () => import('./index.vue')
+    WidgetFormList
   },
   props: {
     item: Object,
