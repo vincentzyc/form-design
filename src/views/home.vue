@@ -21,7 +21,7 @@
                   <h4 class="widget-title">{{level2.name}}</h4>
                   <Draggable
                     tag="ul"
-                    :list="level2.data"
+                    v-model="level2.data"
                     :group="{ name:'widget', pull:'clone', put:false }"
                     :sort="false"
                     @end="dragEnd"
