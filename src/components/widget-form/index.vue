@@ -1,51 +1,58 @@
 <template>
-  <div class="widget-form-wrapper">
+  <div class="widget-form-wrapper" id="widget-form-wrapper">
     <div
-      class="widget-form-container"
       :style="{...pageData.style,backgroundImage:`url(${pageData.style.backgroundImage})`}"
+      class="widget-form-container"
+      id="widget-form-container"
     >
       <div :class="'template-'+pageData.theme">
-        <div v-if="Array.isArray(pageData.fixedTop)&&pageData.fixedTop.length>0" class="wg-fixed-top">
+        <div class="wg-fixed-top" v-if="Array.isArray(pageData.fixedTop)&&pageData.fixedTop.length>0">
           <!-- 可支持多个组件悬浮，目前未开放，限制一个-->
           <template v-for="(item,index) in pageData.fixedTop">
-            <WidgetFormList :item="item" :index="index" :data="pageData.fixedTop" :key="item.key" />
+            <WidgetFormList :data="pageData.fixedTop" :index="index" :item="item" :key="item.key" />
           </template>
         </div>
-        <div v-if="Array.isArray(pageData.fixedCustom)&&pageData.fixedCustom.length>0" class="wg-fixed-custom">
+        <div
+          class="wg-fixed-custom"
+          v-if="Array.isArray(pageData.fixedCustom)&&pageData.fixedCustom.length>0"
+        >
           <!-- 可支持多个组件悬浮，目前未开放，限制一个 -->
           <template v-for="(item,index) in pageData.fixedCustom">
             <WidgetFormList
-              :item="item"
-              :index="index"
               :data="pageData.fixedCustom"
+              :index="index"
+              :item="item"
               :key="item.key"
-              class="fixed-item"
               :style="fixedCustomStyle(item)"
+              class="fixed-item"
             />
           </template>
         </div>
         <Draggable
-          v-model="pageData.list"
+          :animation="100"
+          :class="{'widget-empty': pageData.list.length === 0&&!pageData.style.backgroundImage}"
           :group="{ name:'widget',put:true}"
+          :swapThreshold="0.7"
+          @add="handleWidgetAdd"
+          @end="dragEnd"
+          @start="dragStart"
+          class="widget-form-list"
           filter=".disdraggable"
           ghostClass="ghost"
-          :swapThreshold="0.7"
-          :animation="100"
-          @start="dragStart"
-          @end="dragEnd"
-          @add="handleWidgetAdd"
-          class="widget-form-list"
-          :class="{'widget-empty': pageData.list.length === 0&&!pageData.style.backgroundImage}"
+          v-model="pageData.list"
         >
           <template v-for="(item,index) in pageData.list">
-            <WidgetFormList :item="item" :index="index" :data="pageData.list" :key="item.key" />
+            <WidgetFormList :data="pageData.list" :index="index" :item="item" :key="item.key" />
           </template>
         </Draggable>
 
-        <div v-if="Array.isArray(pageData.fixedBottom)&&pageData.fixedBottom.length>0" class="wg-fixed-bottom">
+        <div
+          class="wg-fixed-bottom"
+          v-if="Array.isArray(pageData.fixedBottom)&&pageData.fixedBottom.length>0"
+        >
           <!-- 可支持多个组件悬浮，目前未开放，限制一个-->
           <template v-for="(item,index) in pageData.fixedBottom">
-            <WidgetFormList :item="item" :index="index" :data="pageData.fixedBottom" :key="item.key" />
+            <WidgetFormList :data="pageData.fixedBottom" :index="index" :item="item" :key="item.key" />
           </template>
         </div>
       </div>
