@@ -123,7 +123,7 @@ export default {
   },
   computed: {
     clonebtn() {
-      if (this.selectWg.position) return false;
+      if (this.selectWg.positionFixed && this.selectWg.positionFixed !== 'auto') return false;
       if (this.selectWg.fixedBottom) return false;
       if (Array.isArray(this.selectWg.list)) return false;
       if (this.selectWg.key === this.item.key) return true;
