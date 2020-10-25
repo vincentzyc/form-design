@@ -129,6 +129,35 @@ $primary-background-color = #ecf5ff;
   }
 }
 
+.custom-popup-fixed {
+  position: fixed;
+  z-index: 1222;
+  width: 0;
+  height: 0;
+
+  .custom-popup {
+    position: absolute;
+    left: 50%;
+    width: 375px;
+    height: 100%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .custom-popup-body {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 330px;
+    background: #fff;
+    border-radius: 10px;
+    max-height: 80%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}
+
 // 动画类
 .transition03 {
   transition: 0.3s;
