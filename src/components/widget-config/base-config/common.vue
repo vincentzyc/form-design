@@ -49,7 +49,7 @@
     </el-form-item>
 
     <el-form-item label="选项" v-if="$util.hasKey(selectWg,'options')">
-      <draggable tag="ul" :list="selectWg.options" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">
+      <Draggable tag="ul" :list="selectWg.options" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">
         <li v-for="(item, index) in selectWg.options" :key="index">
           <div class="flex align-middle">
             <el-input size="mini" v-model="selectWg.options[index]"></el-input>
@@ -57,7 +57,7 @@
             <i class="el-icon-delete delect-icon" @click="handleOptionsRemove(index)"></i>
           </div>
         </li>
-      </draggable>
+      </Draggable>
       <div style="margin-left: 22px;">
         <el-button type="text" @click="handleAddOption()">添加选项</el-button>
       </div>
