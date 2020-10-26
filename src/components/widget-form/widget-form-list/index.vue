@@ -1,22 +1,22 @@
 <template>
   <div
-    @click.stop="handleSelectWidget()"
     :class="[item.wgClassName?item.wgClassName:'widget-view',{active: selectWg.key === item.key}]"
     :style="wgViewStyle"
+    @click.stop="handleSelectWidget()"
   >
     <i class="el-icon-rank" v-if="Array.isArray(item.list)"></i>
     <component :is="wgNameMap[item.type]" :item="item" />
     <span
-      title="删除"
       @click.stop="handleWidgetDelete()"
-      v-if="selectWg.key === item.key"
       class="widget-action-btn widget-action-delete el-icon-delete"
+      title="删除"
+      v-if="selectWg.key === item.key"
     ></span>
     <span
-      title="复制"
       @click.stop="handleWidgetClone()"
-      v-if="clonebtn"
       class="widget-action-btn widget-action-clone el-icon-document-copy"
+      title="复制"
+      v-if="clonebtn"
     ></span>
   </div>
 </template>
