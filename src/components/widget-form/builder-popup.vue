@@ -1,7 +1,7 @@
 <template>
   <transition name="el-fade-in-linear" v-if="value">
-    <div ref="customPopup" class="custom-popup-fixed" :style="setStyle">
-      <div class="custom-popup" @click="close"></div>
+    <div :style="setStyle" class="custom-popup-fixed" ref="customPopup">
+      <div @click="close" class="custom-popup"></div>
       <div class="custom-popup-body">
         <slot></slot>
       </div>
@@ -21,12 +21,9 @@ export default {
   },
   watch: {
     value(n) {
-      if (n) {
-        this.setClientRect()
-      } else {
-        if (this.$el && this.$el.parentNode) {
-          this.$el.parentNode.removeChild(this.$el);
-        }
+      if (n) return this.setClientRect()
+      if (this.$el && this.$el.parentNode) {
+        this.$el.parentNode.removeChild(this.$el);
       }
     }
   },
