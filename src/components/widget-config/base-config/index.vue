@@ -1,13 +1,15 @@
 <template>
   <section>
+    <PopupConfig :selectWg="selectWg" />
     <FixedConfig :selectWg="selectWg" />
     <Common :selectWg="selectWg" />
-    <component v-if="wgNameMap[selectWg.type]" :is="wgNameMap[selectWg.type]" :selectWg="selectWg" />
+    <component :is="wgNameMap[selectWg.type]" :selectWg="selectWg" v-if="wgNameMap[selectWg.type]" />
   </section>
 </template>
 
 <script>
 import FixedConfig from "./fixed-config"
+import PopupConfig from "./popup-config"
 import Common from "./common"
 import WgImgshow from "./imgshow"
 import WgImgslide from "./imgslide"
@@ -29,14 +31,12 @@ export default {
     WgMarquee,
     WgMarqueeSingle,
     WgVideoPlay,
-    FixedConfig
+    FixedConfig,
+    PopupConfig
     //按需加载
-    // WgImgshow: () => import('./imgshow'),
-    // WgWechat: () => import('./wechat'),
-    // WgAgreement: () => import('./agreement'),
     // WgMarquee: () => import('./marquee'),
     // WgMarqueeFixed: () => import('./marquee-fixed'),
-
+    // ...
   },
   props: {
     selectWg: {
