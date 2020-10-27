@@ -3,6 +3,7 @@ export default [{
   name: "文本描述",
   value: "这是一段文本",
   link: "",
+  popupList: [],
   backgroundImage: "",
   backgroundColor: "",
   style: {
