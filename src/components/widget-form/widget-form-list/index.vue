@@ -93,7 +93,8 @@ export default {
   props: {
     item: Object,
     index: Number,
-    data: Array
+    data: Array,
+    isPopup: Boolean
   },
   data() {
     return {
@@ -145,7 +146,7 @@ export default {
     handleWidgetDelete() {
       if (this.data.length - 1 === this.index) {
         if (this.index === 0) {
-          this.$store.commit('setSelectWg', {})
+          this.isPopup ? this.$emit('emptied') : this.$store.commit('setSelectWg', {})
         } else {
           this.$store.commit('setSelectWg', this.data[this.index - 1])
         }
