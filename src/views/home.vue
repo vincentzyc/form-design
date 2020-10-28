@@ -158,6 +158,7 @@ export default {
       this.$store.commit('setPageData', this.$util.deepClone(pageConfigData.pageConfig));
     },
     handleSave() {
+      this.$root.$emit("formDesign_savePage")
       this.$util.setLStorage('pageData', this.pageData);
       this.$alert('保存成功', { showClose: false });
     }

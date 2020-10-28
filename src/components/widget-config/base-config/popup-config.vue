@@ -64,11 +64,11 @@ export default {
     })
   },
   methods: {
-    setWgPopupList() {
-      if (!Array.isArray(this.pageData.list) || this.pageData.list.length === 0) return;
-      for (const item of this.pageData.list) {
+    setWgPopupList(list) {
+      if (!Array.isArray(list) || list.length === 0) return;
+      for (const item of list) {
         if (Array.isArray(item.list) && item.list.length > 0) {
-          return this.setWgPopupList()
+          return this.setWgPopupList(item.list)
         }
         if (item.key === this.wgId) {
           item.popupList = this.popupList
@@ -77,7 +77,7 @@ export default {
       }
     },
     closePopup() {
-      const newWgData = this.setWgPopupList()
+      const newWgData = this.setWgPopupList(this.pageData.list)
       if (newWgData && this.wgId !== this.selectWg.key) {
         this.$store.commit('setSelectWg', newWgData)
         this.$store.commit('setConfigTab', "widget");
@@ -95,6 +95,10 @@ export default {
       this.$store.commit('setSelectWg', this.popupList[newIndex])
       this.$store.commit('setConfigTab', "widget");
     }
+  },
+  created() {
+    //监听保存操作，组件赋值popupList
+    this.$root.$on("formDesign_savePage", () => this.setWgPopupList(this.pageData.list))
   }
 }
 </script>
