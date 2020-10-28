@@ -164,7 +164,7 @@ export default {
         this.data.splice(this.index, 0, cloneData)
         this.$store.commit('setSelectWg', this.data[this.index + 1])
       })
-    },
+    }
   }
 }
 </script>
