@@ -68,7 +68,7 @@ export default {
       if (!Array.isArray(this.pageData.list) || this.pageData.list.length === 0) return;
       for (const item of this.pageData.list) {
         if (Array.isArray(item.list) && item.list.length > 0) {
-          return this.pageHasWidget()
+          return this.setWgPopupList()
         }
         if (item.key === this.wgId) {
           item.popupList = this.popupList
