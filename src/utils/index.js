@@ -1,5 +1,4 @@
 import Vue from "vue"
-import Crypto from "./crypto";
 
 const vm = new Vue();
 
@@ -39,12 +38,12 @@ export default {
     }
     return null;
   },
-	/**
-	 * 设置cookie
-	 * @param key  key
-	 * @param value 值
-	 * @param time  保存时间（天）
-	 */
+  /**
+   * 设置cookie
+   * @param key  key
+   * @param value 值
+   * @param time  保存时间（天）
+   */
   setCookie(key, value, time) {
     var cur = new Date();
     cur.setTime(cur.getTime() + time * 24 * 3600 * 1000);
@@ -66,47 +65,37 @@ export default {
     var data = this.getCookie(key);
     if (data !== false) this.setCookie(key, data, -1);
   },
-	/**
-	 *
-	 * @param key key
-	 * @param value value
-	 * @param encode 是否加密存储
-	 */
-  setSStorage(key, value, encode) {
+  /**
+   *
+   * @param key key
+   * @param value value
+   * @param encode 是否加密存储
+   */
+  setSStorage(key, value) {
     let str = window.JSON.stringify(value);
-    if (encode) {
-      str = Crypto.encrypt(str);
-    }
     window.sessionStorage.setItem(key, str);
   },
-  getSStorage(key, decode) {
+  getSStorage(key) {
     var str = "";
     str = window.sessionStorage.getItem(key);
     if (!str) return "";
-    if (decode) {
-      str = Crypto.decrypt(str);
-    }
     try {
-      return window.JSON.parse(str);
+      window.JSON.parse(str);
     } catch (error) {
       window.sessionStorage.removeItem(key);
       window.location.reload();
     }
   },
-  setLStorage(key, value, encode) {
+  setLStorage(key, value) {
     let str = window.JSON.stringify(value);
-    if (encode) {
-      str = Crypto.encrypt(str);
-    }
     window.localStorage.setItem(key, str);
   },
-  getLStorage(key, decode) {
+  getLStorage(key) {
     var str = "";
     str = window.localStorage.getItem(key);
     if (!str) return "";
     try {
-      if (decode) str = Crypto.decrypt(str);
-      return window.JSON.parse(str);
+      window.JSON.parse(str);
     } catch (error) {
       window.localStorage.removeItem(key);
       window.location.reload();
@@ -129,15 +118,15 @@ export default {
     let isLink = this.isLink(val);
     if (!isLink) vm.$message.error('请输入正确的网址');
   },
-	/**
-	 * 缓冲函数
-	 * @param {Object} dom 目标dom
-	 * @param {Number} destination 目标位置
-	 * @param {Number} rate 缓动率
-	 * 示例用法
-	  var dom = document.documentElement || document.body;
-	  this.$util.easeout(dom, 0, 5);
-	 */
+  /**
+   * 缓冲函数
+   * @param {Object} dom 目标dom
+   * @param {Number} destination 目标位置
+   * @param {Number} rate 缓动率
+   * 示例用法
+    var dom = document.documentElement || document.body;
+    this.$util.easeout(dom, 0, 5);
+   */
   easeout(dom, destination = 0, rate = 3) {
     let position = dom.scrollTop;
     if (position === destination || typeof destination !== "number" || rate === 0) {
@@ -161,11 +150,11 @@ export default {
     };
     step();
   },
-	/**
-	 * 对象深拷贝
-	 * @param {Object} obj 初始对象
-	 * @return {Object} result 拷贝后对象
-	 */
+  /**
+   * 对象深拷贝
+   * @param {Object} obj 初始对象
+   * @return {Object} result 拷贝后对象
+   */
   deepClone(obj) {
     let result = Array.isArray(obj) ? [] : {};
     for (let key in obj) {
