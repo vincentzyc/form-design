@@ -39,7 +39,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$util.setLStorage("loanuser", { username: this.ruleForm.userName }, true);
+          this.$util.setLStorage("loanuser", { username: this.ruleForm.userName });
           this.$router.push("/home");
         } else {
           // console.log("error submit!!");
