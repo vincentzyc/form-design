@@ -2,16 +2,21 @@
   <div class="login-wrap">
     <div class="ms-title">动态表单设计系统</div>
     <div class="ms-login">
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px">
+      <el-form :model="ruleForm" :rules="rules" label-width="0px" ref="ruleForm">
         <el-form-item prop="userName">
-          <el-input v-model="ruleForm.userName" placeholder="请输入用户名"></el-input>
+          <el-input placeholder="请输入用户名" v-model="ruleForm.userName"></el-input>
         </el-form-item>
         <el-form-item prop="passWord">
-          <el-input type="password" placeholder="请输入密码" v-model="ruleForm.passWord" @keyup.enter.native="submitForm('ruleForm')"></el-input>
+          <el-input
+            @keyup.enter.native="submitForm('ruleForm')"
+            placeholder="请输入密码"
+            type="password"
+            v-model="ruleForm.passWord"
+          ></el-input>
         </el-form-item>
         <p style="color:#999;font-size:12px;margin:-10px 0 10px 0">用户名密码随意输入即可</p>
         <div class="login-btn">
-          <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+          <el-button @click="submitForm('ruleForm')" type="primary">登录</el-button>
         </div>
       </el-form>
     </div>
