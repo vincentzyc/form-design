@@ -7,37 +7,41 @@
           <div class="flex components-list">
             <div class="flex flex-column flex-none components-title">
               <el-button
-                size="small"
-                round
-                v-for="item in widgetLevel1"
                 :key="item.value"
                 :type="item.value===widgetLevel2.value?'primary':''"
                 @click="handleWidget(item)"
+                round
+                size="small"
+                v-for="item in widgetLevel1"
               >{{item.name}}</el-button>
             </div>
             <ul class="flex-auto components-content">
-              <div v-for="level1 in widgetLevel1" :key="level1.value" v-show="level1.value===widgetLevel2.value">
-                <li v-for="level2 in level1.data" :key="level2.value">
+              <div
+                :key="level1.value"
+                v-for="level1 in widgetLevel1"
+                v-show="level1.value===widgetLevel2.value"
+              >
+                <li :key="level2.value" v-for="level2 in level1.data">
                   <h4 class="widget-title">{{level2.name}}</h4>
                   <Draggable
-                    tag="ul"
-                    v-model="level2.data"
+                    :clone="cloneData"
+                    :filter="level2.dragOnce?'.disdraggable':''"
                     :group="{ name:'widget', pull:'clone', put:false }"
                     :sort="false"
                     @end="dragEnd"
-                    :clone="cloneData"
                     ghostClass="ghost"
-                    :filter="level2.dragOnce?'.disdraggable':''"
+                    tag="ul"
+                    v-model="level2.data"
                   >
                     <li
-                      v-for="level3 in level2.data"
+                      :class="{disdraggable:disFormList(level3)}"
                       :key="level3.apiKey"
                       class="form-edit-widget-label"
-                      :class="{disdraggable:disFormList(level3)}"
+                      v-for="level3 in level2.data"
                     >
                       <img
-                        :src="BASE_URL+'static/img/widget/'+level1.value+'/'+level3.type+'.jpg'"
                         :alt="level3.name"
+                        :src="BASE_URL+'static/img/widget/'+level1.value+'/'+level3.type+'.jpg'"
                         width="100%"
                       />
                     </li>
@@ -50,9 +54,27 @@
 
         <el-container class="center-container" direction="vertical">
           <el-header class="btn-bar" style="height: 45px;">
-            <el-button type="text" size="medium" icon="el-icon-refresh" @click="handleReset()" class="mg-r15">重置</el-button>
-            <el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview()" class="mg-r15">预览</el-button>
-            <el-button type="text" size="medium" icon="el-icon-document" @click="handleSave()" class="mg-r15">保存</el-button>
+            <el-button
+              @click="handleReset()"
+              class="mg-r15"
+              icon="el-icon-refresh"
+              size="medium"
+              type="text"
+            >重置</el-button>
+            <el-button
+              @click="handlePreview()"
+              class="mg-r15"
+              icon="el-icon-view"
+              size="medium"
+              type="text"
+            >预览</el-button>
+            <el-button
+              @click="handleSave()"
+              class="mg-r15"
+              icon="el-icon-document"
+              size="medium"
+              type="text"
+            >保存</el-button>
           </el-header>
           <el-main>
             <widget-form></widget-form>
@@ -61,16 +83,16 @@
 
         <el-aside class="widget-config-container" style="min-width:300px;width:20vw">
           <el-container>
-            <el-header height="45px" class="flex">
+            <el-header class="flex" height="45px">
               <div
-                class="config-tab flex-auto"
                 :class="{active: configTab=='widget'}"
                 @click="handleConfigSelect('widget')"
+                class="config-tab flex-auto"
               >字段属性</div>
               <div
-                class="config-tab flex-auto"
                 :class="{active: configTab=='page'}"
                 @click="handleConfigSelect('page')"
+                class="config-tab flex-auto"
               >页面属性</div>
             </el-header>
             <el-main class="config-content">
@@ -125,7 +147,7 @@ export default {
     },
     disFormList(wgItem) {
       // 阻止组件嵌套
-      if (!this.$util.hasKey(wgItem,'list')) return false;
+      if (!this.$util.hasKey(wgItem, 'list')) return false;
       if (this.pageData.list) {
         return this.pageData.list.some(v => {
           return v.type === wgItem.type;
