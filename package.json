@@ -11,7 +11,7 @@
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
     "quill": "^1.3.7",
-    "vue": "^2.6.11",
+    "vue": "^2.6.12",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.4.8",
     "vuedraggable": "^2.24.0",
@@ -29,6 +29,6 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-cli-plugin-element": "^1.0.1",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   }
 }
