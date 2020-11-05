@@ -68,7 +68,7 @@ export default {
       if (!Array.isArray(list) || list.length === 0) return;
       for (const item of list) {
         if (Array.isArray(item.list) && item.list.length > 0) {
-          return this.setWgPopupList(item.list)
+          this.setWgPopupList(item.list)
         }
         if (item.key === this.wgId) {
           item.popupList = this.popupList
