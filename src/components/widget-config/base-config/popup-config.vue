@@ -33,7 +33,7 @@
 import { mapState } from 'vuex';
 import Draggable from 'vuedraggable'
 import WidgetFormList from '@/components/widget-form/widget-form-list/index'
-import BuilderPopup from '@/components/base/builder-popup'
+import BuilderPopup from '@/components/base/BuilderPopup'
 export default {
   components: {
     Draggable,
