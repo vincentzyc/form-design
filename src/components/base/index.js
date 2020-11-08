@@ -1,6 +1,6 @@
 import Vue from "vue"
 
-import FileUpload from './file-upload'; //图片上传组件
+import FileUpload from './FileUpload'; //图片上传组件
 
 let MyPlugin = {};
 
