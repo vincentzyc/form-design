@@ -4,6 +4,7 @@ export default [{
   value: "这是一段文本",
   link: "",
   popupList: [],
+  showPopup: false,
   backgroundImage: "",
   backgroundColor: "",
   style: {
