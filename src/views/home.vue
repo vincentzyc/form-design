@@ -166,6 +166,7 @@ export default {
       this.$store.commit('setConfigTab', value)
     },
     handlePreview() {
+      this.$root.$emit("formDesign_savePage")
       let newWin = window.open(this.$api.previewUrl());
       let timer = setInterval(() => {
         newWin.postMessage(this.pageData, this.$api.previewUrl());
