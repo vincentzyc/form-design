@@ -10,7 +10,8 @@ module.exports = {
       "vuex": "Vuex",
       "quill": "Quill",
       "vue-quill-editor": "VueQuillEditor",
-      "vuedraggable": "vuedraggable"
+      "vuedraggable": "vuedraggable",
+      "compressorjs": "Compressor"
     } : {}
   },
   chainWebpack: config => {
