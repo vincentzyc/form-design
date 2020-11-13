@@ -58,7 +58,8 @@ import {
   // Cascader,
   ColorPicker,
   // Transfer,
-  // Drawer,
+  Image,
+  Drawer,
   Container,
   Header,
   Aside,
@@ -128,7 +129,8 @@ Vue.use(CollapseItem);
 // Vue.use(Cascader);
 Vue.use(ColorPicker);
 // Vue.use(Transfer);
-// Vue.use(Drawer);
+Vue.use(Drawer);
+Vue.use(Image);
 Vue.use(Container);
 Vue.use(Header);
 Vue.use(Aside);
