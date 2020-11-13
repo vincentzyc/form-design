@@ -1,34 +1,41 @@
 <template>
   <div class="file-upload-wrapper">
     <el-upload
+      :before-upload="beforeAvatarUpload"
+      :data="uploadData"
+      :on-error="uploadError"
+      :on-progress="handleProgress"
+      :on-success="handleAvatarSuccess"
+      :show-file-list="false"
+      action="https://jsonplaceholder.typicode.com/posts/"
       class="avatar-uploader"
       ref="upload"
-      action="https://jsonplaceholder.typicode.com/posts/"
-      :data="uploadData"
-      :show-file-list="false"
-      :on-success="handleAvatarSuccess"
-      :before-upload="beforeAvatarUpload"
-      :on-progress="handleProgress"
-      :on-error="uploadError"
     >
-      <img v-if="showImg" :src="value" class="avatar" :style="{height:height,width:width}" />
-      <video v-else-if="showVideo" :src="value" class="avatar" :style="{height:height,width:width}" />
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-      <i v-show="value" class="el-icon-close avatar-close-icon" @click.stop="removeFile()"></i>
+      <img :src="value" :style="{height:height,width:width}" class="avatar" v-if="showImg" />
+      <video :src="value" :style="{height:height,width:width}" class="avatar" v-else-if="showVideo" />
+      <i class="el-icon-plus avatar-uploader-icon" v-else></i>
+      <i @click.stop="removeFile()" class="el-icon-close avatar-close-icon" v-show="value"></i>
     </el-upload>
+    <!-- <el-button @click="drawer=true" type="primary">测试测试</el-button> -->
+    <!-- <FilesUpload v-model="drawer" /> -->
     <transition name="el-fade-in-linear" v-if="uploading">
       <div class="flex flex-column flex-center uploader-progress">
-        <el-progress type="circle" :percentage="uploadPercentage" :width="100" class="progress"></el-progress>
-        <el-button type="text" class="mg-t10" @click.stop="cancelUpload()">取消上传</el-button>
+        <el-progress :percentage="uploadPercentage" :width="100" class="progress" type="circle"></el-progress>
+        <el-button @click.stop="cancelUpload()" class="mg-t10" type="text">取消上传</el-button>
       </div>
     </transition>
   </div>
 </template>
 
 <script>
+// import FilesUpload from './file-upload'
+
 const TYPE_IMG = 'img', TYPE_VIDEO = 'video';
 export default {
   name: "FileUpload",
+  // components: {
+  //   FilesUpload
+  // },
   props: {
     value: String,
     height: String,
@@ -39,6 +46,7 @@ export default {
   },
   data() {
     return {
+      drawer: false,
       videoTypeList: ['video/mp4'],
       imgTypeList: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'],
       uploading: false,
