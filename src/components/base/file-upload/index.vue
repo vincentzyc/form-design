@@ -10,7 +10,6 @@
         action="https://jsonplaceholder.typicode.com/posts/"
         drag
         ref="upload"
-        style="width:360px;margin:auto"
       >
         <i class="el-icon-upload"></i>
         <div class="el-upload__text">
@@ -42,7 +41,8 @@
             压缩后
             <i class="el-icon-bottom"></i>
           </p>
-          <el-image :preview-src-list="srcList" :src="imageUrl" style="width: 100%;" v-if="imageUrl"></el-image>
+          <el-image :preview-src-list="srcList" :src="compressUrl" style="width: 100%;" v-if="compressUrl"></el-image>
+          <hr />
           <p>
             源文件
             <i class="el-icon-bottom"></i>
@@ -52,7 +52,8 @@
       </div>
       <div class="drawer-footer flex">
         <el-button @click="model=false" class="flex-auto">取 消</el-button>
-        <el-button @click="submitUpload" class="flex-auto" type="primary">上 传</el-button>
+        <el-button @click="submitUpload(true)" class="flex-auto" type="danger">上传源文件</el-button>
+        <el-button @click="submitUpload(false)" class="flex-auto" type="primary">上传压缩文件</el-button>
       </div>
     </div>
   </el-drawer>
@@ -67,10 +68,12 @@ export default {
     return {
       file: null,
       fileList: [],
-      quality: 80,
-      srcList: [],
-      imageUrl: '',
+      compressFile: null,
+      compressUrl: '',
       sourceUrl: '',
+      quality: 80,
+      isUploadSource: false,
+      srcList: [],
       fileSize: {
         before: 0,
         after: 0
@@ -88,11 +91,11 @@ export default {
     }
   },
   methods: {
-    submitUpload() {
+    submitUpload(isUploadSource) {
+      this.isUploadSource = isUploadSource
       this.$refs.upload.submit();
     },
-    changeFile(file, fileList) {
-      console.log(file, fileList);
+    changeFile(file) {
       this.file = file
       this.compressorFile(this.quality)
     },
@@ -103,25 +106,26 @@ export default {
       this.sourceUrl = URL.createObjectURL(this.file.raw);
       new Compressor(this.file.raw, {
         quality: v / 100,
+        convertSize: 51200,  // png图片超过50KB时启用压缩，压缩后会转成jpg图片，失去透明度
         success: res => {
+          this.compressFile = res
+          this.compressUrl = URL.createObjectURL(res);
           this.fileSize.after = Math.round(res.size / 1024 * 10) / 10 + 'KB';
-          this.imageUrl = URL.createObjectURL(res);
-          this.srcList = [this.imageUrl, this.sourceUrl]
+          this.srcList = [this.compressUrl, this.sourceUrl]
+        },
+        error: err => {
+          this.compressUrl = ''
+          this.compressFile = null
+          this.fileSize.after = 0
+          console.log(err.message);
         },
       });
     },
-    beforeUpload(file) {
-      console.log('压缩前', parseInt(file.size / 1024), file);
-      return new Promise((resolve, reject) => {
-        new Compressor(file, {
-          quality: this.quality / 100,
-          success: res => {
-            console.log('压缩后', parseInt(res.size / 1024), res);
-            this.imageUrl = URL.createObjectURL(res);
-            resolve(res)
-          },
-          error: reject,
-        });
+    beforeUpload() {
+      if (!this.file) return
+      if (!this.compressFile) return
+      return new Promise(resolve => {
+        resolve(this.isUploadSource ? this.file.raw : this.compressFile)
       })
     }
   }
@@ -131,15 +135,24 @@ export default {
 <style scoped>
 .drawer-content {
   padding: 20px;
-  height: 100%;
+  height: 100vh;
+}
+.drawer-content >>> .el-upload.el-upload--text,
+.drawer-content >>> .el-upload-dragger {
+  width: 100%;
+  height: 120px;
+}
+
+.drawer-content >>> .el-upload-dragger .el-icon-upload {
+  margin: 0;
+  line-height: 1;
 }
 .drawer-content >>> .el-icon-circle-close {
   color: #fff;
 }
 .preview-body {
   overflow-y: scroll;
-  padding: 10px 0;
-  height: calc(100% - 335px);
+  height: calc(100% - 275px);
 }
 .drawer-footer {
   width: 100%;
