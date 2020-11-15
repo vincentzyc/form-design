@@ -21,6 +21,7 @@ export default [{
       borderradius: 20,
       backgroundColor: "#409EFF",
       color: "#fff"
-    }
+    },
+    animationName:''
   }
 }]
