@@ -22,6 +22,9 @@ export default [{
       backgroundColor: "#409EFF",
       color: "#fff"
     },
-    animationName:''
+    animationName: '',
+    animationDuration: '1s',
+    animationIterationCount: 'infinite',
+    animationDirection: 'alternate'
   }
 }]
