@@ -80,7 +80,7 @@ export default {
     str = window.sessionStorage.getItem(key);
     if (!str) return "";
     try {
-      window.JSON.parse(str);
+      return window.JSON.parse(str);
     } catch (error) {
       window.sessionStorage.removeItem(key);
       window.location.reload();
@@ -95,7 +95,7 @@ export default {
     str = window.localStorage.getItem(key);
     if (!str) return "";
     try {
-      window.JSON.parse(str);
+      return window.JSON.parse(str);
     } catch (error) {
       window.localStorage.removeItem(key);
       window.location.reload();
