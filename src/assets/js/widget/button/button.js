@@ -25,10 +25,10 @@ export default [{
   },
   animation: {
     animationName: '',
-    animationduration: 1,
-    animationDuration: '1s',
+    animationduration: 2,
+    animationDuration: '2s',
     animationIterationCount: 'infinite',
-    animationDirection: 'alternate',
+    animationTimingFunction: 'linear',
     className: ''
   }
 }]
