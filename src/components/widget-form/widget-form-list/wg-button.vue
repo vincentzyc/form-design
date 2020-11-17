@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-center" :style="item.style">
-    <div v-if="item.style.isImgBtn" :class="{'img-placeholder':!item.style.value}">
-      <img v-if="item.style.value" :src="item.style.value" alt="图片按钮" width="100%" />
-      <img v-else src="@/assets/img/img-placeholder.png" alt="图片展示" />
+  <div :class="wrapClass" :style="wrapStyle" class="flex flex-center">
+    <div :class="{'img-placeholder':!item.style.value}" v-if="item.style.isImgBtn">
+      <img :src="item.style.value" alt="图片按钮" v-if="item.style.value" width="100%" />
+      <img alt="图片展示" src="@/assets/img/img-placeholder.png" v-else />
     </div>
-    <button class="wg-button" :style="item.style.btnStyle" v-else>{{item.btnText}}</button>
+    <button :style="item.style.btnStyle" class="wg-button" v-else>{{item.btnText}}</button>
   </div>
 </template>
 
@@ -14,6 +14,19 @@ export default {
     item: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    wrapStyle() {
+      if (!this.item.animation) return this.item.style
+      return {
+        ...this.item.style,
+        ...this.item.animation
+      }
+    },
+    wrapClass() {
+      if (!this.item.animation) return ''
+      return this.item.animation.className
     }
   }
 }
