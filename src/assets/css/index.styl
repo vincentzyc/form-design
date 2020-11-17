@@ -163,6 +163,20 @@ $primary-background-color = #ecf5ff;
   transition: 0.3s;
 }
 
+.animte-streak {
+  position: relative;
+  overflow: hidden;
+
+  .animte-el {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    height: 150%;
+    box-shadow: 0 0 35px 10px rgb(255, 255, 255);
+    transform: rotate(20deg);
+  }
+}
+
 @keyframes marquee-up {
   0% {
     transform: translateY(0);
@@ -183,22 +197,64 @@ $primary-background-color = #ecf5ff;
   }
 }
 
-@keyframes breathlamp {
-  0% {
+@keyframes animte-breathlamp {
+  0%, 50%, to {
     transform: scale(0.8);
   }
 
-  100% {
+  25%, 75% {
     transform: scale(1);
   }
 }
 
-@keyframes fade {
-  0% {
-    opacity: 0.6;
+@keyframes animte-fade {
+  0%, 50%, to {
+    opacity: 1;
+  }
+
+  25%, 75% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes animte-flash {
+  0%, 50%, to {
+    opacity: 1;
+  }
+
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+@keyframes animte-streak {
+  0%, 30% {
+    left: 0%;
+    opacity: 0;
+  }
+
+  40% {
+    left: 10%;
+    opacity: 0.2;
+  }
+
+  60% {
+    left: 50%;
+    opacity: 1;
+  }
+
+  80% {
+    left: 80%;
+    opacity: 1;
+  }
+
+  95% {
+    left: 92%;
+    opacity: 0.2;
   }
 
   100% {
-    opacity: 1;
+    left: 100%;
+    opacity: 0;
   }
 }
