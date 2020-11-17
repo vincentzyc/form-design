@@ -21,10 +21,14 @@ export default [{
       borderradius: 20,
       backgroundColor: "#409EFF",
       color: "#fff"
-    },
+    }
+  },
+  animation: {
     animationName: '',
+    animationduration: 1,
     animationDuration: '1s',
     animationIterationCount: 'infinite',
-    animationDirection: 'alternate'
+    animationDirection: 'alternate',
+    className: ''
   }
 }]
