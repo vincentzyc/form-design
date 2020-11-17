@@ -2,18 +2,22 @@
   <section class="animation-config">
     <el-form-item label="动画选择">
       <ul>
-        <li :key="item.value" @click="selectAnimation(item.value)" class="pd10" v-for="item in animationList">
-          <div :style="getStyle(item.value)" class="animation-demo">{{item.name}}</div>
+        <li :key="item.value" @click="selectAnimation(item)" class="pd10" v-for="item in animationList">
+          <div :class="item.value" :style="getBtnStyle(item)" class="animation-demo">
+            <span :style="getAnimteStyle(item)" class="animte-el"></span>
+            <span>{{item.name}}</span>
+          </div>
         </li>
       </ul>
     </el-form-item>
-    <el-form-item label="动画时间">
+    <el-form-item label="动画速度">
       <div class="pd-l10 pd-r10 pd-b20">
         <el-slider
           :format-tooltip="val=> val+'秒'"
-          :marks="{0.5:'0.5秒',1:'1秒',1.5:'1.5秒'}"
-          :max="2"
-          :min="0.2"
+          :marks="{1:'快',2:'中等',3:'慢'}"
+          :max="3"
+          :min="1"
+          :show-tooltip="false"
           :step="0.1"
           @change="v=>selectWg.animation.animationDuration=v+'s'"
           v-model="selectWg.animation.animationduration"
@@ -34,22 +38,43 @@ export default {
     return {
       animationList: [{
         name: "呼吸灯",
-        value: "animte-breathlamp"
+        value: "animte-breathlamp",
+        animationName: true,
+        className: false
       }, {
         name: "渐变",
-        value: "animte-fade"
-      }]
+        value: "animte-fade",
+        animationName: true,
+        className: false
+      }, {
+        name: "闪现",
+        value: "animte-flash",
+        animationName: true,
+        className: false
+      }, {
+        name: "闪过",
+        value: "animte-streak",
+        animationName: false,
+        className: true
+      },]
     }
   },
   methods: {
-    getStyle(name) {
+    getBtnStyle(item) {
+      if (!item.animationName) return {}
       return {
-        animation: `${name} 1s infinite alternate`
+        animation: `${item.value} 2s linear infinite`
       }
     },
-    selectAnimation(name) {
-      this.selectWg.animation.animationName = name
-      this.selectWg.animation.className = name
+    getAnimteStyle(item) {
+      if (!item.className) return {}
+      return {
+        animation: `${item.value} 2s linear infinite`
+      }
+    },
+    selectAnimation(item) {
+      this.selectWg.animation.animationName = item.animationName ? item.value : ''
+      this.selectWg.animation.className = item.className ? item.value : ''
     }
   }
 }
