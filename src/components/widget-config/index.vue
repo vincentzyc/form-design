@@ -1,17 +1,21 @@
 <template>
   <div v-if="selectWg && Object.keys(selectWg).length > 0">
     <el-form label-position="top">
-      <el-collapse v-model="wgCollapse" accordion>
-        <el-collapse-item title="基础设置" name="base">
-          <BaseConfig :selectWg="selectWg"/>
+      <el-collapse accordion v-model="wgCollapse">
+        <el-collapse-item name="base" title="基础设置">
+          <BaseConfig :selectWg="selectWg" />
         </el-collapse-item>
 
-        <el-collapse-item title="标签设置" name="tag" v-if="selectWg.label&&selectWg.showLabel!==false">
-          <TagConfig :selectWg="selectWg"/>
+        <el-collapse-item name="tag" title="标签设置" v-if="selectWg.label&&selectWg.showLabel!==false">
+          <TagConfig :selectWg="selectWg" />
         </el-collapse-item>
 
-        <el-collapse-item title="外观样式" name="style" v-if="selectWg.hasOwnProperty('style')">
-          <StyleConfig :selectWg="selectWg"/>
+        <el-collapse-item name="style" title="外观样式" v-if="selectWg.hasOwnProperty('style')">
+          <StyleConfig :selectWg="selectWg" />
+        </el-collapse-item>
+
+        <el-collapse-item name="animation" title="动画设置" v-if="selectWg.hasOwnProperty('animation')">
+          <Animation :selectWg="selectWg" />
         </el-collapse-item>
       </el-collapse>
     </el-form>
@@ -23,12 +27,14 @@ import { mapState } from 'vuex';
 import BaseConfig from "./base-config"
 import TagConfig from "./tag-config"
 import StyleConfig from "./style-config"
+import Animation from "./animation"
 
 export default {
   components: {
     BaseConfig,
     TagConfig,
-    StyleConfig
+    StyleConfig,
+    Animation
   },
   computed: {
     wgCollapse: {
