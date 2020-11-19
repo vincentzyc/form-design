@@ -4,7 +4,7 @@
 
 QQ交流群：[form-design 交流群：1032491358](https://qm.qq.com/cgi-bin/qm/qr?k=9xcxFRP3G6YbXzFjU9F8Ca1sMEFQOkNO&jump_from=webapi)
 
-扫描加群：
+扫码加群：
 
 ![加群二维码](https://vincentzyc.github.io/form-design/qqqrcode.png "加群二维码")
 
