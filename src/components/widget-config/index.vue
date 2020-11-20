@@ -15,7 +15,7 @@
         </el-collapse-item>
 
         <el-collapse-item name="animation" title="动画设置" v-if="selectWg.hasOwnProperty('animation')">
-          <Animation :selectWg="selectWg" />
+          <AnimationConfig :selectWg="selectWg" />
         </el-collapse-item>
       </el-collapse>
     </el-form>
@@ -27,14 +27,14 @@ import { mapState } from 'vuex';
 import BaseConfig from "./base-config"
 import TagConfig from "./tag-config"
 import StyleConfig from "./style-config"
-import Animation from "./animation"
+import AnimationConfig from "./animation-config"
 
 export default {
   components: {
     BaseConfig,
     TagConfig,
     StyleConfig,
-    Animation
+    AnimationConfig
   },
   computed: {
     wgCollapse: {
@@ -48,9 +48,6 @@ export default {
     ...mapState({
       selectWg: state => state.common.selectWg
     })
-  },
-  methods: {
-
   }
 }
 </script>
