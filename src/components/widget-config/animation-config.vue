@@ -1,5 +1,11 @@
 <template>
   <section class="animation-config">
+    <el-form-item>
+      <div slot="label">
+        <span class="el-form-item__label mg-r10">开启动画：</span>
+        <el-switch @change="handleChange" class="mg-r20" v-model="openAnimation"></el-switch>
+      </div>
+    </el-form-item>
     <el-form-item label="动画选择">
       <ul>
         <li :key="item.value" @click="selectAnimation(item)" class="pd10" v-for="item in animationList">
@@ -36,6 +42,7 @@ export default {
   },
   data() {
     return {
+      openAnimation: true,
       animationList: [{
         name: "呼吸灯",
         value: "animte-breathlamp",
@@ -60,6 +67,11 @@ export default {
     }
   },
   methods: {
+    handleChange(bool) {
+      if (bool) return
+      this.selectWg.animation.animationName = ''
+      this.selectWg.animation.className = ''
+    },
     getBtnStyle(item) {
       if (!item.animationName) return {}
       return {
