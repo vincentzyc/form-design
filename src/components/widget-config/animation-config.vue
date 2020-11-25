@@ -85,6 +85,7 @@ export default {
       }
     },
     selectAnimation(item) {
+      this.openAnimation = true
       this.selectWg.animation.animationName = item.animationName ? item.value : ''
       this.selectWg.animation.className = item.className ? item.value : ''
     }
