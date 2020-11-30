@@ -6,6 +6,9 @@
         :before-upload="beforeUpload"
         :multiple="false"
         :on-change="changeFile"
+        :on-error="uploadError"
+        :on-progress="handleProgress"
+        :on-success="handleAvatarSuccess"
         :show-file-list="false"
         action="https://jsonplaceholder.typicode.com/posts/"
         drag
@@ -72,12 +75,14 @@ export default {
       compressUrl: '',
       sourceUrl: '',
       quality: 80,
+      uploading: false,
       isUploadSource: false,
       srcList: [],
       fileSize: {
         before: 0,
         after: 0
-      }
+      },
+      uploadPercentage: 0,
     };
   },
   computed: {
@@ -91,6 +96,13 @@ export default {
     }
   },
   methods: {
+    resetUpload() {
+      this.uploading = false;
+      this.uploadPercentage = 0;
+    },
+    startUpload() {
+      this.uploading = true;
+    },
     submitUpload(isUploadSource) {
       this.isUploadSource = isUploadSource
       this.$refs.upload.submit();
@@ -98,6 +110,30 @@ export default {
     changeFile(file) {
       this.file = file
       this.compressorFile(this.quality)
+    },
+    uploadError() {
+      // console.log(err);
+      this.resetUpload()
+      this.$alert('网络繁忙，请稍后重试');
+    },
+    handleProgress(event, file) {
+      this.uploadPercentage = parseInt(file.percentage, 10);
+    },
+    handleAvatarSuccess(res, file) {
+      this.$emit('update:value', URL.createObjectURL(file.raw));
+      if (this.uploadPercentage !== 100) this.uploadPercentage = 100;
+      setTimeout(() => {
+        this.resetUpload()
+      }, 500);
+    },
+    cancelUpload() {
+      if (!this.uploading) return;
+      this.$refs.upload.abort();
+      this.$message({
+        message: '已取消上传',
+        type: 'warning'
+      });
+      return this.resetUpload();
     },
     compressorFile(v) {
       if (!this.file) return
@@ -112,11 +148,13 @@ export default {
           this.compressUrl = URL.createObjectURL(res);
           this.fileSize.after = Math.round(res.size / 1024 * 10) / 10 + 'KB';
           this.srcList = [this.compressUrl, this.sourceUrl]
+          this.$emit('success', this.compressUrl)
         },
         error: err => {
           this.compressUrl = ''
           this.compressFile = null
           this.fileSize.after = 0
+          this.$emit('fail', err)
           console.log(err.message);
         },
       });
