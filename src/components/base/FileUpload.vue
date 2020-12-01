@@ -16,8 +16,8 @@
       <i class="el-icon-plus avatar-uploader-icon" v-else></i>
       <i @click.stop="removeFile()" class="el-icon-close avatar-close-icon" v-show="value"></i>
     </el-upload>
-    <!-- <el-button @click="drawer=true" type="primary">测试测试</el-button> -->
-    <!-- <FilesUpload v-model="drawer" /> -->
+    <el-button @click="drawer=true" type="primary">压缩上传</el-button>
+    <FilesUpload @fail="compressFail" @success="compressSuccess" v-model="drawer" />
     <transition name="el-fade-in-linear" v-if="uploading">
       <div class="flex flex-column flex-center uploader-progress">
         <el-progress :percentage="uploadPercentage" :width="100" class="progress" type="circle"></el-progress>
@@ -28,14 +28,14 @@
 </template>
 
 <script>
-// import FilesUpload from './file-upload'
+import FilesUpload from './img-upload'
 
 const TYPE_IMG = 'img', TYPE_VIDEO = 'video';
 export default {
   name: "FileUpload",
-  // components: {
-  //   FilesUpload
-  // },
+  components: {
+    FilesUpload
+  },
   props: {
     value: String,
     height: String,
@@ -65,6 +65,12 @@ export default {
     }
   },
   methods: {
+    compressSuccess(compressUrl) {
+      console.log(compressUrl);
+    },
+    compressFail(err) {
+      console.log(err);
+    },
     resetUpload() {
       this.uploading = false;
       this.uploadPercentage = 0;
@@ -141,6 +147,12 @@ export default {
 
 <style lang="stylus">
 .file-upload-wrapper {
+  .avatar-uploader {
+    width: 102px;
+    height: 102px;
+    margin-bottom: 10px;
+  }
+
   .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;
