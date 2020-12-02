@@ -8,7 +8,7 @@
         :on-change="changeFile"
         :on-error="uploadError"
         :on-progress="handleProgress"
-        :on-success="handleAvatarSuccess"
+        :on-success="handleSuccess"
         :show-file-list="false"
         action="https://jsonplaceholder.typicode.com/posts/"
         drag
@@ -123,25 +123,10 @@ export default {
       this.resetUpload()
       this.$alert('网络繁忙，请稍后重试');
     },
-    beforeAvatarUpload(file) {
-      const isImg = this.imgTypeList.includes(file.type)
-      const isLt1M = file.size / 1024 <= 50;
-      if (!isImg) {
-        this.$message.error('请上传图片');
-        return false
-      }
-      if (isLt1M) {
-        this.startUpload()
-        return true
-      } else {
-        this.$message.error('上传图片大小不能超过 50 K !');
-        return false
-      }
-    },
     handleProgress(event, file) {
       this.uploadPercentage = parseInt(file.percentage, 10);
     },
-    handleAvatarSuccess(res, file) {
+    handleSuccess(res, file) {
       this.$emit('update:value', URL.createObjectURL(file.raw));
       if (this.uploadPercentage !== 100) this.uploadPercentage = 100;
       setTimeout(() => {
@@ -181,12 +166,24 @@ export default {
         },
       });
     },
-    beforeUpload() {
+    beforeUpload(file) {
       if (!this.file) return
       if (!this.compressFile) return
-      return new Promise(resolve => {
-        resolve(this.isUploadSource ? this.file.raw : this.compressFile)
-      })
+      const isImg = this.imgTypeList.includes(file.type)
+      const isLimit = file.size / 1024 <= 50;
+      if (!isImg) {
+        this.$message.error('请上传图片');
+        return false
+      }
+      if (isLimit) {
+        this.startUpload()
+        return new Promise(resolve => {
+          resolve(this.isUploadSource ? this.file.raw : this.compressFile)
+        })
+      } else {
+        this.$message.error('上传图片大小不能超过 50 K !');
+        return false
+      }
     }
   }
 }
