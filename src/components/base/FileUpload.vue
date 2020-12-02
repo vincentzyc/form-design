@@ -16,8 +16,8 @@
       <i class="el-icon-plus avatar-uploader-icon" v-else></i>
       <i @click.stop="removeFile()" class="el-icon-close avatar-close-icon" v-show="value"></i>
     </el-upload>
-    <el-button @click="drawer=true" type="primary">压缩上传</el-button>
-    <FilesUpload @fail="compressFail" @success="compressSuccess" v-model="drawer" />
+    <el-button @click="drawer=true" type="primary" v-if="showImg">压缩上传</el-button>
+    <ImgUpload @fail="compressFail" @success="compressSuccess" v-model="drawer" />
     <transition name="el-fade-in-linear" v-if="uploading">
       <div class="flex flex-column flex-center uploader-progress">
         <el-progress :percentage="uploadPercentage" :width="100" class="progress" type="circle"></el-progress>
@@ -28,19 +28,20 @@
 </template>
 
 <script>
-import FilesUpload from './img-upload'
+import ImgUpload from './img-upload'
 
 const TYPE_IMG = 'img', TYPE_VIDEO = 'video';
 export default {
   name: "FileUpload",
   components: {
-    FilesUpload
+    ImgUpload
   },
   props: {
     value: String,
     height: String,
     width: String,
     type: {
+      type: String,
       default: TYPE_IMG
     }
   },
@@ -66,7 +67,7 @@ export default {
   },
   methods: {
     compressSuccess(compressUrl) {
-      console.log(compressUrl);
+      this.$emit('update:value', compressUrl);
     },
     compressFail(err) {
       console.log(err);
