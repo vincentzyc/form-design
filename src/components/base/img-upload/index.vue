@@ -59,6 +59,12 @@
         <el-button @click="submitUpload(false)" class="flex-auto" type="primary">上传压缩文件</el-button>
       </div>
     </div>
+    <transition name="el-fade-in-linear" v-if="uploading">
+      <div class="flex flex-column flex-center uploader-progress">
+        <el-progress :percentage="uploadPercentage" :width="100" class="progress" type="circle"></el-progress>
+        <el-button @click.stop="cancelUpload()" class="mg-t10" type="text">取消上传</el-button>
+      </div>
+    </transition>
   </el-drawer>
 </template>
 <script>
@@ -71,6 +77,7 @@ export default {
     return {
       file: null,
       fileList: [],
+      imgTypeList: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'],
       compressFile: null,
       compressUrl: '',
       sourceUrl: '',
@@ -115,6 +122,21 @@ export default {
       // console.log(err);
       this.resetUpload()
       this.$alert('网络繁忙，请稍后重试');
+    },
+    beforeAvatarUpload(file) {
+      const isImg = this.imgTypeList.includes(file.type)
+      const isLt1M = file.size / 1024 <= 50;
+      if (!isImg) {
+        this.$message.error('请上传图片');
+        return false
+      }
+      if (isLt1M) {
+        this.startUpload()
+        return true
+      } else {
+        this.$message.error('上传图片大小不能超过 50 K !');
+        return false
+      }
     },
     handleProgress(event, file) {
       this.uploadPercentage = parseInt(file.percentage, 10);
