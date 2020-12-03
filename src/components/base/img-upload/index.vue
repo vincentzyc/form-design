@@ -55,8 +55,13 @@
       </div>
       <div class="drawer-footer flex">
         <el-button @click="model=false" class="flex-auto">取 消</el-button>
-        <el-button @click="submitUpload(true)" class="flex-auto" type="danger">上传源文件</el-button>
-        <el-button @click="submitUpload(false)" class="flex-auto" type="primary">上传压缩文件</el-button>
+        <el-button :disabled="!this.file" @click="submitUpload(true)" class="flex-auto" type="danger">上传源文件</el-button>
+        <el-button
+          :disabled="!this.compressFile"
+          @click="submitUpload(false)"
+          class="flex-auto"
+          type="primary"
+        >上传压缩文件</el-button>
       </div>
     </div>
     <transition name="el-fade-in-linear" v-if="uploading">
@@ -75,9 +80,8 @@ export default {
   },
   data() {
     return {
-      file: null,
-      fileList: [],
       imgTypeList: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'],
+      file: null,
       compressFile: null,
       compressUrl: '',
       sourceUrl: '',
@@ -104,15 +108,31 @@ export default {
   },
   methods: {
     resetUpload() {
-      this.uploading = false;
-      this.uploadPercentage = 0;
+      this.$refs.upload.clearFiles();
+      setTimeout(() => {
+        Object.assign(this.$data, this.$options.data())
+      }, 300);
     },
     startUpload() {
       this.uploading = true;
     },
     submitUpload(isUploadSource) {
+      if (!this.file) return
+      if (!this.compressFile) return
       this.isUploadSource = isUploadSource
-      this.$refs.upload.submit();
+      const realFile = this.isUploadSource ? this.file.raw : this.compressFile
+      const isImg = this.imgTypeList.includes(realFile.type)
+      const isLimit = realFile.size / 1024 <= 50;
+      if (!isImg) {
+        this.$message.error('请上传图片');
+        return false
+      }
+      if (isLimit) {
+        this.$refs.upload.submit();
+      } else {
+        this.$message.error('上传图片大小不能超过 50 K !');
+        return false
+      }
     },
     changeFile(file) {
       this.file = file
@@ -126,12 +146,11 @@ export default {
     handleProgress(event, file) {
       this.uploadPercentage = parseInt(file.percentage, 10);
     },
-    handleSuccess(res, file) {
-      this.$emit('update:value', URL.createObjectURL(file.raw));
+    handleSuccess() {
+      this.$emit('success', this.compressUrl)
       if (this.uploadPercentage !== 100) this.uploadPercentage = 100;
-      setTimeout(() => {
-        this.resetUpload()
-      }, 500);
+      this.resetUpload()
+      this.model = false
     },
     cancelUpload() {
       if (!this.uploading) return;
@@ -155,7 +174,6 @@ export default {
           this.compressUrl = URL.createObjectURL(res);
           this.fileSize.after = Math.round(res.size / 1024 * 10) / 10 + 'KB';
           this.srcList = [this.compressUrl, this.sourceUrl]
-          this.$emit('success', this.compressUrl)
         },
         error: err => {
           this.compressUrl = ''
@@ -166,24 +184,14 @@ export default {
         },
       });
     },
-    beforeUpload(file) {
+    beforeUpload() {
       if (!this.file) return
       if (!this.compressFile) return
-      const isImg = this.imgTypeList.includes(file.type)
-      const isLimit = file.size / 1024 <= 50;
-      if (!isImg) {
-        this.$message.error('请上传图片');
-        return false
-      }
-      if (isLimit) {
-        this.startUpload()
-        return new Promise(resolve => {
-          resolve(this.isUploadSource ? this.file.raw : this.compressFile)
-        })
-      } else {
-        this.$message.error('上传图片大小不能超过 50 K !');
-        return false
-      }
+      const realFile = this.isUploadSource ? this.file.raw : this.compressFile
+      this.startUpload()
+      return new Promise(resolve => {
+        resolve(realFile)
+      })
     }
   }
 }
