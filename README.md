@@ -8,6 +8,8 @@ QQ交流群：[form-design 交流群：1032491358](https://qm.qq.com/cgi-bin/qm/
 
 ![加群二维码](https://vincentzyc.github.io/form-design/qqqrcode.png "加群二维码")
 
+### Vue3 版本（Vue3 + Typescript + Element-Plus）正在重构中......
+[Vue3版本传送门](https://github.com/vincentzyc/form-design-next)
 
 ### 提示
 预览功能需启动 form-design-h5 项目
