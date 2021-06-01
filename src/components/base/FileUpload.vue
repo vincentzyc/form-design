@@ -16,7 +16,7 @@
       <i class="el-icon-plus avatar-uploader-icon" v-else></i>
       <i @click.stop="removeFile()" class="el-icon-close avatar-close-icon" v-show="value"></i>
     </el-upload>
-    <el-button @click="drawer=true" type="primary" v-if="showImg">压缩上传</el-button>
+    <el-button @click="drawer=true" type="primary" v-if="showCompressor">压缩上传</el-button>
     <ImgUpload @fail="compressFail" @success="compressSuccess" v-model="drawer" />
     <transition name="el-fade-in-linear" v-if="uploading">
       <div class="flex flex-column flex-center uploader-progress">
@@ -58,6 +58,9 @@ export default {
     }
   },
   computed: {
+    showCompressor() {
+      return this.type === TYPE_IMG
+    },
     showImg() {
       return this.value && this.type === TYPE_IMG
     },
