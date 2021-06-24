@@ -156,7 +156,7 @@ export default {
       return false
     },
     cloneData(obj) {
-      const elKey = Date.now() + '_' + Math.ceil(Math.random() * 1000000);
+      const elKey = this.$util.getUuid()
       let newObj = this.$util.deepClone(obj);
       newObj.key = newObj.type + '_' + elKey;
       this.$store.commit('setDragWg', newObj)
