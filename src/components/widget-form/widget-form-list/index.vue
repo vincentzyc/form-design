@@ -159,7 +159,7 @@ export default {
     },
     handleWidgetClone() {
       let cloneData = this.$util.deepClone(this.data[this.index]);
-      cloneData.key = cloneData.type + '_' + Date.now() + '_' + Math.ceil(Math.random() * 1000000);
+      cloneData.key = cloneData.type + '_' + this.$util.getUuid()
       this.$nextTick(() => {
         this.data.splice(this.index, 0, cloneData)
         this.$store.commit('setSelectWg', this.data[this.index + 1])
