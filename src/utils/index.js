@@ -167,5 +167,12 @@ export default {
       }
     }
     return result;
+  },
+  /**
+   * 生成唯一id
+   */
+  getUuid() {
+    const randomNum = Number(Math.random().toString().slice(2, -1)) + Date.now()
+    return randomNum.toString(36)
   }
 };
