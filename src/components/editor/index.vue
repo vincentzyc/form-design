@@ -1,37 +1,59 @@
 <template>
   <quill-editor ref="myTextEditor" v-model="model" :options="editorOption">
     <div id="toolbar" slot="toolbar">
-      <button class="ql-color-picker">
-        <el-color-picker :predefine="predefineColors" size="mini" @active-change="pickerColor" />
-      </button>
-      <button class="ql-bold"></button>
+      <el-tooltip class="item" effect="dark" content="文字颜色" placement="top">
+        <button class="ql-color-picker">
+          <el-color-picker :predefine="predefineColors" size="mini" @active-change="pickerColor" />
+        </button>
+      </el-tooltip>
+      <el-tooltip class="item" effect="dark" content="加粗" placement="top">
+        <button class="ql-bold"></button>
+      </el-tooltip>
       <!-- <button class="ql-italic"></button> -->
       <button class="ql-link"></button>
-      <select class="ql-align"></select>
-      <select class="ql-size">
-        <option value="12px"></option>
-        <option value="14px"></option>
-        <option value="16px"></option>
-        <option value="18px"></option>
-        <option value="20px"></option>
-        <option value="24px"></option>
-        <option value="36px"></option>
-        <option value="48px"></option>
-        <option value="64px"></option>
-      </select>
-      <select class="ql-textIndent">
-        <option value="0em"></option>
-        <option value="1em"></option>
-        <option value="2em"></option>
-        <option value="3em"></option>
-        <option value="4em"></option>
-        <option value="5em"></option>
-      </select>
-      <button class="ql-underline"></button>
-      <button class="ql-strike"></button>
+      <el-tooltip class="item" effect="dark" content="对齐方式" placement="top">
+        <button>
+          <select class="ql-align"></select>
+        </button>
+      </el-tooltip>
+      <el-tooltip class="item" effect="dark" content="文字大小" placement="top">
+        <button>
+          <select class="ql-size">
+            <option value="8px"></option>
+            <option value="10px"></option>
+            <option value="12px"></option>
+            <option value="14px"></option>
+            <option value="16px"></option>
+            <option value="18px"></option>
+            <option value="20px"></option>
+            <option value="24px"></option>
+            <option value="36px"></option>
+            <option value="48px"></option>
+            <option value="64px"></option>
+          </select>
+        </button>
+      </el-tooltip>
+      <el-tooltip class="item" effect="dark" content="缩进" placement="top">
+        <button>
+          <select class="ql-textIndent">
+            <option value="0em"></option>
+            <option value="1em"></option>
+            <option value="2em"></option>
+            <option value="3em"></option>
+            <option value="4em"></option>
+            <option value="5em"></option>
+          </select>
+        </button>
+      </el-tooltip>
+      <el-tooltip class="item" effect="dark" content="下划线" placement="top">
+        <button class="ql-underline"></button>
+      </el-tooltip>
+      <el-tooltip class="item" effect="dark" content="删除线" placement="top">
+        <button class="ql-strike"></button>
+      </el-tooltip>
 
       <!-- <button class="ql-list" value="ordered"></button>
-      <button class="ql-list" value="bullet"></button> -->
+      <button class="ql-list" value="bullet"></button>-->
 
       <!-- Add subscript and superscript buttons -->
       <!-- <button class="ql-script" value="sub"></button>
