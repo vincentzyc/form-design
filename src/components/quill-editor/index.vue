@@ -2,9 +2,9 @@
   <quill-editor ref="myTextEditor" v-model="model" :options="editorOption">
     <div id="toolbar" slot="toolbar">
       <el-tooltip class="item" effect="dark" content="文字颜色" placement="top">
-        <button class="ql-color-picker">
+        <span class="ql-color-picker">
           <el-color-picker :predefine="predefineColors" size="mini" @active-change="pickerColor" />
-        </button>
+        </span>
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="加粗" placement="top">
         <button class="ql-bold"></button>
