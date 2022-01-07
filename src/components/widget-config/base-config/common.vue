@@ -1,11 +1,11 @@
 <template>
   <section>
-    <el-form-item label="选择控件" v-if="$util.hasKey(selectWg,'fieldTypes')">
+    <el-form-item label="选择控件" v-if="$util.hasKey(selectWg, 'fieldTypes')">
       <el-select
         v-model="selectWg.apiKey"
         filterable
         placeholder="请选择"
-        @change="selectfield(selectWg.apiKey,fieldTypes[selectWg.fieldTypes])"
+        @change="selectfield(selectWg.apiKey, fieldTypes[selectWg.fieldTypes])"
       >
         <el-option
           v-for="item in fieldTypes[selectWg.fieldTypes]"
@@ -18,38 +18,38 @@
     <el-form-item label="是否必填/选" v-if="$util.hasKey(selectWg, 'isRequired')">
       <el-switch v-model="selectWg.isRequired"></el-switch>
     </el-form-item>
-    <el-form-item label="是否显示标签" v-if="$util.hasKey(selectWg,'showLabel')">
-      <el-switch v-model="selectWg.showLabel" @change="selectWg.showLabel?$store.commit('setWgCollapse', 'tag'):''"></el-switch>
+    <el-form-item label="是否显示标签" v-if="$util.hasKey(selectWg, 'showLabel')">
+      <el-switch v-model="selectWg.showLabel" @change="selectWg.showLabel ? $store.commit('setWgCollapse', 'tag') : ''"></el-switch>
     </el-form-item>
-    <el-form-item label="是否发送验证码" v-if="$util.hasKey(selectWg,'showCode')">
+    <el-form-item label="是否发送验证码" v-if="$util.hasKey(selectWg, 'showCode')">
       <el-switch v-model="selectWg.showCode"></el-switch>
     </el-form-item>
-    <el-form-item label="提示内容" v-if="$util.hasKey(selectWg,'placeholder')">
+    <el-form-item label="提示内容" v-if="$util.hasKey(selectWg, 'placeholder')">
       <el-input v-model="selectWg.placeholder"></el-input>
     </el-form-item>
-    <el-form-item label="文本内容" v-if="selectWg.type==='staticText'">
-      <Editor v-model="selectWg.value" />
+    <el-form-item label="文本内容" v-if="selectWg.type === 'staticText'">
+      <QuillEditor v-model="selectWg.value" />
     </el-form-item>
-    <el-form-item label="跳转地址(空或格式错误都不会跳转)" v-if="$util.hasKey(selectWg,'link')">
+    <el-form-item label="跳转地址(空或格式错误都不会跳转)" v-if="$util.hasKey(selectWg, 'link')">
       <el-input v-model="selectWg.link" @change="isLink"></el-input>
     </el-form-item>
-    <el-form-item label="是否单选" v-if="$util.hasKey(selectWg,'isRadio')">
+    <el-form-item label="是否单选" v-if="$util.hasKey(selectWg, 'isRadio')">
       <el-switch v-model="selectWg.isRadio" @change="isRadio"></el-switch>
     </el-form-item>
-    <el-form-item label="默认选中" v-if="selectWg.type==='switch'">
+    <el-form-item label="默认选中" v-if="selectWg.type === 'switch'">
       <el-switch v-model="selectWg.value"></el-switch>
     </el-form-item>
-    <el-form-item label="按钮文字" v-if="$util.hasKey(selectWg,'btnText')">
+    <el-form-item label="按钮文字" v-if="$util.hasKey(selectWg, 'btnText')">
       <el-input v-model="selectWg.btnText"></el-input>
     </el-form-item>
-    <el-form-item label="按钮类型" v-if="$util.hasKey(selectWg,'btnType')">
+    <el-form-item label="按钮类型" v-if="$util.hasKey(selectWg, 'btnType')">
       <el-select v-model="selectWg.btnType" filterable placeholder="请选择">
         <el-option v-for="item in selectWg.btnTypes" :key="item.value" :label="item.label" :value="item.value"></el-option>
       </el-select>
     </el-form-item>
 
-    <el-form-item label="选项" v-if="$util.hasKey(selectWg,'options')">
-      <Draggable tag="ul" :list="selectWg.options" :group="{ name:'options'}" ghostClass="ghost" handle=".move-icon">
+    <el-form-item label="选项" v-if="$util.hasKey(selectWg, 'options')">
+      <Draggable tag="ul" :list="selectWg.options" :group="{ name: 'options' }" ghostClass="ghost" handle=".move-icon">
         <li v-for="(item, index) in selectWg.options" :key="index">
           <div class="flex align-middle">
             <el-input size="mini" v-model="selectWg.options[index]"></el-input>
@@ -68,12 +68,12 @@
 <script>
 import { mapState } from 'vuex';
 import Draggable from 'vuedraggable'
-import Editor from '@/components/editor'
+import QuillEditor from '@/components/quill-editor'
 
 import allFieldTypes from '@/assets/js/field-types.js'
 export default {
   components: {
-    Draggable, Editor
+    Draggable, QuillEditor
   },
   props: {
     selectWg: {
