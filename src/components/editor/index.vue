@@ -9,15 +9,11 @@
       <el-tooltip class="item" effect="dark" content="加粗" placement="top">
         <button class="ql-bold"></button>
       </el-tooltip>
-      <!-- <button class="ql-italic"></button> -->
-      <button class="ql-link"></button>
-      <el-tooltip class="item" effect="dark" content="对齐方式" placement="top">
-        <button>
-          <select class="ql-align"></select>
-        </button>
+      <el-tooltip class="item" effect="dark" content="斜体" placement="top">
+        <button class="ql-italic"></button>
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="文字大小" placement="top">
-        <button>
+        <span>
           <select class="ql-size">
             <option value="8px"></option>
             <option value="10px"></option>
@@ -31,11 +27,16 @@
             <option value="48px"></option>
             <option value="64px"></option>
           </select>
-        </button>
+        </span>
+      </el-tooltip>
+      <el-tooltip class="item" effect="dark" content="对齐方式" placement="top">
+        <span>
+          <select class="ql-align"></select>
+        </span>
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="缩进" placement="top">
-        <button>
-          <select class="ql-textIndent">
+        <span>
+          <select class="ql-textIndent el-icon-s-fold">
             <option value="0em"></option>
             <option value="1em"></option>
             <option value="2em"></option>
@@ -43,7 +44,7 @@
             <option value="4em"></option>
             <option value="5em"></option>
           </select>
-        </button>
+        </span>
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="下划线" placement="top">
         <button class="ql-underline"></button>
@@ -51,7 +52,9 @@
       <el-tooltip class="item" effect="dark" content="删除线" placement="top">
         <button class="ql-strike"></button>
       </el-tooltip>
-
+      <el-tooltip class="item" effect="dark" content="链接" placement="top">
+        <button class="ql-link"></button>
+      </el-tooltip>
       <!-- <button class="ql-list" value="ordered"></button>
       <button class="ql-list" value="bullet"></button>-->
 
