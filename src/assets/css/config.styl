@@ -113,18 +113,20 @@
 .quill-editor {
   position: relative;
 
-  .ql-toolbar {
-    &>button, &>span {
-      position: relative;
-      padding: 0;
-      margin: 4px 7px;
-      height: 20px;
-      width: 20px;
-    }
+  .ql-toolbar>span, .ql-toolbar>button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    height: 26px;
+    width: 30px;
+    padding: 3px 5px;
   }
 
-  .ql-picker.ql-size {
-    width: 20px;
+  .ql-toolbar>span>*:first-child, .ql-toolbar>button>*:first-child {
+    width: 100%;
+    height: 100%;
   }
 
   .el-color-picker__trigger {
@@ -149,8 +151,6 @@
   }
 
   .ql-picker.ql-size>.ql-picker-label, .ql-picker.ql-textIndent>.ql-picker-label {
-    position: absolute;
-
     &::before {
       position: absolute;
       top: 0;
@@ -158,8 +158,6 @@
       left: 0;
       right: 0;
       color: #333;
-      width: 100%;
-      height: 100%;
       font-size: 20px;
     }
 
@@ -172,28 +170,37 @@
     content: 'T';
   }
 
-  .ql-picker.ql-textIndent>.ql-picker-label::before {
-    content: 'I';
+  .ql-textIndent.el-icon-s-fold::before {
+    display: none;
+  }
+
+  .ql-textIndent.el-icon-s-fold>.ql-picker-label::before {
+    content: '\e7a9';
   }
 
   .ql-toolbar.ql-snow .ql-picker-label {
+    display: flex;
     outline: 0;
+    padding: 0;
+    text-align: center;
   }
 
   .ql-snow .ql-color-picker .ql-picker-label svg, .ql-snow .ql-icon-picker .ql-picker-label svg {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    color: #333;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
   }
 
   .ql-container {
     min-height: 120px;
     max-height: 400px;
     overflow-y: auto;
-  }
-
-  .ql-align .ql-picker-label {
-    top: -5px;
   }
 
   .ql-picker.ql-size .ql-picker-item:before, .ql-picker.ql-textIndent .ql-picker-item:before {
