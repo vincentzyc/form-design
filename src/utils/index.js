@@ -1,4 +1,5 @@
 import Vue from "vue"
+import { nanoid } from 'nanoid'
 
 const vm = new Vue();
 
@@ -174,5 +175,11 @@ export default {
   getUuid() {
     const randomNum = Number(Math.random().toString().slice(2, -1)) + Date.now()
     return randomNum.toString(36)
+  },
+  /**
+ * 生成唯一id
+ */
+  getNanoid() {
+    return nanoid() //=> "nyO3cyhqEjQ3vzCLdfAjb"
   }
 };
