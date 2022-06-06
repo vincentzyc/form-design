@@ -24,6 +24,9 @@
     <el-form-item label="是否发送验证码" v-if="$util.hasKey(selectWg, 'showCode')">
       <el-switch v-model="selectWg.showCode"></el-switch>
     </el-form-item>
+    <el-form-item label="设为文本域" v-if="$util.hasKey(selectWg, 'isTextarea')">
+      <el-switch v-model="selectWg.isTextarea"></el-switch>
+    </el-form-item>
     <el-form-item label="提示内容" v-if="$util.hasKey(selectWg, 'placeholder')">
       <el-input v-model="selectWg.placeholder"></el-input>
     </el-form-item>

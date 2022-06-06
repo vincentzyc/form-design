@@ -3,6 +3,7 @@ export default [{
   "name": "输入框",
   "placeholder": "请输入姓名",
   "showLabel": false,
+  isTextarea: false,
   "label": {
     "labelTitle": "姓名",
     "labelPosition": "left",
