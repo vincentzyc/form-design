@@ -19,6 +19,7 @@ import WgAgreement from "./agreement"
 import WgMarquee from "./marquee"
 import WgMarqueeSingle from "./marquee-single"
 import WgVideoPlay from "./video-play"
+import WgCountDown from "./count-down";
 
 export default {
   components: {
@@ -32,7 +33,8 @@ export default {
     WgMarqueeSingle,
     WgVideoPlay,
     FixedConfig,
-    PopupConfig
+    PopupConfig,
+    WgCountDown
     //按需加载
     // WgMarquee: () => import('./marquee'),
     // WgMarqueeFixed: () => import('./marquee-fixed'),
@@ -54,7 +56,8 @@ export default {
         marquee: 'WgMarquee',
         marqueeSingle: 'WgMarqueeSingle',
         agreement: 'WgAgreement',
-        videoPlay: 'WgVideoPlay'
+        videoPlay: 'WgVideoPlay',
+        countDown: "WgCountDown",
       }
     }
   }
