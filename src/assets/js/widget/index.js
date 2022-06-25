@@ -8,6 +8,7 @@ import StaticText from "./static-text"
 import Wechat from "./wechat"
 import Video from "./video"
 import Sms from "./sms"
+import CountDown from "./count-down"
 
 // 组件的type字段对应示意图片文件名 （小驼峰命名）
 
@@ -47,6 +48,10 @@ export default [{
   name: '跑马灯',
   value: 'marquee',
   data: Marquee
+}, {
+  name: '倒计时',
+  value: 'count-down',
+  data: CountDown
 }, {
   name: '辅助类',
   value: 'assist',
