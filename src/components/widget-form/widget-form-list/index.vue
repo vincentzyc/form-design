@@ -43,6 +43,7 @@ import WgMarqueeSingle from './wg-marquee-single'
 import WgAgreement from './wg-agreement'
 import WgRandomCode from './wg-random-code'
 import WgVideoPlay from './wg-video-play'
+import WgCountDown from "./wg-count-down";
 
 export default {
   name: "WidgetFormList",
@@ -66,6 +67,7 @@ export default {
     WgAgreement,
     WgRandomCode,
     WgVideoPlay,
+    WgCountDown,
     WgFormList: () => import('./wg-formlist')
 
     //下面是按需加载，组件多的话可选择此方式
@@ -118,6 +120,7 @@ export default {
         agreement: 'WgAgreement', // 用户协议
         randomCode: 'WgRandomCode', //随机码
         videoPlay: 'WgVideoPlay',//视频播放
+        countDown: 'WgCountDown',//倒计时
         formList: 'WgFormList', // 表单内容区 
       }
     }
