@@ -7,6 +7,7 @@ import Select from "./select"
 import Switch from "./switch"
 import RandomCode from "./random-code"
 import Hpicker from "./h-picker"
+import DragVerify from "./drag-verify"
 
 export default [{
   name: "表单内容区",
@@ -45,4 +46,8 @@ export default [{
   name: "开关",
   value: "switch",
   data: Switch
+}, {
+  name: "滑块校验",
+  value: "dragVerify",
+  data: DragVerify
 }]
