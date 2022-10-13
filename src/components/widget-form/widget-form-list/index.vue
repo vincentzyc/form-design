@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="[item.wgClassName?item.wgClassName:'widget-view',{active: selectWg.key === item.key}]"
+    :class="[item.wgClassName ? item.wgClassName : 'widget-view', { active: selectWg.key === item.key }]"
     :style="wgViewStyle"
     @click.stop="handleSelectWidget()"
   >
@@ -22,28 +22,29 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 
-import WgPhone from './wg-phone'
-import WgInput from './wg-input'
-import WgCheckbox from './wg-checkbox'
-import WgSelect from './wg-select'
-import WgSwitch from './wg-switch'
-import WgDate from './wg-date'
-import WgImgshow from './wg-imgshow'
-import WgImgslide from './wg-imgslide'
-import WgButton from './wg-button'
-import WgStaticText from './wg-statictext'
-import WgSplitLine from './wg-splitLine'
-import WgHpicker from './wg-hpicker'
-import WgSms from './wg-sms'
-import WgWechat from './wg-wechat'
-import WgMarquee from './wg-marquee'
-import WgMarqueeSingle from './wg-marquee-single'
-import WgAgreement from './wg-agreement'
-import WgRandomCode from './wg-random-code'
-import WgVideoPlay from './wg-video-play'
+import WgPhone from "./wg-phone";
+import WgInput from "./wg-input";
+import WgCheckbox from "./wg-checkbox";
+import WgSelect from "./wg-select";
+import WgSwitch from "./wg-switch";
+import WgDate from "./wg-date";
+import WgImgshow from "./wg-imgshow";
+import WgImgslide from "./wg-imgslide";
+import WgButton from "./wg-button";
+import WgStaticText from "./wg-statictext";
+import WgSplitLine from "./wg-splitLine";
+import WgHpicker from "./wg-hpicker";
+import WgSms from "./wg-sms";
+import WgWechat from "./wg-wechat";
+import WgMarquee from "./wg-marquee";
+import WgMarqueeSingle from "./wg-marquee-single";
+import WgAgreement from "./wg-agreement";
+import WgRandomCode from "./wg-random-code";
+import WgVideoPlay from "./wg-video-play";
 import WgCountDown from "./wg-count-down";
+import WgDragVerify from "./wg-drag-verify";
 
 export default {
   name: "WidgetFormList",
@@ -68,7 +69,8 @@ export default {
     WgRandomCode,
     WgVideoPlay,
     WgCountDown,
-    WgFormList: () => import('./wg-formlist')
+    WgDragVerify,
+    WgFormList: () => import("./wg-formlist"),
 
     //下面是按需加载，组件多的话可选择此方式
     // WgPhone: () => import('./wg-phone'),
@@ -96,78 +98,80 @@ export default {
     item: Object,
     index: Number,
     data: Array,
-    isPopup: Boolean
+    isPopup: Boolean,
   },
   data() {
     return {
       wgNameMap: {
-        phone: 'WgPhone', // 手机
-        input: 'WgInput', // 输入框
-        checkbox: 'WgCheckbox', // 选择框
-        select: 'WgSelect', // 下拉选择
-        switch: 'WgSwitch', // 开关
-        date: 'WgDate', // 日期选择
-        imgShow: 'WgImgshow', // 图片展示
-        imgSlide: 'WgImgslide', // 图片轮播
-        button: 'WgButton', // 按钮
-        staticText: 'WgStaticText', // 文本描述
-        splitLine: 'WgSplitLine', // 分割线
-        hPicker: 'WgHpicker', // 横向滑动自动选择
-        sms: 'WgSms', // 短信发送 
-        wechat: 'WgWechat', // 微信关注 
-        marquee: 'WgMarquee', // 跑马灯 
-        marqueeSingle: 'WgMarqueeSingle', // 跑马灯-单个
-        agreement: 'WgAgreement', // 用户协议
-        randomCode: 'WgRandomCode', //随机码
-        videoPlay: 'WgVideoPlay',//视频播放
-        countDown: 'WgCountDown',//倒计时
-        formList: 'WgFormList', // 表单内容区 
-      }
-    }
+        phone: "WgPhone", // 手机
+        input: "WgInput", // 输入框
+        checkbox: "WgCheckbox", // 选择框
+        select: "WgSelect", // 下拉选择
+        switch: "WgSwitch", // 开关
+        date: "WgDate", // 日期选择
+        imgShow: "WgImgshow", // 图片展示
+        imgSlide: "WgImgslide", // 图片轮播
+        button: "WgButton", // 按钮
+        staticText: "WgStaticText", // 文本描述
+        splitLine: "WgSplitLine", // 分割线
+        hPicker: "WgHpicker", // 横向滑动自动选择
+        sms: "WgSms", // 短信发送
+        wechat: "WgWechat", // 微信关注
+        marquee: "WgMarquee", // 跑马灯
+        marqueeSingle: "WgMarqueeSingle", // 跑马灯-单个
+        agreement: "WgAgreement", // 用户协议
+        randomCode: "WgRandomCode", //随机码
+        videoPlay: "WgVideoPlay", //视频播放
+        countDown: "WgCountDown", //倒计时
+        dragVerify: "WgDragVerify", //滑块校验
+        formList: "WgFormList", // 表单内容区
+      },
+    };
   },
   computed: {
     clonebtn() {
-      if (this.selectWg.positionFixed && this.selectWg.positionFixed !== 'auto') return false;
+      if (this.selectWg.positionFixed && this.selectWg.positionFixed !== "auto") return false;
       if (this.selectWg.fixedBottom) return false;
       if (Array.isArray(this.selectWg.list)) return false;
       if (this.selectWg.key === this.item.key) return true;
       return false;
     },
     wgViewStyle() {
-      if (Array.isArray(this.item.list)) return { ...this.item.style, backgroundImage: `url(${this.item.backgroundImage})` };
-      return {}
+      if (Array.isArray(this.item.list))
+        return { ...this.item.style, backgroundImage: `url(${this.item.backgroundImage})` };
+      return {};
     },
     ...mapState({
-      selectWg: state => state.common.selectWg
-    })
+      selectWg: state => state.common.selectWg,
+    }),
   },
   methods: {
     handleSelectWidget() {
-      this.$store.commit('setSelectWg', this.data[this.index]);
-      this.$store.commit('setConfigTab', "widget");
+      this.$store.commit("setSelectWg", this.data[this.index]);
+      this.$store.commit("setConfigTab", "widget");
     },
     handleWidgetDelete() {
       if (this.data.length - 1 === this.index) {
         if (this.index === 0) {
-          this.isPopup ? this.$emit('emptied') : this.$store.commit('setSelectWg', {})
+          this.isPopup ? this.$emit("emptied") : this.$store.commit("setSelectWg", {});
         } else {
-          this.$store.commit('setSelectWg', this.data[this.index - 1])
+          this.$store.commit("setSelectWg", this.data[this.index - 1]);
         }
       } else {
-        this.$store.commit('setSelectWg', this.data[this.index + 1])
+        this.$store.commit("setSelectWg", this.data[this.index + 1]);
       }
       this.$nextTick(() => {
-        this.data.splice(this.index, 1)
-      })
+        this.data.splice(this.index, 1);
+      });
     },
     handleWidgetClone() {
       let cloneData = this.$util.deepClone(this.data[this.index]);
-      cloneData.key = cloneData.type + '_' + this.$util.getNanoid()
+      cloneData.key = cloneData.type + "_" + this.$util.getNanoid();
       this.$nextTick(() => {
-        this.data.splice(this.index, 0, cloneData)
-        this.$store.commit('setSelectWg', this.data[this.index + 1])
-      })
-    }
-  }
-}
+        this.data.splice(this.index, 0, cloneData);
+        this.$store.commit("setSelectWg", this.data[this.index + 1]);
+      });
+    },
+  },
+};
 </script>
