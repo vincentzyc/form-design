@@ -4,8 +4,8 @@
     <DragVerify
       ref="dragVerify"
       :isPassing.sync="item.value"
-      text="请按住滑块拖动"
-      successText="验证通过"
+      :text="item.placeholder"
+      :successText="item.successText"
       handlerIcon="el-icon-d-arrow-right"
       successIcon="el-icon-circle-check"
     />
