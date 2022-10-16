@@ -1,6 +1,5 @@
 <template>
   <div>
-    这是滑块校验
     <DragVerify
       ref="dragVerify"
       :isPassing.sync="item.value"
