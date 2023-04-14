@@ -72,8 +72,12 @@ export default {
     compressSuccess(compressUrl) {
       this.$emit('update:value', compressUrl);
     },
-    compressFail(err) {
-      console.log(err);
+    compressFail() {
+    // compressFail(err) {
+      this.$message({
+        message: '压缩出错啦~',
+        type: 'error'
+      });
     },
     resetUpload() {
       this.uploading = false;
