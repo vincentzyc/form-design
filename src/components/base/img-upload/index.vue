@@ -180,7 +180,7 @@ export default {
           this.compressFile = null
           this.fileSize.after = 0
           this.$emit('fail', err)
-          console.log(err.message);
+          // console.log(err.message);
         },
       });
     },
