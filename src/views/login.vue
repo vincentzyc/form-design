@@ -2,64 +2,59 @@
   <div class="login-wrap">
     <div class="ms-title">动态表单设计系统</div>
     <div class="ms-login">
-      <el-form :model="ruleForm" :rules="rules" label-width="0px" ref="ruleForm">
+      <el-form :model="ruleForm" :rules="rules" label-width="0px" ref="domRuleForm">
         <el-form-item prop="userName">
           <el-input placeholder="请输入用户名" v-model="ruleForm.userName"></el-input>
         </el-form-item>
         <el-form-item prop="passWord">
           <el-input
-            @keyup.enter.native="submitForm('ruleForm')"
+            @keyup.enter.native="submitForm()"
             placeholder="请输入密码"
             type="password"
             v-model="ruleForm.passWord"
           ></el-input>
         </el-form-item>
-        <p style="color:#999;font-size:12px;margin:-10px 0 10px 0">用户名密码随意输入即可</p>
+        <p style="color: #999; font-size: 12px; margin: -10px 0 10px 0">用户名密码随意输入即可</p>
         <div class="login-btn">
-          <el-button @click="submitForm('ruleForm')" type="primary">登录</el-button>
+          <el-button @click="submitForm()" type="primary">登录</el-button>
         </div>
       </el-form>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  data: function () {
-    return {
-      nextUrl: "",
-      ruleForm: {
-        userName: "",
-        passWord: ""
-      },
-      rules: {
-        userName: [
-          { required: true, message: "请输入用户名", trigger: "blur" }
-        ],
-        passWord: [{ required: true, message: "请输入密码", trigger: "blur" }]
+<script setup>
+import Utils from '@/utils/index';
+import { reactive, ref } from 'vue';
+import router from '@/router';
+
+let domRuleForm = ref(null);
+
+const ruleForm = reactive({
+  userName: '',
+  passWord: '',
+});
+const rules = reactive({
+  userName: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  passWord: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+});
+
+function submitForm() {
+  domRuleForm &&
+    domRuleForm.value.validate(valid => {
+      if (valid) {
+        Utils.setLStorage('loanuser', { username: ruleForm.userName });
+        router.push('/home');
+      } else {
+        return false;
       }
-    };
-  },
-  methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate(valid => {
-        if (valid) {
-          this.$util.setLStorage("loanuser", { username: this.ruleForm.userName });
-          this.$router.push("/home");
-        } else {
-          // console.log("error submit!!");
-          return false;
-        }
-      });
-    }
-  },
-  created() {
-    let userInfo = this.$util.getLStorage("loanuser", true);
-    if (userInfo) {
-      this.ruleForm.userName = userInfo.username;
-    }
-  }
-};
+    });
+}
+
+let userInfo = Utils.getLStorage('loanuser', true);
+if (userInfo) {
+  ruleForm.userName = userInfo.username;
+}
 </script>
 
 <style scoped>
