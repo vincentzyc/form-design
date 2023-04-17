@@ -24,9 +24,11 @@
 </template>
 
 <script setup>
-import Utils from '@/utils/index';
-import { reactive, ref } from 'vue';
-import router from '@/router';
+// import Utils from '@/utils/index';
+// import router from '@/router';
+import { getCurrentInstance, reactive, ref } from 'vue';
+
+const vm = getCurrentInstance()?.proxy
 
 let domRuleForm = ref(null);
 
@@ -43,15 +45,18 @@ function submitForm() {
   domRuleForm &&
     domRuleForm.value.validate(valid => {
       if (valid) {
-        Utils.setLStorage('loanuser', { username: ruleForm.userName });
-        router.push('/home');
+        // Utils.setLStorage('loanuser', { username: ruleForm.userName });
+        vm.$util.setLStorage('loanuser', { username: ruleForm.userName });
+        vm.$router.push('/home');
+        // router.push('/home');
       } else {
         return false;
       }
     });
 }
 
-let userInfo = Utils.getLStorage('loanuser', true);
+let userInfo = vm.$util.getLStorage('loanuser', true);
+// let userInfo = Utils.getLStorage('loanuser', true);
 if (userInfo) {
   ruleForm.userName = userInfo.username;
 }
