@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrap">
-    <div class="ms-title">动态表单设计系统</div>
-    <div class="ms-login">
+    <div class="yui-title">动态表单设计系统</div>
+    <div class="yui-login">
       <el-form :model="ruleForm" :rules="rules" label-width="0px" ref="domRuleForm">
         <el-form-item prop="userName">
           <el-input placeholder="请输入用户名" v-model="ruleForm.userName"></el-input>
@@ -70,7 +70,7 @@ if (userInfo) {
   background: #324157;
 }
 
-.ms-title {
+.yui-title {
   position: absolute;
   top: 50%;
   width: 100%;
@@ -80,7 +80,7 @@ if (userInfo) {
   color: #fff;
 }
 
-.ms-login {
+.yui-login {
   position: absolute;
   left: 50%;
   top: 50%;
