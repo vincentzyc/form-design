@@ -150,7 +150,7 @@
     font-size: 20px;
   }
 
-  .ql-picker.ql-size>.ql-picker-label, .ql-picker.ql-textIndent>.ql-picker-label {
+  .ql-picker.ql-size>.ql-picker-label, .ql-picker.ql-textIndent>.ql-picker-label, .ql-picker.ql-lineHeight>.ql-picker-label {
     &::before {
       position: absolute;
       top: 0;
@@ -172,6 +172,10 @@
 
   .ql-textIndent.el-icon-s-fold::before {
     display: none;
+  }
+
+  .ql-lineHeight>.ql-picker-label::before {
+    content: 'L';
   }
 
   .ql-textIndent.el-icon-s-fold>.ql-picker-label::before {
@@ -203,7 +207,7 @@
     overflow-y: auto;
   }
 
-  .ql-picker.ql-size .ql-picker-item:before, .ql-picker.ql-textIndent .ql-picker-item:before {
+  .ql-picker.ql-size .ql-picker-item:before, .ql-picker.ql-textIndent .ql-picker-item:before, .ql-picker.ql-lineHeight .ql-picker-item:before {
     content: attr(data-value);
   }
 
