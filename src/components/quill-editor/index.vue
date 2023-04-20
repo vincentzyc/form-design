@@ -34,6 +34,18 @@
           <select class="ql-align"></select>
         </span>
       </el-tooltip>
+      <el-tooltip class="item" effect="dark" content="行高" placement="top">
+        <span>
+          <select class="ql-lineHeight">
+            <option value="1"></option>
+            <option value="1.25"></option>
+            <option value="1.5"></option>
+            <option value="1.75"></option>
+            <option value="2"></option>
+            <option value="3"></option>
+          </select>
+        </span>
+      </el-tooltip>
       <el-tooltip class="item" effect="dark" content="缩进" placement="top">
         <span>
           <select class="ql-textIndent el-icon-s-fold">
@@ -71,7 +83,7 @@
 import { mapState } from 'vuex';
 export default {
   props: {
-    value: String
+    value: String,
   },
   data() {
     return {
@@ -82,19 +94,24 @@ export default {
           toolbar: {
             container: '#toolbar',
             handlers: {
-              'link': function (value) {
+              link: function (value) {
                 if (value) {
-                  var href = prompt('Enter the URL');
+                  var href = prompt('请输入链接');
                   this.quill.format('link', href);
                 } else {
                   this.quill.format('link', false);
                 }
-              }
-            }
-          }
-        }
-      }
-    }
+              },
+              lineHeight: function (value) {
+                if (value) {
+                  this.quill.format('lineHeight', value);
+                }
+              },
+            },
+          },
+        },
+      },
+    };
   },
   computed: {
     model: {
@@ -102,15 +119,15 @@ export default {
         return this.value;
       },
       set(val) {
-        this.$emit("input", val);
-      }
+        this.$emit('input', val);
+      },
     },
     ...mapState({
-      predefineColors: state => state.common.predefineColors
+      predefineColors: state => state.common.predefineColors,
     }),
     editor() {
-      return this.$refs.myTextEditor.quill
-    }
+      return this.$refs.myTextEditor.quill;
+    },
   },
   methods: {
     // pickerFontsize(v) {
@@ -118,15 +135,14 @@ export default {
     //   // let selection = this.editor.getSelection();
     //   // let selectedIndex = v.target.selectedIndex;
     //   // let value = v.target.options[selectedIndex].value;
-    //   // this.editor.formatText(selection.index, selection.length, 'font-size', value);  
+    //   // this.editor.formatText(selection.index, selection.length, 'font-size', value);
     //   // this.editor.format('font', 20);
     // },
     pickerColor(v) {
       this.editor.format('color', v);
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
-<style>
-</style>
+<style></style>
