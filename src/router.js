@@ -1,14 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// const vue = new Vue();
+const vue = new Vue();
 Vue.use(Router)
 
-const checkLogin = () => "/home";
-// const checkLogin = () => localStorage.getItem("loanuser") ? "/home" : "/login"
+const checkLogin = () => localStorage.getItem("loanuser") ? "/home" : "/login"
 
 const router = new Router({
-  // mode: 'history',
   routes: [{
     path: "/",
     redirect: checkLogin()
@@ -31,17 +29,17 @@ const router = new Router({
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-// 	if (to.name === "login") {
-// 		next();
-// 		return;
-// 	}
-// 	localStorage.getItem("loanuser") ? next() : next('/login');
-// })
-// router.afterEach(() => {
-// 	if (window.dom_container) {
-// 		vue.$util.easeout(window.dom_container, 0, 5);
-// 	}
-// })
+router.beforeEach((to, from, next) => {
+	if (to.name === "login") {
+		next();
+		return;
+	}
+	localStorage.getItem("loanuser") ? next() : next('/login');
+})
+router.afterEach(() => {
+	if (window.dom_container) {
+		vue.$util.easeout(window.dom_container, 0, 5);
+	}
+})
 
 export default router
